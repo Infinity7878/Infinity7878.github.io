@@ -46,3 +46,20 @@ https://github.com/Infinity7878/SMOKNet-VIP-Discord-Bot
 ```
 
 Update prices in the pricing section if your product prices change.
+
+
+## Updated example products
+
+The pricing section no longer advertises the Discord store bot as an example product.
+
+It now shows that the bot can be used to sell:
+
+```txt
+Serial keys
+License keys
+ZIP/file downloads
+Configs
+Digital setup packages
+```
+
+Update product names, prices, delivery text, and files in your bot's `config/products.json`.
