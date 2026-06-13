@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SMOKNetwork CS2 CounterStrikeSharp plugins and Discord VIP store bot for server owners." />
+  <meta property="og:title" content="SMOKNetwork CS2 Plugins & Discord VIP Bot" />
+  <meta property="og:description" content="Sell CS2 VIP through Discord, auto-deliver redeem codes, and manage VIP/customization perks." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f5b642" />
+  <title>SMOKNetwork Plugins</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="SMOKNetwork home">
+        <span class="brand-mark">SMOK</span>
+        <span class="brand-text">Network Plugins</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="#plugins">Plugins</a>
+        <a href="#bot">Discord Bot</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#setup">Setup</a>
+        <a class="nav-cta" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Join Discord</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">CounterStrikeSharp / CS2 Server Tools</p>
+          <h1>Sell CS2 VIP, deliver codes automatically, and lock premium perks behind permissions.</h1>
+          <p class="hero-text">SMOKNetwork plugins help CS2 server owners manage VIP, skins, knives, models, trails, and Discord-based payment delivery without needing a full custom store system.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Get Support / Buy</a>
+            <a class="button secondary" href="https://github.com/Infinity7878/SMOKNet-VIP-Discord-Bot" target="_blank" rel="noopener">View GitHub</a>
+          </div>
+          <div class="trust-row">
+            <span>CS2</span><span>CounterStrikeSharp</span><span>Discord Bot</span><span>PayPal / Cash App</span>
+          </div>
+        </div>
+
+        <div class="terminal-card">
+          <div class="terminal-top"><span></span><span></span><span></span></div>
+          <pre><code id="terminalCommands">css_vip_code auto 30 vip 1
+/vippanel post
+!redeem SMOK-XXXX
+!skins
+!knife butterfly</code></pre>
+          <button class="copy-button" data-copy-target="terminalCommands">Copy Commands</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stats">
+      <div class="container stats-grid">
+        <div class="stat-card"><strong>VIP Codes</strong><span>Timed, lifetime, and tiered redeem codes</span></div>
+        <div class="stat-card"><strong>Auto Delivery</strong><span>Discord payment-note checking and DM delivery</span></div>
+        <div class="stat-card"><strong>Customization</strong><span>Skins, knives, models, trails, and saved preferences</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="plugins">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">CS2 Plugins</p>
+          <h2>Built for server owners who want VIP perks without a messy setup.</h2>
+          <p>Use the plugins separately or together with the Discord store bot.</p>
+        </div>
+        <div class="cards">
+          <article class="card feature-card">
+            <div class="card-icon">VIP</div>
+            <h3>SMOK VIP System</h3>
+            <p>Redeemable VIP codes, VIP/VIP+ tiers, timed and lifetime access, permission syncing, and staff commands.</p>
+            <ul><li><code>!redeem CODE</code></li><li><code>!vipstatus</code></li><li><code>css_vip_code auto 30 vip 1</code></li></ul>
+          </article>
+          <article class="card feature-card">
+            <div class="card-icon">SKN</div>
+            <h3>Skins / Knife / Customization</h3>
+            <p>Permission-locked customization commands for player skins, knives, models, and saved preferences.</p>
+            <ul><li><code>!skins</code> / <code>!skin</code></li><li><code>!knife butterfly</code></li><li><code>!models</code> / <code>!model</code></li></ul>
+          </article>
+          <article class="card feature-card">
+            <div class="card-icon">🔒</div>
+            <h3>Locked Customer Builds</h3>
+            <p>Sell locked customer builds of the Discord bot with license checks, signed responses, and resale controls.</p>
+            <ul><li>Signed license API</li><li>Guild/client binding</li><li>No resale commands in customer build</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bot-section" id="bot">
+      <div class="container bot-grid">
+        <div>
+          <p class="eyebrow">Discord Store Bot</p>
+          <h2>Let players buy VIP from Discord and receive redeem codes automatically.</h2>
+          <p>The bot posts a clean store panel, lets buyers choose products from dropdowns, generates payment note codes, checks payment emails, and DMs the correct CS2 redeem code or bot download.</p>
+          <div class="check-list">
+            <span>Dropdown product panel</span><span>PayPal / Cash App payment-note checkout</span><span>Gmail IMAP receipt checking</span><span>Auto-generated bot licenses</span><span>Manual staff delivery fallback</span>
+          </div>
+        </div>
+        <div class="mock-discord">
+          <div class="discord-header"># vip-store</div>
+          <div class="discord-message">
+            <h3>SMOKNetwork VIP Store</h3>
+            <p>Select a package below to begin checkout.</p>
+            <div class="select-box">VIP - 30 Days · $4.99</div>
+            <div class="select-box">VIP+ - 30 Days · $7.99</div>
+            <div class="select-box">SMOK VIP Discord Bot · $29.99</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Products</p>
+          <h2>Example products you can offer.</h2>
+          <p>Edit product names and prices in <code>config/products.json</code>.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card"><h3>VIP - 30 Days</h3><p class="price">$4.99</p><p>Basic VIP perks for one month.</p></article>
+          <article class="price-card popular"><div class="badge">Popular</div><h3>VIP+ - 30 Days</h3><p class="price">$7.99</p><p>Higher tier VIP perks for one month.</p></article>
+          <article class="price-card"><h3>Lifetime VIP</h3><p class="price">$24.99</p><p>Permanent VIP access.</p></article>
+          <article class="price-card"><h3>Discord Store Bot</h3><p class="price">$29.99</p><p>Locked customer bot build with license code and setup tutorial.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section setup-section" id="setup">
+      <div class="container setup-grid">
+        <div>
+          <p class="eyebrow">Setup Flow</p>
+          <h2>Simple workflow for your CS2 server.</h2>
+          <ol class="steps">
+            <li>Install the CounterStrikeSharp plugins on your CS2 server.</li>
+            <li>Generate VIP redeem codes from the CS2 server console.</li>
+            <li>Add those codes to the Discord bot stock.</li>
+            <li>Post the Discord store panel.</li>
+            <li>Players buy, receive a code, and redeem in-game.</li>
+          </ol>
+        </div>
+        <div class="code-card">
+          <div class="code-title">Quick Commands</div>
+          <pre><code id="setupCommands">css_vip_code auto 30 vip 1
+/vipstock add product:vip30 codes:CODEHERE
+/vippanel post
+/checkpayment
+!redeem CODEHERE</code></pre>
+          <button class="copy-button" data-copy-target="setupCommands">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container cta-card">
+        <h2>Want to test it on your CS2 server?</h2>
+        <p>Join the Discord for demos, setup help, purchase info, and plugin support.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Join Discord</a>
+          <a class="button secondary" href="https://github.com/Infinity7878/SMOKNet-VIP-Discord-Bot" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><strong>SMOKNetwork Plugins</strong><p>CS2 VIP tools, customization, and Discord store automation.</p></div>
+      <div class="footer-links"><a href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Discord</a><a href="https://github.com/Infinity7878/SMOKNet-VIP-Discord-Bot" target="_blank" rel="noopener">GitHub</a><a href="#plugins">Plugins</a></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
