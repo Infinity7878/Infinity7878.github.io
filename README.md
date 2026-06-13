@@ -63,3 +63,19 @@ Digital setup packages
 ```
 
 Update product names, prices, delivery text, and files in your bot's `config/products.json`.
+
+
+## License key and file delivery wording
+
+The page now describes the Discord bot as a way to sell:
+
+```txt
+License keys
+Serial keys
+ZIP/file downloads
+Setup files
+Configs
+Other digital products
+```
+
+It no longer advertises locked customer bot builds as a product/feature.
