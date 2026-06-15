@@ -25,9 +25,7 @@
       --radius: 22px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -40,16 +38,14 @@
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .wrap {
       width: min(1120px, calc(100% - 34px));
       margin: 0 auto;
     }
 
+    /* ── Header ── */
     header {
       padding: 24px 0;
       position: sticky;
@@ -74,6 +70,7 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       font-size: 22px;
+      cursor: pointer;
     }
 
     .logo {
@@ -85,6 +82,7 @@
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 0 32px rgba(139, 92, 246, 0.45);
       font-weight: 950;
+      flex-shrink: 0;
     }
 
     .navlinks {
@@ -108,6 +106,8 @@
       font-weight: 800;
       transition: 160ms ease;
       cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
     }
 
     .btn:hover {
@@ -123,6 +123,11 @@
       box-shadow: 0 18px 44px rgba(139, 92, 246, 0.28);
     }
 
+    /* ── Page routing ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── Hero ── */
     .hero {
       padding: 90px 0 58px;
       display: grid;
@@ -178,6 +183,7 @@
       font-size: 14px;
     }
 
+    /* ── Discord preview ── */
     .preview {
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -195,12 +201,7 @@
       background: rgba(255,255,255,0.06);
     }
 
-    .dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 99px;
-      background: #fb7185;
-    }
+    .dot { width: 11px; height: 11px; border-radius: 99px; background: #fb7185; }
     .dot:nth-child(2) { background: #fbbf24; }
     .dot:nth-child(3) { background: #34d399; }
 
@@ -212,21 +213,10 @@
       background: rgba(15, 23, 42, 0.82);
     }
 
-    .embed h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
+    .embed h3 { margin: 0 0 8px; font-size: 22px; }
+    .embed p { margin: 0 0 16px; color: var(--muted); line-height: 1.55; }
 
-    .embed p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .products {
-      display: grid;
-      gap: 10px;
-    }
+    .products { display: grid; gap: 10px; }
 
     .product {
       padding: 13px;
@@ -239,9 +229,8 @@
       color: #e5e7eb;
     }
 
-    section {
-      padding: 56px 0;
-    }
+    /* ── Sections ── */
+    section { padding: 56px 0; }
 
     .section-title {
       text-align: center;
@@ -262,6 +251,7 @@
       margin: 0;
     }
 
+    /* ── Feature grid ── */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -276,25 +266,12 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.16);
     }
 
-    .card .icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
+    .card .icon { font-size: 28px; margin-bottom: 12px; }
+    .card h3 { margin: 0 0 8px; font-size: 20px; }
+    .card p, .card li { color: var(--muted); line-height: 1.55; }
+    .card p { margin: 0; }
 
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-    }
-
-    .card p, .card li {
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .card p {
-      margin: 0;
-    }
-
+    /* ── Pricing ── */
     .pricing {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -323,15 +300,10 @@
       margin: 14px 0;
     }
 
-    ul {
-      padding-left: 20px;
-      margin: 18px 0 0;
-    }
+    ul { padding-left: 20px; margin: 18px 0 0; }
+    li { margin-bottom: 10px; }
 
-    li {
-      margin-bottom: 10px;
-    }
-
+    /* ── Setup steps ── */
     .setup {
       counter-reset: step;
       display: grid;
@@ -363,15 +335,10 @@
       font-weight: 950;
     }
 
-    .step strong {
-      display: block;
-      margin-bottom: 4px;
-    }
+    .step strong { display: block; margin-bottom: 4px; }
+    .step span { color: var(--muted); }
 
-    .step span {
-      color: var(--muted);
-    }
-
+    /* ── CTA banner ── */
     .cta {
       text-align: center;
       padding: 48px;
@@ -383,11 +350,124 @@
       box-shadow: var(--shadow);
     }
 
+    /* ── Legal pages ── */
+    .legal-page {
+      padding: 72px 0 80px;
+    }
+
+    .legal-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legal-eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 14px;
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.1);
+      color: #c4b5fd;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .legal-header h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      margin: 0 0 14px;
+      line-height: 1;
+    }
+
+    .legal-meta {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .legal-body {
+      max-width: 780px;
+    }
+
+    .legal-body h2 {
+      font-size: 22px;
+      letter-spacing: -0.03em;
+      margin: 44px 0 12px;
+      color: var(--text);
+    }
+
+    .legal-body h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-body p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0 0 14px;
+      font-size: 16px;
+    }
+
+    .legal-body ul {
+      margin: 12px 0 18px;
+      padding-left: 22px;
+    }
+
+    .legal-body ul li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .legal-body a {
+      color: #c4b5fd;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .legal-highlight {
+      padding: 18px 22px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 14px;
+      background: rgba(139, 92, 246, 0.08);
+      color: #c4b5fd;
+      font-size: 15px;
+      line-height: 1.65;
+      margin: 0 0 32px;
+    }
+
+    /* ── Footer ── */
     footer {
       padding: 34px 0;
       border-top: 1px solid var(--line);
       color: var(--muted);
       text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .footer-links button {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 0;
+      transition: color 160ms;
+    }
+
+    .footer-links button:hover {
+      color: var(--text);
     }
 
     code {
@@ -401,28 +481,26 @@
       .hero, .grid, .pricing {
         grid-template-columns: 1fr;
       }
-
-      .hero {
-        padding-top: 52px;
-      }
-
-      .navlinks a:not(.primary) {
+      .hero { padding-top: 52px; }
+      .navlinks a:not(.primary), .navlinks button:not(.primary) {
         display: none;
       }
+      .navlinks .btn.primary { display: inline-flex; }
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="wrap">
       <nav>
-        <a class="brand" href="#">
+        <a class="brand" onclick="showPage('home')">
           <span class="logo">SB</span>
           <span>Store Bot</span>
         </a>
         <div class="navlinks">
-          <a href="#features" class="btn">Features</a>
-          <a href="#pricing" class="btn">Free vs Premium</a>
+          <button class="btn" onclick="showPage('home'); scrollTo('#features')">Features</button>
+          <button class="btn" onclick="showPage('home'); scrollTo('#pricing')">Free vs Premium</button>
           <a href="https://discord.gg/zB7NgPBzBA" class="btn">Support</a>
           <a href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" class="btn primary">Invite Bot</a>
         </div>
@@ -430,171 +508,370 @@
     </div>
   </header>
 
-  <main>
-    <div class="wrap hero">
-      <div>
-        <div class="pill">⚡ Free Discord Store Bot</div>
-        <h1>Sell digital products <span>directly inside Discord.</span></h1>
-        <p class="lead">
-          Store Bot helps communities sell VIP access, license keys, hosting, server perks, files, and other digital products without needing a full website.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID_HERE&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
-          <a class="btn" href="https://discord.gg/zB7NgPBzBA">Join Support Server</a>
+  <!-- ══════════════════════════════════════════
+       HOME PAGE
+  ══════════════════════════════════════════ -->
+  <div id="page-home" class="page active">
+    <main>
+      <div class="wrap hero">
+        <div>
+          <div class="pill">⚡ Free Discord Store Bot</div>
+          <h1>Sell digital products <span>directly inside Discord.</span></h1>
+          <p class="lead">
+            Store Bot helps communities sell VIP access, license keys, hosting, server perks, files, and other digital products without needing a full website.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
+            <a class="btn" href="https://discord.gg/zB7NgPBzBA">Join Support Server</a>
+          </div>
+          <div class="note">Start free. Upgrade later for more products, branding, gift cards, and discount codes.</div>
         </div>
-        <div class="note">Start free. Upgrade later for more products, branding, gift cards, and discount codes.</div>
+
+        <div class="preview">
+          <div class="preview-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="embed">
+            <h3>🛒 Server Store</h3>
+            <p>Select a product, place an order, and manage purchases directly through Discord.</p>
+            <div class="products">
+              <div class="product"><span>VIP Access - 30 Days</span><strong>$5.00</strong></div>
+              <div class="product"><span>Discord Bot Hosting</span><strong>$15.00</strong></div>
+              <div class="product"><span>License Key</span><strong>$10.00</strong></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="preview">
-        <div class="preview-top">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
-        <div class="embed">
-          <h3>🛒 Server Store</h3>
-          <p>Select a product, place an order, and manage purchases directly through Discord.</p>
-          <div class="products">
-            <div class="product"><span>VIP Access - 30 Days</span><strong>$5.00</strong></div>
-            <div class="product"><span>Discord Bot Hosting</span><strong>$15.00</strong></div>
-            <div class="product"><span>License Key</span><strong>$10.00</strong></div>
+      <section id="features">
+        <div class="wrap">
+          <div class="section-title">
+            <h2>Built for Discord sellers</h2>
+            <p>Use Store Bot for gaming communities, software sellers, digital services, VIP systems, and small Discord-based stores.</p>
           </div>
+          <div class="grid">
+            <div class="card">
+              <div class="icon">🛒</div>
+              <h3>Store Panel</h3>
+              <p>Post a clean product panel in your server so customers can browse and order without leaving Discord.</p>
+            </div>
+            <div class="card">
+              <div class="icon">📦</div>
+              <h3>Digital Products</h3>
+              <p>Sell VIP access, keys, serials, files, bot services, hosting, server perks, configs, and more.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🧾</div>
+              <h3>Order Management</h3>
+              <p>Track pending orders, manually deliver products, and manage your server store from slash commands.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🏷️</div>
+              <h3>Premium Discounts</h3>
+              <p>Premium servers can create discount codes to run sales, promos, and limited-time offers.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🎁</div>
+              <h3>Gift Cards</h3>
+              <p>Premium unlocks gift cards and store credit so customers can redeem balances toward future orders.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🎨</div>
+              <h3>Branding Tools</h3>
+              <p>Premium servers can customize store branding, logo, accent color, and bot nickname for their server.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="wrap">
+          <div class="section-title">
+            <h2>Free to start, Premium when you grow</h2>
+            <p>Use the free version to launch your store. Upgrade for more products and better selling tools.</p>
+          </div>
+          <div class="pricing">
+            <div class="price-card">
+              <h3>Free</h3>
+              <div class="price">$0</div>
+              <p>Good for testing or running a small Discord store.</p>
+              <ul>
+                <li>Up to 3 products</li>
+                <li>Basic store panel</li>
+                <li>Manual payment handling</li>
+                <li>Manual delivery tools</li>
+                <li>Upgrade ads included</li>
+              </ul>
+            </div>
+            <div class="price-card premium">
+              <h3>Premium</h3>
+              <div class="price">$15/mo</div>
+              <p>Made for active servers that want a cleaner store.</p>
+              <ul>
+                <li>Up to 50 products</li>
+                <li>No forced upgrade ads</li>
+                <li>Discount codes</li>
+                <li>Gift cards and store credit</li>
+                <li>Custom store title, logo, and color</li>
+                <li>Server-specific bot nickname</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="setup">
+        <div class="wrap">
+          <div class="section-title">
+            <h2>Setup in minutes</h2>
+            <p>No coding required. Invite the bot, add products, and post your store panel.</p>
+          </div>
+          <div class="setup">
+            <div class="step">
+              <div>
+                <strong>Invite Store Bot</strong>
+                <span>Add the bot to your Discord server with slash command permissions.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <strong>Run setup</strong>
+                <span>Use <code>/storebot setup</code> and configure your store basics.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <strong>Add products</strong>
+                <span>Create products with <code>/product add</code>.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <strong>Post your panel</strong>
+                <span>Use <code>/storebot panel</code> to launch your Discord store.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div class="cta">
+            <h2>Ready to launch your Discord store?</h2>
+            <p class="lead" style="margin-left:auto;margin-right:auto;">Invite Store Bot for free and start selling products inside your server today.</p>
+            <div class="hero-actions" style="justify-content:center;">
+              <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
+              <a class="btn" href="https://discord.gg/zB7NgPBzBA">Get Support</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TERMS OF SERVICE
+  ══════════════════════════════════════════ -->
+  <div id="page-tos" class="page">
+    <div class="wrap">
+      <div class="legal-page">
+        <div class="legal-header">
+          <div class="legal-eyebrow">📄 Legal</div>
+          <h1>Terms of <span style="background:linear-gradient(135deg,#c4b5fd,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent;">Service</span></h1>
+          <div class="legal-meta">Effective date: June 15, 2026 &nbsp;·&nbsp; Last updated: June 15, 2026</div>
+        </div>
+
+        <div class="legal-body">
+          <div class="legal-highlight">
+            By inviting Store Bot to your Discord server or using any of its commands, you agree to these Terms of Service. If you do not agree, please remove the bot from your server and stop using the service.
+          </div>
+
+          <h2>1. About Store Bot</h2>
+          <p>Store Bot ("the Bot", "the Service", "we", "us") is a Discord bot that allows Discord server owners and administrators ("Sellers") to create in-server stores for selling digital products to their community members ("Buyers"). Store Bot is provided as a tool only — we are not a party to any transaction between Sellers and Buyers.</p>
+
+          <h2>2. Eligibility</h2>
+          <p>You must be at least 13 years old to use Store Bot, or the minimum age required by your country if higher. By using the Service, you represent that you meet this requirement. Discord's own Terms of Service also apply independently.</p>
+
+          <h2>3. Acceptable Use</h2>
+          <p>You agree to use Store Bot only for lawful purposes. You may not use the Service to:</p>
+          <ul>
+            <li>Sell illegal products, counterfeit goods, stolen accounts, pirated software, or any content that violates applicable law</li>
+            <li>Defraud, deceive, or mislead buyers about the nature or delivery of products</li>
+            <li>Distribute malware, exploit kits, phishing links, or other harmful software</li>
+            <li>Violate Discord's Terms of Service or Community Guidelines</li>
+            <li>Sell adult content, weapons, drugs, or any regulated goods in jurisdictions where doing so is prohibited</li>
+            <li>Spam users or abuse bot commands in ways that disrupt other servers or users</li>
+            <li>Attempt to reverse-engineer, exploit, or interfere with the Bot's infrastructure</li>
+          </ul>
+          <p>We reserve the right to remove the Bot from any server, revoke Premium access, or ban any user who violates these terms without prior notice or refund.</p>
+
+          <h2>4. Seller Responsibilities</h2>
+          <p>Sellers are solely responsible for:</p>
+          <ul>
+            <li>The products they list, their accuracy, and their lawful delivery</li>
+            <li>Handling all payments and disputes between themselves and their Buyers</li>
+            <li>Complying with all applicable laws in their jurisdiction, including consumer protection laws and tax obligations</li>
+            <li>Setting clear product descriptions and managing buyer expectations</li>
+          </ul>
+          <p>Store Bot does not process payments, hold funds, or guarantee any transaction. Payment processing (if used) is handled entirely by the Seller through their own chosen payment methods.</p>
+
+          <h2>5. Premium Subscriptions</h2>
+          <p>Premium features are available for a monthly fee as listed on the pricing page. By purchasing Premium, you agree to the following:</p>
+          <ul>
+            <li>Payments are charged monthly and are non-refundable except where required by law</li>
+            <li>Subscriptions auto-renew unless cancelled before the next billing date</li>
+            <li>We may change Premium pricing with at least 14 days' notice</li>
+            <li>Premium access is tied to the Discord server it was purchased for and is non-transferable</li>
+            <li>We may revoke Premium access for violations of these Terms without a refund</li>
+          </ul>
+
+          <h2>6. Availability and Modifications</h2>
+          <p>We do our best to keep Store Bot online, but we do not guarantee uninterrupted availability. We may modify, suspend, or discontinue features at any time. We are not liable for any loss caused by downtime or feature changes.</p>
+
+          <h2>7. Intellectual Property</h2>
+          <p>Store Bot, its branding, code, and all associated content are owned by us. You may not copy, reproduce, or redistribute the Bot's code or branding without written permission. You retain full ownership of the product listings and content you create using the Service.</p>
+
+          <h2>8. Disclaimer of Warranties</h2>
+          <p>Store Bot is provided "as is" and "as available" without warranties of any kind, express or implied. We do not warrant that the Service will be error-free, secure, or meet your specific requirements. Use the Service at your own risk.</p>
+
+          <h2>9. Limitation of Liability</h2>
+          <p>To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of Store Bot — including but not limited to lost revenue, lost data, or failed transactions between Sellers and Buyers. Our total liability for any claim shall not exceed the amount you paid us in the 30 days preceding the claim.</p>
+
+          <h2>10. Indemnification</h2>
+          <p>You agree to indemnify and hold harmless Store Bot and its operators from any claims, damages, or expenses (including legal fees) arising from your use of the Service, your products, or your violation of these Terms.</p>
+
+          <h2>11. Governing Law</h2>
+          <p>These Terms are governed by the laws of the jurisdiction in which Store Bot's operators are based, without regard to conflict of law principles. Disputes will be resolved through binding arbitration or small claims court, unless otherwise required by applicable law.</p>
+
+          <h2>12. Changes to These Terms</h2>
+          <p>We may update these Terms at any time. Continued use of Store Bot after changes are posted constitutes your acceptance of the updated Terms. We'll announce material changes in our support server.</p>
+
+          <h2>13. Contact</h2>
+          <p>Questions about these Terms? Reach us through our <a href="https://discord.gg/zB7NgPBzBA">Discord support server</a>.</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <section id="features">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Built for Discord sellers</h2>
-          <p>Use Store Bot for gaming communities, software sellers, digital services, VIP systems, and small Discord-based stores.</p>
+  <!-- ══════════════════════════════════════════
+       PRIVACY POLICY
+  ══════════════════════════════════════════ -->
+  <div id="page-privacy" class="page">
+    <div class="wrap">
+      <div class="legal-page">
+        <div class="legal-header">
+          <div class="legal-eyebrow">🔒 Legal</div>
+          <h1>Privacy <span style="background:linear-gradient(135deg,#c4b5fd,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent;">Policy</span></h1>
+          <div class="legal-meta">Effective date: June 15, 2026 &nbsp;·&nbsp; Last updated: June 15, 2026</div>
         </div>
 
-        <div class="grid">
-          <div class="card">
-            <div class="icon">🛒</div>
-            <h3>Store Panel</h3>
-            <p>Post a clean product panel in your server so customers can browse and order without leaving Discord.</p>
-          </div>
-          <div class="card">
-            <div class="icon">📦</div>
-            <h3>Digital Products</h3>
-            <p>Sell VIP access, keys, serials, files, bot services, hosting, server perks, configs, and more.</p>
-          </div>
-          <div class="card">
-            <div class="icon">🧾</div>
-            <h3>Order Management</h3>
-            <p>Track pending orders, manually deliver products, and manage your server store from slash commands.</p>
-          </div>
-          <div class="card">
-            <div class="icon">🏷️</div>
-            <h3>Premium Discounts</h3>
-            <p>Premium servers can create discount codes to run sales, promos, and limited-time offers.</p>
-          </div>
-          <div class="card">
-            <div class="icon">🎁</div>
-            <h3>Gift Cards</h3>
-            <p>Premium unlocks gift cards and store credit so customers can redeem balances toward future orders.</p>
-          </div>
-          <div class="card">
-            <div class="icon">🎨</div>
-            <h3>Branding Tools</h3>
-            <p>Premium servers can customize store branding, logo, accent color, and bot nickname for their server.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Free to start, Premium when you grow</h2>
-          <p>Use the free version to launch your store. Upgrade for more products and better selling tools.</p>
-        </div>
-
-        <div class="pricing">
-          <div class="price-card">
-            <h3>Free</h3>
-            <div class="price">$0</div>
-            <p>Good for testing or running a small Discord store.</p>
-            <ul>
-              <li>Up to 3 products</li>
-              <li>Basic store panel</li>
-              <li>Manual payment handling</li>
-              <li>Manual delivery tools</li>
-              <li>Upgrade ads included</li>
-            </ul>
+        <div class="legal-body">
+          <div class="legal-highlight">
+            Store Bot collects the minimum data needed to function. We do not sell your data, and we do not share it with third parties for advertising. This policy explains exactly what we collect and why.
           </div>
 
-          <div class="price-card premium">
-            <h3>Premium</h3>
-            <div class="price">$15/mo</div>
-            <p>Made for active servers that want a cleaner store.</p>
-            <ul>
-              <li>Up to 50 products</li>
-              <li>No forced upgrade ads</li>
-              <li>Discount codes</li>
-              <li>Gift cards and store credit</li>
-              <li>Custom store title, logo, and color</li>
-              <li>Server-specific bot nickname</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+          <h2>1. Who We Are</h2>
+          <p>Store Bot is a Discord bot service. This Privacy Policy explains how we collect, use, and protect information when you use the Service — whether you are a server owner, administrator, or a member of a server where Store Bot is installed.</p>
 
-    <section id="setup">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Setup in minutes</h2>
-          <p>No coding required. Invite the bot, add products, and post your store panel.</p>
-        </div>
+          <h2>2. Information We Collect</h2>
+          <p>We only collect data that is necessary to operate the Service:</p>
+          <ul>
+            <li><strong>Discord Server ID:</strong> To associate your store configuration with your server.</li>
+            <li><strong>Discord User IDs:</strong> To track which users have placed orders, created products, or used bot commands. We do not collect usernames or profile pictures unless you explicitly provide them through bot commands.</li>
+            <li><strong>Product listings and store settings:</strong> The names, descriptions, and prices you enter when creating products and configuring your store.</li>
+            <li><strong>Order records:</strong> Information about orders placed through your store, including the product ordered, the buyer's Discord user ID, and order status.</li>
+            <li><strong>Premium subscription data:</strong> If you purchase Premium, we retain a record of the subscription tied to your server ID. Payment processing is handled by our payment provider; we do not store credit card or financial details.</li>
+            <li><strong>Command usage:</strong> We may log basic command usage for debugging and service improvement. These logs do not include message content outside of bot commands.</li>
+          </ul>
 
-        <div class="setup">
-          <div class="step">
-            <div>
-              <strong>Invite Store Bot</strong>
-              <span>Add the bot to your Discord server with slash command permissions.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div>
-              <strong>Run setup</strong>
-              <span>Use <code>/storebot setup</code> and configure your store basics.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div>
-              <strong>Add products</strong>
-              <span>Create products with <code>/product add</code>.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div>
-              <strong>Post your panel</strong>
-              <span>Use <code>/storebot panel</code> to launch your Discord store.</span>
-            </div>
-          </div>
+          <h2>3. Information We Do NOT Collect</h2>
+          <p>We want to be clear about what we do not collect:</p>
+          <ul>
+            <li>We do not read, store, or process general Discord messages or channel history</li>
+            <li>We do not collect email addresses, phone numbers, or real-world identity information</li>
+            <li>We do not track users across servers or build behavioral profiles</li>
+            <li>We do not collect information from users who have not directly interacted with a Store Bot command</li>
+          </ul>
+
+          <h2>4. How We Use Your Data</h2>
+          <p>Data collected by Store Bot is used exclusively to:</p>
+          <ul>
+            <li>Operate your store, display products, and process orders within your server</li>
+            <li>Maintain order history and store configuration between sessions</li>
+            <li>Manage Premium subscriptions and feature access</li>
+            <li>Debug issues and improve the reliability of the Service</li>
+          </ul>
+          <p>We do not use your data for advertising, and we do not sell or rent your data to any third party.</p>
+
+          <h2>5. Data Sharing</h2>
+          <p>We do not share your personal data with third parties except in the following limited circumstances:</p>
+          <ul>
+            <li><strong>Service providers:</strong> We may use third-party hosting or database providers to store data on our behalf. These providers are contractually prohibited from using your data for any purpose other than providing their service to us.</li>
+            <li><strong>Payment processors:</strong> If you purchase Premium, your payment information is handled directly by our payment processor. We receive only confirmation of payment — not your card details.</li>
+            <li><strong>Legal requirements:</strong> We may disclose data if required by law, court order, or to protect the rights, safety, or property of Store Bot or the public.</li>
+          </ul>
+
+          <h2>6. Data Retention</h2>
+          <p>We retain your data for as long as Store Bot is active in your server. If you remove Store Bot from your server, you may request deletion of your server's stored data by contacting us through our support server. Order history may be retained for a limited period for dispute-resolution purposes before being deleted.</p>
+
+          <h2>7. Security</h2>
+          <p>We take reasonable technical and organizational measures to protect your data from unauthorized access, loss, or misuse. However, no system is perfectly secure. By using the Service, you acknowledge that you are providing information at your own risk.</p>
+
+          <h2>8. Children's Privacy</h2>
+          <p>Store Bot is not directed at children under the age of 13. We do not knowingly collect data from children under 13. If you believe a child has provided us with data, please contact us so we can delete it promptly.</p>
+
+          <h2>9. Your Rights</h2>
+          <p>Depending on where you are located, you may have certain rights regarding your data, including the right to access, correct, or delete the data we hold about you. To exercise these rights, contact us through our support server. We will respond within a reasonable timeframe.</p>
+          <p>If you are in the European Economic Area (EEA), you may also have the right to data portability and the right to lodge a complaint with a supervisory authority.</p>
+
+          <h2>10. Third-Party Services</h2>
+          <p>Store Bot operates within Discord and is subject to <a href="https://discord.com/privacy" target="_blank" rel="noopener">Discord's Privacy Policy</a> as well. We are not responsible for Discord's data practices. If you use external payment methods to complete purchases from Sellers, those payment providers have their own privacy policies.</p>
+
+          <h2>11. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. When we do, we will update the effective date above. Significant changes will be announced in our support server. Continued use of Store Bot after changes are posted means you accept the updated policy.</p>
+
+          <h2>12. Contact Us</h2>
+          <p>If you have any questions or concerns about this Privacy Policy or how your data is handled, please reach out through our <a href="https://discord.gg/zB7NgPBzBA">Discord support server</a>. We're happy to help.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section>
-      <div class="wrap">
-        <div class="cta">
-          <h2>Ready to launch your Discord store?</h2>
-          <p class="lead" style="margin-left:auto;margin-right:auto;">Invite Store Bot for free and start selling products inside your server today.</p>
-          <div class="hero-actions" style="justify-content:center;">
-            <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID_HERE&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
-            <a class="btn" href="https://discord.gg/zB7NgPBzBA">Get Support</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
   <footer>
     <div class="wrap">
-      Store Bot is a Discord store tool for digital products, community perks, and server-based sales.
+      <div>Store Bot is a Discord store tool for digital products, community perks, and server-based sales.</div>
+      <div class="footer-links">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('tos')">Terms of Service</button>
+        <button onclick="showPage('privacy')">Privacy Policy</button>
+        <a href="https://discord.gg/zB7NgPBzBA" style="font-size:14px;color:var(--muted);transition:color 160px;">Support</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollTo(selector) {
+      setTimeout(() => {
+        const el = document.querySelector(selector);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+    }
+
+    // Handle hash links on load
+    const hash = window.location.hash;
+    if (hash === '#tos') showPage('tos');
+    else if (hash === '#privacy') showPage('privacy');
+  </script>
+
 </body>
 </html>
