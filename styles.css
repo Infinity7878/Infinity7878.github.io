@@ -59,19 +59,21 @@ main, .site-header, .site-footer {
 .mouse-glow {
   position: fixed;
   left: var(--mouse-x, 50vw);
-  top: var(--mouse-y, 20vh);
-  width: 520px;
-  height: 520px;
+  top: var(--mouse-y, 22vh);
+  width: 460px;
+  height: 460px;
   pointer-events: none;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 122, 24, 0.18), rgba(255, 122, 24, 0.07) 32%, transparent 68%);
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.36), rgba(255, 122, 24, 0.16) 28%, rgba(255, 122, 24, 0.05) 46%, transparent 70%);
+  filter: blur(10px);
   opacity: 0;
-  transition: opacity 200ms ease;
-  z-index: 1;
+  transition: opacity 160ms ease;
+  z-index: 20;
+  mix-blend-mode: screen;
 }
 
-body.has-pointer .mouse-glow { opacity: 1; }
+body.has-pointer .mouse-glow { opacity: 0.75; }
 
 .scroll-progress {
   position: fixed;
@@ -450,6 +452,7 @@ h3 { font-size: 1.35rem; }
   display: flex;
   align-items: center;
   gap: 1rem;
+  animation: floatCard 6s ease-in-out infinite;
 }
 
 .avatar-card img {
@@ -469,6 +472,7 @@ h3 { font-size: 1.35rem; }
   margin: -0.5rem auto 0;
   overflow: hidden;
   transform: rotate(-1deg);
+  animation: floatPreview 7s ease-in-out infinite;
 }
 
 .store-preview:hover { transform: rotate(-1deg) translateY(-4px); }
@@ -555,6 +559,10 @@ h3 { font-size: 1.35rem; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+.faq-grid {
+  align-items: start;
 }
 
 .feature-card,
@@ -711,17 +719,24 @@ h3 { font-size: 1.35rem; }
 .faq-card {
   padding: 0;
   overflow: hidden;
+  align-self: start;
 }
 
 .faq-card summary {
   cursor: pointer;
   padding: 1.15rem 1.25rem;
   font-weight: 900;
+  list-style-position: inside;
 }
 
 .faq-card p {
   margin: 0;
   padding: 0 1.25rem 1.25rem;
+}
+
+.faq-card[open] {
+  border-color: rgba(255, 157, 18, 0.38);
+  background: linear-gradient(180deg, rgba(255, 157, 18, 0.1), rgba(255, 255, 255, 0.04));
 }
 
 .cta-section { padding-top: 1.2rem; }
@@ -774,15 +789,35 @@ h3 { font-size: 1.35rem; }
 
 .footer-links a { font-weight: 800; }
 
+/* Content stays visible if JavaScript is blocked. Animations are enabled only after script.js adds .js-ready. */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.js-ready .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 650ms ease, transform 650ms ease;
 }
 
-.reveal.visible {
+.js-ready .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.js-ready .feature-card.reveal,
+.js-ready .price-card.reveal,
+.js-ready .faq-card.reveal,
+.js-ready .stat-card.reveal {
+  transform: translateY(22px) scale(0.985);
+}
+
+.js-ready .feature-card.reveal.visible,
+.js-ready .price-card.reveal.visible,
+.js-ready .faq-card.reveal.visible,
+.js-ready .stat-card.reveal.visible {
+  transform: translateY(0) scale(1);
 }
 
 @keyframes slowSpin {
@@ -792,6 +827,16 @@ h3 { font-size: 1.35rem; }
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes floatCard {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+
+@keyframes floatPreview {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 8px; }
 }
 
 @media (max-width: 559px) {
@@ -806,6 +851,8 @@ h3 { font-size: 1.35rem; }
   .preview-top { padding-top: 0.9rem; }
   .store-preview { transform: none; }
   .store-preview:hover { transform: translateY(-4px); }
+  .avatar-card,
+  .store-preview { animation: none; }
 }
 
 @media (min-width: 560px) {
