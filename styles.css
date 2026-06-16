@@ -961,3 +961,65 @@ h3 { font-size: 1.35rem; }
 @media (max-width: 700px) {
   .forwarding-flow { grid-template-columns: 1fr; }
 }
+
+
+/* SEO content/page update */
+.inner-page .page-hero {
+  padding-top: 6.8rem;
+  padding-bottom: 2.8rem;
+}
+
+.inner-page h1 {
+  max-width: 980px;
+  font-size: clamp(2.55rem, 9vw, 5.5rem);
+}
+
+.seo-section {
+  position: relative;
+}
+
+.seo-card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.mini-card,
+.content-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.038));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.mini-card {
+  padding: 1.15rem;
+}
+
+.mini-card h3,
+.content-card h2 {
+  letter-spacing: -0.035em;
+}
+
+.mini-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.compact-steps {
+  margin-top: 1rem;
+}
+
+.compact-steps li {
+  margin-bottom: 0.85rem;
+}
+
+.content-card .button {
+  margin-top: 1rem;
+}
+
+@media (min-width: 760px) {
+  .seo-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

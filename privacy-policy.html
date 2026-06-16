@@ -3,32 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy — Store Bot</title>
-  <meta name="description" content="Privacy policy for Store Bot, including order data, AutoPay forwarding, server settings, and user data deletion." />
+  <title>Privacy Policy | Store Bot Discord Store Bot</title>
+  <meta name="description" content="Privacy policy for Store Bot, including Discord order data, server settings, forwarding AutoPay payment notification data, staff logs, and data deletion requests." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Store Bot" />
   <meta name="theme-color" content="#ff7a18" />
+  <link rel="canonical" href="https://infinity7878.github.io/privacy-policy.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=6" />
+
+  <meta property="og:site_name" content="Store Bot" />
+  <meta property="og:title" content="Privacy Policy | Store Bot Discord Store Bot" />
+  <meta property="og:description" content="Privacy policy for Store Bot, including Discord order data, server settings, forwarding AutoPay payment notification data, staff logs, and data deletion requests." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://infinity7878.github.io/privacy-policy.html" />
+  <meta property="og:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy Policy | Store Bot Discord Store Bot" />
+  <meta name="twitter:description" content="Privacy policy for Store Bot, including Discord order data, server settings, forwarding AutoPay payment notification data, staff logs, and data deletion requests." />
+  <meta name="twitter:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
+  
 </head>
-<body class="policy-page">
+<body class="policy-page inner-page">
   <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
       <a class="brand" href="index.html" aria-label="Store Bot home">
         <img src="assets/storebot-avatar.png" alt="" class="brand-logo" width="42" height="42" />
         <span>Store Bot</span>
       </a>
-      <div class="nav-links open" id="navLinks">
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
         <a href="index.html#features">Features</a>
-        <a href="index.html#autopay">AutoPay</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="https://discord.gg/zB7NgPBzBA">Support</a>
+        <a href="autopay.html">AutoPay</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="bot-hosting.html">Bot Hosting</a>
+        <a href="features.html">Use Cases</a>
+        <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Bot</a>
       </div>
     </nav>
   </header>
-
   <main id="main">
     <section class="section-pad">
       <div class="container">
@@ -72,18 +94,21 @@
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>© <span id="year"></span> Store Bot.</p>
+      <p>© <span id="year"></span> Store Bot. Discord store bot for digital sellers.</p>
       <div class="footer-links" aria-label="Footer links">
         <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="autopay.html">AutoPay</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="bot-hosting.html">Hosting</a>
+        <a href="privacy-policy.html">Privacy</a>
         <a href="tos.html">Terms</a>
         <a href="https://discord.gg/zB7NgPBzBA">Support</a>
       </div>
     </div>
   </footer>
-
-  <script src="script.js?v=4" defer></script>
+  <script src="script.js?v=6" defer></script>
 </body>
 </html>
