@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Store Bot — Discord Storefronts, Orders & AutoPay</title>
-  <meta name="description" content="Store Bot helps Discord servers sell digital products, manage orders, configure staff logs, and automate payment confirmation with premium AutoPay." />
+  <title>Store Bot — Discord Storefronts, Orders & Forwarding AutoPay</title>
+  <meta name="description" content="Store Bot helps Discord servers sell digital products, manage orders, configure staff logs, and automate payment confirmation with premium email forwarding AutoPay." />
   <meta name="theme-color" content="#ff7a18" />
   <meta property="og:title" content="Store Bot — Sell inside Discord" />
-  <meta property="og:description" content="Launch a Discord store with product panels, order tracking, staff tools, discounts, gift cards, and premium AutoPay." />
+  <meta property="og:description" content="Launch a Discord store with product panels, order tracking, staff tools, discounts, gift cards, and premium forwarding AutoPay." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/storebot-banner.png" />
   <link rel="icon" href="assets/storebot-avatar.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
@@ -49,7 +49,7 @@
         <div class="hero-copy reveal">
           <p class="eyebrow">Discord storefronts made simple</p>
           <h1 id="hero-title">Sell products inside Discord without building a full website.</h1>
-          <p class="hero-text">Store Bot gives your server product panels, checkout flows, staff tools, order tracking, discounts, gift cards, and premium AutoPay — all managed with clean slash commands.</p>
+          <p class="hero-text">Store Bot gives your server product panels, checkout flows, staff tools, order tracking, discounts, gift cards, and premium AutoPay forwarding — all managed with clean slash commands.</p>
 
           <div class="hero-actions" aria-label="Primary calls to action">
             <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
@@ -60,14 +60,14 @@
             <span>Free to start</span>
             <span>Premium $5/mo</span>
             <span>Digital products</span>
-            <span>Support server extras</span>
+            <span>Email forwarding AutoPay</span>
           </div>
         </div>
 
         <div class="hero-visual reveal" aria-label="Store Bot product preview">
           <div class="bot-orbit" aria-hidden="true"></div>
 
-          <div class="float-chip chip-a" aria-hidden="true">AutoPay</div>
+          <div class="float-chip chip-a" aria-hidden="true">Email Forwarding</div>
           <div class="float-chip chip-b" aria-hidden="true">Staff Roles</div>
           <div class="float-chip chip-c" aria-hidden="true">Logs</div>
 
@@ -75,7 +75,7 @@
             <img src="assets/storebot-avatar.png" alt="Store Bot orange robot mascot" />
             <div>
               <strong>Store Bot</strong>
-              <span>Orders • Automation • AutoPay</span>
+              <span>Orders • GUI Checkout • AutoPay</span>
             </div>
           </article>
 
@@ -155,21 +155,29 @@
       <div class="container split-grid">
         <div class="reveal">
           <p class="eyebrow">Premium AutoPay</p>
-          <h2 id="autopay-title">Automatic payment confirmation through IMAP email reading.</h2>
-          <p class="section-text">Premium servers can connect a payment email inbox, scan for payment notifications, match order codes, and mark orders paid automatically.</p>
+          <h2 id="autopay-title">Automatic payment confirmation without asking sellers for IMAP settings.</h2>
+          <p class="section-text">Premium servers can forward only PayPal or Cash App payment notification emails to a unique SMOKNetworks forwarding address. Store Bot reads the forwarded notifications, matches the order code and amount, then marks the order paid automatically.</p>
 
           <div class="check-list" role="list">
-            <span role="listitem">Detailed setup guide inside <code>/autopay guide</code></span>
-            <span role="listitem">Encrypted app-password storage</span>
-            <span role="listitem">Exact amount matching option</span>
-            <span role="listitem">Logs channel notifications for staff</span>
+            <span role="listitem">No seller IMAP login required with forwarding mode</span>
+            <span role="listitem">Unique forwarding address for each premium server</span>
+            <span role="listitem">PayPal and Cash App email-forwarding instructions inside <code>/autopay forwarding</code></span>
+            <span role="listitem">Matches order code, amount, currency, provider, and pending order status</span>
+            <span role="listitem">Can auto-deliver products that have delivery text configured</span>
+          </div>
+
+          <div class="forwarding-flow reveal" aria-label="Forwarding AutoPay flow">
+            <div class="flow-step"><strong>1</strong><span>Customer places an order</span></div>
+            <div class="flow-step"><strong>2</strong><span>Seller forwards PayPal/Cash App notifications</span></div>
+            <div class="flow-step"><strong>3</strong><span>Store Bot matches the order code and amount</span></div>
+            <div class="flow-step"><strong>4</strong><span>Order is marked paid or delivered</span></div>
           </div>
         </div>
 
         <article class="notice-card reveal hover-card" aria-label="AutoPay privacy notice preview">
           <div class="notice-label">Privacy notice</div>
-          <h3>Clear about what gets stored.</h3>
-          <p>AutoPay settings store the server ID, IMAP host, email address, encrypted app password, sender filters, keywords, order status data, and logs channel settings. Users can view the privacy notice and request deletion of their own stored user data.</p>
+          <h3>Forward only payment notifications.</h3>
+          <p>Forwarding AutoPay only needs PayPal or Cash App payment notification emails. Store Bot uses forwarded email data such as provider, amount, currency, order code, server forwarding alias, and payment status to match pending orders. Server owners should not forward their full inbox.</p>
           <a class="inline-link" href="privacy-policy.html">Read privacy policy →</a>
         </article>
       </div>
@@ -210,7 +218,7 @@
             <ul>
               <li>Up to 50 products</li>
               <li>No forced upgrade ads</li>
-              <li>AutoPay email reading</li>
+              <li>Email forwarding AutoPay</li>
               <li>Discount codes and gift cards</li>
               <li>Custom branding, staff roles, and logs</li>
             </ul>
@@ -233,6 +241,7 @@
           <li><strong>Run <code>/storebot setup</code></strong><span>Configure your title, support channel, and payment info.</span></li>
           <li><strong>Add products</strong><span>Create products with <code>/product add</code>.</span></li>
           <li><strong>Set staff and logs</strong><span>Use <code>/storebot setlogs</code> and staff role commands.</span></li>
+          <li><strong>Enable forwarding AutoPay</strong><span>Premium servers can run <code>/autopay forwarding</code> and follow the PayPal/Cash App forwarding guide.</span></li>
           <li><strong>Post the panel</strong><span>Launch your store with <code>/storebot panel</code>.</span></li>
         </ol>
       </div>
@@ -256,7 +265,11 @@
           </details>
           <details class="faq-card reveal hover-card">
             <summary>Does it process payments directly?</summary>
-            <p>Free servers can handle payments manually. Premium servers can use AutoPay email reading to detect payment notifications and mark matching orders paid.</p>
+            <p>No. Store Bot does not act as a payment processor. Free servers can handle payments manually. Premium servers can use forwarding AutoPay to detect forwarded PayPal or Cash App payment notifications and mark matching orders paid.</p>
+          </details>
+          <details class="faq-card reveal hover-card">
+            <summary>Do server owners have to enter IMAP settings?</summary>
+            <p>No. Forwarding AutoPay lets premium owners forward only PayPal or Cash App payment notification emails to a unique Store Bot forwarding address. The older IMAP setup can remain available as an optional mode for people who prefer direct inbox scanning.</p>
           </details>
           <details class="faq-card reveal hover-card">
             <summary>Can staff manage orders?</summary>
@@ -280,7 +293,7 @@
           <img src="assets/storebot-avatar.png" alt="" width="76" height="76" />
           <p class="eyebrow">Ready to launch?</p>
           <h2 id="final-cta-title">Turn your Discord server into a clean digital storefront.</h2>
-          <p>Start free today. Upgrade to Premium when you want AutoPay, gift cards, discounts, custom branding, and more products.</p>
+          <p>Start free today. Upgrade to Premium when you want forwarding AutoPay, gift cards, discounts, custom branding, and more products.</p>
           <div class="hero-actions center">
             <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
             <a class="button secondary" href="https://discord.gg/zB7NgPBzBA">Get Support</a>
@@ -302,6 +315,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>
