@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://infinity7878.github.io/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://storebot.pro/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <priority>1.00</priority>
   </url>
+</urlset>
   <url>
-    <loc>https://infinity7878.github.io/features.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://infinity7878.github.io/autopay.html</loc>
+    <loc>https://storebot.pro/features.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://infinity7878.github.io/pricing.html</loc>
+    <loc>https://storebot.pro/autopay.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://infinity7878.github.io/bot-hosting.html</loc>
+    <loc>https://storebot.pro/pricing.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/bot-hosting.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://infinity7878.github.io/privacy-policy.html</loc>
+    <loc>https://storebot.pro/privacy-policy.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://infinity7878.github.io/tos.html</loc>
+    <loc>https://storebot.pro/tos.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
