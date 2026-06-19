@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://infinity7878.github.io/sitemap.xml
+Sitemap: https://storebot.pro/sitemap.xml
