@@ -1,12 +1,16 @@
-[StoreBot](https://storebot.pro/) is a Discord store bot for selling products, managing orders, and offering premium roles through custom Discord store panels.
+# Store Bot website
 
-## Features
+[Store Bot](https://storebot.pro/) is a Discord storefront bot for selling digital products, managing orders, staff logs, discounts, gift cards, and AutoPay forwarding.
 
-- Custom Discord store panels
-- Product listings
-- Order management
-- Premium role support
-- Subscription-style products
-- PayPal, Cash App, or manual payment workflows
+## Pages
 
-Visit: https://storebot.pro/
+- Homepage: `index.html`
+- Features: `features.html`
+- AutoPay: `autopay.html`
+- Pricing: `pricing.html`
+- Privacy Policy: `privacy-policy.html`
+- Terms of Service: `tos.html`
+
+## Deployment
+
+This repo is set up for GitHub Pages with `storebot.pro` in `CNAME`.

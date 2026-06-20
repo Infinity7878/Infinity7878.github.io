@@ -3,28 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Discord Store Bot for Selling Products, Orders &amp; AutoPay | Store Bot</title>
-  <meta name="description" content="Store Bot is a Discord store bot for selling digital products and services with product panels, order tracking, staff logs, discounts, gift cards, and Premium AutoPay email forwarding." />
+  <title>Store Bot | Discord Storefront Bot for Digital Products</title>
+  <meta name="description" content="Sell digital products, services, VIP perks, and licenses inside Discord with product panels, order tracking, staff logs, discounts, gift cards, and AutoPay forwarding." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Store Bot" />
-  <meta name="theme-color" content="#ff7a18" />
-  <link rel="canonical" href="https://storebot.pro/">
+  <meta name="theme-color" content="#f97316" />
+  <link rel="canonical" href="https://storebot.pro/" />
   <link rel="icon" href="assets/storebot-avatar.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
-
+  <link rel="stylesheet" href="styles.css?v=7" />
   <meta property="og:site_name" content="Store Bot" />
-  <meta property="og:title" content="Discord Store Bot for Selling Products, Orders &amp; AutoPay | Store Bot" />
-  <meta property="og:description" content="Store Bot is a Discord store bot for selling digital products and services with product panels, order tracking, staff logs, discounts, gift cards, and Premium AutoPay email forwarding." />
+  <meta property="og:title" content="Store Bot | Discord Storefront Bot for Digital Products" />
+  <meta property="og:description" content="Sell digital products, services, VIP perks, and licenses inside Discord with product panels, order tracking, staff logs, discounts, gift cards, and AutoPay forwarding." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://infinity7878.github.io/" />
-  <meta property="og:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
+  <meta property="og:url" content="https://storebot.pro/" />
+  <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Discord Store Bot for Selling Products, Orders &amp; AutoPay | Store Bot" />
-  <meta name="twitter:description" content="Store Bot is a Discord store bot for selling digital products and services with product panels, order tracking, staff logs, discounts, gift cards, and Premium AutoPay email forwarding." />
-  <meta name="twitter:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
+  <meta name="twitter:title" content="Store Bot | Discord Storefront Bot for Digital Products" />
+  <meta name="twitter:description" content="Sell digital products, services, VIP perks, and licenses inside Discord with product panels, order tracking, staff logs, discounts, gift cards, and AutoPay forwarding." />
+  <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,8 +29,8 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Discord",
     "description": "Store Bot helps Discord servers sell digital products and services with product panels, order tracking, staff logs, discounts, gift cards, and Premium AutoPay email forwarding.",
-    "url": "https://infinity7878.github.io/",
-    "image": "https://infinity7878.github.io/assets/storebot-banner.png",
+    "url": "https://storebot.pro/",
+    "image": "https://storebot.pro/assets/storebot-banner.png",
     "offers": [
       {"@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD"},
       {"@type": "Offer", "name": "Premium", "price": "3", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "3", "priceCurrency": "USD", "billingDuration": "P1M"}}
@@ -47,242 +43,146 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question", "name": "What is Store Bot?", "acceptedAnswer": {"@type": "Answer", "text": "Store Bot is a Discord store bot for selling digital products and services with product panels, order tracking, staff logs, discounts, gift cards, and Premium AutoPay."}},
-      {"@type": "Question", "name": "Does Store Bot process payments directly?", "acceptedAnswer": {"@type": "Answer", "text": "No. Store Bot is not a payment processor. It helps sellers manage checkout instructions and can use forwarded PayPal or Cash App payment notification emails to mark matching orders paid."}},
-      {"@type": "Question", "name": "How much is Store Bot Premium?", "acceptedAnswer": {"@type": "Answer", "text": "Store Bot Premium is $3 per month and unlocks more product slots, forwarding AutoPay, discounts, gift cards, custom branding, staff roles, and logs."}}
+      {"@type": "Question", "name": "What is Store Bot?", "acceptedAnswer": {"@type": "Answer", "text": "Store Bot is a Discord store bot for product panels, order tracking, staff logs, discounts, gift cards, and AutoPay email forwarding."}},
+      {"@type": "Question", "name": "Does Store Bot process payments directly?", "acceptedAnswer": {"@type": "Answer", "text": "No. Store Bot is not a payment processor. It helps sellers manage checkout instructions and can match forwarded PayPal or Cash App payment notification emails to pending orders."}},
+      {"@type": "Question", "name": "How much is Store Bot Premium?", "acceptedAnswer": {"@type": "Answer", "text": "Store Bot Premium is $3 per month. First-time users can get their first month for $1. Premium unlocks more product slots, AutoPay forwarding, discounts, gift cards, custom branding, staff roles, and logs."}}
     ]
   }
   </script>
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
-  <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
-
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Store Bot home">
+      <a class="brand" href="index.html" aria-label="Store Bot home">
         <img src="assets/storebot-avatar.png" alt="" class="brand-logo" width="42" height="42" />
         <span>Store Bot</span>
       </a>
-
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
-
       <div class="nav-links" id="navLinks">
-        <a href="#features">Features</a>
-        <a href="#autopay">AutoPay</a>
-        <a href="features.html">Use Cases</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#setup">Setup</a>
-        <a href="#faq">FAQ</a>
+        <a href="features.html">Features</a>
+        <a href="autopay.html">AutoPay</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="index.html#setup">Setup</a>
+        <a href="index.html#faq">FAQ</a>
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Bot</a>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero section-pad" aria-labelledby="hero-title">
-      <div class="hero-grid container">
+    <section class="hero section-pad">
+      <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Discord storefronts made simple</p>
-          <h1 id="hero-title">Discord store bot for selling products inside your server.</h1>
-          <p class="hero-text">Store Bot helps Discord servers sell digital products and services with product panels, GUI checkout, order tracking, staff logs, discounts, gift cards, and Premium AutoPay email forwarding.</p>
-
+          <p class="eyebrow">Discord storefronts</p>
+          <h1>Sell from Discord without messy order tracking.</h1>
+          <p class="hero-text">Store Bot gives your server a simple storefront for digital products, VIP perks, files, licenses, and services. Customers order from panels, staff manage the queue, and Premium can confirm payments from forwarded PayPal or Cash App emails.</p>
           <div class="hero-actions" aria-label="Primary calls to action">
             <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
             <a class="button secondary" href="https://discord.gg/zB7NgPBzBA">Join Support Server</a>
           </div>
-
           <div class="trust-row" aria-label="Store Bot highlights">
-            <span>Discord store bot</span>
             <span>Free to start</span>
-            <span>Premium $3/mo</span>
+            <span>$1 first month</span>
+            <span>$3/mo Premium</span>
             <span>Digital products</span>
-            <span>Email forwarding AutoPay</span>
+            <span>Staff logs</span>
           </div>
         </div>
-
-        <div class="hero-visual reveal" aria-label="Store Bot product preview">
-          <div class="bot-orbit" aria-hidden="true"></div>
-
-          <div class="float-chip chip-a" aria-hidden="true">Email Forwarding</div>
-          <div class="float-chip chip-b" aria-hidden="true">Staff Roles</div>
-          <div class="float-chip chip-c" aria-hidden="true">Logs</div>
-
-          <article class="avatar-card hover-card">
-            <img src="assets/storebot-avatar.png" alt="Store Bot orange robot mascot" />
+        <div class="hero-panel reveal" aria-label="Example Store Bot panel">
+          <div class="panel-top">
+            <img src="assets/storebot-avatar.png" alt="Store Bot orange robot mascot" width="64" height="64" />
             <div>
-              <strong>Store Bot</strong>
-              <span>Orders • GUI Checkout • AutoPay</span>
+              <strong>Example Server Store</strong>
+              <span>Product panel preview</span>
             </div>
-          </article>
-
-          <article class="store-preview hover-card" aria-label="Example Discord store panel">
-            <div class="example-ribbon">Example preview</div>
-            <div class="preview-top">
-              <span class="preview-dot"></span>
-              <span class="preview-dot"></span>
-              <span class="preview-dot"></span>
-            </div>
-            <div class="preview-body">
-              <div class="preview-title-wrap">
-                <div class="preview-title">Example Server Store</div>
-                <div class="preview-sub">Demo layout — not actual products or prices</div>
-              </div>
-              <div class="product-row"><span>Example Product</span><strong>$5.00</strong></div>
-              <div class="product-row"><span>Example Service</span><strong>$15.00</strong></div>
-              <div class="product-row"><span>Example License</span><strong>$10.00</strong></div>
-              <div class="status-pill">Example order code: STORE-8X4K2P</div>
-              <div class="preview-note">This is only a visual example. Store owners replace the sample names, prices, and products with their own items.</div>
-            </div>
-          </article>
+          </div>
+          <div class="panel-list">
+            <div class="product-row"><span>VIP Access</span><strong>$5.00</strong></div>
+            <div class="product-row"><span>Plugin Setup</span><strong>$15.00</strong></div>
+            <div class="product-row"><span>License Key</span><strong>$10.00</strong></div>
+          </div>
+          <p class="panel-note">Demo only. Your products, prices, delivery text, and payment instructions are configured inside Discord.</p>
         </div>
       </div>
     </section>
 
     <section class="stats container reveal" aria-label="Store Bot quick facts">
-      <div class="stat-card hover-card"><strong>10</strong><span>free products to launch fast</span></div>
-      <div class="stat-card hover-card"><strong>200</strong><span>premium product slots</span></div>
-      <div class="stat-card hover-card"><strong>$3</strong><span>premium monthly plan</span></div>
+      <div class="stat-card"><strong>10</strong><span>free product slots</span></div>
+      <div class="stat-card"><strong>200</strong><span>premium product slots</span></div>
+      <div class="stat-card"><strong>$3</strong><span>premium per month</span></div>
     </section>
 
-    <section class="section-pad seo-section" id="discord-store-bot" aria-labelledby="discord-store-bot-title">
-      <div class="container split-grid">
-        <div class="reveal">
-          <p class="eyebrow">Discord store bot</p>
-          <h2 id="discord-store-bot-title">Built for Discord servers that sell digital products, VIP perks, and services.</h2>
-          <p class="section-text">Store Bot is made for server owners who want a simple Discord shop bot without building a separate storefront. Customers buy through Discord panels, staff track orders in the server, and Premium AutoPay can confirm forwarded PayPal or Cash App payment notifications.</p>
-        </div>
-        <div class="seo-card-grid reveal">
-          <article class="mini-card hover-card">
-            <h3>For digital sellers</h3>
-            <p>Sell license keys, serial keys, ZIP downloads, configs, access codes, setup packages, and other digital products.</p>
-          </article>
-          <article class="mini-card hover-card">
-            <h3>For gaming communities</h3>
-            <p>Sell VIP access, perks, server upgrades, custom services, and community add-ons from inside Discord.</p>
-          </article>
-          <article class="mini-card hover-card">
-            <h3>For staff teams</h3>
-            <p>Use logs, staff roles, order statuses, discounts, gift cards, and delivery tools to keep sales organized.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="features" aria-labelledby="features-title">
+    <section class="section-pad" id="features">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">Why server owners use it</p>
-          <h2 id="features-title">Everything you need to run a Discord-based store.</h2>
-          <p>Built for gaming communities, software sellers, plugin shops, VIP perks, file delivery, and service-based Discord businesses.</p>
+          <p class="eyebrow">Core features</p>
+          <h2>A practical store system for Discord servers.</h2>
+          <p>Store Bot keeps the buying flow inside Discord while giving staff enough structure to avoid lost orders, unclear payment status, and scattered delivery notes.</p>
         </div>
-
         <div class="feature-grid">
-          <article class="feature-card reveal hover-card">
-            <span class="card-icon">🛒</span>
-            <h3>Store Panels</h3>
-            <p>Post a clean product panel so customers can browse, order, and start checkout directly inside your server.</p>
-          </article>
-          <article class="feature-card reveal hover-card">
-            <span class="card-icon">📦</span>
-            <h3>Digital Products</h3>
-            <p>Sell VIP access, serial keys, license keys, configs, ZIP files, setup packages, custom bot services, and more.</p>
-          </article>
-          <article class="feature-card reveal hover-card">
-            <span class="card-icon">✅</span>
-            <h3>Order Management</h3>
-            <p>Track pending, paid, delivered, and cancelled orders with staff-friendly commands and server logs.</p>
-          </article>
-          <article class="feature-card reveal hover-card">
-            <span class="card-icon">🏷️</span>
-            <h3>Discounts</h3>
-            <p>Premium servers can create promo codes, sales, limited-time discounts, and customer incentives.</p>
-          </article>
-          <article class="feature-card reveal hover-card">
-            <span class="card-icon">🎁</span>
-            <h3>Gift Cards</h3>
-            <p>Let customers redeem store credit toward future orders with premium gift card support.</p>
-          </article>
-          <article class="feature-card reveal hover-card">
-            <span class="card-icon">🛡️</span>
-            <h3>Staff Controls</h3>
-            <p>Configure staff roles, logs channels, and management access so your team can run the store cleanly.</p>
-          </article>
+          <article class="feature-card reveal"><span class="card-icon">01</span><h3>Store panels</h3><p>Post clean product panels where customers can start orders without digging through channels or DMs.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">02</span><h3>Order tracking</h3><p>Track pending, paid, delivered, cancelled, and completed orders with staff-friendly commands.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">03</span><h3>Digital delivery</h3><p>Use delivery text for licenses, files, codes, setup instructions, VIP perks, and service handoffs.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">04</span><h3>Staff controls</h3><p>Configure staff roles and log channels so the right people can manage products and customer orders.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">05</span><h3>Discounts and gift cards</h3><p>Premium stores can run promos, issue credit, and make returning customers easier to manage.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">06</span><h3>AutoPay forwarding</h3><p>Premium servers can forward PayPal or Cash App payment notification emails for automatic order matching.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section-pad autopay-section" id="autopay" aria-labelledby="autopay-title">
+    <section class="section-pad accent-section" id="autopay">
       <div class="container split-grid">
         <div class="reveal">
           <p class="eyebrow">Premium AutoPay</p>
-          <h2 id="autopay-title">Automatic payment confirmation without asking sellers for IMAP settings.</h2>
-          <p class="section-text">Premium servers can forward only PayPal or Cash App payment notification emails to a unique SMOKNetworks forwarding address. Store Bot reads the forwarded notifications, matches the order code and amount, then marks the order paid automatically.</p>
-
+          <h2>Payment confirmation without handing over inbox access.</h2>
+          <p class="section-text">Instead of asking every seller for IMAP settings, Store Bot can give premium servers forwarding instructions. Forward the payment notification email, and Store Bot checks the provider, order code, amount, currency, and status before marking a matching order paid.</p>
           <div class="check-list" role="list">
-            <span role="listitem">No seller IMAP login required with forwarding mode</span>
-            <span role="listitem">Unique forwarding address for each premium server</span>
-            <span role="listitem">PayPal and Cash App email-forwarding instructions inside <code>/autopay forwarding</code></span>
-            <span role="listitem">Matches order code, amount, currency, provider, and pending order status</span>
-            <span role="listitem">Can auto-deliver products that have delivery text configured</span>
-          </div>
-
-          <div class="forwarding-flow reveal" aria-label="Forwarding AutoPay flow">
-            <div class="flow-step"><strong>1</strong><span>Customer places an order</span></div>
-            <div class="flow-step"><strong>2</strong><span>Seller forwards PayPal/Cash App notifications</span></div>
-            <div class="flow-step"><strong>3</strong><span>Store Bot matches the order code and amount</span></div>
-            <div class="flow-step"><strong>4</strong><span>Order is marked paid or delivered</span></div>
+            <span role="listitem">Works with forwarded PayPal and Cash App payment notifications</span>
+            <span role="listitem">Checks order code, amount, currency, provider, and status</span>
+            <span role="listitem">Only matches active pending orders</span>
           </div>
         </div>
-
-        <article class="notice-card reveal hover-card" aria-label="AutoPay privacy notice preview">
-          <div class="notice-label">Privacy notice</div>
-          <h3>Forward only payment notifications.</h3>
-          <p>Forwarding AutoPay only needs PayPal or Cash App payment notification emails. Store Bot uses forwarded email data such as provider, amount, currency, order code, server forwarding alias, and payment status to match pending orders. Server owners should not forward their full inbox.</p>
-          <a class="inline-link" href="privacy-policy.html">Read privacy policy →</a>
+        <article class="notice-card reveal">
+          <p class="eyebrow">Important</p>
+          <h3>Store Bot is not a payment processor.</h3>
+          <p>Payments still happen through the seller's chosen payment method. AutoPay helps match payment notification emails to Store Bot orders so staff do not have to mark every order manually.</p>
+          <a class="inline-link" href="autopay.html">Read AutoPay details →</a>
         </article>
       </div>
     </section>
 
-    <section class="section-pad" id="pricing" aria-labelledby="pricing-title">
+    <section class="section-pad" id="pricing">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">Simple pricing</p>
-          <h2 id="pricing-title">Start free. Upgrade when your server grows.</h2>
-          <p>The free plan is enough to test your store. Premium unlocks the tools active sellers need.</p>
+          <p class="eyebrow">Pricing</p>
+          <h2>Start free. Upgrade when the store is active.</h2>
+          <p>The free plan is enough to test your store. Premium is $3/month, with a $1 first month for first-time users, and adds the tools that matter once people are actually buying.</p>
         </div>
-
         <div class="pricing-grid">
-          <article class="price-card reveal hover-card">
-            <div class="plan-top">
-              <h3>Free</h3>
-              <p>For testing or small stores.</p>
-            </div>
+          <article class="price-card reveal">
+            <div><h3>Free</h3><p>For testing or small stores.</p></div>
             <div class="price">$0</div>
             <ul>
               <li>Up to 10 products</li>
-              <li>Basic store panel</li>
+              <li>Product panels</li>
               <li>Manual payment handling</li>
               <li>Manual delivery tools</li>
-              <li>Upgrade branding included</li>
+              <li>Store Bot branding</li>
             </ul>
             <a class="button secondary full" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Free</a>
           </article>
-
-          <article class="price-card premium reveal hover-card">
-            <div class="badge">Best value</div>
-            <div class="plan-top">
-              <h3>Premium</h3>
-              <p>For active Discord stores.</p>
-            </div>
+          <article class="price-card premium reveal">
+            <div class="badge">Premium</div>
+            <div><h3>Premium</h3><p>For active Discord stores.</p></div>
             <div class="price">$3<span>/mo</span></div>
+            <p class="price-note">First month is $1 for first-time users.</p>
             <ul>
               <li>Up to 200 products</li>
               <li>No forced upgrade ads</li>
-              <li>Email forwarding AutoPay</li>
+              <li>AutoPay email forwarding</li>
               <li>Discount codes and gift cards</li>
               <li>Custom branding, staff roles, and logs</li>
             </ul>
@@ -292,98 +192,60 @@
       </div>
     </section>
 
-    <section class="section-pad setup-section" id="setup" aria-labelledby="setup-title">
+    <section class="section-pad setup-section" id="setup">
       <div class="container split-grid">
         <div class="reveal">
-          <p class="eyebrow">Launch checklist</p>
-          <h2 id="setup-title">Go from invite to live store in minutes.</h2>
-          <p class="section-text">Invite the bot, run setup, add products, configure logs, and publish the panel where customers can buy.</p>
+          <p class="eyebrow">Setup</p>
+          <h2>From invite to live panel in a few steps.</h2>
+          <p class="section-text">The setup is designed around commands a server owner or trusted staff member can run inside Discord.</p>
         </div>
-
         <ol class="steps reveal">
           <li><strong>Invite Store Bot</strong><span>Add the bot with slash command access.</span></li>
-          <li><strong>Run <code>/storebot setup</code></strong><span>Configure your title, support channel, and payment info.</span></li>
-          <li><strong>Add products</strong><span>Create products with <code>/product add</code>.</span></li>
-          <li><strong>Set staff and logs</strong><span>Use <code>/storebot setlogs</code> and staff role commands.</span></li>
-          <li><strong>Enable forwarding AutoPay</strong><span>Premium servers can run <code>/autopay forwarding</code> and follow the PayPal/Cash App forwarding guide.</span></li>
-          <li><strong>Post the panel</strong><span>Launch your store with <code>/storebot panel</code>.</span></li>
+          <li><strong>Run <code>/storebot setup</code></strong><span>Set your store title, support channel, and payment instructions.</span></li>
+          <li><strong>Add products</strong><span>Create products with prices, descriptions, and delivery text.</span></li>
+          <li><strong>Set staff and logs</strong><span>Choose staff roles and the channel used for order updates.</span></li>
+          <li><strong>Post the panel</strong><span>Publish the storefront panel where customers can start orders.</span></li>
         </ol>
       </div>
     </section>
-    <section class="section">
-  <div class="container">
-    <p class="eyebrow">Discord store bot use cases</p>
-    <h2>Built for Discord servers that sell digital products and premium access.</h2>
-    <p>
-      Store Bot helps Discord communities sell products, manage customer orders,
-      offer premium roles, and run a cleaner store directly inside Discord.
-      It is useful for gaming servers, CS2 communities, software sellers,
-      digital product shops, service providers, and private communities.
-    </p>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Sell digital products</h3>
-        <p>List license keys, serial keys, configs, downloads, ZIP files, setup packages, and custom services.</p>
-      </div>
-      <div class="card">
-        <h3>Manage Discord orders</h3>
-        <p>Track pending, paid, delivered, cancelled, and completed orders with staff-friendly tools.</p>
-      </div>
-      <div class="card">
-        <h3>Offer premium access</h3>
-        <p>Use Store Bot for premium roles, VIP perks, server access, and subscription-style Discord products.</p>
-      </div>
-    </div>
-  </div>
-</section>
-    <section class="section-pad faq-section" id="faq" aria-labelledby="faq-title">
+    <section class="section-pad" id="use-cases">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">Questions</p>
-          <h2 id="faq-title">Quick answers before you install.</h2>
+          <p class="eyebrow">Use cases</p>
+          <h2>Made for Discord communities that sell digital access.</h2>
         </div>
-
-        <div class="faq-grid">
-          <details class="faq-card reveal hover-card">
-            <summary>What can I sell with Store Bot?</summary>
-            <p>VIP access, license keys, serial keys, configs, ZIP downloads, setup services, game server perks, and other digital products.</p>
-          </details>
-          <details class="faq-card reveal hover-card">
-            <summary>Do you offer bot hosting?</summary>
-            <p>Yes. Bot hosting is available separately through the SMOKNetworks Discord support server. Store Bot itself focuses on storefront panels, order management, AutoPay, logs, staff roles, discounts, and gift cards.</p>
-          </details>
-          <details class="faq-card reveal hover-card">
-            <summary>Does it process payments directly?</summary>
-            <p>No. Store Bot does not act as a payment processor. Free servers can handle payments manually. Premium servers can use forwarding AutoPay to detect forwarded PayPal or Cash App payment notifications and mark matching orders paid.</p>
-          </details>
-          <details class="faq-card reveal hover-card">
-            <summary>Do server owners have to enter IMAP settings?</summary>
-            <p>No. Forwarding AutoPay lets premium owners forward only PayPal or Cash App payment notification emails to a unique Store Bot forwarding address. The older IMAP setup can remain available as an optional mode for people who prefer direct inbox scanning.</p>
-          </details>
-          <details class="faq-card reveal hover-card">
-            <summary>Can staff manage orders?</summary>
-            <p>Yes. Server owners can configure staff roles and a logs channel so trusted team members can manage products and orders.</p>
-          </details>
-          <details class="faq-card reveal hover-card">
-            <summary>Is the homepage store preview real?</summary>
-            <p>No. The homepage preview is a demo only. The product names, prices, and order code are placeholders to show how Store Bot can look.</p>
-          </details>
-          <details class="faq-card reveal hover-card">
-            <summary>Is it mobile friendly?</summary>
-            <p>The bot is managed inside Discord, and this website is built mobile-first so users can read, invite, and get support from any device.</p>
-          </details>
+        <div class="mini-grid">
+          <article class="mini-card reveal"><h3>Gaming communities</h3><p>VIP access, server perks, private roles, CS2 community items, and setup services.</p></article>
+          <article class="mini-card reveal"><h3>Software sellers</h3><p>License keys, serial keys, config files, ZIP downloads, and support packages.</p></article>
+          <article class="mini-card reveal"><h3>Service providers</h3><p>Custom Discord work, plugin installs, design work, and order queues that need staff visibility.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section-pad cta-section" aria-labelledby="final-cta-title">
+    <section class="section-pad faq-section" id="faq">
       <div class="container">
-        <div class="cta-card reveal hover-card">
-          <img src="assets/storebot-avatar.png" alt="" width="76" height="76" />
-          <p class="eyebrow">Ready to launch?</p>
-          <h2 id="final-cta-title">Turn your Discord server into a clean digital storefront.</h2>
-          <p>Start free today. Upgrade to Premium when you want forwarding AutoPay, gift cards, discounts, custom branding, and more products.</p>
+        <div class="section-heading reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Quick answers before you install.</h2>
+        </div>
+        <div class="faq-grid">
+          <details class="faq-card reveal"><summary>What can I sell with Store Bot?</summary><p>Digital products, VIP access, license keys, serial keys, configs, setup services, game server perks, and similar Discord-based products.</p></details>
+          <details class="faq-card reveal"><summary>Does Store Bot process payments?</summary><p>No. Store Bot does not hold funds or process cards. Sellers configure their own payment instructions and can use Premium AutoPay forwarding to help confirm matching payments.</p></details>
+          <details class="faq-card reveal"><summary>Do I have to enter IMAP settings?</summary><p>No. Forwarding AutoPay lets premium server owners forward payment notification emails instead of giving the bot direct inbox access.</p></details>
+          <details class="faq-card reveal"><summary>Can staff manage orders?</summary><p>Yes. Server owners can configure staff roles and logs so trusted members can help manage the store.</p></details>
+          <details class="faq-card reveal"><summary>Is the homepage preview real?</summary><p>No. It is a demo showing the layout. Your server controls the product names, prices, and delivery text.</p></details>
+          <details class="faq-card reveal"><summary>Where do I get support?</summary><p>Join the support server and open a ticket or ask for help there.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad cta-section">
+      <div class="container">
+        <div class="cta-card reveal">
+          <p class="eyebrow">Ready</p>
+          <h2>Set up your Discord store with Store Bot.</h2>
+          <p>Invite the bot, add products, publish a panel, and keep orders organized from the start.</p>
           <div class="hero-actions center">
             <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
             <a class="button secondary" href="https://discord.gg/zB7NgPBzBA">Get Support</a>
@@ -395,17 +257,18 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>© <span id="year"></span> Store Bot. Discord storefront tools for digital sellers.</p>
+      <p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p>
       <div class="footer-links" aria-label="Footer links">
+        <a href="index.html">Home</a>
         <a href="features.html">Features</a>
         <a href="autopay.html">AutoPay</a>
         <a href="pricing.html">Pricing</a>
-        <a href="tos.html">Terms</a>
         <a href="privacy-policy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
         <a href="https://discord.gg/zB7NgPBzBA">Support</a>
-        <a href="#top">Back to top</a>
       </div>
     </div>
   </footer>
+  <script src="script.js?v=7" defer></script>
 </body>
 </html>

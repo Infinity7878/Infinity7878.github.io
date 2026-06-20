@@ -3,32 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy | Store Bot Discord Store Bot</title>
-  <meta name="description" content="Privacy policy for Store Bot, including Discord order data, server settings, forwarding AutoPay payment notification data, staff logs, and data deletion requests." />
+  <title>Privacy Policy | Store Bot</title>
+  <meta name="description" content="Privacy policy for Store Bot, including Discord server settings, order data, staff logs, premium configuration, and AutoPay forwarding data." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Store Bot" />
-  <meta name="theme-color" content="#ff7a18" />
-  <link rel="canonical" href="https://infinity7878.github.io/privacy-policy.html" />
+  <meta name="theme-color" content="#f97316" />
+  <link rel="canonical" href="https://storebot.pro/privacy-policy.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
-
+  <link rel="stylesheet" href="styles.css?v=7" />
   <meta property="og:site_name" content="Store Bot" />
-  <meta property="og:title" content="Privacy Policy | Store Bot Discord Store Bot" />
-  <meta property="og:description" content="Privacy policy for Store Bot, including Discord order data, server settings, forwarding AutoPay payment notification data, staff logs, and data deletion requests." />
+  <meta property="og:title" content="Privacy Policy | Store Bot" />
+  <meta property="og:description" content="Privacy policy for Store Bot, including Discord server settings, order data, staff logs, premium configuration, and AutoPay forwarding data." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://infinity7878.github.io/privacy-policy.html" />
-  <meta property="og:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
+  <meta property="og:url" content="https://storebot.pro/privacy-policy.html" />
+  <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Privacy Policy | Store Bot Discord Store Bot" />
-  <meta name="twitter:description" content="Privacy policy for Store Bot, including Discord order data, server settings, forwarding AutoPay payment notification data, staff logs, and data deletion requests." />
-  <meta name="twitter:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
-  
+  <meta name="twitter:title" content="Privacy Policy | Store Bot" />
+  <meta name="twitter:description" content="Privacy policy for Store Bot, including Discord server settings, order data, staff logs, premium configuration, and AutoPay forwarding data." />
+  <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
 </head>
-<body class="policy-page inner-page">
-  <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
+<body class="inner-page policy-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
@@ -36,30 +30,31 @@
         <img src="assets/storebot-avatar.png" alt="" class="brand-logo" width="42" height="42" />
         <span>Store Bot</span>
       </a>
-
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
-
       <div class="nav-links" id="navLinks">
-        <a href="index.html#features">Features</a>
+        <a href="features.html">Features</a>
         <a href="autopay.html">AutoPay</a>
         <a href="pricing.html">Pricing</a>
-        <a href="features.html">Use Cases</a>
+        <a href="index.html#setup">Setup</a>
+        <a href="index.html#faq">FAQ</a>
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Bot</a>
       </div>
     </nav>
   </header>
   <main id="main">
-    <section class="section-pad">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Privacy Policy</p>
-          <h1>Store Bot privacy policy.</h1>
-          <p>Last updated: June 2026. This page explains what Store Bot may store to operate Discord storefronts, orders, staff tools, logs, and AutoPay features.</p>
-        </div>
+    <section class="section-pad page-hero">
+      <div class="container section-heading reveal">
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>Store Bot privacy policy.</h1>
+        <p>Last updated: June 2026. This page explains what Store Bot may store to operate Discord storefronts, orders, staff tools, logs, and AutoPay features.</p>
+      </div>
+    </section>
 
-        <article class="content-card reveal hover-card">
+    <section class="section-pad compact-top">
+      <div class="container">
+        <article class="content-card reveal">
           <h2>Data Store Bot may store</h2>
           <ul>
             <li>Discord server IDs, channel IDs, role IDs, user IDs, and order IDs.</li>
@@ -68,12 +63,9 @@
             <li>Premium status and plan-related configuration.</li>
           </ul>
 
-          <h2>Forwarding AutoPay data</h2>
-          <p>Premium servers can use forwarding AutoPay by forwarding only PayPal or Cash App payment notification emails to a Store Bot forwarding address. Store Bot may process forwarded email data such as provider, amount, currency, order code, payment status, forwarding alias, sender metadata, and message timestamp so it can match a pending order.</p>
-          <p>Server owners should not forward their full inbox. Store Bot only needs PayPal or Cash App payment notification emails that relate to Store Bot orders.</p>
-
-          <h2>Optional IMAP AutoPay data</h2>
-          <p>If the optional direct IMAP mode is used, Store Bot may store server AutoPay settings such as IMAP host, email address, encrypted app password, sender filters, keywords, and matching settings. Forwarding AutoPay is available for premium servers that do not want to enter their own IMAP settings.</p>
+          <h2>AutoPay forwarding data</h2>
+          <p>Premium servers can use AutoPay forwarding by forwarding PayPal or Cash App payment notification emails to a Store Bot forwarding address. Store Bot may process forwarded email data such as provider, amount, currency, order code, payment status, forwarding alias, sender metadata, and message timestamp so it can match a pending order.</p>
+          <p>Server owners should not forward their full inbox. Store Bot only needs payment notification emails that relate to Store Bot orders.</p>
 
           <h2>How data is used</h2>
           <ul>
@@ -85,7 +77,7 @@
           </ul>
 
           <h2>Data deletion</h2>
-          <p>Users can request deletion of their stored user data through Store Bot privacy commands or by contacting the SMOKNetworks support server. Server-level store/order data may need to remain available to server owners for order history, abuse prevention, support, and accounting-style records.</p>
+          <p>Users can request deletion of their stored user data through Store Bot privacy commands or by contacting the support server. Server-level store and order data may need to remain available to server owners for order history, support, abuse prevention, and accounting-style records.</p>
 
           <h2>Contact</h2>
           <p>For privacy questions or deletion requests, join the support server: <a class="inline-link" href="https://discord.gg/zB7NgPBzBA">discord.gg/zB7NgPBzBA</a>.</p>
@@ -95,7 +87,7 @@
   </main>
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>© <span id="year"></span> Store Bot. Discord store bot for digital sellers.</p>
+      <p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p>
       <div class="footer-links" aria-label="Footer links">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
@@ -107,6 +99,6 @@
       </div>
     </div>
   </footer>
-  <script src="script.js?v=6" defer></script>
+  <script src="script.js?v=7" defer></script>
 </body>
 </html>

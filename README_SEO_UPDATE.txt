@@ -1,31 +1,32 @@
-Store Bot SEO Website Update
+Store Bot Website Refinement Notes
 
-Replace/upload these files in the root of your GitHub Pages repo:
+Updated files:
+- index.html
+- features.html
+- autopay.html
+- pricing.html
+- privacy-policy.html
+- tos.html
+- styles.css
+- script.js
+- robots.txt
+- sitemap.xml
+- README.md
 
-index.html
-styles.css
-script.js
-privacy-policy.html
-tos.html
-features.html
-autopay.html
-pricing.html
-bot-hosting.html
-robots.txt
-sitemap.xml
-assets/storebot-avatar.png
-assets/storebot-banner.png
-
-Main SEO changes:
-- Homepage title targets "Discord store bot".
-- Added unique meta descriptions, canonical URLs, Open Graph, Twitter cards, and JSON-LD structured data.
-- Added separate indexable pages for Features, AutoPay, Pricing, Bot Hosting, Privacy, and Terms.
-- Added sitemap.xml and robots.txt.
-- Added more natural keyword-rich copy around Discord store bot, Discord shop bot, product panels, AutoPay forwarding, order tracking, staff logs, discounts, gift cards, and bot hosting.
+Main fixes:
+- Removed the old extra-service references and broken navigation link.
+- Fixed the invalid sitemap.xml structure.
+- Updated canonical, Open Graph, Twitter, and JSON-LD URLs to https://storebot.pro/.
+- Standardized Premium pricing to $3/month and added the $1 first-month offer for first-time users.
+- Made product limits consistent across the homepage and pricing page.
+- Reworked the design to feel more like a real product site and less like a generic AI-generated landing page.
+- Removed the mouse glow and heavy animation effects.
+- Improved the hidden skip link so it only appears on keyboard focus.
+- Simplified JavaScript and kept content visible if JavaScript is blocked.
 
 After uploading:
-1. Commit to main.
+1. Commit the updated files to main.
 2. Wait for GitHub Pages to deploy.
-3. Visit https://infinity7878.github.io/sitemap.xml and make sure it loads.
-4. Submit https://infinity7878.github.io/sitemap.xml in Google Search Console.
-5. Use URL Inspection for the homepage, features.html, autopay.html, pricing.html, and bot-hosting.html.
+3. Visit https://storebot.pro/sitemap.xml and confirm it loads.
+4. Submit https://storebot.pro/sitemap.xml in Google Search Console.
+5. Use URL Inspection for the homepage, features.html, autopay.html, and pricing.html.

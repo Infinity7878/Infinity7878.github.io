@@ -3,34 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Discord Bot AutoPay with PayPal &amp; Cash App Email Forwarding | Store Bot</title>
-  <meta name="description" content="Store Bot Premium AutoPay lets Discord store owners forward PayPal and Cash App payment notifications so orders can be matched and marked paid automatically." />
+  <title>Discord Bot AutoPay with PayPal and Cash App Forwarding | Store Bot</title>
+  <meta name="description" content="Learn how Store Bot Premium AutoPay matches forwarded PayPal and Cash App payment notification emails to pending Discord store orders." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Store Bot" />
-  <meta name="theme-color" content="#ff7a18" />
-  <link rel="canonical" href="https://infinity7878.github.io/autopay.html" />
+  <meta name="theme-color" content="#f97316" />
+  <link rel="canonical" href="https://storebot.pro/autopay.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
-
+  <link rel="stylesheet" href="styles.css?v=7" />
   <meta property="og:site_name" content="Store Bot" />
-  <meta property="og:title" content="Discord Bot AutoPay with PayPal &amp; Cash App Email Forwarding | Store Bot" />
-  <meta property="og:description" content="Store Bot Premium AutoPay lets Discord store owners forward PayPal and Cash App payment notifications so orders can be matched and marked paid automatically." />
+  <meta property="og:title" content="Discord Bot AutoPay with PayPal and Cash App Forwarding | Store Bot" />
+  <meta property="og:description" content="Learn how Store Bot Premium AutoPay matches forwarded PayPal and Cash App payment notification emails to pending Discord store orders." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://infinity7878.github.io/autopay.html" />
-  <meta property="og:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
+  <meta property="og:url" content="https://storebot.pro/autopay.html" />
+  <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Discord Bot AutoPay with PayPal &amp; Cash App Email Forwarding | Store Bot" />
-  <meta name="twitter:description" content="Store Bot Premium AutoPay lets Discord store owners forward PayPal and Cash App payment notifications so orders can be matched and marked paid automatically." />
-  <meta name="twitter:image" content="https://infinity7878.github.io/assets/storebot-banner.png" />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"TechArticle","headline":"Forwarding AutoPay for Discord Store Bot","description":"How Store Bot Premium can match forwarded PayPal and Cash App payment notifications to pending Discord store orders.","url":"https://infinity7878.github.io/autopay.html","image":"https://infinity7878.github.io/assets/storebot-banner.png"}
-  </script>
+  <meta name="twitter:title" content="Discord Bot AutoPay with PayPal and Cash App Forwarding | Store Bot" />
+  <meta name="twitter:description" content="Learn how Store Bot Premium AutoPay matches forwarded PayPal and Cash App payment notification emails to pending Discord store orders." />
+  <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"AutoPay forwarding for Store Bot","description":"How Store Bot Premium can match forwarded PayPal and Cash App payment notifications to pending Discord store orders.","url":"https://storebot.pro/autopay.html","image":"https://storebot.pro/assets/storebot-banner.png"}</script>
 </head>
-<body class="policy-page inner-page">
-  <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
+<body class="inner-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
@@ -38,71 +31,66 @@
         <img src="assets/storebot-avatar.png" alt="" class="brand-logo" width="42" height="42" />
         <span>Store Bot</span>
       </a>
-
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
-
       <div class="nav-links" id="navLinks">
-        <a href="index.html#features">Features</a>
-        <a href="autopay.html">AutoPay</a>
+        <a href="features.html">Features</a>
+        <a class="active" href="autopay.html">AutoPay</a>
         <a href="pricing.html">Pricing</a>
-        <a href="bot-hosting.html">Bot Hosting</a>
-        <a href="features.html">Use Cases</a>
+        <a href="index.html#setup">Setup</a>
+        <a href="index.html#faq">FAQ</a>
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Bot</a>
       </div>
     </nav>
   </header>
-
   <main id="main">
     <section class="section-pad page-hero">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Forwarding AutoPay</p>
-          <h1>Discord AutoPay without making sellers enter IMAP settings.</h1>
-          <p>Premium servers can use email forwarding for PayPal and Cash App notifications. Store Bot matches the forwarded notification to the pending order code and amount.</p>
-        </div>
+      <div class="container section-heading reveal">
+        <p class="eyebrow">AutoPay forwarding</p>
+        <h1>Automatic order matching from forwarded payment emails.</h1>
+        <p>Premium servers can forward PayPal or Cash App payment notification emails to Store Bot. The bot checks the forwarded message against the pending order before marking anything paid.</p>
       </div>
     </section>
-    
-    <section class="section-pad">
+
+    <section class="section-pad compact-top">
       <div class="container split-grid">
-        <article class="content-card reveal hover-card">
-          <h2>How forwarding AutoPay works</h2>
+        <article class="content-card reveal">
+          <h2>How it works</h2>
           <ol class="steps compact-steps">
-            <li><strong>Customer orders from the panel</strong><span>Store Bot creates a unique order code and shows the amount due.</span></li>
-            <li><strong>Seller forwards payment notifications</strong><span>The seller forwards only PayPal or Cash App payment emails to their Store Bot forwarding address.</span></li>
-            <li><strong>Store Bot matches the order</strong><span>The bot checks the order code, amount, currency, provider, status, and server forwarding alias.</span></li>
-            <li><strong>Order is marked paid</strong><span>If everything matches, Store Bot marks the order paid and can auto-deliver configured delivery text.</span></li>
+            <li><strong>Customer starts an order</strong><span>Store Bot creates a pending order with an amount and order code.</span></li>
+            <li><strong>Seller receives payment</strong><span>The customer pays using the seller's configured payment method.</span></li>
+            <li><strong>Payment email is forwarded</strong><span>The seller forwards the PayPal or Cash App notification email to the Store Bot forwarding address.</span></li>
+            <li><strong>Store Bot checks the details</strong><span>The bot compares provider, order code, amount, currency, status, and pending order state.</span></li>
+            <li><strong>Matching orders are marked paid</strong><span>If the details match, Store Bot can update the order and use configured delivery text.</span></li>
           </ol>
         </article>
-        <article class="notice-card reveal hover-card">
-          <div class="notice-label">Premium AutoPay</div>
-          <h2>No seller IMAP login required.</h2>
-          <p>Forwarding mode avoids making every premium server owner enter IMAP settings. Store Bot gives each premium server forwarding instructions through <code>/autopay forwarding</code>.</p>
-          <p>Optional direct IMAP mode can still exist for users who prefer it, but the website now explains forwarding as the main AutoPay flow.</p>
+        <article class="notice-card reveal">
+          <p class="eyebrow">Safer setup</p>
+          <h2>No full inbox forwarding.</h2>
+          <p>Only payment notification emails related to Store Bot orders should be forwarded. Store Bot does not need personal emails, unrelated receipts, or full inbox access for forwarding mode.</p>
+          <a class="inline-link" href="privacy-policy.html">Read the privacy policy →</a>
         </article>
       </div>
     </section>
 
     <section class="section-pad">
       <div class="container">
-        <div class="section-heading reveal"><p class="eyebrow">Matching checks</p><h2>AutoPay is designed to avoid false matches.</h2><p>Store Bot should only confirm payments when important fields match the pending order.</p></div>
+        <div class="section-heading reveal"><p class="eyebrow">Matching checks</p><h2>Designed to reduce false positives.</h2><p>AutoPay should only confirm an order when the important fields line up.</p></div>
         <div class="feature-grid">
-          <article class="feature-card reveal hover-card"><h3>Order code</h3><p>The forwarded payment notification must include the order code shown by Store Bot.</p></article>
-          <article class="feature-card reveal hover-card"><h3>Amount and currency</h3><p>The payment amount and currency must match the pending Discord order.</p></article>
-          <article class="feature-card reveal hover-card"><h3>Provider</h3><p>Forwarding AutoPay is built around PayPal and Cash App payment notification emails.</p></article>
-          <article class="feature-card reveal hover-card"><h3>Status</h3><p>The notification must indicate a received, completed, or paid transaction.</p></article>
-          <article class="feature-card reveal hover-card"><h3>Server alias</h3><p>Each premium server gets forwarding instructions so Store Bot can separate server payments.</p></article>
-          <article class="feature-card reveal hover-card"><h3>Pending order</h3><p>Store Bot only marks active pending orders paid; old, cancelled, or already-delivered orders are ignored.</p></article>
+          <article class="feature-card reveal"><h3>Order code</h3><p>The forwarded email should include the Store Bot order code.</p></article>
+          <article class="feature-card reveal"><h3>Amount and currency</h3><p>The payment total should match the pending order.</p></article>
+          <article class="feature-card reveal"><h3>Provider</h3><p>Forwarding mode is built around PayPal and Cash App payment notifications.</p></article>
+          <article class="feature-card reveal"><h3>Status</h3><p>The notification must indicate a received, completed, or paid transaction.</p></article>
+          <article class="feature-card reveal"><h3>Server alias</h3><p>Each premium server uses forwarding instructions that keep server payments separated.</p></article>
+          <article class="feature-card reveal"><h3>Pending order</h3><p>Old, cancelled, and already-delivered orders should not be matched again.</p></article>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p>© <span id="year"></span> Store Bot. Discord store bot for digital sellers.</p>
+      <p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p>
       <div class="footer-links" aria-label="Footer links">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
@@ -114,6 +102,6 @@
       </div>
     </div>
   </footer>
-  <script src="script.js?v=6" defer></script>
+  <script src="script.js?v=7" defer></script>
 </body>
 </html>
