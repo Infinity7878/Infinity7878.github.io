@@ -30,3 +30,8 @@ After uploading:
 3. Visit https://storebot.pro/sitemap.xml and confirm it loads.
 4. Submit https://storebot.pro/sitemap.xml in Google Search Console.
 5. Use URL Inspection for the homepage, features.html, autopay.html, and pricing.html.
+
+Docs update:
+- Added docs.html with beginner setup documentation, product/panel/order guidance, AutoPay notes, and troubleshooting.
+- Added Docs links to navigation and footer.
+- Added docs.html to sitemap.xml and bumped CSS cache version to v=8.

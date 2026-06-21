@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Store Bot Docs | Setup Guide for Discord Storefronts</title>
+  <meta name="description" content="Read Store Bot docs for setting up a Discord storefront, adding products, posting panels, managing orders, using staff logs, and configuring Premium AutoPay forwarding." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Store Bot" />
+  <meta name="theme-color" content="#f97316" />
+  <link rel="canonical" href="https://storebot.pro/docs.html" />
+  <link rel="icon" href="assets/storebot-avatar.png" />
+  <link rel="stylesheet" href="styles.css?v=8" />
+  <meta property="og:site_name" content="Store Bot" />
+  <meta property="og:title" content="Store Bot Docs | Setup Guide for Discord Storefronts" />
+  <meta property="og:description" content="Learn how to set up Store Bot, add products, post store panels, manage orders, and configure Premium AutoPay forwarding." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://storebot.pro/docs.html" />
+  <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Store Bot Docs | Setup Guide for Discord Storefronts" />
+  <meta name="twitter:description" content="Learn how to set up Store Bot, add products, post store panels, manage orders, and configure Premium AutoPay forwarding." />
+  <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Store Bot documentation",
+    "description": "Documentation for setting up Store Bot in a Discord server, adding products, posting panels, managing orders, and using AutoPay forwarding.",
+    "url": "https://storebot.pro/docs.html",
+    "image": "https://storebot.pro/assets/storebot-banner.png",
+    "about": "Discord storefront setup"
+  }
+  </script>
+</head>
+<body class="inner-page docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Store Bot home">
+        <img src="assets/storebot-avatar.png" alt="" class="brand-logo" width="42" height="42" />
+        <span>Store Bot</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="autopay.html">AutoPay</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="active" href="docs.html">Docs</a>
+        <a href="index.html#setup">Setup</a>
+        <a href="index.html#faq">FAQ</a>
+        <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Bot</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section-pad page-hero">
+      <div class="container section-heading reveal">
+        <p class="eyebrow">Documentation</p>
+        <h1>Set up your Discord store without guessing what to do next.</h1>
+        <p>This guide explains the normal Store Bot flow: invite the bot, run setup, add products, post a panel, handle orders, and turn on Premium features when your store needs automation.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands">Invite Store Bot</a>
+          <a class="button secondary" href="https://discord.gg/zB7NgPBzBA">Get Support</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad compact-top">
+      <div class="container docs-layout">
+        <aside class="docs-toc reveal" aria-label="Documentation sections">
+          <strong>On this page</strong>
+          <a href="#quick-start">Quick start</a>
+          <a href="#setup-flow">Setup flow</a>
+          <a href="#products">Products</a>
+          <a href="#panels">Panels</a>
+          <a href="#orders">Orders</a>
+          <a href="#staff">Staff and logs</a>
+          <a href="#autopay-docs">AutoPay forwarding</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </aside>
+
+        <div class="docs-content">
+          <article class="content-card reveal" id="quick-start">
+            <p class="eyebrow">Quick start</p>
+            <h2>New server setup checklist</h2>
+            <ol class="steps compact-steps">
+              <li><strong>Invite Store Bot</strong><span>Use the invite button and make sure slash commands are enabled for the server.</span></li>
+              <li><strong>Run <code>/storebot setup</code></strong><span>Set your store name, support channel, payment instructions, and basic store settings.</span></li>
+              <li><strong>Add your products</strong><span>Create product names, prices, descriptions, stock/delivery notes, and any limits you need.</span></li>
+              <li><strong>Post your panel</strong><span>Send the store panel into the channel where customers should buy.</span></li>
+              <li><strong>Test one order</strong><span>Make a test order before announcing the store so you know the customer flow works.</span></li>
+            </ol>
+          </article>
+
+          <article class="content-card reveal" id="setup-flow">
+            <p class="eyebrow">Setup flow</p>
+            <h2>What each setup step controls</h2>
+            <div class="mini-grid docs-mini-grid">
+              <div class="mini-card"><h3>Store identity</h3><p>Your store title, panel text, branding, and support details help customers know they are buying from the right server.</p></div>
+              <div class="mini-card"><h3>Payment instructions</h3><p>Free stores can show manual payment instructions. Premium stores can also use AutoPay email forwarding for supported providers.</p></div>
+              <div class="mini-card"><h3>Delivery text</h3><p>Delivery notes can include license keys, access instructions, setup steps, role information, or contact instructions for services.</p></div>
+            </div>
+            <p>Use <code>/storebot help</code> or <code>/storebot guide</code> inside Discord if you need the bot to show the current command list from your server.</p>
+          </article>
+
+          <article class="content-card reveal" id="products">
+            <p class="eyebrow">Products</p>
+            <h2>Build products that are easy to fulfill</h2>
+            <p>Good product entries are clear, short, and specific. Include the product name, price, what the buyer receives, and anything staff needs to know before delivery.</p>
+            <div class="check-list" role="list">
+              <span role="listitem">Use simple product names like “VIP Access”, “Plugin Setup”, or “License Key”.</span>
+              <span role="listitem">Put delivery instructions in the product so staff do not have to rewrite the same message every time.</span>
+              <span role="listitem">Keep stock updated if you sell codes, files, licenses, or limited slots.</span>
+            </div>
+          </article>
+
+          <article class="content-card reveal" id="panels">
+            <p class="eyebrow">Panels</p>
+            <h2>Post panels where customers already look</h2>
+            <p>A Store Bot panel is the public storefront message. Customers use it to start an order without DMing staff first.</p>
+            <ul>
+              <li>Post your main panel in a dedicated store or purchases channel.</li>
+              <li>Keep the channel clean so customers can find the buttons quickly.</li>
+              <li>Refresh or repost the panel when products, prices, or branding change.</li>
+            </ul>
+          </article>
+
+          <article class="content-card reveal" id="orders">
+            <p class="eyebrow">Orders</p>
+            <h2>How orders normally move</h2>
+            <ol class="steps compact-steps">
+              <li><strong>Pending</strong><span>The customer started checkout but payment has not been confirmed yet.</span></li>
+              <li><strong>Paid</strong><span>Staff manually confirms payment, or Premium AutoPay matches a supported forwarded payment notification.</span></li>
+              <li><strong>Delivered</strong><span>Staff or the bot sends the configured delivery information.</span></li>
+              <li><strong>Completed</strong><span>The order is finished and can stay in history for support and record keeping.</span></li>
+            </ol>
+          </article>
+
+          <article class="content-card reveal" id="staff">
+            <p class="eyebrow">Staff and logs</p>
+            <h2>Keep store actions visible</h2>
+            <p>For active stores, set up a staff role and log channel. This keeps product changes, order updates, payment checks, and deliveries easier to review later.</p>
+            <div class="check-list" role="list">
+              <span role="listitem">Only give store permissions to trusted staff.</span>
+              <span role="listitem">Use a private log channel for staff-only activity.</span>
+              <span role="listitem">Review cancelled or disputed orders before removing records.</span>
+            </div>
+          </article>
+
+          <article class="content-card reveal" id="autopay-docs">
+            <p class="eyebrow">Premium AutoPay</p>
+            <h2>Forwarding mode overview</h2>
+            <p>AutoPay forwarding is a Premium feature for matching forwarded PayPal or Cash App payment notification emails to pending Store Bot orders. Store Bot checks the provider, order code, amount, currency, and payment status before marking a matching order paid.</p>
+            <ol class="steps compact-steps">
+              <li><strong>Turn on Premium</strong><span>Premium unlocks AutoPay forwarding and higher store limits.</span></li>
+              <li><strong>Follow the forwarding instructions</strong><span>Store Bot gives the server a forwarding address or alias for payment emails.</span></li>
+              <li><strong>Verify forwarding if required</strong><span>Email providers may require a forwarding confirmation step before messages can be sent to Store Bot.</span></li>
+              <li><strong>Send only payment notifications</strong><span>Forward payment emails related to Store Bot orders, not personal mail or unrelated receipts.</span></li>
+            </ol>
+            <a class="inline-link" href="autopay.html">Read the AutoPay overview →</a>
+          </article>
+
+          <article class="content-card reveal" id="troubleshooting">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>Common fixes</h2>
+            <details class="faq-card" open><summary>Slash commands do not show up</summary><p>Refresh Discord with <code>CTRL + R</code>, confirm Store Bot has slash command permissions, and make sure you invited it with the official invite link.</p></details>
+            <details class="faq-card"><summary>The panel is outdated</summary><p>Refresh or repost the store panel after changing products, prices, branding, or payment instructions.</p></details>
+            <details class="faq-card"><summary>AutoPay did not mark an order paid</summary><p>Confirm the order is still pending, the payment amount and currency match, the order code appears in the payment notification, and the forwarded email came from a supported provider.</p></details>
+            <details class="faq-card"><summary>I need help setting it up</summary><p>Join the support server and open a ticket. Include your server name, what you were trying to do, and any error message you saw.</p></details>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="autopay.html">AutoPay</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="docs.html">Docs</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="https://discord.gg/zB7NgPBzBA">Support</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js?v=7" defer></script>
+</body>
+</html>

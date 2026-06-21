@@ -8,6 +8,7 @@
 - Features: `features.html`
 - AutoPay: `autopay.html`
 - Pricing: `pricing.html`
+- Docs: `docs.html`
 - Privacy Policy: `privacy-policy.html`
 - Terms of Service: `tos.html`
 
