@@ -3,7 +3,7 @@
   "status": "operational",
   "headline": "All systems operational",
   "message": "Store Bot services are responding normally.",
-  "updatedAt": "2026-06-22T16:35:02.344Z",
+  "updatedAt": "2026-06-22T16:40:02.234Z",
   "serverCount": 10,
   "servers": 10,
   "serverCountSource": "discord_api_live_bot_guilds",
@@ -13,7 +13,7 @@
     "servers": 10,
     "serverCountSource": "discord_api_live_bot_guilds",
     "trackedServerCount": 19,
-    "botUptime": "14h 57m",
+    "botUptime": "15h 2m",
     "memory": "59 MB",
     "cpu": "0%",
     "restarts": 0,
@@ -24,7 +24,7 @@
     "status": "operational",
     "pm2Status": "online",
     "message": "Store Bot process is online.",
-    "uptime": "14h 57m",
+    "uptime": "15h 2m",
     "memory": "59 MB",
     "cpu": "0%",
     "restarts": 0,
@@ -65,7 +65,7 @@
     {
       "name": "Website",
       "status": "operational",
-      "message": "Website responded in 173ms."
+      "message": "Website responded in 80ms."
     }
   ]
 }
