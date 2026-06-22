@@ -1,15 +1,15 @@
 {
-  "overall": "operational",
-  "status": "operational",
-  "headline": "All systems operational",
-  "message": "Store Bot services are responding normally.",
-  "updatedAt": "2026-06-22T02:10:22.568Z",
+  "overall": "maintenance",
+  "status": "maintenance",
+  "headline": "Maintenance in progress",
+  "message": "Testing the public status page.",
+  "updatedAt": "2026-06-22T02:15:01.480Z",
   "serverCount": 12,
   "servers": 12,
   "metrics": {
     "serverCount": 12,
     "servers": 12,
-    "botUptime": "32m",
+    "botUptime": "37m",
     "memory": "56 MB",
     "cpu": "0.2%",
     "restarts": 0,
@@ -20,16 +20,16 @@
     "status": "operational",
     "pm2Status": "online",
     "message": "Store Bot process is online.",
-    "uptime": "32m",
+    "uptime": "37m",
     "memory": "56 MB",
     "cpu": "0.2%",
     "restarts": 0,
     "pid": 1536
   },
   "maintenance": {
-    "active": false,
-    "status": "operational",
-    "reason": "No active maintenance detected.",
+    "active": true,
+    "status": "maintenance",
+    "reason": "Testing the public status page.",
     "source": "data/maintenance_status.json"
   },
   "components": [
@@ -40,8 +40,8 @@
     },
     {
       "name": "Checkout / Orders",
-      "status": "operational",
-      "message": "Checkout and order creation are available."
+      "status": "maintenance",
+      "message": "Testing the public status page."
     },
     {
       "name": "AutoPay Scanner",
@@ -61,7 +61,7 @@
     {
       "name": "Website",
       "status": "operational",
-      "message": "Website responded in 116ms."
+      "message": "Website responded in 228ms."
     }
   ]
 }
