@@ -503,7 +503,6 @@
       const counts = o.counts || {};
       const statuses = o.statuses || {};
       const bot = o.bot || {};
-      const ownerControls = Boolean(o.access?.ownerAccount || me?.owner);
       $("overviewBox").innerHTML = `
         <span class="dashboard-status-pill"><span class="${bot.online ? "dash-dot" : "dash-dot bad"}"></span>${escapeHtml(o.guild?.name || "Server")}</span>
         <p class="eyebrow">Server overview</p>
@@ -530,7 +529,7 @@
         <div class="dashboard-card" style="margin-top:22px; box-shadow:none;">
           <p class="eyebrow">Phase 2 Controls</p>
           <h2>Server Maintenance</h2>
-          <p class="section-text">Pause or resume checkout/order creation for this server. Existing paid orders can still be delivered. Only the Store Bot owner can change this setting.</p>
+          <p class="section-text">Pause or resume checkout/order creation for this server. Existing paid orders can still be delivered.</p>
           <div class="component-row" style="margin-top:14px;">
             <div>
               <strong>Current maintenance state</strong>
@@ -541,11 +540,10 @@
           <label style="display:block; margin-top:16px; font-weight:900;">Maintenance reason</label>
           <input id="maintenanceReason" type="text" maxlength="500" value="${escapeHtml(o.maintenance?.reason && o.maintenance?.active ? o.maintenance.reason : "Dashboard maintenance update.")}" style="width:100%; margin-top:8px; padding:14px 15px; border-radius:16px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04); color:var(--text); font:inherit;" />
           <div class="dashboard-actions">
-            <button class="button primary" id="enableMaintenanceBtn" type="button" ${ownerControls ? "" : "disabled"}>Enable Maintenance</button>
-            <button class="button secondary" id="disableMaintenanceBtn" type="button" ${ownerControls ? "" : "disabled"}>Disable Maintenance</button>
+            <button class="button primary" id="enableMaintenanceBtn" type="button">Enable Maintenance</button>
+            <button class="button secondary" id="disableMaintenanceBtn" type="button">Disable Maintenance</button>
           </div>
           <div id="controlResult" class="dashboard-note hidden"></div>
-          ${ownerControls ? "" : `<div class="dashboard-note">Only the Store Bot owner can enable or disable server maintenance from this dashboard.</div>`}
         </div>
 
         <div class="dashboard-note">Coming next: product editing, panel refresh, AutoPay setup/status controls, and log channel settings.</div>
