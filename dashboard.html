@@ -216,7 +216,6 @@
       color: var(--text);
     }
 
-
     .admin-center {
       margin-top: 28px;
     }
@@ -427,7 +426,7 @@
             <button class="button primary" id="refreshBtn" type="button">Refresh Dashboard</button>
             <button class="button secondary" id="logoutBtn" type="button">Logout</button>
           </div>
-          <div class="dashboard-note">Secure dashboard access is limited to servers where your Discord account has Manage Server or Administrator permission. Sensitive owner controls remain locked to the Store Bot owner account.</div>
+          <div class="dashboard-note">Secure dashboard access is limited to servers where your Discord account has Manage Server or Administrator permission. </div>
           <div id="errorBox" class="error-box hidden"></div>
         </div>
 
@@ -944,8 +943,6 @@
       if (disableBtn) disableBtn.addEventListener("click", () => saveMaintenance(false));
       loadControlData(selectedGuildId);
     }
-
-
 
     async function loadAdminDashboard() {
       if (!me?.owner) return;
