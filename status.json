@@ -3,14 +3,14 @@
   "status": "operational",
   "headline": "All systems operational",
   "message": "Store Bot services are responding normally.",
-  "updatedAt": "2026-06-22T04:45:01.601Z",
+  "updatedAt": "2026-06-22T04:50:01.835Z",
   "serverCount": 14,
   "servers": 14,
   "metrics": {
     "serverCount": 14,
     "servers": 14,
-    "botUptime": "3h 7m",
-    "memory": "57 MB",
+    "botUptime": "3h 12m",
+    "memory": "58 MB",
     "cpu": "0%",
     "restarts": 0,
     "pid": 1536
@@ -20,8 +20,8 @@
     "status": "operational",
     "pm2Status": "online",
     "message": "Store Bot process is online.",
-    "uptime": "3h 7m",
-    "memory": "57 MB",
+    "uptime": "3h 12m",
+    "memory": "58 MB",
     "cpu": "0%",
     "restarts": 0,
     "pid": 1536
@@ -61,7 +61,7 @@
     {
       "name": "Website",
       "status": "operational",
-      "message": "Website responded in 209ms."
+      "message": "Website responded in 212ms."
     }
   ]
 }
