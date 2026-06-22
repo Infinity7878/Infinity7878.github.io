@@ -619,3 +619,38 @@ h3 { font-size: 1.26rem; }
     top: 96px;
   }
 }
+
+
+/* Store Bot public status badge */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.055);
+  font-weight: 760;
+}
+
+.status-pill:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.status-pill-dot {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: 0 0 0 6px rgba(69, 212, 131, 0.15);
+}
+
+.status-pill[data-status="maintenance"] .status-pill-dot { background: #5865f2; box-shadow: 0 0 0 6px rgba(88, 101, 242, 0.16); }
+.status-pill[data-status="degraded"] .status-pill-dot,
+.status-pill[data-status="partial_outage"] .status-pill-dot { background: #facc15; box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.16); }
+.status-pill[data-status="major_outage"] .status-pill-dot,
+.status-pill[data-status="outage"] .status-pill-dot { background: #ed4245; box-shadow: 0 0 0 6px rgba(237, 66, 69, 0.16); }

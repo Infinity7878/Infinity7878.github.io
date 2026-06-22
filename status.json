@@ -1,0 +1,26 @@
+{
+  "overall": "operational",
+  "headline": "All systems operational",
+  "message": "Store Bot services are responding normally.",
+  "updatedAt": "2026-06-22T00:00:00.000Z",
+  "incident": "No active incidents.",
+  "maintenance": {
+    "active": false,
+    "reason": "No maintenance is currently scheduled."
+  },
+  "metrics": {
+    "botUptime": "Unknown",
+    "memory": "Unknown",
+    "pm2Restarts": "Unknown",
+    "serverCount": "Unknown"
+  },
+  "components": [
+    { "name": "Discord Bot", "status": "operational", "message": "Bot process is online." },
+    { "name": "Slash Commands", "status": "operational", "message": "Commands are available." },
+    { "name": "Checkout / Orders", "status": "operational", "message": "Checkout is available." },
+    { "name": "AutoPay Scanner", "status": "operational", "message": "AutoPay scanner is running." },
+    { "name": "R2 File Delivery", "status": "operational", "message": "File delivery is available." },
+    { "name": "Top.gg Vote Rewards", "status": "operational", "message": "Vote reward system is available." },
+    { "name": "Website", "status": "operational", "message": "storebot.pro is online." }
+  ]
+}

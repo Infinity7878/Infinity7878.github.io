@@ -81,3 +81,32 @@
     init();
   }
 }());
+
+
+// Store Bot public status badge
+(async () => {
+  const badge = document.getElementById('homeStatusBadge');
+  const label = document.getElementById('homeStatusText');
+  if (!badge || !label) return;
+
+  const labels = {
+    operational: 'Operational',
+    maintenance: 'Maintenance',
+    degraded: 'Degraded',
+    partial_outage: 'Partial Outage',
+    major_outage: 'Major Outage',
+    outage: 'Outage'
+  };
+
+  try {
+    const response = await fetch('status.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const status = await response.json();
+    const key = String(status.overall || 'degraded').toLowerCase().replace(/s+/g, '_');
+    badge.dataset.status = key;
+    label.textContent = labels[key] || status.headline || 'View status';
+  } catch {
+    badge.dataset.status = 'degraded';
+    label.textContent = 'Status unavailable';
+  }
+})();
