@@ -209,7 +209,6 @@
       const items = [
         ['Bot uptime', metrics.botUptime || 'Unknown'],
         ['Memory', metrics.memory || 'Unknown'],
-        ['PM2 restarts', metrics.pm2Restarts || 'Unknown'],
         ['Servers', metrics.serverCount || 'Unknown']
       ];
       document.getElementById('statusMetrics').innerHTML = items.map(([label, value]) => `
