@@ -2,25 +2,53 @@
   "overall": "operational",
   "headline": "All systems operational",
   "message": "Store Bot services are responding normally.",
-  "updatedAt": "2026-06-22T00:00:00.000Z",
+  "updatedAt": "2026-06-22T02:03:50.021Z",
   "incident": "No active incidents.",
   "maintenance": {
     "active": false,
     "reason": "No maintenance is currently scheduled."
   },
   "metrics": {
-    "botUptime": "Unknown",
-    "memory": "Unknown",
-    "pm2Restarts": "Unknown",
+    "botUptime": "26m",
+    "memory": "55 MB",
+    "pm2Restarts": "0",
     "serverCount": "Unknown"
   },
   "components": [
-    { "name": "Discord Bot", "status": "operational", "message": "Bot process is online." },
-    { "name": "Slash Commands", "status": "operational", "message": "Commands are available." },
-    { "name": "Checkout / Orders", "status": "operational", "message": "Checkout is available." },
-    { "name": "AutoPay Scanner", "status": "operational", "message": "AutoPay scanner is running." },
-    { "name": "R2 File Delivery", "status": "operational", "message": "File delivery is available." },
-    { "name": "Top.gg Vote Rewards", "status": "operational", "message": "Vote reward system is available." },
-    { "name": "Website", "status": "operational", "message": "storebot.pro is online." }
+    {
+      "name": "Discord Bot",
+      "status": "operational",
+      "message": "Store Bot is online in PM2."
+    },
+    {
+      "name": "Slash Commands",
+      "status": "operational",
+      "message": "Commands should be available."
+    },
+    {
+      "name": "Checkout / Orders",
+      "status": "operational",
+      "message": "Checkout is available."
+    },
+    {
+      "name": "AutoPay Scanner",
+      "status": "operational",
+      "message": "Scanner is monitored by the bot process."
+    },
+    {
+      "name": "R2 File Delivery",
+      "status": "operational",
+      "message": "File delivery is monitored by the bot process."
+    },
+    {
+      "name": "Top.gg Vote Rewards",
+      "status": "operational",
+      "message": "Responded in 10ms."
+    },
+    {
+      "name": "Website",
+      "status": "operational",
+      "message": "Responded in 239ms."
+    }
   ]
 }
