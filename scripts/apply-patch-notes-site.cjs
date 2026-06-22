@@ -1,0 +1,389 @@
+const fs = require('fs');
+const path = require('path');
+
+const root = process.cwd();
+const htmlPath = path.join(root, 'patch-notes.html');
+const jsonPath = path.join(root, 'patch-notes.json');
+
+const patchNotesHtml = String.raw`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patch Notes | Store Bot</title>
+  <meta name="description" content="View the latest Store Bot updates, fixes, dashboard improvements, and service changes." />
+  <link rel="canonical" href="https://storebot.pro/patch-notes.html" />
+  <meta property="og:title" content="Store Bot Patch Notes" />
+  <meta property="og:description" content="Latest Store Bot updates, fixes, and improvements." />
+  <meta property="og:url" content="https://storebot.pro/patch-notes.html" />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #0b0f18;
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-strong: rgba(255, 255, 255, 0.09);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f5f7fb;
+      --muted: #aab3c5;
+      --soft: #d4d9e5;
+      --accent: #ff8a3d;
+      --accent-2: #ffb86c;
+      --good: #38d47a;
+      --warn: #ffcc66;
+      --bad: #ff5d5d;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% -10%, rgba(255, 138, 61, 0.22), transparent 34%),
+        radial-gradient(circle at 90% 10%, rgba(255, 184, 108, 0.12), transparent 30%),
+        linear-gradient(180deg, #0b0f18 0%, #111827 54%, #0b0f18 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .skip-link {
+      position: absolute;
+      left: 14px;
+      top: 12px;
+      transform: translateY(-140%);
+      background: var(--accent);
+      color: #160b03;
+      padding: 10px 14px;
+      border-radius: 999px;
+      z-index: 20;
+      font-weight: 800;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 15, 24, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -0.03em; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #180b03;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 30px rgba(255, 138, 61, 0.25);
+      font-weight: 950;
+    }
+    .links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-weight: 700; font-size: 0.95rem; }
+    .links a:hover, .links a.active { color: var(--text); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 11px 16px;
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .btn.primary { border: none; color: #190c04; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+
+    .hero { padding: 72px 0 28px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-2);
+      background: rgba(255, 138, 61, 0.1);
+      border: 1px solid rgba(255, 138, 61, 0.28);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 850;
+      font-size: 0.9rem;
+    }
+    h1 { margin: 20px 0 14px; font-size: clamp(2.25rem, 7vw, 5rem); line-height: 0.95; letter-spacing: -0.075em; }
+    .lead { max-width: 760px; color: var(--muted); font-size: clamp(1rem, 2vw, 1.2rem); margin: 0; }
+
+    .summary-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; margin: 34px 0; }
+    .card {
+      background: linear-gradient(180deg, var(--panel-strong), rgba(255,255,255,.035));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .card h2, .card h3 { margin: 0 0 10px; letter-spacing: -0.035em; }
+    .muted { color: var(--muted); }
+    .status-pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 212, 122, .35);
+      background: rgba(56, 212, 122, .1);
+      color: #a8ffc8;
+      font-weight: 850;
+      font-size: .9rem;
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--good); box-shadow: 0 0 16px rgba(56,212,122,.8); }
+
+    .notes { display: grid; gap: 16px; padding: 10px 0 70px; }
+    .note {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.05);
+      padding: 22px;
+    }
+    .note-top { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; margin-bottom: 10px; }
+    .note-title { margin: 0; font-size: 1.2rem; letter-spacing: -0.03em; }
+    .note-date { color: var(--muted); font-size: .92rem; white-space: nowrap; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+    .tag { border: 1px solid rgba(255,138,61,.25); color: #ffd3b8; background: rgba(255,138,61,.09); padding: 5px 9px; border-radius: 999px; font-size: .78rem; font-weight: 850; }
+    ul { margin: 12px 0 0; padding-left: 20px; color: var(--soft); }
+    li + li { margin-top: 6px; }
+    .empty, .error { color: var(--muted); border: 1px dashed var(--line); border-radius: 22px; padding: 20px; }
+
+    footer { border-top: 1px solid var(--line); background: rgba(5, 8, 13, 0.42); }
+    .footer-inner { min-height: 86px; display:flex; align-items:center; justify-content:space-between; gap:16px; color:var(--muted); font-size:.94rem; }
+    .footer-links { display:flex; flex-wrap:wrap; gap:14px; font-weight:700; }
+    .footer-links a:hover { color:var(--text); }
+
+    @media (max-width: 760px) {
+      .nav { align-items:flex-start; flex-direction:column; padding:16px 0; }
+      .links { flex-wrap:wrap; gap:12px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .note-top { flex-direction: column; }
+      .note-date { white-space: normal; }
+      .footer-inner { flex-direction: column; align-items:flex-start; padding:22px 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <nav class="wrap nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark">SB</span>
+        <span>Store Bot</span>
+      </a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/status.html">Status</a>
+        <a class="active" href="/patch-notes.html">Patch Notes</a>
+        <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&scope=bot%20applications.commands" rel="noopener">Invite Bot</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Latest updates</span>
+      <h1>Patch Notes</h1>
+      <p class="lead">Track Store Bot improvements, dashboard updates, bug fixes, security hardening, and service changes in one place.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Patch notes summary">
+      <article class="card">
+        <span class="status-pill"><span class="dot"></span><span id="latest-status">Loading latest update</span></span>
+        <h2 style="margin-top:14px;">Store Bot changelog</h2>
+        <p class="muted" id="summary-text">Patch notes are updated from the Store Bot deployment system.</p>
+      </article>
+      <article class="card">
+        <h3>Update feed</h3>
+        <p class="muted">New entries appear here when Store Bot publishes an update from the VPS.</p>
+        <a class="btn" href="/status.html">View service status</a>
+      </article>
+    </section>
+
+    <section class="notes" id="notes" aria-live="polite">
+      <div class="empty">Loading patch notes...</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 Store Bot. Built for Discord storefronts.</span>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/status.html">Status</a>
+        <a href="/patch-notes.html">Patch Notes</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="https://discord.gg/zB7NgPBzBA" rel="noopener">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const notesEl = document.getElementById('notes');
+    const latestStatusEl = document.getElementById('latest-status');
+    const summaryTextEl = document.getElementById('summary-text');
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>'"]/g, (char) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[char]));
+    }
+
+    function formatDate(value) {
+      if (!value) return 'Unknown date';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return escapeHtml(value);
+      return date.toLocaleString(undefined, { year:'numeric', month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+    }
+
+    function renderNote(note) {
+      const items = Array.isArray(note.items) ? note.items : [];
+      const tags = Array.isArray(note.tags) ? note.tags : [];
+      const itemHtml = items.length
+        ? `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+        : '';
+      const tagHtml = tags.length
+        ? `<div class="tags">${tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>`
+        : '';
+
+      return `
+        <article class="note">
+          <div class="note-top">
+            <div>
+              <h2 class="note-title">${escapeHtml(note.title || 'Store Bot update')}</h2>
+              <p class="muted">${escapeHtml(note.summary || '')}</p>
+            </div>
+            <span class="note-date">${formatDate(note.date || note.createdAt || note.updatedAt)}</span>
+          </div>
+          ${itemHtml}
+          ${tagHtml}
+        </article>
+      `;
+    }
+
+    async function loadNotes() {
+      try {
+        const response = await fetch(`/patch-notes.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        const notes = Array.isArray(data.notes) ? data.notes : [];
+
+        latestStatusEl.textContent = notes[0]?.title ? `Latest: ${notes[0].title}` : 'No updates published yet';
+        summaryTextEl.textContent = data.summary || 'Patch notes are updated from the Store Bot deployment system.';
+
+        if (!notes.length) {
+          notesEl.innerHTML = '<div class="empty">No patch notes have been published yet.</div>';
+          return;
+        }
+
+        notesEl.innerHTML = notes.map(renderNote).join('');
+      } catch (err) {
+        latestStatusEl.textContent = 'Patch notes unavailable';
+        notesEl.innerHTML = `<div class="error">Could not load patch notes right now. ${escapeHtml(err.message)}</div>`;
+      }
+    }
+
+    loadNotes();
+  </script>
+</body>
+</html>`;
+
+const defaultJson = {
+  updatedAt: new Date().toISOString(),
+  summary: 'Store Bot patch notes are updated from the deployment system.',
+  notes: [
+    {
+      id: 'dashboard-live',
+      title: 'Web dashboard released',
+      summary: 'Store Bot now includes a production web dashboard for managing server storefronts.',
+      date: new Date().toISOString(),
+      tags: ['Dashboard', 'Store Management'],
+      items: [
+        'Added Discord login and server selector.',
+        'Added product management, panel refresh, AutoPay status, and channel settings.',
+        'Added owner command center and live service status pages.'
+      ]
+    }
+  ]
+};
+
+function replaceAllSafe(text, search, replacement) {
+  return text.includes(search) ? text.split(search).join(replacement) : text;
+}
+
+function addNavLink(file) {
+  const p = path.join(root, file);
+  if (!fs.existsSync(p)) return;
+  let s = fs.readFileSync(p, 'utf8');
+  if (s.includes('/patch-notes.html')) return;
+
+  const link = '<a href="/patch-notes.html">Patch Notes</a>';
+  const candidates = [
+    ['<a href="/status.html">Status</a>', '<a href="/status.html">Status</a>\n        ' + link],
+    ['<a href="status.html">Status</a>', '<a href="status.html">Status</a>\n        ' + link],
+    ['<a href="/docs.html">Docs</a>', '<a href="/docs.html">Docs</a>\n        ' + link],
+    ['<a href="docs.html">Docs</a>', '<a href="docs.html">Docs</a>\n        ' + link]
+  ];
+
+  for (const [needle, replacement] of candidates) {
+    if (s.includes(needle)) {
+      s = s.replace(needle, replacement);
+      fs.writeFileSync(p, s);
+      console.log(`Added Patch Notes link to ${file}`);
+      return;
+    }
+  }
+}
+
+function updateSitemap() {
+  const p = path.join(root, 'sitemap.xml');
+  if (!fs.existsSync(p)) return;
+  let s = fs.readFileSync(p, 'utf8');
+  if (s.includes('/patch-notes.html')) return;
+  const entry = `
+  <url>
+    <loc>https://storebot.pro/patch-notes.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+  s = s.replace('</urlset>', `${entry}\n</urlset>`);
+  fs.writeFileSync(p, s);
+  console.log('Added patch-notes.html to sitemap.xml');
+}
+
+fs.writeFileSync(htmlPath, patchNotesHtml);
+if (!fs.existsSync(jsonPath)) {
+  fs.writeFileSync(jsonPath, JSON.stringify(defaultJson, null, 2));
+  console.log('Created patch-notes.json');
+} else {
+  console.log('patch-notes.json already exists; leaving existing notes intact.');
+}
+
+for (const file of ['index.html', 'docs.html', 'status.html', 'dashboard.html', 'privacy.html', 'terms.html']) {
+  addNavLink(file);
+}
+updateSitemap();
+
+console.log('Patch notes page installed. Commit and push the website repo.');
