@@ -266,7 +266,7 @@
           updatedAt: new Date().toISOString(),
           incident: `Could not load status.json: ${error.message}`,
           components: [
-            { name: 'Public Status Page', status: 'degraded', message: 'Could not fetch status.json.' },
+            { name: 'Public Status Page', status: 'outage', message: 'Could not fetch status.json.' },
             { name: 'Website', status: 'operational', message: 'This page loaded successfully.' }
           ]
         });
