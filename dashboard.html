@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Store Bot Dashboard</title>
+  <meta name="description" content="Store Bot dashboard for managing Discord storefront servers." />
+  <style>
+    :root {
+      --bg: #070a0f;
+      --panel: #0d111a;
+      --panel-2: #111827;
+      --text: #e7edf7;
+      --muted: #9fb0c7;
+      --line: rgba(255,255,255,.1);
+      --brand: #f59e0b;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --blue: #60a5fa;
+      --shadow: 0 24px 80px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(245,158,11,.12), transparent 35%), var(--bg);
+      min-height: 100vh;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,10,15,.72);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.02em; }
+    .logo { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(245,158,11,.24), rgba(96,165,250,.12)); border: 1px solid var(--line); }
+    .links { display: flex; align-items: center; gap: 16px; color: var(--muted); font-weight: 650; font-size: 14px; }
+    .links a { text-decoration: none; }
+    .links a:hover { color: var(--text); }
+    main { padding: 42px 0 72px; }
+    .hero { display: grid; grid-template-columns: 1.3fr .7fr; gap: 24px; align-items: stretch; margin-bottom: 24px; }
+    .card { background: linear-gradient(180deg, rgba(17,24,39,.88), rgba(13,17,26,.92)); border: 1px solid var(--line); border-radius: 22px; padding: 24px; box-shadow: var(--shadow); }
+    h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 54px); line-height: 1; letter-spacing: -.055em; }
+    h2 { margin: 0 0 14px; font-size: 20px; letter-spacing: -.02em; }
+    p { color: var(--muted); line-height: 1.65; margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    button, .btn {
+      border: 0;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: #111827;
+      font-weight: 850;
+      border-radius: 14px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    button.secondary, .btn.secondary { background: #111827; color: var(--text); border: 1px solid var(--line); }
+    button:disabled { opacity: .55; cursor: not-allowed; }
+    .grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
+    .server-list { display: grid; gap: 10px; }
+    .server-btn { background: rgba(255,255,255,.035); border: 1px solid var(--line); color: var(--text); justify-content: flex-start; padding: 14px; border-radius: 16px; font-weight: 800; }
+    .server-btn.active { border-color: rgba(245,158,11,.6); box-shadow: 0 0 0 3px rgba(245,158,11,.12); }
+    .muted { color: var(--muted); }
+    .pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; color: var(--muted); font-weight: 750; font-size: 13px; background: rgba(255,255,255,.04); }
+    .dot { width: 9px; height: 9px; border-radius: 999px; background: var(--green); box-shadow: 0 0 18px rgba(34,197,94,.7); }
+    .dot.yellow { background: var(--yellow); box-shadow: 0 0 18px rgba(234,179,8,.7); }
+    .dot.red { background: var(--red); box-shadow: 0 0 18px rgba(239,68,68,.7); }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .stat { background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+    .stat .num { font-size: 26px; font-weight: 900; letter-spacing: -.04em; }
+    .stat .label { color: var(--muted); font-weight: 700; font-size: 13px; margin-top: 3px; }
+    .component-list { display: grid; gap: 10px; margin-top: 18px; }
+    .component { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.032); }
+    .component strong { display: block; }
+    .component small { color: var(--muted); }
+    .notice { border: 1px solid rgba(96,165,250,.28); background: rgba(96,165,250,.09); border-radius: 18px; padding: 16px; color: #cfe2ff; margin-top: 16px; }
+    .hidden { display: none !important; }
+    footer { border-top: 1px solid var(--line); padding: 26px 0; color: var(--muted); }
+    .footer-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center; }
+    .footer-links { display:flex; gap:16px; flex-wrap:wrap; font-weight:700; }
+    .footer-links a { text-decoration:none; color:var(--muted); }
+    @media (max-width: 900px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .links { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/" style="text-decoration:none"><span class="logo">🤖</span><span>Store Bot</span></a>
+      <nav class="links">
+        <a href="/">Home</a><a href="/features.html">Features</a><a href="/pricing.html">Pricing</a><a href="/docs.html">Docs</a><a href="/status.html">Status</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="card">
+        <span class="pill"><span class="dot"></span> Phase 1 Dashboard</span>
+        <h1>Store Bot Dashboard</h1>
+        <p>Log in with Discord to view servers where you can manage Store Bot. Phase 1 is read-only: server overview, bot health, product/order counts, storage usage, and configuration status.</p>
+        <div class="actions" id="loggedOutActions">
+          <a class="btn" id="loginBtn" href="https://api.storebot.pro/auth/discord">Login with Discord</a>
+          <a class="btn secondary" href="/docs.html">View Docs</a>
+        </div>
+        <div class="actions hidden" id="loggedInActions">
+          <button id="refreshBtn">Refresh Dashboard</button>
+          <button class="secondary" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Account</h2>
+        <div id="accountBox"><p>Not logged in.</p></div>
+        <div class="notice">Only servers where you have <strong>Manage Server</strong> or <strong>Administrator</strong> permission are shown.</div>
+      </div>
+    </section>
+
+    <section class="grid hidden" id="dashboardGrid">
+      <aside class="card">
+        <h2>Your Store Bot Servers</h2>
+        <p class="muted" id="serverCountText">Loading servers...</p>
+        <div class="server-list" id="serverList"></div>
+      </aside>
+      <section class="card">
+        <div id="overviewEmpty">
+          <h2>Select a server</h2>
+          <p>Choose a server on the left to view its Store Bot overview.</p>
+        </div>
+        <div id="overviewBox" class="hidden"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© 2026 Store Bot. Built for Discord storefronts.</div>
+      <div class="footer-links"><a href="/">Home</a><a href="/features.html">Features</a><a href="/pricing.html">Pricing</a><a href="/docs.html">Docs</a><a href="/status.html">Status</a><a href="/support.html">Support</a></div>
+    </div>
+  </footer>
+
+<script>
+const API_BASE = "https://api.storebot.pro";
+let me = null;
+let selectedGuildId = null;
+
+const $ = (id) => document.getElementById(id);
+
+function statusDot(status) {
+  const s = String(status || "unknown").toLowerCase();
+  if (s.includes("operational") || s.includes("online") || s.includes("enabled") || s.includes("configured")) return "dot";
+  if (s.includes("unknown") || s.includes("partial") || s.includes("degraded")) return "dot yellow";
+  return "dot red";
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c]));
+}
+
+async function api(path, options = {}) {
+  const res = await fetch(`${API_BASE}${path}`, { credentials: "include", ...options });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(data.error || `Request failed: ${res.status}`), { status: res.status, data });
+  return data;
+}
+
+async function loadMe() {
+  try {
+    me = await api("/api/me");
+    renderLoggedIn();
+  } catch (err) {
+    me = null;
+    renderLoggedOut(err.status === 401 ? null : err.message);
+  }
+}
+
+function renderLoggedOut(error) {
+  $("loggedOutActions").classList.remove("hidden");
+  $("loggedInActions").classList.add("hidden");
+  $("dashboardGrid").classList.add("hidden");
+  $("accountBox").innerHTML = error ? `<p class="muted">${escapeHtml(error)}</p>` : `<p>Not logged in.</p>`;
+}
+
+function renderLoggedIn() {
+  $("loggedOutActions").classList.add("hidden");
+  $("loggedInActions").classList.remove("hidden");
+  $("dashboardGrid").classList.remove("hidden");
+
+  const user = me.user || {};
+  $("accountBox").innerHTML = `
+    <p><strong>${escapeHtml(user.globalName || user.username || "Discord User")}</strong></p>
+    <p class="muted">${escapeHtml(user.username || user.id || "")}</p>
+    <p style="margin-top:12px"><span class="pill"><span class="${me.bot?.online ? "dot" : "dot red"}"></span> Bot ${escapeHtml(me.bot?.status || "unknown")}</span></p>
+  `;
+
+  const guilds = me.guilds || [];
+  $("serverCountText").textContent = guilds.length ? `${guilds.length} manageable server(s) found.` : "No manageable Store Bot servers found yet.";
+  $("serverList").innerHTML = guilds.map(g => `
+    <button class="server-btn" data-guild-id="${escapeHtml(g.id)}">
+      <span>🏪 ${escapeHtml(g.name)}</span>
+    </button>
+  `).join("");
+
+  document.querySelectorAll(".server-btn").forEach(btn => {
+    btn.addEventListener("click", () => selectGuild(btn.dataset.guildId));
+  });
+}
+
+async function selectGuild(guildId) {
+  selectedGuildId = guildId;
+  document.querySelectorAll(".server-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.guildId === guildId));
+  $("overviewEmpty").classList.add("hidden");
+  $("overviewBox").classList.remove("hidden");
+  $("overviewBox").innerHTML = `<h2>Loading...</h2><p>Reading Store Bot data for this server.</p>`;
+
+  try {
+    const overview = await api(`/api/guilds/${guildId}/overview`);
+    renderOverview(overview);
+  } catch (err) {
+    $("overviewBox").innerHTML = `<h2>Could not load server</h2><p class="muted">${escapeHtml(err.message)}</p>`;
+  }
+}
+
+function renderOverview(o) {
+  const counts = o.counts || {};
+  const statuses = o.statuses || {};
+  const bot = o.bot || {};
+  $("overviewBox").innerHTML = `
+    <span class="pill"><span class="${bot.online ? "dot" : "dot red"}"></span> ${escapeHtml(o.guild?.name || "Server")}</span>
+    <h2 style="margin-top:16px">Server Overview</h2>
+    <p class="muted">Read-only Phase 1 dashboard. Editing controls will be added in Phase 2.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">${counts.products ?? 0}</div><div class="label">Products</div></div>
+      <div class="stat"><div class="num">${counts.orders ?? 0}</div><div class="label">Orders</div></div>
+      <div class="stat"><div class="num">${counts.reviews ?? 0}</div><div class="label">Reviews</div></div>
+      <div class="stat"><div class="num">${counts.giftCards ?? 0}</div><div class="label">Gift Cards</div></div>
+      <div class="stat"><div class="num">${counts.discounts ?? 0}</div><div class="label">Discounts</div></div>
+      <div class="stat"><div class="num">${escapeHtml(o.storage?.uploadHuman || "0 B")}</div><div class="label">Uploads</div></div>
+    </div>
+
+    <div class="component-list">
+      <div class="component"><div><strong>Premium</strong><small>${escapeHtml(statuses.premium || "unknown")}</small></div><span class="${statusDot(statuses.premium)}"></span></div>
+      <div class="component"><div><strong>AutoPay</strong><small>${escapeHtml(statuses.autopay || "unknown")}</small></div><span class="${statusDot(statuses.autopay)}"></span></div>
+      <div class="component"><div><strong>Maintenance</strong><small>${escapeHtml(statuses.maintenance || "unknown")}</small></div><span class="${statusDot(statuses.maintenance)}"></span></div>
+      <div class="component"><div><strong>R2 File Storage</strong><small>${escapeHtml(statuses.r2Storage || "unknown")}</small></div><span class="${statusDot(statuses.r2Storage)}"></span></div>
+      <div class="component"><div><strong>Bot Health</strong><small>Uptime ${escapeHtml(bot.uptime || "unknown")}, Memory ${escapeHtml(bot.memory || "unknown")}</small></div><span class="${bot.online ? "dot" : "dot red"}"></span></div>
+    </div>
+
+    <div class="notice">Phase 2 will add editable settings, product management, panel refresh, and AutoPay controls.</div>
+  `;
+}
+
+$("refreshBtn").addEventListener("click", () => selectedGuildId ? selectGuild(selectedGuildId) : loadMe());
+$("logoutBtn").addEventListener("click", async () => {
+  try { await api("/auth/logout", { method: "POST" }); } catch {}
+  location.href = "/dashboard.html";
+});
+
+loadMe();
+</script>
+</body>
+</html>
