@@ -1,54 +1,67 @@
 {
   "overall": "operational",
+  "status": "operational",
   "headline": "All systems operational",
   "message": "Store Bot services are responding normally.",
-  "updatedAt": "2026-06-22T02:10:01.708Z",
-  "incident": "No active incidents.",
+  "updatedAt": "2026-06-22T02:10:22.568Z",
+  "serverCount": 12,
+  "servers": 12,
+  "metrics": {
+    "serverCount": 12,
+    "servers": 12,
+    "botUptime": "32m",
+    "memory": "56 MB",
+    "cpu": "0.2%",
+    "restarts": 0,
+    "pid": 1536
+  },
+  "bot": {
+    "pm2Name": "store-bot",
+    "status": "operational",
+    "pm2Status": "online",
+    "message": "Store Bot process is online.",
+    "uptime": "32m",
+    "memory": "56 MB",
+    "cpu": "0.2%",
+    "restarts": 0,
+    "pid": 1536
+  },
   "maintenance": {
     "active": false,
-    "reason": "No maintenance is currently scheduled."
-  },
-  "metrics": {
-    "botUptime": "32m",
-    "memory": "55 MB",
-    "pm2Restarts": "0",
-    "serverCount": "Unknown"
+    "status": "operational",
+    "reason": "No active maintenance detected.",
+    "source": "data/maintenance_status.json"
   },
   "components": [
     {
       "name": "Discord Bot",
       "status": "operational",
-      "message": "Store Bot is online in PM2."
-    },
-    {
-      "name": "Slash Commands",
-      "status": "operational",
-      "message": "Commands should be available."
+      "message": "Store Bot process is online."
     },
     {
       "name": "Checkout / Orders",
       "status": "operational",
-      "message": "Checkout is available."
+      "message": "Checkout and order creation are available."
     },
     {
       "name": "AutoPay Scanner",
       "status": "operational",
-      "message": "Scanner is monitored by the bot process."
+      "message": "AutoPay scanner is running with the bot process."
     },
     {
       "name": "R2 File Delivery",
       "status": "operational",
-      "message": "File delivery is monitored by the bot process."
+      "message": "File delivery is available."
     },
     {
       "name": "Top.gg Vote Rewards",
       "status": "operational",
-      "message": "Responded in 11ms."
+      "message": "Top.gg Vote Rewards responded in 10ms."
     },
     {
       "name": "Website",
       "status": "operational",
-      "message": "Responded in 210ms."
+      "message": "Website responded in 116ms."
     }
   ]
 }
