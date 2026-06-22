@@ -1,17 +1,17 @@
 {
-  "overall": "maintenance",
-  "status": "maintenance",
-  "headline": "Maintenance in progress",
-  "message": "Testing the public status page.",
-  "updatedAt": "2026-06-22T02:15:04.505Z",
+  "overall": "operational",
+  "status": "operational",
+  "headline": "All systems operational",
+  "message": "Store Bot services are responding normally.",
+  "updatedAt": "2026-06-22T02:20:01.687Z",
   "serverCount": 12,
   "servers": 12,
   "metrics": {
     "serverCount": 12,
     "servers": 12,
-    "botUptime": "37m",
-    "memory": "55 MB",
-    "cpu": "0.3%",
+    "botUptime": "42m",
+    "memory": "54 MB",
+    "cpu": "0%",
     "restarts": 0,
     "pid": 1536
   },
@@ -20,16 +20,16 @@
     "status": "operational",
     "pm2Status": "online",
     "message": "Store Bot process is online.",
-    "uptime": "37m",
-    "memory": "55 MB",
-    "cpu": "0.3%",
+    "uptime": "42m",
+    "memory": "54 MB",
+    "cpu": "0%",
     "restarts": 0,
     "pid": 1536
   },
   "maintenance": {
-    "active": true,
-    "status": "maintenance",
-    "reason": "Testing the public status page.",
+    "active": false,
+    "status": "operational",
+    "reason": "No active maintenance detected.",
     "source": "data/maintenance_status.json"
   },
   "components": [
@@ -40,8 +40,8 @@
     },
     {
       "name": "Checkout / Orders",
-      "status": "maintenance",
-      "message": "Testing the public status page."
+      "status": "operational",
+      "message": "Checkout and order creation are available."
     },
     {
       "name": "AutoPay Scanner",
@@ -56,12 +56,12 @@
     {
       "name": "Top.gg Vote Rewards",
       "status": "operational",
-      "message": "Top.gg Vote Rewards responded in 8ms."
+      "message": "Top.gg Vote Rewards responded in 11ms."
     },
     {
       "name": "Website",
       "status": "operational",
-      "message": "Website responded in 114ms."
+      "message": "Website responded in 233ms."
     }
   ]
 }
