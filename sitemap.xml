@@ -49,4 +49,10 @@
   <url>
     <loc>https://storebot.pro/dashboard.html</loc>
   </url>
+
+  <url>
+    <loc>https://storebot.pro/patch-notes.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -1,0 +1,21 @@
+{
+  "updatedAt": "2026-06-22T04:17:29.472Z",
+  "summary": "Store Bot patch notes are updated from the deployment system.",
+  "notes": [
+    {
+      "id": "dashboard-live",
+      "title": "Web dashboard released",
+      "summary": "Store Bot now includes a production web dashboard for managing server storefronts.",
+      "date": "2026-06-22T04:17:29.472Z",
+      "tags": [
+        "Dashboard",
+        "Store Management"
+      ],
+      "items": [
+        "Added Discord login and server selector.",
+        "Added product management, panel refresh, AutoPay status, and channel settings.",
+        "Added owner command center and live service status pages."
+      ]
+    }
+  ]
+}
