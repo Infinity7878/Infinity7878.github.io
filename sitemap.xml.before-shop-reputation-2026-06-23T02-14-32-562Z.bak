@@ -55,19 +55,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
- <url>
-  <loc>https://storebot.pro/shop.html</loc>
-  <lastmod>2026-06-22</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.85</priority>
- </url>
-
- <url>
-  <loc>https://storebot.pro/reputation.html</loc>
-  <lastmod>2026-06-22</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.85</priority>
- </url>
-
 </urlset>
