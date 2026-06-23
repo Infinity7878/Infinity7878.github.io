@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "serverId": "1513019107384098929",
+  "guildId": "1513019107384098929",
+  "slug": "smoknet-098929",
+  "name": "SMOKNet",
+  "description": "SMOKNet uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "zB7NgPBzBA",
+  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "verified": true,
+  "stats": {
+    "rating": 0,
+    "reviewCount": 0,
+    "completedOrders": 1,
+    "positivePercent": 0,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "PayPal",
+    "Cash App",
+    "AutoPay"
+  ],
+  "products": [],
+  "reviews": [],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Premium",
+    "AutoPay",
+    "Reviews"
+  ],
+  "lastUpdated": "2026-06-23T03:08:07.585Z"
+}

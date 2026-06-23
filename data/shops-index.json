@@ -1,6 +1,152 @@
 {
-  "version": 1,
-  "generatedAt": "2026-06-23T02:51:19.548209Z",
-  "source": "Store Bot export",
-  "shops": []
+  "version": 2,
+  "generatedAt": "2026-06-23T03:08:07.585Z",
+  "source": "Store Bot live export",
+  "liveGuildsOnly": true,
+  "shops": [
+    {
+      "serverId": "778748699601797190",
+      "guildId": "778748699601797190",
+      "slug": "infinitys-testing-server-797190",
+      "name": "infinity's testing server",
+      "description": "infinity's testing server uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 5,
+      "reviewCount": 2,
+      "completedOrders": 13,
+      "productCount": 6,
+      "tags": [
+        "Premium",
+        "AutoPay",
+        "Reviews",
+        "Products"
+      ],
+      "verified": true,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    },
+    {
+      "serverId": "1518589017346801774",
+      "guildId": "1518589017346801774",
+      "slug": "coupon-dash-801774",
+      "name": "Coupon dash",
+      "description": "Coupon dash uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 5,
+      "reviewCount": 1,
+      "completedOrders": 4,
+      "productCount": 2,
+      "tags": [
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    },
+    {
+      "serverId": "1513019107384098929",
+      "guildId": "1513019107384098929",
+      "slug": "smoknet-098929",
+      "name": "SMOKNet",
+      "description": "SMOKNet uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 1,
+      "productCount": 0,
+      "tags": [
+        "Premium",
+        "AutoPay",
+        "Reviews"
+      ],
+      "verified": true,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    },
+    {
+      "serverId": "1446023627144429583",
+      "guildId": "1446023627144429583",
+      "slug": "team-death---clothes-429583",
+      "name": "TEAM | Death - Clothes",
+      "description": "TEAM | Death - Clothes uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 1,
+      "tags": [
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    },
+    {
+      "serverId": "1509523403453890700",
+      "guildId": "1509523403453890700",
+      "slug": "zyn-store-890700",
+      "name": "Zyn Store",
+      "description": "Zyn Store uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 1,
+      "tags": [
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    },
+    {
+      "serverId": "1518185699273216191",
+      "guildId": "1518185699273216191",
+      "slug": "blume-cpm-shop-216191",
+      "name": "Blume Cpm Shop",
+      "description": "Blume Cpm Shop uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 1,
+      "tags": [
+        "AutoPay",
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    },
+    {
+      "serverId": "1518587304711553104",
+      "guildId": "1518587304711553104",
+      "slug": "cj__9rzs-server-553104",
+      "name": "cj__9rz's server",
+      "description": "cj__9rz's server uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 1,
+      "tags": [
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T03:08:07.585Z"
+    }
+  ]
 }

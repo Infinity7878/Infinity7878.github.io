@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "serverId": "1518185699273216191",
+  "guildId": "1518185699273216191",
+  "slug": "blume-cpm-shop-216191",
+  "name": "Blume Cpm Shop",
+  "description": "Blume Cpm Shop uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "zB7NgPBzBA",
+  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "verified": false,
+  "stats": {
+    "rating": 0,
+    "reviewCount": 0,
+    "completedOrders": 0,
+    "positivePercent": 0,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "AutoPay"
+  ],
+  "products": [
+    {
+      "id": "roblox-dlc-random-key-code",
+      "name": "Roblox dlc code",
+      "price": "$2.00",
+      "description": "Random Roblox DLC's is your best chance to get the most surprising extra for your favorite game. Use it to have even more fun developing incredibly creative worlds with your friends! By buying this downloadable content, you can redeem completely random DLC's in Roblox - perfect for the most daring players. Feeling lucky? Give it a chance right away! Key Features • Get a completely random item to play in Roblox • See how lucky you are • Boost your gameplay experience in one of the most popular g…",
+      "deliveryType": "Manual delivery"
+    }
+  ],
+  "reviews": [],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "AutoPay",
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-06-23T03:08:07.585Z"
+}

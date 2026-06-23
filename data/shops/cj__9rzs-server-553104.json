@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "serverId": "1518587304711553104",
+  "guildId": "1518587304711553104",
+  "slug": "cj__9rzs-server-553104",
+  "name": "cj__9rz's server",
+  "description": "cj__9rz's server uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "zB7NgPBzBA",
+  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "verified": false,
+  "stats": {
+    "rating": 0,
+    "reviewCount": 0,
+    "completedOrders": 0,
+    "positivePercent": 0,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "PayPal"
+  ],
+  "products": [
+    {
+      "id": "uber",
+      "name": "uber £10 off £15",
+      "price": "$0.50",
+      "description": "",
+      "deliveryType": "Manual delivery"
+    }
+  ],
+  "reviews": [],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-06-23T03:08:07.585Z"
+}

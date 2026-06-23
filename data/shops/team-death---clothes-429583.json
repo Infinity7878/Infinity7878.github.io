@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "serverId": "1446023627144429583",
+  "guildId": "1446023627144429583",
+  "slug": "team-death---clothes-429583",
+  "name": "TEAM | Death - Clothes",
+  "description": "TEAM | Death - Clothes uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "zB7NgPBzBA",
+  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "verified": false,
+  "stats": {
+    "rating": 0,
+    "reviewCount": 0,
+    "completedOrders": 0,
+    "positivePercent": 0,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [],
+  "products": [
+    {
+      "id": "kara",
+      "name": "Karabiner",
+      "price": "$550000.00",
+      "description": "Sturmgewehr",
+      "deliveryType": "Manual delivery"
+    }
+  ],
+  "reviews": [],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-06-23T03:08:07.585Z"
+}

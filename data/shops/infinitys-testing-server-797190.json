@@ -1,0 +1,97 @@
+{
+  "version": 2,
+  "serverId": "778748699601797190",
+  "guildId": "778748699601797190",
+  "slug": "infinitys-testing-server-797190",
+  "name": "infinity's testing server",
+  "description": "infinity's testing server uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "zB7NgPBzBA",
+  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "verified": true,
+  "stats": {
+    "rating": 5,
+    "reviewCount": 2,
+    "completedOrders": 13,
+    "positivePercent": 100,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "AutoPay"
+  ],
+  "products": [
+    {
+      "id": "t",
+      "name": "test",
+      "price": "$100.00",
+      "description": "",
+      "deliveryType": "Manual delivery"
+    },
+    {
+      "id": "t2",
+      "name": "t2",
+      "price": "$22.34",
+      "description": "test",
+      "deliveryType": "Manual delivery"
+    },
+    {
+      "id": "te2",
+      "name": "t3",
+      "price": "$123.30",
+      "description": "",
+      "deliveryType": "Manual delivery"
+    },
+    {
+      "id": "review",
+      "name": "review",
+      "price": "$1.00",
+      "description": "",
+      "deliveryType": "License key delivery",
+      "stock": "Sold out"
+    },
+    {
+      "id": "test333",
+      "name": "test333",
+      "price": "$1.00",
+      "description": "",
+      "deliveryType": "Uploaded file delivery"
+    },
+    {
+      "id": "b",
+      "name": "bb",
+      "price": "$2.00",
+      "description": "",
+      "deliveryType": "Manual delivery"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "7c8fcb77-cbab-422b-ac10-8e86b556e57e",
+      "rating": 5,
+      "text": "",
+      "author": "smok.ee",
+      "createdAt": "2026-06-19T23:46:28.383Z",
+      "verifiedOrder": true
+    },
+    {
+      "id": "c86e0365-c4ea-4e10-870b-1cbe6a2b618f",
+      "rating": 5,
+      "text": "",
+      "author": "smok.ee",
+      "createdAt": "2026-06-17T02:48:09.969Z",
+      "verifiedOrder": true
+    }
+  ],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Premium",
+    "AutoPay",
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-06-23T03:08:07.585Z"
+}
