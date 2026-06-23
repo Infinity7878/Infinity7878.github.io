@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop Pages | Store Bot</title>
+  <meta name="description" content="Build a public Discord shop page with products, payment links, policies, and a shareable storefront preview.">
+  <link rel="canonical" href="https://storebot.pro/shop.html">
+  <meta property="og:title" content="Shop Pages | Store Bot">
+  <meta property="og:description" content="Build a public Discord shop page with products, payment links, policies, and a shareable storefront preview.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://storebot.pro/shop.html">
+  <meta name="theme-color" content="#f97316">
+  <link rel="icon" href="assets/storebot-avatar.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="shop-reputation.css">
+</head>
+<body data-page="shop">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="nav-shell">
+    <a class="brand" href="index.html" aria-label="Store Bot home">
+      <img class="brand-logo" src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async">
+      <span>Store Bot</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="shop.html" class="active" aria-current="page">Shop</a><a href="reputation.html">Reputation</a><a href="docs.html">Docs</a>
+      <details class="nav-more"><summary>More</summary><div class="nav-menu"><a href="autopay.html">AutoPay</a><a href="status.html">Status</a><a href="patch-notes.html">Patch Notes</a><a href="dashboard.html">Dashboard</a><a href="index.html#setup">Setup</a><a href="index.html#faq">FAQ</a></div></details>
+      <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero section-pad compact-top">
+    <div class="container split-grid">
+      <div class="reveal">
+        <p class="eyebrow">Public shop pages</p>
+        <h1>Turn a Discord shop into a clean public storefront.</h1>
+        <p class="hero-text">Create a shareable shop page with products, prices, payment buttons, Discord support links, and seller policies. This static builder works on GitHub Pages and saves drafts in your browser.</p>
+        <div class="hero-actions"><a class="button primary" href="#builder">Build a shop page</a><a class="button secondary" href="reputation.html">Build reputation page</a></div>
+        <div class="trust-row"><span>No backend required</span><span>Shareable link</span><span>JSON export</span></div>
+      </div>
+      <div class="hero-panel shop-preview-card reveal" id="shopHeroPreview" aria-label="Example shop preview"></div>
+    </div>
+  </section>
+
+  <section class="section-pad accent-section" id="publicViewSection" hidden>
+    <div class="container"><div class="section-heading"><p class="eyebrow">Public preview</p><h2 id="publicShopTitle">Shop page</h2><p id="publicShopSubtitle">This view is generated from the share link.</p></div><div id="publicShopView" class="generated-profile"></div></div>
+  </section>
+
+  <section class="section-pad" id="builder">
+    <div class="container builder-layout">
+      <form class="builder-panel reveal" id="shopForm">
+        <div class="section-heading mini-heading"><p class="eyebrow">Builder</p><h2>Create your shop page.</h2><p>Fill this out, generate the page, then copy the share link. For bigger shops, use the JSON export as a starting point for a future backend.</p></div>
+        <label>Shop name<input type="text" id="shopName" maxlength="70" placeholder="Example Server Store" required></label>
+        <label>Short tagline<input type="text" id="shopTagline" maxlength="140" placeholder="VIP access, plugins, license keys, and setup services."></label>
+        <label>Discord invite or support link<input type="url" id="shopDiscord" placeholder="https://discord.gg/yourserver"></label>
+        <label>Default payment/order link<input type="url" id="shopPayment" placeholder="https://paypal.me/yourname or Discord ticket link"></label>
+        <label>Theme color<input type="color" id="shopColor" value="#f97316"></label>
+        <label>Products <span class="form-hint">One per line: Name | Price | Description | Optional buy link</span><textarea id="shopProducts" rows="8" placeholder="VIP Access | $5/mo | Monthly server perks and private role | https://discord.gg/yourserver&#10;Plugin Setup | $15 | Installed and configured for your server | https://paypal.me/yourname"></textarea></label>
+        <label>Policies / terms<textarea id="shopPolicy" rows="4" placeholder="Example: Digital products are delivered after payment confirmation. No refunds after delivery unless required by law."></textarea></label>
+        <div class="builder-actions"><button class="button primary" type="submit">Generate page</button><button class="button secondary" type="button" id="loadShopDemo">Load demo</button><button class="button secondary" type="button" id="resetShopBuilder">Reset</button></div>
+      </form>
+      <aside class="builder-panel reveal">
+        <div class="section-heading mini-heading"><p class="eyebrow">Live preview</p><h2>Your public shop.</h2></div>
+        <div id="shopPreview" class="generated-profile"></div>
+        <div class="builder-actions stacked"><button class="button primary" type="button" id="copyShopLink">Copy share link</button><button class="button secondary" type="button" id="downloadShopJson">Download JSON</button><a class="button secondary" id="openShopLink" href="#" target="_blank" rel="noopener">Open public page</a></div>
+        <p class="panel-note" id="shopStatus">Your page updates after you click Generate page.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-pad cta-section"><div class="container"><div class="cta-card reveal"><p class="eyebrow">Store Bot integration</p><h2>Use the shop page as the public front door, then complete orders in Discord.</h2><p>Link products to your Store Bot panel, ticket channel, PayPal/Cash App instructions, or support server.</p><div class="hero-actions center"><a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Store Bot</a><a class="button secondary" href="docs.html">Read setup docs</a></div></div></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p><div class="footer-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="shop.html">Shop</a><a href="reputation.html">Reputation</a><a href="docs.html">Docs</a><a href="privacy-policy.html">Privacy</a><a href="tos.html">Terms</a><a href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Support</a></div></div></footer>
+<script src="script.js"></script>
+<script src="shop-reputation.js"></script>
+</body>
+</html>

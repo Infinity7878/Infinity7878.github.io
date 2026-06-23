@@ -78,29 +78,25 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" id="top">
-    <nav class="nav-shell" aria-label="Primary navigation">
+  <header class="site-header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Store Bot home">
-        <img class="brand-logo" src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async" />
+        <img src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async">
         <span>Store Bot</span>
       </a>
 
-      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
+      <div class="nav-links" id="site-nav-links">
         <a href="features.html">Features</a>
+        <a href="autopay.html">AutoPay</a>
         <a href="pricing.html">Pricing</a>
-        <a href="shop.html">Shops</a>
+        <a href="shop.html">Shop Pages</a>
         <a href="reputation.html">Reputation</a>
         <a href="docs.html">Docs</a>
-        <details class="nav-dropdown">
+
+        <details class="nav-more">
           <summary>More</summary>
-          <div class="nav-dropdown-menu" aria-label="More pages">
-            <a href="autopay.html">AutoPay</a>
+          <div class="nav-menu" aria-label="More pages">
             <a href="status.html" aria-current="page" class="active">Status</a>
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html">Dashboard</a>
@@ -108,6 +104,7 @@
             <a href="index.html#faq">FAQ</a>
           </div>
         </details>
+
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
       </div>
     </nav>

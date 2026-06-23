@@ -35,29 +35,25 @@
 </head>
 <body class="inner-page docs-page">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" id="top">
-    <nav class="nav-shell" aria-label="Primary navigation">
+  <header class="site-header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="index.html" aria-label="Store Bot home">
-        <img class="brand-logo" src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async" />
+        <img src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async">
         <span>Store Bot</span>
       </a>
 
-      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
+      <div class="nav-links" id="site-nav-links">
         <a href="features.html">Features</a>
+        <a href="autopay.html">AutoPay</a>
         <a href="pricing.html">Pricing</a>
-        <a href="shop.html">Shops</a>
+        <a href="shop.html">Shop Pages</a>
         <a href="reputation.html">Reputation</a>
         <a href="docs.html" aria-current="page" class="active">Docs</a>
-        <details class="nav-dropdown">
+
+        <details class="nav-more">
           <summary>More</summary>
-          <div class="nav-dropdown-menu" aria-label="More pages">
-            <a href="autopay.html">AutoPay</a>
+          <div class="nav-menu" aria-label="More pages">
             <a href="status.html">Status</a>
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html">Dashboard</a>
@@ -65,6 +61,7 @@
             <a href="index.html#faq">FAQ</a>
           </div>
         </details>
+
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
       </div>
     </nav>
@@ -185,20 +182,6 @@
             <details class="faq-card"><summary>The panel is outdated</summary><p>Refresh or repost the store panel after changing products, prices, branding, or payment instructions.</p></details>
             <details class="faq-card"><summary>AutoPay did not mark an order paid</summary><p>Confirm the order is still pending, the payment amount and currency match, the order code appears in the payment notification, and the forwarded email came from a supported provider.</p></details>
             <details class="faq-card"><summary>I need help setting it up</summary><p>Join the support server and open a ticket. Include your server name, what you were trying to do, and any error message you saw.</p></details>
-          </article>
-
-
-          <article class="content-card" id="shop-reputation-data">
-            <p class="eyebrow">Shop + reputation data</p>
-            <h2>How the website connects to Store Bot</h2>
-            <p>The Shop and Reputation pages are display-only. They load JSON files that Store Bot publishes to the website, the same general idea as the live status page loading <code>status.json</code>.</p>
-            <ol>
-              <li>Invite Store Bot to the seller's Discord server.</li>
-              <li>The server owner enables public Shop/Reputation pages in the bot.</li>
-              <li>The bot exports <code>data/shops-index.json</code> and one file per shop in <code>data/shops/</code>.</li>
-              <li>The website renders <code>shop.html?shop=server-slug</code> and <code>reputation.html?shop=server-slug</code>.</li>
-            </ol>
-            <p>Reviews should not be submitted from the website. A review should only appear when the bot exports it with <code>verifiedOrder: true</code> after a real completed Store Bot order.</p>
           </article>
         </div>
       </div>

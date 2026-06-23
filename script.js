@@ -102,11 +102,26 @@
     const response = await fetch('status.json?ts=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('HTTP ' + response.status);
     const status = await response.json();
-    const key = String(status.overall || 'degraded').toLowerCase().replace(/s+/g, '_');
+    const key = String(status.overall || 'degraded').toLowerCase().replace(/\s+/g, '_');
     badge.dataset.status = key;
     label.textContent = labels[key] || status.headline || 'View status';
   } catch {
     badge.dataset.status = 'degraded';
     label.textContent = 'Status unavailable';
   }
+})();
+
+
+// Store Bot nav dropdown cleanup
+(() => {
+  document.addEventListener('click', (event) => {
+    document.querySelectorAll('.nav-dropdown[open]').forEach((dropdown) => {
+      if (!dropdown.contains(event.target)) dropdown.open = false;
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    document.querySelectorAll('.nav-dropdown[open]').forEach((dropdown) => { dropdown.open = false; });
+  });
 })();

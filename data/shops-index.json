@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-23T00:00:00.000Z",
+  "source": "Store Bot export",
+  "shops": [
+    {
+      "serverId": "demo-store",
+      "slug": "demo-store",
+      "name": "Demo Store",
+      "description": "Example Store Bot seller page. Replace this with live bot-exported data.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 4.9,
+      "reviewCount": 24,
+      "completedOrders": 128,
+      "productCount": 3,
+      "tags": [
+        "digital products",
+        "vip access",
+        "setup services"
+      ],
+      "verified": true,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-23T00:00:00.000Z"
+    }
+  ]
+}

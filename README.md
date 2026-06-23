@@ -15,3 +15,8 @@
 ## Deployment
 
 This repo is set up for GitHub Pages with `storebot.pro` in `CNAME`.
+
+
+## Shop + Reputation pages
+
+The public shop and reputation pages read bot-exported JSON from `data/shops-index.json` and `data/shops/<slug>.json`. See `README_SHOP_REPUTATION_DATA.md` and `scripts/export-shop-reputation-data.example.cjs`. Reviews are display-only and should only be exported by Store Bot after verified completed orders.

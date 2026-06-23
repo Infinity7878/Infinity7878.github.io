@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://storebot.pro/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/features.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/autopay.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/pricing.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/docs.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/privacy-policy.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/tos.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/status.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://storebot.pro/dashboard.html</loc>
+  </url>
+
+  <url>
+    <loc>https://storebot.pro/patch-notes.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+ <url>
+  <loc>https://storebot.pro/shop.html</loc>
+  <lastmod>2026-06-22</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.85</priority>
+ </url>
+
+ <url>
+  <loc>https://storebot.pro/reputation.html</loc>
+  <lastmod>2026-06-22</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.85</priority>
+ </url>
+
+</urlset>

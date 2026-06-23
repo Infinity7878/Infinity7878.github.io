@@ -1,60 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
- <meta charset="utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>Discord Seller Reputation Pages | Store Bot Reviews</title>
- <meta name="description" content="Build buyer trust with Discord seller reputation pages, verified order reviews, completed order counts, policy sections, and public trust badges." />
- <meta name="robots" content="index, follow, max-image-preview:large" />
- <meta name="author" content="Store Bot" />
- <meta name="theme-color" content="#f97316" />
- <link rel="canonical" href="https://storebot.pro/reputation.html" />
- <link rel="icon" href="assets/storebot-avatar.png" />
- <link rel="stylesheet" href="styles.css?v=9" />
- <meta property="og:site_name" content="Store Bot" />
- <meta property="og:title" content="Discord Seller Reputation Pages | Store Bot" />
- <meta property="og:description" content="Show verified reviews, completed order counts, policies, and trust badges for Discord sellers." />
- <meta property="og:type" content="website" />
- <meta property="og:url" content="https://storebot.pro/reputation.html" />
- <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
- <meta name="twitter:card" content="summary_large_image" />
- <meta name="twitter:title" content="Discord Seller Reputation Pages | Store Bot" />
- <meta name="twitter:description" content="Build buyer trust with verified reviews and public seller reputation pages for Discord stores." />
- <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
- <script type="application/ld+json">
- {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Store Bot Reputation Pages",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Discord",
-  "url": "https://storebot.pro/reputation.html",
-  "description": "Store Bot Reputation Pages help Discord sellers collect and display verified reviews, completed order counts, policy notes, and trust signals."
- }
- </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Store Bot" />
+  <meta name="theme-color" content="#f97316" />
+  <link rel="icon" href="assets/storebot-avatar.png" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <meta property="og:site_name" content="Store Bot" />
+  <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
+  <title>Search Seller Reputation | Store Bot</title>
+  <meta name="description" content="Search Store Bot reputation pages generated from verified Discord shop orders, reviews, completed order counts, and seller policies." />
+  <link rel="canonical" href="https://storebot.pro/reputation.html" />
+  <meta property="og:title" content="Search Seller Reputation | Store Bot" />
+  <meta property="og:description" content="Search reputation pages generated from verified Store Bot order and review data." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://storebot.pro/reputation.html" />
 </head>
-<body class="inner-page reputation-page">
-
- <a class="skip-link" href="#main">Skip to content</a>
- <header class="site-header">
-    <a class="skip-link" href="#main">Skip to content</a>
-    <nav class="nav" aria-label="Main navigation">
+<body class="inner-page reputation-page" data-shop-page="reputation">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
       <a class="brand" href="index.html" aria-label="Store Bot home">
-        <img src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async">
+        <img class="brand-logo" src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async" />
         <span>Store Bot</span>
       </a>
 
-      <div class="nav-links" id="site-nav-links">
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
         <a href="features.html">Features</a>
-        <a href="autopay.html">AutoPay</a>
         <a href="pricing.html">Pricing</a>
-        <a href="shop.html">Shop Pages</a>
+        <a href="shop.html">Shops</a>
         <a href="reputation.html" aria-current="page" class="active">Reputation</a>
         <a href="docs.html">Docs</a>
-
-        <details class="nav-more">
+        <details class="nav-dropdown">
           <summary>More</summary>
-          <div class="nav-menu" aria-label="More pages">
+          <div class="nav-dropdown-menu" aria-label="More pages">
+            <a href="autopay.html">AutoPay</a>
             <a href="status.html">Status</a>
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html">Dashboard</a>
@@ -62,133 +52,82 @@
             <a href="index.html#faq">FAQ</a>
           </div>
         </details>
-
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
       </div>
     </nav>
   </header>
-<main id="main">
- <section class="section-pad page-hero">
-  <div class="container hero-grid">
-   <div class="reveal">
-    <p class="eyebrow">Seller reputation</p>
-    <h1>Make Discord sellers easier to trust.</h1>
-    <p class="hero-text">Buyers hesitate when a shop only exists as a Discord channel. Reputation Pages give sellers a public trust profile with verified reviews, completed order counts, policies, and report/dispute context.</p>
-    <div class="hero-actions">
-     <a class="button primary" href="https://discord.gg/zB7NgPBzBA">Request early access</a>
-     <a class="button secondary" href="shop.html">View shop pages</a>
-    </div>
-    <div class="trust-row" aria-label="Reputation highlights">
-     <span>Verified reviews</span>
-     <span>Order history</span>
-     <span>Trust badge</span>
-     <span>Policy clarity</span>
-    </div>
-   </div>
-   <article class="reputation-card reveal" aria-label="Example seller reputation card">
-    <div class="trust-score"><span>4.9</span><strong>Trusted seller score</strong><small>Based on verified Store Bot review signals</small></div>
-    <div class="seller-metrics">
-     <span><strong>128</strong> completed orders</span>
-     <span><strong>97%</strong> positive reviews</span>
-     <span><strong>0</strong> active disputes</span>
-    </div>
-    <div class="review-stack">
-     <blockquote>“Fast delivery and clear setup instructions.” <span>Verified order</span></blockquote>
-     <blockquote>“Support answered quickly after purchase.” <span>Verified order</span></blockquote>
-    </div>
-    <p class="panel-note">Example only. Real reputation data should be pulled from completed Store Bot orders and review prompts.</p>
-   </article>
-  </div>
- </section>
 
- <section class="section-pad" id="why-it-sells">
-  <div class="container">
-   <div class="section-heading reveal">
-    <p class="eyebrow">Why sellers want it</p>
-    <h2>Trust is the biggest problem in Discord selling.</h2>
-    <p>A seller reputation page gives buyers something public to check before paying. It also gives honest sellers a cleaner way to prove they have real customers.</p>
-   </div>
-   <div class="feature-grid">
-    <article class="feature-card reveal"><span class="card-icon">01</span><h3>Verified order reviews</h3><p>Collect reviews after delivery so sellers can show feedback connected to real Store Bot orders.</p></article>
-    <article class="feature-card reveal"><span class="card-icon">02</span><h3>Public trust profile</h3><p>Give every seller a shareable profile with rating, completed orders, Discord invite, policies, and support details.</p></article>
-    <article class="feature-card reveal"><span class="card-icon">03</span><h3>Dispute context</h3><p>Show clean signals like no active disputes, report handling, seller response notes, and policy transparency.</p></article>
-    <article class="feature-card reveal"><span class="card-icon">04</span><h3>Trust badge</h3><p>Let sellers display a Store Bot verified badge on their shop page, Discord profile, or website widget.</p></article>
-    <article class="feature-card reveal"><span class="card-icon">05</span><h3>Review moderation</h3><p>Give store owners control over obvious spam while keeping verified purchase reviews meaningful.</p></article>
-    <article class="feature-card reveal"><span class="card-icon">06</span><h3>Conversion boost</h3><p>Make the seller look more established before the buyer joins the server, opens a ticket, or sends payment.</p></article>
-   </div>
-  </div>
- </section>
+  <main id="main">
+    <section class="section-pad page-hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Seller reputation</p>
+          <h1>Look up a seller's Store Bot reputation.</h1>
+          <p class="hero-text">Reputation pages use bot-exported order and review data. Buyers can check verified reviews, completed order counts, dispute signals, and seller policies before joining a server or opening a ticket.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="shop.html">Search shops</a>
+            <a class="button secondary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
+          </div>
+          <div class="trust-row">
+            <span>Verified order reviews</span>
+            <span>Completed order counts</span>
+            <span>No public review spam</span>
+            <span>Transparent trust signals</span>
+          </div>
+        </div>
+        <article class="lookup-card reveal">
+          <p class="eyebrow">Find reputation</p>
+          <h2>Enter a Discord invite, server ID, or shop slug.</h2>
+          <p>Only servers exported by Store Bot can have public reputation pages.</p>
+          <form class="lookup-form" id="lookupForm">
+            <input id="lookupInput" name="q" type="search" autocomplete="off" placeholder="Discord invite, server ID, or shop name" />
+            <button class="button primary" type="submit">Generate reputation</button>
+          </form>
+          <div id="lookupMessage" aria-live="polite"></div>
+        </article>
+      </div>
+    </section>
 
- <section class="section-pad accent-section" id="trust-signals">
-  <div class="container split-grid">
-   <div class="reveal">
-    <p class="eyebrow">Trust signals</p>
-    <h2>Show useful proof without overpromising safety.</h2>
-    <p class="section-text">The copy avoids promising that every seller is safe. It focuses on transparent signals: reviews, order counts, policies, and report status.</p>
-    <div class="check-list" role="list">
-     <span role="listitem">Average review score and verified review count</span>
-     <span role="listitem">Completed Store Bot orders and recent activity</span>
-     <span role="listitem">Refund policy, delivery policy, and support expectations</span>
-     <span role="listitem">Report/dispute status when moderation tools exist</span>
+    <div id="reputationDetail"></div>
+
+    <section class="section-pad accent-section">
+      <div class="container split-grid">
+        <div class="reveal">
+          <p class="eyebrow">Review integrity</p>
+          <h2>Visitors cannot add their own reviews here.</h2>
+          <p class="section-text">The reputation page is display-only. Reviews are expected to come from Store Bot's completed-order review flow, not from a public website form.</p>
+          <div class="check-list" role="list">
+            <span role="listitem">Review is requested after an order is delivered/completed.</span>
+            <span role="listitem">Bot marks the review as tied to a verified order.</span>
+            <span role="listitem">Bot exports the approved review into the shop JSON file.</span>
+            <span role="listitem">Website displays it as verified Store Bot feedback.</span>
+          </div>
+        </div>
+        <article class="reputation-card reveal">
+          <div class="trust-score"><span>✓</span><strong>Verified-order only</strong><small>The frontend has no self-review submission feature.</small></div>
+          <p class="panel-note">This avoids the biggest problem with reputation sites: sellers creating their own fake reviews.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="shop.html">Shops</a>
+        <a href="reputation.html">Reputation</a>
+        <a href="docs.html">Docs</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="https://discord.gg/zB7NgPBzBA">Support</a>
+      </div>
     </div>
-   </div>
-   <article class="notice-card reveal">
-    <p class="eyebrow">Important</p>
-    <h3>Use “verified order,” not “guaranteed safe.”</h3>
-    <p>For legal and trust reasons, the site should avoid guaranteeing that a seller will never scam. The better claim is that reviews are tied to completed Store Bot orders when the seller uses Store Bot.</p>
-    <a class="inline-link" href="shop.html">See shop page feature →</a>
-   </article>
-  </div>
- </section>
-
- <section class="section-pad" id="reputation-flow">
-  <div class="container">
-   <div class="section-heading reveal">
-    <p class="eyebrow">How it works</p>
-    <h2>A simple reputation loop.</h2>
-    <p>Start with static public pages now. Later, connect these sections to Store Bot's real order and review data.</p>
-   </div>
-   <ol class="steps reveal">
-    <li><strong>Order completed</strong><span>Store Bot marks the order delivered or completed.</span></li>
-    <li><strong>Buyer review requested</strong><span>The customer can leave a star rating and short feedback.</span></li>
-    <li><strong>Review is labeled verified</strong><span>The review is connected to a Store Bot order record instead of random public comments.</span></li>
-    <li><strong>Profile updates</strong><span>The seller's public page shows fresh rating, completed order count, and trust signals.</span></li>
-   </ol>
-  </div>
- </section>
-
- <section class="section-pad cta-section">
-  <div class="container">
-   <div class="cta-card reveal">
-    <p class="eyebrow">Next add-on</p>
-    <h2>Turn Store Bot reviews into a seller trust product.</h2>
-    <p>Reputation Pages are a natural upsell for sellers who already use Store Bot to manage orders and collect reviews.</p>
-    <div class="hero-actions center">
-     <a class="button primary" href="https://discord.gg/zB7NgPBzBA">Ask about early access</a>
-     <a class="button secondary" href="pricing.html">View pricing</a>
-    </div>
-   </div>
-  </div>
- </section>
-</main>
-
- <footer class="site-footer">
- <div class="container footer-grid">
- <p>© <span id="year"></span> Store Bot. Built for Discord storefronts.</p>
- <div class="footer-links" aria-label="Footer links">
- <a href="index.html">Home</a>
- <a href="features.html">Features</a>
- <a href="autopay.html">AutoPay</a>
- <a href="pricing.html">Pricing</a>
- <a href="shop.html">Shop Pages</a>
- <a href="reputation.html">Reputation</a>
- <a href="docs.html">Docs</a>
- <a href="privacy-policy.html">Privacy</a>
- <a href="tos.html">Terms</a>
- <a href="https://discord.gg/zB7NgPBzBA">Support</a>
- </div>
- </div>
- </footer>
-<script src="script.js?v=7" defer></script>
+  </footer>
+  <script src="script.js?v=8" defer></script>
+  <script src="shop-reputation.js?v=1" defer></script>
 </body>
 </html>
