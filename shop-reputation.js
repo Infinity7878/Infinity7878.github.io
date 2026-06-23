@@ -154,7 +154,7 @@
     const results = filterShops(index, query);
     if (count) count.textContent = `${results.length} shop${results.length === 1 ? '' : 's'} found`;
     if (!results.length) {
-      list.innerHTML = statusMessage('No matching Store Bot shops were found. The bot needs to be in the server and the server must have public shop pages enabled.', 'warning');
+      list.innerHTML = statusMessage(query ? 'No matching Store Bot shops were found. The bot needs to be in the server and the server must have public shop pages enabled.' : 'No public Store Bot shops have been exported yet.', 'warning');
       return;
     }
     list.innerHTML = results.map(shopCard).join('');
@@ -227,7 +227,6 @@
             <span>${formatNumber(products.length)} public products</span>
             <span>${formatNumber(stats.reviewCount)} verified reviews</span>
           </div>
-          ${shop.isDemo ? '<p class="panel-note warning-note">Demo data is showing. Replace the JSON files with bot-exported server data for live shops.</p>' : ''}
         </div>
         <article class="shop-preview-card reveal visible">
           <div class="shop-preview-header">
@@ -289,7 +288,6 @@
             <span>${formatNumber(stats.reviewCount)} verified reviews</span>
             <span>${formatNumber(stats.activeDisputes)} active disputes</span>
           </div>
-          ${shop.isDemo ? '<p class="panel-note warning-note">Demo data is showing. Replace the JSON files with bot-exported server data for live reputation pages.</p>' : ''}
         </div>
         <article class="reputation-card reveal visible">
           <div class="trust-score"><span>${rating ? rating.toFixed(1) : '—'}</span><strong>Seller rating</strong><small>Based only on verified Store Bot reviews</small></div>

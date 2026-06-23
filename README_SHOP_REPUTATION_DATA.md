@@ -7,7 +7,7 @@ The website reads:
 - `data/shops-index.json` for search results
 - `data/shops/<slug>.json` for a full shop/reputation page
 
-Use the same deployment process you already use for `status.json`: let the bot write the JSON file, then publish/push it to the website.
+The included files are live-export ready and do not include demo shops. Use the same deployment process you already use for `status.json`: let the bot write the JSON file, then publish/push it to the website.
 
 ## Public URLs
 
