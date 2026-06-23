@@ -175,34 +175,19 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="skip-link" href="#main">Skip to content</a>
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="index.html" aria-label="Store Bot home">
-        <img src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async">
+  <header>
+    <nav class="wrap nav" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark">SB</span>
         <span>Store Bot</span>
       </a>
-
-      <div class="nav-links" id="site-nav-links">
-        <a href="features.html">Features</a>
-        <a href="autopay.html">AutoPay</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="shop.html">Shop Pages</a>
-        <a href="reputation.html">Reputation</a>
-        <a href="docs.html">Docs</a>
-
-        <details class="nav-more">
-          <summary>More</summary>
-          <div class="nav-menu" aria-label="More pages">
-            <a href="status.html">Status</a>
-            <a href="patch-notes.html" aria-current="page" class="active">Patch Notes</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="index.html#setup">Setup</a>
-            <a href="index.html#faq">FAQ</a>
-          </div>
-        </details>
-
-        <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/status.html">Status</a>
+        <a class="active" href="/patch-notes.html">Patch Notes</a>
+        <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&scope=bot%20applications.commands" rel="noopener">Invite Bot</a>
       </div>
     </nav>
   </header>
