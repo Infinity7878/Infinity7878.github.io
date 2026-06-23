@@ -3,18 +3,18 @@
   "status": "operational",
   "headline": "All systems operational",
   "message": "Store Bot services are responding normally.",
-  "updatedAt": "2026-06-23T03:10:01.891Z",
-  "serverCount": 20,
-  "servers": 20,
-  "serverCountSource": "discord_api_error",
+  "updatedAt": "2026-06-23T03:15:02.567Z",
+  "serverCount": 10,
+  "servers": 10,
+  "serverCountSource": "discord_api_live_bot_guilds",
   "trackedServerCount": 20,
   "metrics": {
-    "serverCount": 20,
-    "servers": 20,
-    "serverCountSource": "discord_api_error",
+    "serverCount": 10,
+    "servers": 10,
+    "serverCountSource": "discord_api_live_bot_guilds",
     "trackedServerCount": 20,
-    "botUptime": "1d 1h 32m",
-    "memory": "58 MB",
+    "botUptime": "1d 1h 37m",
+    "memory": "59 MB",
     "cpu": "0%",
     "restarts": 0,
     "pid": 1536
@@ -24,8 +24,8 @@
     "status": "operational",
     "pm2Status": "online",
     "message": "Store Bot process is online.",
-    "uptime": "1d 1h 32m",
-    "memory": "58 MB",
+    "uptime": "1d 1h 37m",
+    "memory": "59 MB",
     "cpu": "0%",
     "restarts": 0,
     "pid": 1536
@@ -60,12 +60,12 @@
     {
       "name": "Top.gg Vote Rewards",
       "status": "operational",
-      "message": "Top.gg Vote Rewards responded in 4ms."
+      "message": "Top.gg Vote Rewards responded in 3ms."
     },
     {
       "name": "Website",
       "status": "operational",
-      "message": "Website responded in 175ms."
+      "message": "Website responded in 81ms."
     }
   ]
 }
