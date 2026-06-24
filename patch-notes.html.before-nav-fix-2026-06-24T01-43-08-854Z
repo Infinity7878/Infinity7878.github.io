@@ -10,8 +10,6 @@
   <meta property="og:description" content="Latest Store Bot updates, fixes, and improvements." />
   <meta property="og:url" content="https://storebot.pro/patch-notes.html" />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/storebot-avatar.png" />
-  <link rel="stylesheet" href="styles.css?v=8" />
   <style>
     :root {
       --bg: #0b0f18;
@@ -174,7 +172,6 @@
       .footer-inner { flex-direction: column; align-items:flex-start; padding:22px 0; }
     }
   </style>
-  <script src="script.js?v=8" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -229,7 +226,7 @@
       <article class="card">
         <h3>Update feed</h3>
         <p class="muted">New entries appear here when Store Bot publishes an update from the VPS.</p>
-        <a class="btn" href="status.html">View service status</a>
+        <a class="btn" href="/status.html">View service status</a>
       </article>
     </section>
 
@@ -243,12 +240,12 @@
       <span>© 2026 Store Bot. Built for Discord storefronts.</span>
       <div class="footer-links">
         <a href="/">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="docs.html">Docs</a>
-        <a href="status.html">Status</a>
-        <a href="patch-notes.html">Patch Notes</a>
-        <a href="privacy-policy.html">Privacy</a>
-        <a href="tos.html">Terms</a>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/status.html">Status</a>
+        <a href="/patch-notes.html">Patch Notes</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
         <a href="https://discord.gg/zB7NgPBzBA" rel="noopener">Support</a>
       </div>
     </div>
