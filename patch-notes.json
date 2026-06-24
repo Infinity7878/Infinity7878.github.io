@@ -4,15 +4,16 @@
   "notes": [
     {
       "id": "store-bot-update-deployed-d13740b488",
-      "title": "Store Bot update deployed",
-      "summary": "A new Store Bot update has been deployed.",
+      "title": "Hide your shop from the site.",
+      "summary": "You can now hide your shop from being listed on the site using: /storebot website visible:False",
       "date": "2026-06-24T02:07:01.441Z",
       "tags": [
         "Deployment",
-        "Update"
+        "Update",
+        "Privacy"
       ],
       "items": [
-        "A new Store Bot update was deployed.",
+        "/storebot website visible true/false command added.",
         "Store Bot was updated with internal improvements for stability, performance, and reliability.",
         "Dashboard, storefront, checkout, delivery, or maintenance systems may include improvements from this deployment."
       ]
