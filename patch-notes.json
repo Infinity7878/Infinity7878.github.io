@@ -4,8 +4,8 @@
   "notes": [
     {
       "id": "store-bot-update-deployed-dfe5e520ad",
-      "title": "Changed to a DB that can support more users.",
-      "summary": "A new Store Bot update has been deployed.",
+      "title": "Store Bot was updated with PostgreSQL storage improvements",
+      "summary": "safer data syncing, and better production reliability",
       "date": "2026-06-24T00:50:01.374Z",
       "tags": [
         "Deployment",
