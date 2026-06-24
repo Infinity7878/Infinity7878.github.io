@@ -21,17 +21,17 @@
   ],
   "products": [
     {
-      "id": "u-rides",
-      "name": "U Rides £10 off first ride",
-      "price": "$0.40",
-      "description": "Login Type: Discount Code U Rides £10 off first ride",
-      "deliveryType": "Manual delivery"
-    },
-    {
       "id": "boots",
       "name": "Boots £5 coupon Unlimited Use",
       "price": "$0.10",
       "description": "Boots £5 coupon Usage unlimited Can be scanned x2 per transaction",
+      "deliveryType": "Manual delivery"
+    },
+    {
+      "id": "u-rides",
+      "name": "U Rides £10 off first ride",
+      "price": "$0.40",
+      "description": "Login Type: Discount Code U Rides £10 off first ride",
       "deliveryType": "Manual delivery"
     }
   ],
@@ -54,5 +54,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-23T23:40:01.844Z"
+  "lastUpdated": "2026-06-24T01:31:35.817Z"
 }
