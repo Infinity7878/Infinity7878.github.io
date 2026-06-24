@@ -1,0 +1,483 @@
+
+function billingConfigured() {
+  return Boolean(STRIPE_SECRET_KEY && STRIPE_WEBHOOK_SECRET && STRIPE_PREMIUM_PRICE_ID);
+}
+
+function stripeAuthHeaders(contentType = "application/x-www-form-urlencoded") {
+  const headers = { Authorization: `Bearer ${STRIPE_SECRET_KEY}` };
+  if (contentType) headers["Content-Type"] = contentType;
+  return headers;
+}
+
+function encodeStripeParams(value, prefix = null, pairs = []) {
+  if (value === undefined || value === null) return pairs;
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => encodeStripeParams(item, `${prefix}[${index}]`, pairs));
+    return pairs;
+  }
+  if (typeof value === "object") {
+    for (const [key, child] of Object.entries(value)) {
+      encodeStripeParams(child, prefix ? `${prefix}[${key}]` : key, pairs);
+    }
+    return pairs;
+  }
+  pairs.push([prefix, String(value)]);
+  return pairs;
+}
+
+async function stripeApi(method, endpoint, params = null) {
+  if (!STRIPE_SECRET_KEY) throw Object.assign(new Error("Stripe secret key is not configured."), { statusCode: 503 });
+  const url = `${STRIPE_API_BASE}${endpoint}`;
+  const options = { method, headers: stripeAuthHeaders(method === "GET" ? null : "application/x-www-form-urlencoded") };
+  if (method !== "GET" && params) {
+    const body = new URLSearchParams();
+    for (const [key, value] of encodeStripeParams(params)) body.append(key, value);
+    options.body = body;
+  }
+  const res = await fetch(url, options);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const message = data?.error?.message || `Stripe API failed: HTTP ${res.status}`;
+    throw Object.assign(new Error(message), { statusCode: res.status >= 500 ? 502 : 400, stripe: data });
+  }
+  return data;
+}
+
+async function stripeGet(endpoint) {
+  if (!STRIPE_SECRET_KEY) throw Object.assign(new Error("Stripe secret key is not configured."), { statusCode: 503 });
+  const res = await fetch(`${STRIPE_API_BASE}${endpoint}`, { headers: stripeAuthHeaders(null) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const message = data?.error?.message || `Stripe API failed: HTTP ${res.status}`;
+    throw Object.assign(new Error(message), { statusCode: res.status >= 500 ? 502 : 400, stripe: data });
+  }
+  return data;
+}
+
+function selectedStripePriceForPlan(plan) {
+  const clean = String(plan || "premium_monthly").toLowerCase();
+  if ((clean === "intro" || clean === "premium_intro") && STRIPE_INTRO_PRICE_ID) return { priceId: STRIPE_INTRO_PRICE_ID, plan: "premium_intro" };
+  return { priceId: STRIPE_PREMIUM_PRICE_ID, plan: "premium_monthly" };
+}
+
+async function createStripeCheckoutForGuild(guildId, session, plan = "premium_monthly") {
+  if (!billingConfigured()) {
+    throw Object.assign(new Error("Stripe billing is not fully configured yet."), { statusCode: 503 });
+  }
+  const { priceId, plan: cleanPlan } = selectedStripePriceForPlan(plan);
+  const guild = guildInfoFromSession(guildId, session);
+  const successUrl = appendUrlParams(BILLING_SUCCESS_URL, { guild_id: guildId, billing: "success" });
+  const cancelUrl = appendUrlParams(BILLING_CANCEL_URL, { guild_id: guildId, billing: "cancelled" });
+  const params = {
+    mode: "subscription",
+    success_url: successUrl,
+    cancel_url: cancelUrl,
+    client_reference_id: guildId,
+    allow_promotion_codes: STRIPE_ALLOW_PROMOTION_CODES ? "true" : "false",
+    line_items: [{ price: priceId, quantity: 1 }],
+    metadata: {
+      storebot: "premium",
+      guild_id: guildId,
+      guild_name: guild.name || `Server ${guildId}`,
+      owner_discord_id: session.user?.id || "",
+      plan: cleanPlan
+    },
+    subscription_data: {
+      metadata: {
+        storebot: "premium",
+        guild_id: guildId,
+        owner_discord_id: session.user?.id || "",
+        plan: cleanPlan
+      }
+    }
+  };
+  if ((cleanPlan === "premium_intro" || String(plan).toLowerCase() === "intro") && STRIPE_INTRO_COUPON_ID && !STRIPE_INTRO_PRICE_ID) {
+    delete params.allow_promotion_codes;
+    params.discounts = [{ coupon: STRIPE_INTRO_COUPON_ID }];
+  }
+  const sessionObj = await stripeApi("POST", "/checkout/sessions", params);
+  await ensureBillingSchema().catch((err) => console.warn("[billing] schema setup warning:", err.message));
+  await upsertStripeSubscriptionRow({
+    guildId,
+    ownerDiscordId: session.user?.id || null,
+    stripeCustomerId: sessionObj.customer || null,
+    stripeSubscriptionId: sessionObj.subscription || null,
+    stripeCheckoutSessionId: sessionObj.id,
+    stripePriceId: priceId,
+    plan: cleanPlan,
+    status: "checkout_started",
+    raw: sessionObj
+  }).catch((err) => console.warn("[billing] could not store checkout start:", err.message));
+  return { ok: true, url: sessionObj.url, sessionId: sessionObj.id, guildId, plan: cleanPlan };
+}
+
+async function createStripeBillingPortalForGuild(guildId) {
+  const status = await getBillingStatusForGuild(guildId);
+  if (!status.stripeCustomerId) {
+    throw Object.assign(new Error("No Stripe customer found for this server yet."), { statusCode: 404 });
+  }
+  const portal = await stripeApi("POST", "/billing_portal/sessions", {
+    customer: status.stripeCustomerId,
+    return_url: appendUrlParams(BILLING_PORTAL_RETURN_URL, { guild_id: guildId })
+  });
+  return { ok: true, url: portal.url };
+}
+
+function appendUrlParams(baseUrl, params) {
+  const url = new URL(baseUrl || FRONTEND_URL);
+  for (const [key, value] of Object.entries(params || {})) {
+    if (value !== undefined && value !== null && value !== "") url.searchParams.set(key, String(value));
+  }
+  return url.toString();
+}
+
+async function readRawRequestBody(req, maxBytes = 2_000_000) {
+  const chunks = [];
+  let total = 0;
+  for await (const chunk of req) {
+    total += chunk.length;
+    if (total > maxBytes) throw Object.assign(new Error("Webhook payload too large"), { statusCode: 413 });
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
+}
+
+function verifyStripeWebhookSignature(rawBody, signatureHeader) {
+  if (!STRIPE_WEBHOOK_SECRET) throw Object.assign(new Error("Stripe webhook secret is not configured."), { statusCode: 503 });
+  const parts = String(signatureHeader || "").split(",").reduce((acc, item) => {
+    const [key, value] = item.split("=");
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(value);
+    return acc;
+  }, {});
+  const timestamp = parts.t?.[0];
+  const signatures = parts.v1 || [];
+  if (!timestamp || !signatures.length) throw Object.assign(new Error("Missing Stripe webhook signature."), { statusCode: 400 });
+  const ageSeconds = Math.abs(Date.now() / 1000 - Number(timestamp));
+  if (!Number.isFinite(ageSeconds) || ageSeconds > 300) throw Object.assign(new Error("Stripe webhook signature timestamp is too old."), { statusCode: 400 });
+  const signedPayload = `${timestamp}.${rawBody.toString("utf8")}`;
+  const expected = crypto.createHmac("sha256", STRIPE_WEBHOOK_SECRET).update(signedPayload).digest("hex");
+  for (const sig of signatures) {
+    try {
+      if (crypto.timingSafeEqual(Buffer.from(sig, "hex"), Buffer.from(expected, "hex"))) return true;
+    } catch {}
+  }
+  throw Object.assign(new Error("Stripe webhook signature verification failed."), { statusCode: 400 });
+}
+
+async function handleStripeWebhookRoute(req, res) {
+  const raw = await readRawRequestBody(req);
+  verifyStripeWebhookSignature(raw, req.headers["stripe-signature"]);
+  const event = JSON.parse(raw.toString("utf8"));
+  const duplicate = await rememberStripeEvent(event).catch((err) => {
+    console.warn("[billing] could not store event id before handling:", err.message);
+    return false;
+  });
+  if (duplicate) {
+    json(res, 200, { ok: true, duplicate: true }, req);
+    return;
+  }
+  await handleStripeEvent(event);
+  json(res, 200, { ok: true }, req);
+}
+
+async function handleStripeEvent(event) {
+  const type = String(event?.type || "");
+  const obj = event?.data?.object || {};
+  if (type === "checkout.session.completed") {
+    await handleStripeCheckoutCompleted(obj, event.id);
+    return;
+  }
+  if (type === "customer.subscription.created" || type === "customer.subscription.updated" || type === "customer.subscription.deleted") {
+    await handleStripeSubscriptionChanged(obj, event.id, type);
+    return;
+  }
+  if (type === "invoice.payment_failed" && STRIPE_DISABLE_ON_PAYMENT_FAILED) {
+    const subscriptionId = typeof obj.subscription === "string" ? obj.subscription : obj.subscription?.id;
+    if (subscriptionId) await revokePremiumBySubscriptionId(subscriptionId, event.id, "payment_failed");
+  }
+}
+
+async function handleStripeCheckoutCompleted(sessionObj, eventId) {
+  const guildId = String(sessionObj?.metadata?.guild_id || sessionObj?.client_reference_id || "");
+  if (!/^\d{15,25}$/.test(guildId)) throw new Error("Stripe checkout completed without a valid guild_id.");
+  const subscriptionId = typeof sessionObj.subscription === "string" ? sessionObj.subscription : sessionObj.subscription?.id;
+  let subscription = subscriptionId ? await stripeGet(`/subscriptions/${encodeURIComponent(subscriptionId)}`) : null;
+  await applyStripePremiumState({ guildId, sessionObj, subscription, eventId, reason: "checkout_completed" });
+}
+
+async function handleStripeSubscriptionChanged(subscription, eventId, eventType) {
+  const guildId = String(subscription?.metadata?.guild_id || "") || await findGuildIdBySubscriptionId(subscription?.id);
+  if (!/^\d{15,25}$/.test(guildId)) {
+    console.warn(`[billing] subscription event ${eventType} skipped because guild_id was not found.`);
+    return;
+  }
+  await applyStripePremiumState({ guildId, subscription, eventId, reason: eventType });
+}
+
+async function revokePremiumBySubscriptionId(subscriptionId, eventId, reason = "revoked") {
+  const guildId = await findGuildIdBySubscriptionId(subscriptionId);
+  if (!/^\d{15,25}$/.test(guildId || "")) return;
+  await applyStripePremiumState({ guildId, subscription: { id: subscriptionId, status: "payment_failed" }, eventId, reason, forceInactive: true });
+}
+
+function stripeSubscriptionActive(subscription, forceInactive = false) {
+  if (forceInactive) return false;
+  const status = String(subscription?.status || "").toLowerCase();
+  return status === "active" || status === "trialing";
+}
+
+function stripePeriodEnd(subscription) {
+  const seconds = Number(subscription?.current_period_end || 0);
+  if (Number.isFinite(seconds) && seconds > 0) return new Date(seconds * 1000).toISOString();
+  return null;
+}
+
+async function applyStripePremiumState({ guildId, sessionObj = null, subscription = null, eventId = null, reason = "stripe", forceInactive = false }) {
+  const active = stripeSubscriptionActive(subscription, forceInactive);
+  const expiresAt = active ? stripePeriodEnd(subscription) : new Date().toISOString();
+  const now = new Date().toISOString();
+  const customerId = subscription?.customer || sessionObj?.customer || null;
+  const subscriptionId = subscription?.id || sessionObj?.subscription || null;
+  const ownerDiscordId = subscription?.metadata?.owner_discord_id || sessionObj?.metadata?.owner_discord_id || null;
+  const plan = subscription?.metadata?.plan || sessionObj?.metadata?.plan || "premium_monthly";
+  const priceId = subscription?.items?.data?.[0]?.price?.id || STRIPE_PREMIUM_PRICE_ID;
+  const status = forceInactive ? reason : String(subscription?.status || sessionObj?.payment_status || "unknown");
+
+  updatePremiumJsonCache(guildId, {
+    active,
+    plan: active ? "stripe_monthly" : "free",
+    expiresAt,
+    activatedAt: active ? now : null,
+    activatedBy: ownerDiscordId || "stripe",
+    redeemedCode: null,
+    stripeCustomerId: customerId,
+    stripeSubscriptionId: subscriptionId,
+    stripeStatus: status,
+    stripePlan: plan,
+    stripePriceId: priceId,
+    source: "stripe_checkout",
+    lastStripeEventId: eventId,
+    lastStripeSyncAt: now,
+    lastStripeReason: reason
+  });
+
+  await upsertStripeSubscriptionRow({
+    guildId,
+    ownerDiscordId,
+    stripeCustomerId: customerId,
+    stripeSubscriptionId: subscriptionId,
+    stripeCheckoutSessionId: sessionObj?.id || null,
+    stripePriceId: priceId,
+    plan,
+    status,
+    currentPeriodEnd: expiresAt,
+    cancelAtPeriodEnd: Boolean(subscription?.cancel_at_period_end),
+    lastEventId: eventId,
+    raw: { session: sessionObj, subscription }
+  }).catch((err) => console.warn("[billing] could not upsert stripe subscription row:", err.message));
+
+  await updatePostgresPremiumFromJson(guildId).catch((err) => console.warn("[billing] could not update Postgres premium state:", err.message));
+  console.log(`[billing] ${active ? "granted" : "removed"} Premium for guild ${guildId} via Stripe (${reason}).`);
+}
+
+function updatePremiumJsonCache(guildId, premiumPatch) {
+  const db = readStoreDb();
+  const guild = getAdminGuildInfo(guildId, { guilds: [] });
+  if (!db.guilds[guildId]) db.guilds[guildId] = defaultDashboardStore(guildId, guild.name || `Server ${guildId}`);
+  const store = ensureDashboardStoreShape(db.guilds[guildId], guildId, guild.name || db.guilds[guildId].guildName || `Server ${guildId}`);
+  store.premium = { ...(store.premium || {}), ...premiumPatch };
+  if (premiumPatch.active === false) {
+    store.premium.active = false;
+    store.premium.plan = "free";
+  }
+  store.updatedAt = new Date().toISOString();
+  store.updatedVia = "stripe_webhook";
+  db.guilds[guildId] = store;
+  writeStoreDb(db);
+}
+
+async function getBillingPgPool() {
+  const connectionString = process.env.STOREBOT_DATABASE_URL || process.env.DATABASE_URL || "";
+  if (!connectionString) return null;
+  if (!global.__storebotDashboardBillingPool) {
+    const { createRequire } = require("module");
+    let pg;
+    try {
+      pg = require("pg");
+    } catch {
+      const botRequire = createRequire(path.join(BOT_ROOT, "package.json"));
+      pg = botRequire("pg");
+    }
+    global.__storebotDashboardBillingPool = new pg.Pool({
+      connectionString,
+      max: Math.max(1, Number(process.env.STOREBOT_POSTGRES_POOL_MAX || 4)),
+      idleTimeoutMillis: 30_000,
+      connectionTimeoutMillis: 10_000
+    });
+  }
+  return global.__storebotDashboardBillingPool;
+}
+
+async function ensureBillingSchema() {
+  const pool = await getBillingPgPool();
+  if (!pool) return false;
+  await pool.query(`
+    create table if not exists storebot_stripe_subscriptions (
+      guild_id text primary key,
+      owner_discord_id text,
+      stripe_customer_id text,
+      stripe_subscription_id text unique,
+      stripe_checkout_session_id text,
+      stripe_price_id text,
+      plan text,
+      status text,
+      current_period_end timestamptz,
+      cancel_at_period_end boolean not null default false,
+      last_event_id text,
+      raw jsonb not null default '{}'::jsonb,
+      created_at timestamptz not null default now(),
+      updated_at timestamptz not null default now()
+    );
+    create table if not exists storebot_stripe_events (
+      event_id text primary key,
+      type text,
+      received_at timestamptz not null default now()
+    );
+    create index if not exists idx_storebot_stripe_subscriptions_customer on storebot_stripe_subscriptions(stripe_customer_id);
+    create index if not exists idx_storebot_stripe_subscriptions_status on storebot_stripe_subscriptions(status);
+  `);
+  return true;
+}
+
+async function rememberStripeEvent(event) {
+  const pool = await getBillingPgPool();
+  if (!pool || !event?.id) return false;
+  await ensureBillingSchema();
+  const result = await pool.query(
+    "insert into storebot_stripe_events(event_id, type) values ($1, $2) on conflict (event_id) do nothing returning event_id",
+    [String(event.id), String(event.type || "")]
+  );
+  return result.rowCount === 0;
+}
+
+async function upsertStripeSubscriptionRow(row) {
+  const pool = await getBillingPgPool();
+  if (!pool) return false;
+  await ensureBillingSchema();
+  await pool.query(`
+    insert into storebot_stripe_subscriptions (
+      guild_id, owner_discord_id, stripe_customer_id, stripe_subscription_id, stripe_checkout_session_id,
+      stripe_price_id, plan, status, current_period_end, cancel_at_period_end, last_event_id, raw, updated_at
+    ) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12::jsonb,now())
+    on conflict (guild_id) do update set
+      owner_discord_id = coalesce(excluded.owner_discord_id, storebot_stripe_subscriptions.owner_discord_id),
+      stripe_customer_id = coalesce(excluded.stripe_customer_id, storebot_stripe_subscriptions.stripe_customer_id),
+      stripe_subscription_id = coalesce(excluded.stripe_subscription_id, storebot_stripe_subscriptions.stripe_subscription_id),
+      stripe_checkout_session_id = coalesce(excluded.stripe_checkout_session_id, storebot_stripe_subscriptions.stripe_checkout_session_id),
+      stripe_price_id = coalesce(excluded.stripe_price_id, storebot_stripe_subscriptions.stripe_price_id),
+      plan = coalesce(excluded.plan, storebot_stripe_subscriptions.plan),
+      status = excluded.status,
+      current_period_end = excluded.current_period_end,
+      cancel_at_period_end = excluded.cancel_at_period_end,
+      last_event_id = coalesce(excluded.last_event_id, storebot_stripe_subscriptions.last_event_id),
+      raw = excluded.raw,
+      updated_at = now()
+  `, [
+    String(row.guildId), row.ownerDiscordId || null, row.stripeCustomerId || null, row.stripeSubscriptionId || null,
+    row.stripeCheckoutSessionId || null, row.stripePriceId || null, row.plan || null, row.status || null,
+    row.currentPeriodEnd || null, Boolean(row.cancelAtPeriodEnd), row.lastEventId || null, JSON.stringify(row.raw || {})
+  ]);
+  return true;
+}
+
+async function findGuildIdBySubscriptionId(subscriptionId) {
+  if (!subscriptionId) return null;
+  const pool = await getBillingPgPool();
+  if (!pool) return null;
+  await ensureBillingSchema();
+  const result = await pool.query("select guild_id from storebot_stripe_subscriptions where stripe_subscription_id = $1 limit 1", [String(subscriptionId)]);
+  return result.rows?.[0]?.guild_id || null;
+}
+
+async function updatePostgresPremiumFromJson(guildId) {
+  const pool = await getBillingPgPool();
+  if (!pool) return false;
+  const db = readStoreDb();
+  const store = db.guilds?.[String(guildId)];
+  if (!store) return false;
+  await pool.query(`
+    insert into storebot_guilds (
+      guild_id, guild_name, premium_active, premium_plan, premium_expires_at,
+      premium_activated_at, premium_activated_by, premium_redeemed_code, settings, raw, created_at, updated_at
+    ) values ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10::jsonb,$11,now())
+    on conflict (guild_id) do update set
+      guild_name = excluded.guild_name,
+      premium_active = excluded.premium_active,
+      premium_plan = excluded.premium_plan,
+      premium_expires_at = excluded.premium_expires_at,
+      premium_activated_at = excluded.premium_activated_at,
+      premium_activated_by = excluded.premium_activated_by,
+      premium_redeemed_code = excluded.premium_redeemed_code,
+      settings = excluded.settings,
+      raw = excluded.raw,
+      updated_at = now()
+  `, [
+    String(guildId), store.guildName || null, Boolean(store.premium?.active), store.premium?.plan || null,
+    store.premium?.expiresAt || null, store.premium?.activatedAt || null, store.premium?.activatedBy || null,
+    store.premium?.redeemedCode || null, JSON.stringify(store.settings || {}), JSON.stringify(store), store.createdAt || null
+  ]);
+  const serialized = JSON.stringify(db, null, 2);
+  await pool.query(`
+    insert into storebot_json_documents(relative_path, document, sha256, updated_at)
+    values ($1, $2::jsonb, $3, now())
+    on conflict (relative_path) do update set document = excluded.document, sha256 = excluded.sha256, updated_at = now()
+  `, ["data/store_data.json", serialized, crypto.createHash("sha256").update(serialized).digest("hex")]);
+  return true;
+}
+
+async function getBillingStatusForGuild(guildId) {
+  const response = {
+    configured: billingConfigured(),
+    active: false,
+    status: "not_configured",
+    plan: "free",
+    currentPeriodEnd: null,
+    cancelAtPeriodEnd: false,
+    stripeCustomerId: null,
+    stripeSubscriptionId: null,
+    manageAvailable: false,
+    message: billingConfigured() ? "Stripe billing is ready." : "Stripe billing is not configured yet."
+  };
+  const db = readStoreDb();
+  const store = db.guilds?.[String(guildId)];
+  if (store?.premium) {
+    response.active = Boolean(store.premium.active) && (!store.premium.expiresAt || Date.parse(store.premium.expiresAt) > Date.now());
+    response.status = store.premium.stripeStatus || (response.active ? "active" : "free");
+    response.plan = store.premium.stripePlan || store.premium.plan || response.plan;
+    response.currentPeriodEnd = store.premium.expiresAt || null;
+    response.stripeCustomerId = store.premium.stripeCustomerId || null;
+    response.stripeSubscriptionId = store.premium.stripeSubscriptionId || null;
+  }
+  try {
+    const pool = await getBillingPgPool();
+    if (pool) {
+      await ensureBillingSchema();
+      const result = await pool.query("select * from storebot_stripe_subscriptions where guild_id = $1 limit 1", [String(guildId)]);
+      const row = result.rows?.[0];
+      if (row) {
+        response.status = row.status || response.status;
+        response.plan = row.plan || response.plan;
+        response.currentPeriodEnd = row.current_period_end ? new Date(row.current_period_end).toISOString() : response.currentPeriodEnd;
+        response.cancelAtPeriodEnd = Boolean(row.cancel_at_period_end);
+        response.stripeCustomerId = row.stripe_customer_id || response.stripeCustomerId;
+        response.stripeSubscriptionId = row.stripe_subscription_id || response.stripeSubscriptionId;
+      }
+    }
+  } catch (err) {
+    response.warning = err.message;
+  }
+  response.manageAvailable = Boolean(response.stripeCustomerId);
+  response.message = response.active ? "Premium is active." : billingConfigured() ? "Premium is not active." : response.message;
+  return response;
+}

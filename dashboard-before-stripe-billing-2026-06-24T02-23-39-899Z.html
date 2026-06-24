@@ -571,9 +571,6 @@
     async function loadMe() {
       $("loginBtn").href = `${API_BASE}/auth/discord`;
       hideError();
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("billing") === "success") { showError("Premium checkout complete.", "Stripe confirmed your checkout. Premium should appear after the webhook finishes syncing."); setTimeout(hideError, 6000); }
-      if (params.get("billing") === "cancelled") { showError("Checkout cancelled.", "No payment was completed."); setTimeout(hideError, 5000); }
 
       const apiOnline = await checkApiHealth();
       if (!apiOnline) {
@@ -701,25 +698,8 @@
       const settings = data.settings || {};
       const channels = data.channels || [];
       const keywords = Array.isArray(autopay.paidKeywords) ? autopay.paidKeywords.join("\n") : "";
-      const billing = data.billing || {};
 
       box.innerHTML = `
-        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V1 -->
-        <div class="dashboard-card management-card">
-          <p class="eyebrow">Billing</p>
-          <h2>Premium subscription</h2>
-          <p class="section-text">Buy or manage Store Bot Premium for this Discord server. Checkout is handled securely by Stripe and Premium is applied automatically after payment is confirmed.</p>
-          <div class="component-list">
-            <div class="component-row"><div><strong>Status</strong><small>${escapeHtml(billing.message || billing.status || "Unknown")}</small></div><span class="${billing.active ? "dash-dot" : billing.configured ? "dash-dot warn" : "dash-dot bad"}"></span></div>
-            <div class="component-row"><div><strong>Plan</strong><small>${escapeHtml(billing.plan || "Free")} ${billing.currentPeriodEnd ? `• Renews/expires ${escapeHtml(new Date(billing.currentPeriodEnd).toLocaleDateString())}` : ""}</small></div><span class="${billing.active ? "dash-dot" : "dash-dot warn"}"></span></div>
-          </div>
-          <div class="dashboard-actions">
-            <button class="button primary" id="startPremiumCheckoutBtn" type="button" ${billing.configured ? "" : "disabled"}>${billing.active ? "Update Premium" : "Buy Premium"}</button>
-            <button class="button secondary" id="manageBillingBtn" type="button" ${billing.manageAvailable ? "" : "disabled"}>Manage Subscription</button>
-          </div>
-          <div id="billingResult" class="dashboard-note hidden"></div>
-        </div>
-
         <div class="dashboard-card management-card">
           <p class="eyebrow">Products</p>
           <h2>Product management</h2>
@@ -792,8 +772,6 @@
 
       document.querySelectorAll("[data-edit-product]").forEach(btn => btn.addEventListener("click", () => fillProductForm(products.find(p => p.id === btn.dataset.editProduct))));
       document.querySelectorAll("[data-delete-product]").forEach(btn => btn.addEventListener("click", () => deleteProduct(btn.dataset.deleteProduct)));
-      document.getElementById("startPremiumCheckoutBtn")?.addEventListener("click", startPremiumCheckout);
-      document.getElementById("manageBillingBtn")?.addEventListener("click", openBillingPortal);
       document.getElementById("saveProductBtn")?.addEventListener("click", saveProduct);
       document.getElementById("clearProductFormBtn")?.addEventListener("click", clearProductForm);
       document.getElementById("refreshPanelBtn")?.addEventListener("click", refreshStorePanel);
@@ -806,34 +784,6 @@
       if (!el) return;
       el.classList.remove("hidden");
       el.textContent = text;
-    }
-
-    async function startPremiumCheckout() {
-      if (!selectedGuildId) return;
-      showInlineResult("billingResult", "Starting Stripe Checkout...");
-      try {
-        const result = await api(`/api/guilds/${selectedGuildId}/billing/checkout`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan: "premium_monthly" })
-        });
-        if (!result.url) throw new Error("Checkout URL was not returned.");
-        window.location.href = result.url;
-      } catch (err) {
-        showInlineResult("billingResult", `Failed to start checkout: ${err.message}`);
-      }
-    }
-
-    async function openBillingPortal() {
-      if (!selectedGuildId) return;
-      showInlineResult("billingResult", "Opening Stripe billing portal...");
-      try {
-        const result = await api(`/api/guilds/${selectedGuildId}/billing/portal`, { method: "POST" });
-        if (!result.url) throw new Error("Billing portal URL was not returned.");
-        window.location.href = result.url;
-      } catch (err) {
-        showInlineResult("billingResult", `Could not open billing portal: ${err.message}`);
-      }
     }
 
     function fillProductForm(p) {

@@ -1,0 +1,28 @@
+    async function startPremiumCheckout() {
+      if (!selectedGuildId) return;
+      showInlineResult("billingResult", "Starting Stripe Checkout...");
+      try {
+        const result = await api(`/api/guilds/${selectedGuildId}/billing/checkout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan: "premium_monthly" })
+        });
+        if (!result.url) throw new Error("Checkout URL was not returned.");
+        window.location.href = result.url;
+      } catch (err) {
+        showInlineResult("billingResult", `Failed to start checkout: ${err.message}`);
+      }
+    }
+
+    async function openBillingPortal() {
+      if (!selectedGuildId) return;
+      showInlineResult("billingResult", "Opening Stripe billing portal...");
+      try {
+        const result = await api(`/api/guilds/${selectedGuildId}/billing/portal`, { method: "POST" });
+        if (!result.url) throw new Error("Billing portal URL was not returned.");
+        window.location.href = result.url;
+      } catch (err) {
+        showInlineResult("billingResult", `Could not open billing portal: ${err.message}`);
+      }
+    }
+
