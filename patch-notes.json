@@ -4,7 +4,7 @@
   "notes": [
     {
       "id": "store-bot-update-deployed-dfe5e520ad",
-      "title": "Store Bot update deployed",
+      "title": "Changed to a DB that can support more users.",
       "summary": "A new Store Bot update has been deployed.",
       "date": "2026-06-24T00:50:01.374Z",
       "tags": [
@@ -12,8 +12,8 @@
         "Update"
       ],
       "items": [
-        "A new Store Bot update was deployed.",
-        "Updated areas: package-lock.json, scripts/postgres-primary-status.js, src/index.js, src/postgresMirror.js, src/storage.js",
+        "DB Update",
+        "Updated areas: Database",
         "Dashboard, storefront, checkout, delivery, or maintenance systems may include improvements from this deployment."
       ]
     },
