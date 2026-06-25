@@ -1,0 +1,77 @@
+{
+  "version": 2,
+  "serverId": "940093984439697428",
+  "guildId": "940093984439697428",
+  "slug": "qt-gaming-697428",
+  "name": "QT Gaming",
+  "description": "QT Gaming uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "zB7NgPBzBA",
+  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "verified": true,
+  "stats": {
+    "rating": 5,
+    "reviewCount": 1,
+    "completedOrders": 2,
+    "positivePercent": 100,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "Cash App",
+    "AutoPay"
+  ],
+  "products": [
+    {
+      "id": "t",
+      "name": "t",
+      "price": "$1.00",
+      "description": "",
+      "deliveryType": "License key delivery",
+      "stock": "4 available"
+    },
+    {
+      "id": "cock1",
+      "name": "cock for 1",
+      "price": "$1.00",
+      "description": "",
+      "deliveryType": "License key delivery",
+      "stock": "Sold out"
+    },
+    {
+      "id": "cock2",
+      "name": "cock fo1 2",
+      "price": "$1.00",
+      "description": "",
+      "deliveryType": "Manual delivery"
+    },
+    {
+      "id": "balls10",
+      "name": "balls for 10",
+      "price": "$10.00",
+      "description": "",
+      "deliveryType": "Manual delivery"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "622a9246-3249-4cb4-9d09-e7d1db5e0c30",
+      "rating": 5,
+      "text": "",
+      "author": "smok.ee",
+      "createdAt": "2026-06-21T03:33:56.099Z",
+      "verifiedOrder": true
+    }
+  ],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Premium",
+    "AutoPay",
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-06-25T01:35:02.404Z"
+}

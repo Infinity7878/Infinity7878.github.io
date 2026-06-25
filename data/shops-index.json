@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-24T15:30:01.607Z",
+  "generatedAt": "2026-06-25T01:35:02.404Z",
   "source": "Store Bot live export",
   "liveGuildsOnly": true,
   "shops": [
@@ -22,7 +22,29 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
+    },
+    {
+      "serverId": "940093984439697428",
+      "guildId": "940093984439697428",
+      "slug": "qt-gaming-697428",
+      "name": "QT Gaming",
+      "description": "QT Gaming uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 5,
+      "reviewCount": 1,
+      "completedOrders": 2,
+      "productCount": 4,
+      "tags": [
+        "Premium",
+        "AutoPay",
+        "Reviews",
+        "Products"
+      ],
+      "verified": true,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
     },
     {
       "serverId": "1513019107384098929",
@@ -43,27 +65,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
-    },
-    {
-      "serverId": "1518880605163618354",
-      "guildId": "1518880605163618354",
-      "slug": "nexus-store-618354",
-      "name": "Nexus Store",
-      "description": "Nexus Store uses Store Bot for digital products, orders, and verified buyer reviews.",
-      "inviteCode": "zB7NgPBzBA",
-      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
-      "rating": 5,
-      "reviewCount": 1,
-      "completedOrders": 1,
-      "productCount": 1,
-      "tags": [
-        "Reviews",
-        "Products"
-      ],
-      "verified": false,
-      "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
     },
     {
       "serverId": "1446023627144429583",
@@ -83,7 +85,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
     },
     {
       "serverId": "1509523403453890700",
@@ -103,7 +105,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
     },
     {
       "serverId": "1518185699273216191",
@@ -124,7 +126,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
     },
     {
       "serverId": "1518587304711553104",
@@ -144,7 +146,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-24T15:30:01.607Z"
+      "lastUpdated": "2026-06-25T01:35:02.404Z"
     }
   ]
 }
