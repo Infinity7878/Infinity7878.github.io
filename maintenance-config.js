@@ -11,10 +11,6 @@
     /pricing.html
     /autopay.html
     /dashboard.html
-
-  Owner preview bypass:
-    Add ?maintenance_bypass=change-this-token to the page URL.
-    Change the token below before using this publicly.
 */
 
 window.STOREBOT_MAINTENANCE = {
