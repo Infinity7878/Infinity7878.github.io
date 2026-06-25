@@ -706,19 +706,21 @@
       const billing = data.billing || {};
 
       box.innerHTML = `
-        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V1 -->
-        <div class="dashboard-card management-card">
+        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V2 -->
+        <div class="dashboard-card management-card" id="premiumBillingCard">
           <p class="eyebrow">Billing</p>
-          <h2>Premium subscription</h2>
-          <p class="section-text">Buy or manage Store Bot Premium for this Discord server. Checkout is handled securely by Stripe and Premium is applied automatically after payment is confirmed.</p>
+          <h2>Premium billing</h2>
+          <p class="section-text">${billing.active ? "Premium is active for this server. Use Stripe billing management to cancel, update payment, view invoices, or reactivate/extend if cancellation is scheduled." : "Upgrade this Discord server to Store Bot Premium. Checkout is handled securely by Stripe and Premium is applied automatically after payment is confirmed."}</p>
           <div class="component-list">
             <div class="component-row"><div><strong>Status</strong><small>${escapeHtml(billing.message || billing.status || "Unknown")}</small></div><span class="${billing.active ? "dash-dot" : billing.configured ? "dash-dot warn" : "dash-dot bad"}"></span></div>
-            <div class="component-row"><div><strong>Plan</strong><small>${escapeHtml(billing.plan || "Free")} ${billing.currentPeriodEnd ? `• Renews/expires ${escapeHtml(new Date(billing.currentPeriodEnd).toLocaleDateString())}` : ""}</small></div><span class="${billing.active ? "dash-dot" : "dash-dot warn"}"></span></div>
+            <div class="component-row"><div><strong>Plan</strong><small>${escapeHtml(billing.plan || "Free")} ${billing.currentPeriodEnd ? "• Renews/expires " + escapeHtml(new Date(billing.currentPeriodEnd).toLocaleDateString()) : ""}</small></div><span class="${billing.active ? "dash-dot" : "dash-dot warn"}"></span></div>
           </div>
           <div class="dashboard-actions">
-            <button class="button primary" id="startPremiumCheckoutBtn" type="button" ${billing.configured ? "" : "disabled"}>${billing.active ? "Update Premium" : "Buy Premium"}</button>
-            <button class="button secondary" id="manageBillingBtn" type="button" ${billing.manageAvailable ? "" : "disabled"}>Manage Subscription</button>
+            ${billing.active
+              ? '<button class="button primary" id="manageBillingBtnPrimary" type="button" ' + (billing.manageAvailable ? "" : "disabled") + '>Manage Subscription</button><button class="button secondary" id="startPremiumCheckoutBtn" type="button" disabled>Premium Active</button>'
+              : '<button class="button primary" id="startPremiumCheckoutBtn" type="button" ' + (billing.configured ? "" : "disabled") + '>Buy Premium</button><button class="button secondary" id="manageBillingBtn" type="button" ' + (billing.manageAvailable ? "" : "disabled") + '>Manage Existing Subscription</button>'}
           </div>
+          <div class="dashboard-note">${billing.active ? "Manage Subscription opens Stripe, where the server owner can cancel Premium, change payment method, view receipts, or reactivate/extend a subscription." : "Already bought Premium? Log in, select the server, then use Manage Existing Subscription if Stripe billing is attached to that server."}</div>
           <div id="billingResult" class="dashboard-note hidden"></div>
         </div>
 
