@@ -4,8 +4,8 @@
   "notes": [
     {
       "id": "store-bot-update-deployed-5d2ec77fca",
-      "title": "Store Bot update deployed",
-      "summary": "A new Store Bot update has been deployed.",
+      "title": "Added new owner commands.",
+      "summary": "Please read the TOS. If you break our rules, the law, or Discord's TOS, you will be banned from the bot!",
       "date": "2026-06-25T00:07:01.464Z",
       "tags": [
         "Deployment",
@@ -13,23 +13,8 @@
       ],
       "items": [
         "A new Store Bot update was deployed.",
-        "Store Bot was updated with internal improvements for stability, performance, and reliability.",
-        "Dashboard, storefront, checkout, delivery, or maintenance systems may include improvements from this deployment."
-      ]
-    },
-    {
-      "id": "store-bot-update-deployed-bfd99d4a40",
-      "title": "Store Bot update deployed",
-      "summary": "A new Store Bot update has been deployed.",
-      "date": "2026-06-24T19:07:01.329Z",
-      "tags": [
-        "Deployment",
-        "Update"
-      ],
-      "items": [
-        "A new Store Bot update was deployed.",
-        "Store Bot was updated with internal improvements for stability, performance, and reliability.",
-        "Dashboard, storefront, checkout, delivery, or maintenance systems may include improvements from this deployment."
+        "Store Bot was updated with internal improvements for security.",
+        "Don't break the rules :)"
       ]
     },
     {
