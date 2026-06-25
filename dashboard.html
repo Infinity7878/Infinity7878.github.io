@@ -384,7 +384,48 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
+  
+/* STOREBOT_PREMIUM_BILLING_VISUAL_FIX_V1 */
+#premiumBillingCard .billing-actions {
+  align-items: center;
+  flex-wrap: wrap;
+}
+#premiumBillingCard .button:disabled,
+#premiumBillingCard .button[disabled] {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  cursor: not-allowed;
+  transform: none;
+}
+#premiumBillingCard .button:disabled:hover,
+#premiumBillingCard .button[disabled]:hover {
+  transform: none;
+}
+#premiumBillingCard .billing-pill {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.05rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 820;
+  line-height: 1.15;
+}
+#premiumBillingCard .billing-pill.success {
+  color: #b7f7cf;
+  background: rgba(34, 197, 94, 0.13);
+  border-color: rgba(34, 197, 94, 0.32);
+}
+#premiumBillingCard .billing-pill.muted {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -706,21 +747,32 @@
       const billing = data.billing || {};
 
       box.innerHTML = `
-        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V2 -->
+        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V3 -->
         <div class="dashboard-card management-card" id="premiumBillingCard">
           <p class="eyebrow">Billing</p>
           <h2>Premium billing</h2>
-          <p class="section-text">${billing.active ? "Premium is active for this server. Use Stripe billing management to cancel, update payment, view invoices, or reactivate/extend if cancellation is scheduled." : "Upgrade this Discord server to Store Bot Premium. Checkout is handled securely by Stripe and Premium is applied automatically after payment is confirmed."}</p>
+          <p class="section-text">${billing.active
+            ? (billing.manageAvailable
+                ? "Premium is active for this server. Use Stripe billing management to cancel, update payment, view invoices, or reactivate/extend if cancellation is scheduled."
+                : "Premium is active for this server, but it does not have a Stripe billing record attached. This usually means Premium was granted manually through the bot, so there is no Stripe subscription to manage.")
+            : "Upgrade this Discord server to Store Bot Premium. Checkout is handled securely by Stripe and Premium is applied automatically after payment is confirmed."}</p>
           <div class="component-list">
             <div class="component-row"><div><strong>Status</strong><small>${escapeHtml(billing.message || billing.status || "Unknown")}</small></div><span class="${billing.active ? "dash-dot" : billing.configured ? "dash-dot warn" : "dash-dot bad"}"></span></div>
             <div class="component-row"><div><strong>Plan</strong><small>${escapeHtml(billing.plan || "Free")} ${billing.currentPeriodEnd ? "• Renews/expires " + escapeHtml(new Date(billing.currentPeriodEnd).toLocaleDateString()) : ""}</small></div><span class="${billing.active ? "dash-dot" : "dash-dot warn"}"></span></div>
+            ${billing.active && !billing.manageAvailable ? '<div class="component-row"><div><strong>Billing source</strong><small>Manual Premium grant. Stripe billing management is not available for this server.</small></div><span class="dash-dot warn"></span></div>' : ''}
           </div>
-          <div class="dashboard-actions">
+          <div class="dashboard-actions billing-actions">
             ${billing.active
-              ? '<button class="button primary" id="manageBillingBtnPrimary" type="button" ' + (billing.manageAvailable ? "" : "disabled") + '>Manage Subscription</button><button class="button secondary" id="startPremiumCheckoutBtn" type="button" disabled>Premium Active</button>'
+              ? (billing.manageAvailable
+                  ? '<button class="button primary" id="manageBillingBtnPrimary" type="button">Manage Subscription</button><span class="billing-pill success">Premium Active</span>'
+                  : '<span class="billing-pill success">Premium Active</span><span class="billing-pill muted">No Stripe subscription attached</span>')
               : '<button class="button primary" id="startPremiumCheckoutBtn" type="button" ' + (billing.configured ? "" : "disabled") + '>Buy Premium</button><button class="button secondary" id="manageBillingBtn" type="button" ' + (billing.manageAvailable ? "" : "disabled") + '>Manage Existing Subscription</button>'}
           </div>
-          <div class="dashboard-note">${billing.active ? "Manage Subscription opens Stripe, where the server owner can cancel Premium, change payment method, view receipts, or reactivate/extend a subscription." : "Already bought Premium? Log in, select the server, then use Manage Existing Subscription if Stripe billing is attached to that server."}</div>
+          <div class="dashboard-note">${billing.active
+            ? (billing.manageAvailable
+                ? "Manage Subscription opens Stripe, where the server owner can cancel Premium, change payment method, view receipts, or reactivate/extend a subscription."
+                : "This Premium status was likely granted from the bot/admin tools instead of Stripe checkout. To cancel or change it, use your Store Bot admin command or update the server's Premium record in the bot data.")
+            : "Already bought Premium? Log in, select the server, then use Manage Existing Subscription if Stripe billing is attached to that server."}</div>
           <div id="billingResult" class="dashboard-note hidden"></div>
         </div>
 
@@ -796,8 +848,9 @@
 
       document.querySelectorAll("[data-edit-product]").forEach(btn => btn.addEventListener("click", () => fillProductForm(products.find(p => p.id === btn.dataset.editProduct))));
       document.querySelectorAll("[data-delete-product]").forEach(btn => btn.addEventListener("click", () => deleteProduct(btn.dataset.deleteProduct)));
-      document.getElementById("startPremiumCheckoutBtn")?.addEventListener("click", startPremiumCheckout);
+      document.getElementById("startPremiumCheckoutBtn")?.addEventListener("click", startPremiumCheckout);      // STOREBOT_PREMIUM_MANAGE_LISTENERS_V2
       document.getElementById("manageBillingBtn")?.addEventListener("click", openBillingPortal);
+      document.getElementById("manageBillingBtnPrimary")?.addEventListener("click", openBillingPortal);
       document.getElementById("saveProductBtn")?.addEventListener("click", saveProduct);
       document.getElementById("clearProductFormBtn")?.addEventListener("click", clearProductForm);
       document.getElementById("refreshPanelBtn")?.addEventListener("click", refreshStorePanel);
