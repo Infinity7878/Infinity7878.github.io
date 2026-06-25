@@ -59,7 +59,7 @@ window.STOREBOT_MAINTENANCE = {
 
   // Optional owner-only preview bypass for checking the real page during maintenance.
   bypass: {
-    enabled: true,
+    enabled: false,
     queryParam: 'maintenance_bypass',
     token: 'change-this-token'
   }
