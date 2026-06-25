@@ -2,6 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://storebot.pro/sitemap.xml
-
-# Security contact
-Allow: /.well-known/security.txt

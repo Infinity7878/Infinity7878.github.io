@@ -9,33 +9,12 @@
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
   function escapeHtml(value) {
-    return String(value ?? '').replace(/[&<>'"]/g, (char) => ({
+    return String(value ?? '').replace(/[&<>"]/g, (char) => ({
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
+      '"': '&quot;'
     }[char]));
-  }
-
-  function safeUrl(url) {
-    const raw = String(url ?? '').trim();
-    if (!raw || raw === '#') return '#';
-
-    try {
-      const parsed = new URL(raw, window.location.origin);
-      const allowedProtocols = new Set(['https:', 'http:']);
-      if (!allowedProtocols.has(parsed.protocol)) return '#';
-
-      // Relative URLs are okay for same-origin internal links. External links must be http/https.
-      if (!/^https?:\/\//i.test(raw) && parsed.origin === window.location.origin) {
-        return parsed.pathname + parsed.search + parsed.hash;
-      }
-
-      return parsed.href;
-    } catch (_) {
-      return '#';
-    }
   }
 
   function normalize(value) {
@@ -228,7 +207,7 @@
     if (!target) return;
     const stats = shop.stats || {};
     const rating = Number(stats.rating || 0);
-    const invite = safeUrl(shop.inviteUrl || '#');
+    const invite = shop.inviteUrl || '#';
     const products = Array.isArray(shop.products) ? shop.products : [];
     const reviews = Array.isArray(shop.reviews) ? shop.reviews : [];
     document.title = `${shop.name || 'Discord shop'} | Store Bot Shop`;
@@ -301,7 +280,7 @@
           <p class="hero-text">This reputation page is generated from Store Bot order and review data. Buyers cannot add reviews directly from the website.</p>
           <div class="hero-actions">
             <a class="button primary" href="shop.html?shop=${encodeURIComponent(shop.slug || shop.serverId || '')}">View shop</a>
-            <a class="button secondary" href="${escapeHtml(safeUrl(shop.inviteUrl || '#'))}" target="_blank" rel="noopener">Join Discord</a>
+            <a class="button secondary" href="${escapeHtml(shop.inviteUrl || '#')}" target="_blank" rel="noopener">Join Discord</a>
           </div>
           <div class="trust-row">
             ${shop.verified ? '<span>Verified Store Bot seller</span>' : '<span>Listed Store Bot seller</span>'}

@@ -1,0 +1,4 @@
+Contact: https://discord.gg/zB7NgPBzBA
+Preferred-Languages: en
+Expires: 2027-06-25T00:28:55.000Z
+Canonical: https://storebot.pro/.well-known/security.txt

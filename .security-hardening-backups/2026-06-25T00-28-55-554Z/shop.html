@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.storebot.pro; upgrade-insecure-requests">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Store Bot" />
@@ -14,15 +12,15 @@
   <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
-  <title>Search Seller Reputation | Store Bot</title>
-  <meta name="description" content="Search Store Bot reputation pages generated from verified Discord shop orders, reviews, completed order counts, and seller policies." />
-  <link rel="canonical" href="https://storebot.pro/reputation.html" />
-  <meta property="og:title" content="Search Seller Reputation | Store Bot" />
-  <meta property="og:description" content="Search reputation pages generated from verified Store Bot order and review data." />
+  <title>Search Discord Shop Pages | Store Bot</title>
+  <meta name="description" content="Search public Store Bot shop pages generated from Discord server data. Find product catalogs, verified reviews, policies, and seller reputation from Store Bot servers." />
+  <link rel="canonical" href="https://storebot.pro/shop.html" />
+  <meta property="og:title" content="Search Discord Shop Pages | Store Bot" />
+  <meta property="og:description" content="Find public Store Bot shop pages generated from Discord server data." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://storebot.pro/reputation.html" />
+  <meta property="og:url" content="https://storebot.pro/shop.html" />
 </head>
-<body class="inner-page reputation-page" data-shop-page="reputation">
+<body class="inner-page shop-page" data-shop-page="shop">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
@@ -40,8 +38,8 @@
       <div class="nav-links" id="navLinks">
         <a href="features.html">Features</a>
         <a href="pricing.html">Pricing</a>
-        <a href="shop.html">Shops</a>
-        <a href="reputation.html" aria-current="page" class="active">Reputation</a>
+        <a href="shop.html" aria-current="page" class="active">Shops</a>
+        <a href="reputation.html">Reputation</a>
         <a href="docs.html">Docs</a>
         <details class="nav-dropdown">
           <summary>More</summary>
@@ -63,51 +61,67 @@
     <section class="section-pad page-hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <p class="eyebrow">Seller reputation</p>
-          <h1>Look up a seller's Store Bot reputation.</h1>
-          <p class="hero-text">Reputation pages use bot-exported order and review data. Buyers can check verified reviews, completed order counts, dispute signals, and seller policies before joining a server or opening a ticket.</p>
+          <p class="eyebrow">Public Discord shops</p>
+          <h1>Search Store Bot shops by server ID or invite link.</h1>
+          <p class="hero-text">Shop pages are generated from servers that have Store Bot installed and public shop pages enabled.</p>
           <div class="hero-actions">
-            <a class="button primary" href="shop.html">Search shops</a>
-            <a class="button secondary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
+            <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Store Bot</a>
+            <a class="button secondary" href="reputation.html">Search reputation</a>
           </div>
           <div class="trust-row">
+            <span>Bot-generated pages</span>
+            <span>No public review forms</span>
+            <span>Searchable shops</span>
             <span>Verified order reviews</span>
-            <span>Completed order counts</span>
-            <span>No public review spam</span>
-            <span>Transparent trust signals</span>
           </div>
         </div>
         <article class="lookup-card reveal">
-          <p class="eyebrow">Find reputation</p>
+          <p class="eyebrow">Find a shop</p>
           <h2>Enter a Discord invite, server ID, or shop slug.</h2>
-          <p>Only servers exported by Store Bot can have public reputation pages.</p>
+          <p>Example: <code>zB7NgPBzBA</code>, <code>discord.gg/zB7NgPBzBA</code>, or <code>demo-store</code>.</p>
           <form class="lookup-form" id="lookupForm">
             <input id="lookupInput" name="q" type="search" autocomplete="off" placeholder="Discord invite, server ID, or shop name" />
-            <button class="button primary" type="submit">Generate reputation</button>
+            <button class="button primary" type="submit">Generate page</button>
           </form>
           <div id="lookupMessage" aria-live="polite"></div>
         </article>
       </div>
     </section>
 
-    <div id="reputationDetail"></div>
+    <div id="shopDetail"></div>
+
+    <section class="section-pad" id="directory">
+      <div class="container">
+        <div class="directory-header reveal">
+          <div>
+            <p class="eyebrow">Shop directory</p>
+            <h2>Searchable Store Bot shops</h2>
+            <p class="section-text">Search public shop pages that Store Bot has exported from opted-in Discord servers.</p>
+          </div>
+          <strong id="shopResultCount" class="soft-badge">Loading shops...</strong>
+        </div>
+        <div class="shop-results" id="shopResults" aria-live="polite"></div>
+      </div>
+    </section>
 
     <section class="section-pad accent-section">
       <div class="container split-grid">
         <div class="reveal">
-          <p class="eyebrow">Review integrity</p>
-          <h2>Visitors cannot add their own reviews here.</h2>
-          <p class="section-text">The reputation page is display-only. Reviews are expected to come from Store Bot's completed-order review flow, not from a public website form.</p>
+          <p class="eyebrow">How pages are created</p>
+          <h2>The website does not let random users create shops.</h2>
+          <p class="section-text">A server gets a public shop only when Store Bot has exported that server's approved shop data. The frontend only reads the published JSON files.</p>
           <div class="check-list" role="list">
-            <span role="listitem">Review is requested after an order is delivered/completed.</span>
-            <span role="listitem">Bot marks the review as tied to a verified order.</span>
-            <span role="listitem">Bot exports the approved review into the shop JSON file.</span>
-            <span role="listitem">Website displays it as verified Store Bot feedback.</span>
+            <span role="listitem">Store Bot is invited to the seller's Discord server.</span>
+            <span role="listitem">The server owner enables public Shop/Reputation pages.</span>
+            <span role="listitem">The bot exports products, policies, order counts, and verified reviews.</span>
+            <span role="listitem">The website searches and renders the exported data.</span>
           </div>
         </div>
-        <article class="reputation-card reveal">
-          <div class="trust-score"><span>✓</span><strong>Verified-order only</strong><small>The frontend has no self-review submission feature.</small></div>
-          <p class="panel-note">Only bot-exported, verified-order reviews are displayed.</p>
+        <article class="notice-card reveal">
+          <p class="eyebrow">Security note</p>
+          <h3>Reviews must come from Store Bot orders.</h3>
+          <p>There is no public “add review” button. If a review is shown here, it should come from the bot after a real order was completed and reviewed inside Discord.</p>
+          <a class="inline-link" href="docs.html#shop-reputation-data">View data format →</a>
         </article>
       </div>
     </section>

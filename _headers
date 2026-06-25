@@ -1,0 +1,10 @@
+# Security headers for hosts that support _headers files, such as Cloudflare Pages or Netlify.
+# GitHub Pages does not apply this file directly. If you stay on GitHub Pages behind Cloudflare,
+# add these headers in Cloudflare Rules / Transform Rules instead.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.storebot.pro; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
