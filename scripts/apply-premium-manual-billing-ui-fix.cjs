@@ -35,19 +35,19 @@ let changedPricing = false;
 
 const DOLLAR = "$";
 
-const billingCardV3 = String.raw`        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V3 -->
+const billingCardV4 = String.raw`        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V4 -->
         <div class="dashboard-card management-card" id="premiumBillingCard">
           <p class="eyebrow">Billing</p>
           <h2>Premium billing</h2>
           <p class="section-text">${DOLLAR}{billing.active
             ? (billing.manageAvailable
                 ? "Premium is active for this server. Use Stripe billing management to cancel, update payment, view invoices, or reactivate/extend if cancellation is scheduled."
-                : "Premium is active for this server, but it does not have a Stripe billing record attached. This usually means Premium was granted manually through the bot, so there is no Stripe subscription to manage.")
+                : "Premium is active for this server. Stripe billing management is only available when the subscription was purchased through Stripe checkout.")
             : "Upgrade this Discord server to Store Bot Premium. Checkout is handled securely by Stripe and Premium is applied automatically after payment is confirmed."}</p>
           <div class="component-list">
             <div class="component-row"><div><strong>Status</strong><small>${DOLLAR}{escapeHtml(billing.message || billing.status || "Unknown")}</small></div><span class="${DOLLAR}{billing.active ? "dash-dot" : billing.configured ? "dash-dot warn" : "dash-dot bad"}"></span></div>
             <div class="component-row"><div><strong>Plan</strong><small>${DOLLAR}{escapeHtml(billing.plan || "Free")} ${DOLLAR}{billing.currentPeriodEnd ? "• Renews/expires " + escapeHtml(new Date(billing.currentPeriodEnd).toLocaleDateString()) : ""}</small></div><span class="${DOLLAR}{billing.active ? "dash-dot" : "dash-dot warn"}"></span></div>
-            ${DOLLAR}{billing.active && !billing.manageAvailable ? '<div class="component-row"><div><strong>Billing source</strong><small>Manual Premium grant. Stripe billing management is not available for this server.</small></div><span class="dash-dot warn"></span></div>' : ''}
+            ${DOLLAR}{billing.active && !billing.manageAvailable ? '<div class="component-row"><div><strong>Billing source</strong><small>Premium is active. Stripe billing management is not available for this server.</small></div><span class="dash-dot warn"></span></div>' : ''}
           </div>
           <div class="dashboard-actions billing-actions">
             ${DOLLAR}{billing.active
@@ -59,14 +59,14 @@ const billingCardV3 = String.raw`        <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH
           <div class="dashboard-note">${DOLLAR}{billing.active
             ? (billing.manageAvailable
                 ? "Manage Subscription opens Stripe, where the server owner can cancel Premium, change payment method, view receipts, or reactivate/extend a subscription."
-                : "This Premium status was likely granted from the bot/admin tools instead of Stripe checkout. To cancel or change it, use your Store Bot admin command or update the server's Premium record in the bot data.")
+                : "Premium is active for this server. There is no Stripe subscription attached to manage from this page.")
             : "Already bought Premium? Log in, select the server, then use Manage Existing Subscription if Stripe billing is attached to that server."}</div>
           <div id="billingResult" class="dashboard-note hidden"></div>
         </div>`;
 
-const billingCardRegex = /\s*<!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V[123] -->[\s\S]*?<div id="billingResult" class="dashboard-note hidden"><\/div>\s*<\/div>/;
+const billingCardRegex = /\s*<!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V[1234] -->[\s\S]*?<div id="billingResult" class="dashboard-note hidden"><\/div>\s*<\/div>/;
 if (billingCardRegex.test(dashboard)) {
-  dashboard = dashboard.replace(billingCardRegex, "\n" + billingCardV3);
+  dashboard = dashboard.replace(billingCardRegex, "\n" + billingCardV4);
   changedDashboard = true;
 } else {
   // Fallback copy-only fix if the billing card exists but the older marker was removed.
@@ -149,7 +149,7 @@ if (!dashboard.includes("STOREBOT_PREMIUM_BILLING_VISUAL_FIX_V1")) {
 
 if (!dashboard.includes("STOREBOT_PREMIUM_DASHBOARD_INTENT_V1")) {
   const loadMeNeedle = 'async function loadMe() {\n      $("loginBtn").href = `${API_BASE}/auth/discord`;\n      hideError();';
-  const loadMeInsert = 'async function loadMe() {\n      $("loginBtn").href = `${API_BASE}/auth/discord`;\n      hideError();\n      // STOREBOT_PREMIUM_DASHBOARD_INTENT_V1\n      const premiumIntentParams = new URLSearchParams(window.location.search);\n      const premiumBillingIntent = premiumIntentParams.get("billing");\n      const premiumUpgradeIntent = premiumIntentParams.get("upgrade");\n      if (premiumBillingIntent === "manage") {\n        showError("Manage or cancel Premium", "Log in with Discord, select the Premium server, then click Manage Subscription in the Billing card. If the server was granted Premium manually, there may not be a Stripe subscription to manage.");\n      } else if (premiumUpgradeIntent === "premium") {\n        showError("Buy Premium", "Log in with Discord, select the server you want to upgrade, then click Buy Premium in the Billing card.");\n      }';
+  const loadMeInsert = 'async function loadMe() {\n      $("loginBtn").href = `${API_BASE}/auth/discord`;\n      hideError();\n      // STOREBOT_PREMIUM_DASHBOARD_INTENT_V1\n      const premiumIntentParams = new URLSearchParams(window.location.search);\n      const premiumBillingIntent = premiumIntentParams.get("billing");\n      const premiumUpgradeIntent = premiumIntentParams.get("upgrade");\n      if (premiumBillingIntent === "manage") {\n        showError("Manage or cancel Premium", "Log in with Discord, select the Premium server, then click Manage Subscription in the Billing card. Stripe management is only available for subscriptions purchased through Stripe checkout.");\n      } else if (premiumUpgradeIntent === "premium") {\n        showError("Buy Premium", "Log in with Discord, select the server you want to upgrade, then click Buy Premium in the Billing card.");\n      }';
   if (dashboard.includes(loadMeNeedle)) {
     dashboard = dashboard.replace(loadMeNeedle, loadMeInsert);
     changedDashboard = true;
@@ -182,7 +182,7 @@ if (pricing.includes(oldUpgradeArticle)) {
 }
 
 if (!pricing.includes("How do I cancel or manage Premium?")) {
-  const cancelCard = '<article class="content-card reveal"><h2>How do I cancel or manage Premium?</h2><p>Open the dashboard, log in with Discord, select your Premium server, then click Manage Subscription. Stripe lets you cancel, update your payment method, view receipts, or reactivate/extend a subscription. Manually granted Premium from bot/admin tools will not have a Stripe subscription to manage.</p><a class="button secondary" href="dashboard.html?billing=manage">Manage Premium</a></article>';
+  const cancelCard = '<article class="content-card reveal"><h2>How do I cancel or manage Premium?</h2><p>Open the dashboard, log in with Discord, select your Premium server, then click Manage Subscription. Stripe lets you cancel, update your payment method, view receipts, or reactivate/extend a subscription. Stripe management is only available for subscriptions purchased through Stripe checkout.</p><a class="button secondary" href="dashboard.html?billing=manage">Manage Premium</a></article>';
   if (pricing.includes(newUpgradeArticle)) {
     pricing = pricing.replace(newUpgradeArticle, newUpgradeArticle + cancelCard);
     changedPricing = true;
