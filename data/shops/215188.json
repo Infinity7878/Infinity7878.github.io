@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "serverId": "1509523403453890700",
-  "guildId": "1509523403453890700",
-  "slug": "zyn-store-890700",
-  "name": "Zyn Store",
-  "description": "Zyn Store uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "serverId": "1506959081838215188",
+  "guildId": "1506959081838215188",
+  "slug": "215188",
+  "name": "『м𝕽』𝕬𝖑𝖊𝖝𝖆𝖓𝖉𝖊𝖗❖Ƭʜᴇᴸᴼᵁᴰ ⚙",
+  "description": "『м𝕽』𝕬𝖑𝖊𝖝𝖆𝖓𝖉𝖊𝖗❖Ƭʜᴇᴸᴼᵁᴰ ⚙ uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
   "verified": false,
@@ -16,12 +16,14 @@
     "activeDisputes": 0,
     "averageResponseMinutes": 0
   },
-  "paymentMethods": [],
+  "paymentMethods": [
+    "PayPal"
+  ],
   "products": [
     {
-      "id": "vip",
-      "name": "Vip",
-      "price": "$20.00",
+      "id": "discordtemplate",
+      "name": "discord template",
+      "price": "$120.00",
       "description": "",
       "deliveryType": "Manual delivery"
     }
