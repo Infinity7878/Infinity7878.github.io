@@ -19,16 +19,16 @@
   "paymentMethods": [],
   "products": [
     {
-      "id": "hudpremiumcompletav8shopinventriorecompensas",
-      "name": "HUD",
-      "price": "$15.00",
+      "id": "gratis",
+      "name": "gratis",
+      "price": "$0.00",
       "description": "",
       "deliveryType": "Manual delivery"
     },
     {
-      "id": "gratis",
-      "name": "gratis",
-      "price": "$0.00",
+      "id": "hudpremiumcompletav8shopinventriorecompensas",
+      "name": "HUD",
+      "price": "$15.00",
       "description": "",
       "deliveryType": "Manual delivery"
     }
@@ -43,5 +43,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-26T19:35:02.269Z"
+  "lastUpdated": "2026-06-26T20:05:02.030Z"
 }
