@@ -24,6 +24,13 @@
       "price": "$15.00",
       "description": "",
       "deliveryType": "Manual delivery"
+    },
+    {
+      "id": "gratis",
+      "name": "gratis",
+      "price": "$0.00",
+      "description": "",
+      "deliveryType": "Manual delivery"
     }
   ],
   "reviews": [],
@@ -36,5 +43,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-26T18:35:02.161Z"
+  "lastUpdated": "2026-06-26T19:05:02.346Z"
 }
