@@ -21,6 +21,14 @@
   ],
   "products": [
     {
+      "id": "2874874747",
+      "name": "game",
+      "price": "$200000.00",
+      "description": "hello",
+      "deliveryType": "File/download link delivery",
+      "stock": "No stock configured"
+    },
+    {
       "id": "discordtemplate",
       "name": "discord template",
       "price": "$120.00",
@@ -38,5 +46,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-26T12:05:02.422Z"
+  "lastUpdated": "2026-06-26T12:35:01.532Z"
 }

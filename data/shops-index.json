@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-26T12:05:02.422Z",
+  "generatedAt": "2026-06-26T12:35:01.532Z",
   "source": "Store Bot live export",
   "liveGuildsOnly": true,
   "shops": [
@@ -22,7 +22,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     },
     {
       "serverId": "940093984439697428",
@@ -44,7 +44,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     },
     {
       "serverId": "1513019107384098929",
@@ -65,7 +65,27 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
+    },
+    {
+      "serverId": "1506959081838215188",
+      "guildId": "1506959081838215188",
+      "slug": "215188",
+      "name": "『м𝕽』𝕬𝖑𝖊𝖝𝖆𝖓𝖉𝖊𝖗❖Ƭʜᴇᴸᴼᵁᴰ ⚙",
+      "description": "『м𝕽』𝕬𝖑𝖊𝖝𝖆𝖓𝖉𝖊𝖗❖Ƭʜᴇᴸᴼᵁᴰ ⚙ uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 2,
+      "tags": [
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     },
     {
       "serverId": "1446023627144429583",
@@ -85,7 +105,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     },
     {
       "serverId": "1509523403453890700",
@@ -105,7 +125,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     },
     {
       "serverId": "1518185699273216191",
@@ -126,7 +146,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     },
     {
       "serverId": "1518587304711553104",
@@ -146,27 +166,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
-    },
-    {
-      "serverId": "1506959081838215188",
-      "guildId": "1506959081838215188",
-      "slug": "215188",
-      "name": "『м𝕽』𝕬𝖑𝖊𝖝𝖆𝖓𝖉𝖊𝖗❖Ƭʜᴇᴸᴼᵁᴰ ⚙",
-      "description": "『м𝕽』𝕬𝖑𝖊𝖝𝖆𝖓𝖉𝖊𝖗❖Ƭʜᴇᴸᴼᵁᴰ ⚙ uses Store Bot for digital products, orders, and verified buyer reviews.",
-      "inviteCode": "zB7NgPBzBA",
-      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
-      "rating": 0,
-      "reviewCount": 0,
-      "completedOrders": 0,
-      "productCount": 1,
-      "tags": [
-        "Reviews",
-        "Products"
-      ],
-      "verified": false,
-      "activeDisputes": 0,
-      "lastUpdated": "2026-06-26T12:05:02.422Z"
+      "lastUpdated": "2026-06-26T12:35:01.532Z"
     }
   ]
 }
