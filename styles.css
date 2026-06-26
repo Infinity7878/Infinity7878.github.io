@@ -1155,3 +1155,61 @@ html.maintenance-pending body {
   margin-inline: auto;
 }
 
+
+
+/* STOREBOT_HOME_PREMIUM_CHECKOUT_STYLES_V1 */
+.button.ghost {
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+.button.ghost:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--line);
+}
+.premium-checkout-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: center;
+  margin-top: -1rem;
+  margin-bottom: 2.5rem;
+  padding: 1.35rem;
+  border: 1px solid rgba(255, 157, 18, 0.24);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 157, 18, 0.13), rgba(255, 255, 255, 0.055)),
+    rgba(19, 22, 30, 0.76);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+.premium-checkout-copy h2 {
+  margin: 0.18rem 0 0.42rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+.premium-checkout-copy p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.premium-checkout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.price-note {
+  margin: -0.55rem 0 1rem;
+  color: var(--accent-3);
+  font-weight: 800;
+}
+@media (min-width: 800px) {
+  .premium-checkout-strip {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 1.55rem 1.7rem;
+  }
+  .premium-checkout-actions {
+    justify-content: flex-end;
+  }
+}

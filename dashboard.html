@@ -616,6 +616,13 @@
     async function loadMe() {
       $("loginBtn").href = `${API_BASE}/auth/discord`;
       hideError();
+      // STOREBOT_HOME_BUY_PREMIUM_DASHBOARD_HINT_V1
+      const premiumIntentParams = new URLSearchParams(window.location.search);
+      if (premiumIntentParams.get("upgrade") === "premium") {
+        showError("Buy Premium", "Log in with Discord, select the server you want to upgrade, then click Buy Premium in the Billing card.");
+      } else if (premiumIntentParams.get("billing") === "manage") {
+        showError("Manage Premium", "Log in with Discord, select your Premium server, then use Manage Subscription if Stripe billing is attached.");
+      }
       const params = new URLSearchParams(window.location.search);
       if (params.get("billing") === "success") { showError("Premium checkout complete.", "Stripe confirmed your checkout. Premium should appear after the webhook finishes syncing."); setTimeout(hideError, 6000); }
       if (params.get("billing") === "cancelled") { showError("Checkout cancelled.", "No payment was completed."); setTimeout(hideError, 5000); }
