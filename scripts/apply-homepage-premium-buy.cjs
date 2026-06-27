@@ -109,7 +109,7 @@ function patchStatsOrInsertPremiumCard(html) {
       <div class="premium-checkout-copy">
         <p class="eyebrow">Premium checkout</p>
         <h2 id="premium-checkout-title">Buy Store Bot Premium from the website.</h2>
-        <p>Premium is <strong>$3/month</strong>, with a <strong>$1 first-month offer</strong> for new Premium users. Log in with Discord, choose the server you want to upgrade, then finish checkout securely through Stripe.</p>
+        <p>Premium is <strong>$3/month per server</strong>. Log in with Discord, choose the server you want to upgrade, then finish checkout securely through Stripe.</p>
       </div>
       <div class="premium-checkout-actions">
         <a class="button primary" href="${BUY_URL}">Buy Premium</a>
@@ -144,7 +144,7 @@ function patchPricingCard(html) {
   output = output.replace(/<a class="button primary full" href="dashboard\.html\?upgrade=premium">Buy Premium<\/a>(?!\n\s*<a class="button secondary full" href="dashboard\.html\?billing=manage")/g,
     `<!-- STOREBOT_HOME_BUY_PREMIUM_PRICING_V1 -->\n            <a class="button primary full" href="${BUY_URL}">Buy Premium</a>\n            <a class="button secondary full" href="${MANAGE_URL}" style="margin-top:10px;">Manage Premium</a>`);
 
-  if (!output.includes("$1 first-month") && output.includes("$3<span>/mo</span>")) {
+  if (!output.includes("One Premium subscription upgrades one Discord server") && output.includes("$3<span>/mo</span>")) {
     output = output.replace("<div class=\"price\">$3<span>/mo</span></div>", "<div class=\"price\">$3<span>/mo</span></div>\n            <p class=\"price-note\">$1 first-month offer for new Premium users.</p>");
   }
 
@@ -176,10 +176,10 @@ function patchSchema(html) {
   output = output.replace(/"url": "https:\/\/infinity7878\.github\.io\/"/g, '"url": "https://storebot.pro/"');
   output = output.replace(/"image": "https:\/\/infinity7878\.github\.io\/assets\/storebot-banner\.png"/g, '"image": "https://storebot.pro/assets/storebot-banner.png"');
 
-  if (!output.includes("first month for $1") && output.includes("How much is Store Bot Premium?")) {
+  if (!output.includes("Store Bot Premium is $3 per month. It unlocks") && output.includes("How much is Store Bot Premium?")) {
     output = output.replace(
       "Store Bot Premium is $3 per month and unlocks more product slots, forwarding AutoPay, discounts, gift cards, custom branding, staff roles, and logs.",
-      "Store Bot Premium is $3 per month, with a $1 first-month offer for new Premium users. It unlocks more product slots, forwarding AutoPay, discounts, gift cards, custom branding, staff roles, and logs."
+      "Store Bot Premium is $3 per month. It unlocks more product slots, forwarding AutoPay, discounts, gift cards, custom branding, staff roles, and logs."
     );
   }
   return output;

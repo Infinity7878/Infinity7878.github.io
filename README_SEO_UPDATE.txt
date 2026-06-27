@@ -17,7 +17,7 @@ Main fixes:
 - Removed the old extra-service references and broken navigation link.
 - Fixed the invalid sitemap.xml structure.
 - Updated canonical, Open Graph, Twitter, and JSON-LD URLs to https://storebot.pro/.
-- Standardized Premium pricing to $3/month and added the $1 first-month offer for first-time users.
+- Standardized Premium pricing to $3/month and removed the first-month promotional offer from public copy.
 - Made product limits consistent across the homepage and pricing page.
 - Reworked the design to feel more like a real product site and less like a generic AI-generated landing page.
 - Removed the mouse glow and heavy animation effects.

@@ -680,6 +680,17 @@
         btn.addEventListener("click", () => selectGuild(btn.dataset.guildId));
       });
 
+      const params = new URLSearchParams(window.location.search);
+      const requestedGuildId = params.get("guild_id") || params.get("server_id");
+      if (/^\d{15,25}$/.test(String(requestedGuildId || ""))) {
+        const requestedGuild = guilds.find(g => String(g.id) === String(requestedGuildId));
+        if (requestedGuild) {
+          selectGuild(requestedGuild.id);
+        } else if (params.get("upgrade") === "premium") {
+          showError("Server not available", "I could not select that server automatically. Make sure you are logged in with a Discord account that can manage the server and that Store Bot is in the server.");
+        }
+      }
+
       if (me.owner) {
         $("adminCenter").classList.remove("hidden");
         loadAdminDashboard();
