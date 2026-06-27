@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "serverId": "1518587304711553104",
-  "guildId": "1518587304711553104",
-  "slug": "cj__9rzs-server-553104",
-  "name": "cj__9rz's server",
-  "description": "cj__9rz's server uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "serverId": "1518744188882129041",
+  "guildId": "1518744188882129041",
+  "slug": "redstone-129041",
+  "name": "Redstone",
+  "description": "Redstone uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
   "verified": false,
@@ -16,15 +16,13 @@
     "activeDisputes": 0,
     "averageResponseMinutes": 0
   },
-  "paymentMethods": [
-    "PayPal"
-  ],
+  "paymentMethods": [],
   "products": [
     {
-      "id": "uber",
-      "name": "uber £10 off £15",
-      "price": "$0.50",
-      "description": "",
+      "id": "conta700",
+      "name": "Conta LV 700",
+      "price": "$9.00",
+      "description": "vai ter alguma coisas 1 sea",
       "deliveryType": "Manual delivery"
     }
   ],
