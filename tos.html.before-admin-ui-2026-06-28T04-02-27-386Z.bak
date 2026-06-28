@@ -5,23 +5,23 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.storebot.pro; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy | Store Bot</title>
-  <meta name="description" content="Privacy policy for Store Bot, including Discord server settings, order data, staff logs, premium configuration, and AutoPay forwarding data." />
+  <title>Terms of Service | Store Bot</title>
+  <meta name="description" content="Terms of Service for Store Bot, a Discord storefront bot for product panels, order tracking, AutoPay forwarding, staff logs, discounts, and gift cards." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Store Bot" />
   <meta name="theme-color" content="#f97316" />
-  <link rel="canonical" href="https://storebot.pro/privacy-policy.html" />
+  <link rel="canonical" href="https://storebot.pro/tos.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
   <link rel="stylesheet" href="styles.css?v=8" />
   <meta property="og:site_name" content="Store Bot" />
-  <meta property="og:title" content="Privacy Policy | Store Bot" />
-  <meta property="og:description" content="Privacy policy for Store Bot, including Discord server settings, order data, staff logs, premium configuration, and AutoPay forwarding data." />
+  <meta property="og:title" content="Terms of Service | Store Bot" />
+  <meta property="og:description" content="Terms of Service for Store Bot, a Discord storefront bot for product panels, order tracking, AutoPay forwarding, staff logs, discounts, and gift cards." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://storebot.pro/privacy-policy.html" />
+  <meta property="og:url" content="https://storebot.pro/tos.html" />
   <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Privacy Policy | Store Bot" />
-  <meta name="twitter:description" content="Privacy policy for Store Bot, including Discord server settings, order data, staff logs, premium configuration, and AutoPay forwarding data." />
+  <meta name="twitter:title" content="Terms of Service | Store Bot" />
+  <meta name="twitter:description" content="Terms of Service for Store Bot, a Discord storefront bot for product panels, order tracking, AutoPay forwarding, staff logs, discounts, and gift cards." />
   <meta name="twitter:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <script src="maintenance-config.js?v=1"></script>
   <script src="maintenance.js?v=1"></script>
@@ -55,7 +55,6 @@
             <a href="https://status.storebot.pro">Status</a>
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html">Dashboard</a>
-            <a href="admin.html">Admin</a>
             <a href="index.html#setup" aria-current="page" class="active">Setup</a>
             <a href="index.html#faq" aria-current="page" class="active">FAQ</a>
           </div>
@@ -67,41 +66,27 @@
   <main id="main">
     <section class="section-pad page-hero">
       <div class="container section-heading reveal">
-        <p class="eyebrow">Privacy Policy</p>
-        <h1>Store Bot privacy policy.</h1>
-        <p>Last updated: June 2026. This page explains what Store Bot may store to operate Discord storefronts, orders, staff tools, logs, and AutoPay features.</p>
+        <p class="eyebrow">Terms of Service</p>
+        <h1>Store Bot terms of service.</h1>
+        <p>These terms explain acceptable use, payment handling, Premium features, AutoPay forwarding, and support for Store Bot.</p>
       </div>
     </section>
 
     <section class="section-pad compact-top">
       <div class="container">
         <article class="content-card reveal">
-          <h2>Data Store Bot may store</h2>
-          <ul>
-            <li>Discord server IDs, channel IDs, role IDs, user IDs, and order IDs.</li>
-            <li>Store settings such as store title, support channel, staff roles, logs channel, product settings, prices, discounts, gift cards, and delivery text.</li>
-            <li>Order data such as product selected, order code, order status, amount, currency, timestamps, and delivery status.</li>
-            <li>Premium status and plan-related configuration.</li>
-          </ul>
-
-          <h2>AutoPay forwarding data</h2>
-          <p>Premium servers can use AutoPay forwarding by forwarding PayPal or Cash App payment notification emails to a Store Bot forwarding address. Store Bot may process forwarded email data such as provider, amount, currency, order code, payment status, forwarding alias, sender metadata, and message timestamp so it can match a pending order.</p>
-          <p>Server owners should not forward their full inbox. Store Bot only needs payment notification emails that relate to Store Bot orders.</p>
-
-          <h2>How data is used</h2>
-          <ul>
-            <li>To create and manage Discord store panels.</li>
-            <li>To track orders and delivery status.</li>
-            <li>To notify staff through logs.</li>
-            <li>To match payment notifications to pending orders.</li>
-            <li>To provide premium features such as AutoPay, discounts, gift cards, staff roles, and custom branding.</li>
-          </ul>
-
-          <h2>Data deletion</h2>
-          <p>Users can request deletion of their stored user data through Store Bot privacy commands or by contacting the support server. Server-level store and order data may need to remain available to server owners for order history, support, abuse prevention, and accounting-style records.</p>
-
-          <h2>Contact</h2>
-          <p>For privacy questions or deletion requests, join the support server: <a class="inline-link" href="https://discord.gg/zB7NgPBzBA">discord.gg/zB7NgPBzBA</a>.</p>
+          <h2>Use of Store Bot</h2>
+          <p>Store Bot is provided as a Discord storefront and order management tool for digital products, services, and community perks. Server owners are responsible for what they sell and for following Discord rules, payment provider rules, and applicable laws.</p>
+          <h2>Payments and refunds</h2>
+          <p>Store Bot is not a payment processor and does not directly hold customer funds. Payments are handled outside the bot through the payment methods configured by each server owner. Refund policies are controlled by the seller unless separately stated by SMOKNetworks.</p>
+          <h2>Premium access</h2>
+          <p>Premium features may include more product slots, AutoPay forwarding, discounts, gift cards, custom branding, staff roles, and logs. Premium access can be changed, revoked, or limited if the bot is abused or used for prohibited activity.</p>
+          <h2>AutoPay forwarding</h2>
+          <p>AutoPay forwarding is designed to match payment notification emails to pending Store Bot orders. It is not a guarantee that every payment email will be detected, parsed, or matched. Server owners should still monitor their own payment accounts.</p>
+          <h2>Prohibited use</h2>
+          <p>Do not use Store Bot to sell illegal goods, stolen goods, regulated weapons, drugs, adult sexual services, gambling products, malware, phishing tools, or anything that violates Discord policies or payment provider rules.</p>
+          <h2>Support</h2>
+          <p>For support, join the support server: <a class="inline-link" href="https://discord.gg/zB7NgPBzBA">discord.gg/zB7NgPBzBA</a>.</p>
         </article>
       </div>
     </section>

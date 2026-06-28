@@ -6,7 +6,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Advertise on Store Bot | Sponsored Discord Seller Ads</title>
-  <meta name="description" content="Promote your Discord-focused service, store, or tool with reviewed sponsored placements on Store Bot. Buy weekly ads through secure Stripe checkout." />
+  <meta name="description" content="Buy a clearly labeled sponsored placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces and reviewed before going live." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#f97316" />
   <link rel="canonical" href="https://storebot.pro/advertise.html" />
@@ -18,7 +18,7 @@
     .hidden { display: none !important; }
 
     .advertise-page {
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     .ad-hero {
@@ -530,7 +530,6 @@
             <a href="https://status.storebot.pro">Status</a>
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html">Dashboard</a>
-            <a href="admin.html">Admin</a>
           </div>
         </details>
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&amp;permissions=2147483648&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
@@ -542,17 +541,17 @@
     <section class="ad-hero">
       <div class="container ad-hero-grid">
         <div class="ad-copy reveal">
-          <p class="eyebrow">Advertise on Store Bot</p>
-          <h1>Put your offer in front of Discord sellers.</h1>
-          <p class="hero-text">Buy a clearly labeled Store Bot sponsor slot. Ads are only shown to free users, stay small, and are manually reviewed before going live.</p>
+          <p class="eyebrow">Sponsored placements</p>
+          <h1>Reach Discord sellers without annoying popups.</h1>
+          <p class="hero-text">Buy a clearly labeled Store Bot sponsor slot. Ads only appear on free-tier surfaces, stay small, and are manually reviewed before going live.</p>
           <div class="ad-pill-row" aria-label="Ad program highlights">
-            <span class="ad-pill">Free users only</span>
-            <span class="ad-pill">Reviewed before launch</span>
-            <span class="ad-pill">Weekly sponsor slots</span>
+            <span class="ad-pill">Free-tier surfaces only</span>
+            <span class="ad-pill">Manual review required</span>
+            <span class="ad-pill">Stripe checkout</span>
           </div>
           <div class="hero-actions">
-            <a class="button primary" href="#buy-ad">Start advertising</a>
-            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Talk to support</a>
+            <a class="button primary" href="#buy-ad">Buy an ad</a>
+            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Ask a question</a>
           </div>
           <div id="pageResult" class="checkout-result hidden" role="status" aria-live="polite"></div>
         </div>
@@ -567,14 +566,14 @@
           </div>
           <div class="sponsored-preview">
             <span class="sponsored-label">Sponsored</span>
-            <strong id="previewTitle">Your offer headline</strong>
-            <p id="previewDescription">A short pitch for your service, store, community, or tool will appear here.</p>
+            <strong id="previewTitle">Your ad headline</strong>
+            <p id="previewDescription">Your short ad description will appear here.</p>
             <a id="previewUrl" href="#" rel="nofollow sponsored noopener" target="_blank">Learn more</a>
           </div>
           <div class="ad-stat-grid" aria-label="Ad placement rules">
-            <div class="ad-stat"><strong>0</strong><span>ads shown for Premium users</span></div>
-            <div class="ad-stat"><strong>4</strong><span>placement types to match your campaign</span></div>
-            <div class="ad-stat"><strong>Trusted</strong><span>clearly labeled and reviewed before launch</span></div>
+            <div class="ad-stat"><strong>0</strong><span>forced ads for Premium servers</span></div>
+            <div class="ad-stat"><strong>4</strong><span>available placement types</span></div>
+            <div class="ad-stat"><strong>100%</strong><span>reviewed before launch</span></div>
           </div>
         </aside>
       </div>
@@ -585,7 +584,7 @@
         <section class="ad-form-card reveal" aria-labelledby="buyAdTitle">
           <div class="ad-section-title">
             <p class="eyebrow">Stripe checkout</p>
-            <h2 id="buyAdTitle">Launch a sponsored campaign</h2>
+            <h2 id="buyAdTitle">Buy a sponsored ad</h2>
             <p id="adConfigText">Loading ad checkout settings...</p>
           </div>
 
@@ -593,38 +592,38 @@
             <div class="ad-form-grid">
               <div class="ad-field full">
                 <div class="ad-label-row">
-                  <label for="titleInput">Campaign headline</label>
+                  <label for="titleInput">Ad headline</label>
                   <small><span id="titleCount">0</span>/80</small>
                 </div>
                 <input id="titleInput" name="title" maxlength="80" required autocomplete="organization" placeholder="Custom Discord bot development" />
-                <small>Lead with the main reason someone should click. Specific offers perform better than generic branding.</small>
+                <small>Keep it short, truthful, and specific. No fake urgency or misleading claims.</small>
               </div>
 
               <div class="ad-field full">
                 <div class="ad-label-row">
-                  <label for="descriptionInput">Campaign description</label>
+                  <label for="descriptionInput">Ad description</label>
                   <small><span id="descriptionCount">0</span>/220</small>
                 </div>
-                <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Example: Custom Discord bots, store graphics, seller tools, server setup, or marketplace services."></textarea>
-                <small>Give buyers a clear reason to care. Mention the outcome, benefit, or offer in one short paragraph.</small>
+                <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Promote your Discord-related service, community tool, store resource, or creator offer."></textarea>
+                <small>Ads are reviewed before they run. Unsafe, adult, gambling, scam, or illegal content will be rejected.</small>
               </div>
 
               <div class="ad-field full">
-                <label for="urlInput">Landing page URL</label>
+                <label for="urlInput">Destination URL</label>
                 <input id="urlInput" name="url" inputmode="url" maxlength="600" required autocomplete="url" placeholder="https://example.com" />
-                <small>Send clicks to the real page you want people to visit. Clean, relevant landing pages are more likely to be approved.</small>
+                <small>Must be a valid http or https link. Use the real landing page buyers will see.</small>
               </div>
 
               <div class="ad-field">
                 <label for="emailInput">Contact email</label>
                 <input id="emailInput" name="sponsorEmail" type="email" maxlength="180" required autocomplete="email" placeholder="you@example.com" />
-                <small>Used for your Stripe receipt and any review questions before launch.</small>
+                <small>Used for the Stripe receipt and review follow-up.</small>
               </div>
 
               <div class="ad-field">
-                <label for="nameInput">Brand or sponsor name</label>
-                <input id="nameInput" name="sponsorName" maxlength="100" autocomplete="organization" placeholder="Your brand, service, or Discord server" />
-                <small>This helps identify your campaign in review and support.</small>
+                <label for="nameInput">Sponsor name</label>
+                <input id="nameInput" name="sponsorName" maxlength="100" autocomplete="organization" placeholder="Your brand or Discord server" />
+                <small>This can be your store, service, or server name.</small>
               </div>
 
               <div class="ad-field">
@@ -636,28 +635,28 @@
                   <option value="8">8 weeks</option>
                   <option value="12">12 weeks</option>
                 </select>
-                <small id="durationHelp">Your campaign duration starts after approval, not at payment time.</small>
+                <small id="durationHelp">Choose how long the ad should run after approval.</small>
               </div>
 
               <fieldset class="placement-fieldset">
                 <legend>Placements</legend>
-                <p class="ad-help">Select at least one placement. Ads are only shown to free users.</p>
+                <p class="ad-help">Select at least one placement. Premium servers do not show forced ads.</p>
                 <div class="placement-list" id="placementList">
                   <label class="placement-option">
                     <input type="checkbox" value="panel" checked />
-                    <span><strong>Discord store panels</strong><small>Small sponsored field for free users.</small></span>
+                    <span><strong>Discord store panels</strong><small>Small sponsored field on free-tier server panels.</small></span>
                   </label>
                   <label class="placement-option">
                     <input type="checkbox" value="dashboard-sidebar" checked />
-                    <span><strong>Dashboard sidebar</strong><small>Unintrusive card for free users in dashboard views.</small></span>
+                    <span><strong>Dashboard sidebar</strong><small>Unintrusive card on free-tier dashboard views.</small></span>
                   </label>
                   <label class="placement-option">
                     <input type="checkbox" value="shop-search" checked />
-                    <span><strong>Shop search</strong><small>Sponsored discovery result while visitors browse shops.</small></span>
+                    <span><strong>Shop search</strong><small>Clearly labeled sponsored result in shop discovery.</small></span>
                   </label>
                   <label class="placement-option">
                     <input type="checkbox" value="public-shop-footer" checked />
-                    <span><strong>Public shop pages</strong><small>Small footer/card placement on public pages for free users.</small></span>
+                    <span><strong>Public shop pages</strong><small>Small footer/card placement for free public shop pages.</small></span>
                   </label>
                 </div>
               </fieldset>
@@ -679,14 +678,14 @@
             <p class="eyebrow">Review flow</p>
             <h2>What happens next?</h2>
             <div class="ad-rule-list">
-              <div class="ad-rule-item"><div class="ad-rule-number">1</div><div><strong>Reach a focused niche</strong><span>Store Bot visitors are Discord sellers, server owners, and people comparing storefront tools.</span></div></div>
-              <div class="ad-rule-item"><div class="ad-rule-number">2</div><div><strong>Stay trusted</strong><span>Every campaign is labeled sponsored and reviewed so ads do not feel like spam.</span></div></div>
-              <div class="ad-rule-item"><div class="ad-rule-number">3</div><div><strong>Control spend</strong><span>Buy weekly placements, choose where the campaign appears, and keep the ad small but visible.</span></div></div>
+              <div class="ad-rule-item"><div class="ad-rule-number">1</div><div><strong>Pay through Stripe</strong><span>Checkout is handled by Stripe. Store Bot does not store card details.</span></div></div>
+              <div class="ad-rule-item"><div class="ad-rule-number">2</div><div><strong>Manual review</strong><span>The campaign is checked for quality, safety, and relevance.</span></div></div>
+              <div class="ad-rule-item"><div class="ad-rule-number">3</div><div><strong>Ad goes live</strong><span>Approved campaigns run for the purchased duration after approval.</span></div></div>
             </div>
           </section>
 
           <section class="ad-note">
-            <strong>Simple launch flow.</strong> Submit your campaign, pay through Stripe, and wait for review. Approved campaigns run for the purchased duration after approval.
+            <strong>Rejected ads are not silently ignored.</strong> If something needs to be changed, contact support with your campaign details and the landing page you want reviewed.
           </section>
         </aside>
       </div>
@@ -735,10 +734,10 @@
       };
 
       const placementDescriptions = {
-        "panel": "Small sponsored field for free users.",
-        "dashboard-sidebar": "Unintrusive card for free users in dashboard views.",
-        "shop-search": "Sponsored discovery result while visitors browse shops.",
-        "public-shop-footer": "Small footer/card placement on public pages for free users."
+        "panel": "Small sponsored field on free-tier server panels.",
+        "dashboard-sidebar": "Unintrusive card on free-tier dashboard views.",
+        "shop-search": "Clearly labeled sponsored result in shop discovery.",
+        "public-shop-footer": "Small footer/card placement for free public shop pages."
       };
 
       function el(id) {
@@ -805,8 +804,8 @@
         const urlInput = el("urlInput");
         const previewUrl = el("previewUrl");
 
-        setText("previewTitle", title && title.value.trim() ? title.value.trim() : "Your offer headline");
-        setText("previewDescription", description && description.value.trim() ? description.value.trim() : "A short pitch for your service, store, community, or tool will appear here.");
+        setText("previewTitle", title && title.value.trim() ? title.value.trim() : "Your ad headline");
+        setText("previewDescription", description && description.value.trim() ? description.value.trim() : "Your short ad description will appear here.");
 
         if (previewUrl) {
           const url = urlInput ? urlInput.value.trim() : "";
@@ -842,11 +841,11 @@
         }
 
         if (enabled) {
-          setText("adConfigText", "Sponsor slots start at " + money(adConfig.pricePerWeekUsd || 5) + " per week. Choose your placements, submit your ad, and complete secure Stripe checkout.");
+          setText("adConfigText", "Sponsored ads are available at " + money(adConfig.pricePerWeekUsd || 5) + " per week. All campaigns are reviewed before going live.");
         } else if (!adConfig.stripeConfigured) {
           setText("adConfigText", "Ad checkout is temporarily unavailable because Stripe is not configured yet.");
         } else {
-          setText("adConfigText", "Ad checkout is temporarily unavailable. Contact support and we can help set up a sponsor slot manually.");
+          setText("adConfigText", "Ad checkout is temporarily unavailable. Contact support if you want to sponsor Store Bot.");
         }
       }
 
@@ -914,7 +913,7 @@
       function readQueryState() {
         const params = new URLSearchParams(window.location.search);
         if (params.get("ad") === "success") {
-          showResult("pageResult", "Payment received. Your campaign has been submitted for review and will go live after approval.", "good");
+          showResult("pageResult", "Payment received. Your ad has been submitted for review and will go live after approval.", "good");
         } else if (params.get("ad") === "cancelled") {
           showResult("pageResult", "Checkout cancelled. No ad payment was completed.", "bad");
         }
@@ -946,8 +945,8 @@
       }
 
       function validatePayload(payload) {
-        if (!payload.title || payload.title.trim().length < 4) return "Enter a clear campaign headline.";
-        if (!payload.description || payload.description.trim().length < 12) return "Enter a stronger campaign description.";
+        if (!payload.title || payload.title.trim().length < 4) return "Enter a clear ad headline.";
+        if (!payload.description || payload.description.trim().length < 12) return "Enter a longer ad description.";
         if (!isValidUrl(payload.url)) return "Enter a valid http or https destination URL.";
         if (!payload.sponsorEmail || !payload.sponsorEmail.includes("@")) return "Enter a valid contact email.";
         if (!payload.placements.length) return "Select at least one placement.";
