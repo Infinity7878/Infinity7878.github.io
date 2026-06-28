@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-28T21:05:02.226Z",
+  "generatedAt": "2026-06-28T21:35:02.234Z",
   "source": "Store Bot live export",
   "liveGuildsOnly": true,
   "shops": [
@@ -22,7 +22,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "940093984439697428",
@@ -44,7 +44,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1513019107384098929",
@@ -65,7 +65,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1455165438358061267",
@@ -85,7 +85,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1519560554996437113",
@@ -105,7 +105,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1506959081838215188",
@@ -125,7 +125,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1446023627144429583",
@@ -145,7 +145,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1495420173497401344",
@@ -165,7 +165,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1509523403453890700",
@@ -185,7 +185,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1518185699273216191",
@@ -206,7 +206,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     },
     {
       "serverId": "1518587304711553104",
@@ -226,7 +226,26 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T21:05:02.226Z"
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
+    },
+    {
+      "serverId": "1267832433643094160",
+      "guildId": "1267832433643094160",
+      "slug": "vale-das-cerejeiras--094160",
+      "name": "爱‖ 🌸・「VALE DAS CEREJEIRAS」• 🌸‖ 爱",
+      "description": "爱‖ 🌸・「VALE DAS CEREJEIRAS」• 🌸‖ 爱 uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "zB7NgPBzBA",
+      "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 0,
+      "tags": [
+        "Reviews"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-28T21:35:02.234Z"
     }
   ]
 }
