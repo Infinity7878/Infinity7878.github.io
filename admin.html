@@ -378,12 +378,18 @@
       if (!rows.length) { list.innerHTML = `<div class="admin-empty">No matching servers.</div>`; return; }
       list.innerHTML = rows.map((row) => {
         const g = row.guild || {};
-        const premium = String(row.statuses?.premium || "free");
+        // STOREBOT_ADMIN_PREMIUM_UI_FIX_V1
+        const billing = row.billing || {};
+        const premiumStatus = String(row.statuses?.premium || "free").toLowerCase();
+        const premiumActive = Boolean(billing.active) || premiumStatus === "active";
+        const premiumLabel = premiumActive
+          ? (billing.currentPeriodEnd ? `active until ${dateShort(billing.currentPeriodEnd)}` : "active")
+          : "free";
         const maint = row.maintenance?.active;
         return `<div class="admin-item">
           <div class="admin-panel-head">
             <div><h3>${esc(g.name || `Server ${g.id}`)}</h3><div class="admin-code">${esc(g.id || "")}</div></div>
-            <div class="admin-status-line">${statusPill(`Premium: ${premium}`, premium === "active" ? "good" : "")}${statusPill(`Maintenance: ${maint ? "on" : "off"}`, maint ? "warn" : "good")}</div>
+            <div class="admin-status-line">${statusPill(`Premium: ${premiumLabel}`, premiumActive ? "good" : "")}${statusPill(`Maintenance: ${maint ? "on" : "off"}`, maint ? "warn" : "good")}</div>
           </div>
           <div class="admin-small">Products: ${esc(row.counts?.products || 0)} · Orders: ${esc(row.counts?.orders || 0)} · Reviews: ${esc(row.counts?.reviews || 0)} · Uploads: ${esc(row.storage?.uploadHuman || "0 B")}</div>
           <div class="admin-actions" style="margin-top:0.75rem;">
