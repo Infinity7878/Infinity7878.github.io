@@ -26,16 +26,16 @@
       "deliveryType": "Manual delivery"
     },
     {
-      "id": "hudpremiumcompletav8shopinventriorecompensas",
-      "name": "HUD",
-      "price": "$15.00",
+      "id": "interfacev9",
+      "name": "gui v9",
+      "price": "$30.00",
       "description": "",
       "deliveryType": "Manual delivery"
     },
     {
-      "id": "interfacev9",
-      "name": "gui v9",
-      "price": "$30.00",
+      "id": "hudpremiumcompletav8shopinventriorecompensas",
+      "name": "HUD",
+      "price": "$15.00",
       "description": "",
       "deliveryType": "Manual delivery"
     }
@@ -50,5 +50,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-28T04:05:01.757Z"
+  "lastUpdated": "2026-06-28T04:35:02.340Z"
 }
