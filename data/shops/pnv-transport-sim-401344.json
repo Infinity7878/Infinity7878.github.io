@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "serverId": "1495420173497401344",
+  "guildId": "1495420173497401344",
+  "slug": "pnv-transport-sim-401344",
+  "name": "ÖPNV TRANSPORT SIM",
+  "description": "ÖPNV TRANSPORT SIM uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "<",
+  "inviteUrl": "<#1495426134500708572>",
+  "verified": false,
+  "stats": {
+    "rating": 0,
+    "reviewCount": 0,
+    "completedOrders": 0,
+    "positivePercent": 0,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "PayPal",
+    "Cash App"
+  ],
+  "products": [
+    {
+      "id": "001",
+      "name": "Test",
+      "price": "$2.00",
+      "description": "Dies ist ein Test",
+      "deliveryType": "License key delivery",
+      "stock": "Sold out"
+    }
+  ],
+  "reviews": [],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-06-28T18:05:02.511Z"
+}

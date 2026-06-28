@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-28T17:35:02.368Z",
+  "generatedAt": "2026-06-28T18:05:02.511Z",
   "source": "Store Bot live export",
   "liveGuildsOnly": true,
   "shops": [
@@ -22,7 +22,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "940093984439697428",
@@ -44,7 +44,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1513019107384098929",
@@ -65,7 +65,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1519560554996437113",
@@ -85,7 +85,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1506959081838215188",
@@ -105,7 +105,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1446023627144429583",
@@ -125,7 +125,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1509523403453890700",
@@ -145,7 +145,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1518185699273216191",
@@ -166,7 +166,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     },
     {
       "serverId": "1518587304711553104",
@@ -186,7 +186,27 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T17:35:02.368Z"
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
+    },
+    {
+      "serverId": "1495420173497401344",
+      "guildId": "1495420173497401344",
+      "slug": "pnv-transport-sim-401344",
+      "name": "ÖPNV TRANSPORT SIM",
+      "description": "ÖPNV TRANSPORT SIM uses Store Bot for digital products, orders, and verified buyer reviews.",
+      "inviteCode": "<",
+      "inviteUrl": "<#1495426134500708572>",
+      "rating": 0,
+      "reviewCount": 0,
+      "completedOrders": 0,
+      "productCount": 1,
+      "tags": [
+        "Reviews",
+        "Products"
+      ],
+      "verified": false,
+      "activeDisputes": 0,
+      "lastUpdated": "2026-06-28T18:05:02.511Z"
     }
   ]
 }
