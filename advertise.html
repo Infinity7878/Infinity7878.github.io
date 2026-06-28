@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.storebot.pro; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advertise on Store Bot | Sponsored Discord Seller Ads</title>
+  <meta name="description" content="Buy a clearly labeled sponsored ad placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces and reviewed before going live." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#f97316" />
+  <link rel="canonical" href="https://storebot.pro/advertise.html" />
+  <link rel="icon" href="assets/storebot-avatar.png" />
+  <link rel="stylesheet" href="styles.css?v=9" />
+  <script src="maintenance-config.js?v=1"></script>
+  <script src="maintenance.js?v=1"></script>
+  <style>
+    .ad-form-card { border: 1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(28,28,31,.92), rgba(17,18,20,.92)); border-radius: 24px; padding: 28px; box-shadow: var(--shadow); }
+    .ad-checkout-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: start; }
+    .ad-form { display: grid; gap: 16px; margin-top: 22px; }
+    .ad-field { display: grid; gap: 8px; }
+    .ad-field label { font-weight: 850; }
+    .ad-field input, .ad-field textarea, .ad-field select { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: var(--text); padding: 13px 14px; font: inherit; }
+    .ad-field textarea { min-height: 110px; resize: vertical; }
+    .ad-field small { color: var(--muted); line-height: 1.45; }
+    .placement-list { display: grid; gap: 10px; }
+    .placement-list label { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid rgba(255,255,255,.11); background: rgba(255,255,255,.035); border-radius: 14px; }
+    .placement-list input { width: auto; margin-top: 3px; }
+    .ad-preview { display: grid; gap: 12px; }
+    .sponsored-preview { border: 1px solid rgba(249,115,22,.32); background: rgba(249,115,22,.08); border-radius: 18px; padding: 16px; }
+    .sponsored-preview .tag { display:inline-flex; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:4px 8px; font-size:.78rem; font-weight:900; color:var(--muted); margin-bottom:10px; }
+    .sponsored-preview strong { display:block; margin-bottom: 7px; }
+    .checkout-result { border: 1px solid rgba(249,115,22,.28); background: rgba(249,115,22,.08); color: var(--muted); border-radius: 18px; padding: 16px; line-height: 1.6; margin-top: 16px; }
+    .checkout-result.good { border-color: rgba(34,197,94,.35); background: rgba(34,197,94,.08); color: #bbf7d0; }
+    .checkout-result.bad { border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.08); color: #fecaca; }
+    @media (max-width: 980px) { .ad-checkout-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Store Bot home">
+        <img class="brand-logo" src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async" />
+        <span>Store Bot</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="shop.html">Shops</a>
+        <a href="reputation.html">Reputation</a>
+        <a href="docs.html">Docs</a>
+        <details class="nav-dropdown">
+          <summary>More</summary>
+          <div class="nav-dropdown-menu" aria-label="More pages">
+            <a href="autopay.html">AutoPay</a>
+            <a href="advertise.html" aria-current="page" class="active">Advertise</a>
+            <a href="https://status.storebot.pro">Status</a>
+            <a href="patch-notes.html">Patch Notes</a>
+            <a href="dashboard.html">Dashboard</a>
+          </div>
+        </details>
+        <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section-pad">
+      <div class="container ad-checkout-grid">
+        <div class="reveal">
+          <p class="eyebrow">Sponsored placements</p>
+          <h1>Advertise to Discord sellers without annoying popups.</h1>
+          <p class="hero-text">Buy a clearly labeled sponsored placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces, and every campaign is reviewed before it goes live.</p>
+          <div class="hero-actions">
+            <a class="button secondary" href="pricing.html">View Premium</a>
+            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA">Ask a question</a>
+          </div>
+          <div id="pageResult" class="checkout-result hidden"></div>
+        </div>
+        <aside class="ad-form-card reveal ad-preview">
+          <p class="eyebrow">Live preview</p>
+          <h2>Sponsored card</h2>
+          <div class="sponsored-preview">
+            <span class="tag">Sponsored</span>
+            <strong id="previewTitle">Your ad headline</strong>
+            <p id="previewDescription" class="section-text">Your short ad description will appear here.</p>
+            <a id="previewUrl" href="#" rel="nofollow sponsored noopener" target="_blank">Learn more</a>
+          </div>
+          <p class="section-text">Sponsored placements are intentionally small and clearly labeled. Premium servers do not show forced ads.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container ad-checkout-grid">
+        <section class="ad-form-card reveal">
+          <p class="eyebrow">Stripe checkout</p>
+          <h2>Buy a sponsored ad</h2>
+          <p class="section-text" id="adConfigText">Loading ad checkout...</p>
+          <form class="ad-form" id="adForm">
+            <div class="ad-field">
+              <label for="titleInput">Ad headline</label>
+              <input id="titleInput" name="title" maxlength="80" required placeholder="Custom Discord bot development" />
+              <small>Short, clear, and no fake urgency.</small>
+            </div>
+            <div class="ad-field">
+              <label for="descriptionInput">Ad description</label>
+              <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Promote your Discord-related service, community tool, store resource, or creator offer."></textarea>
+              <small>Keep it truthful. Store Bot reviews ads before they run.</small>
+            </div>
+            <div class="ad-field">
+              <label for="urlInput">Destination URL</label>
+              <input id="urlInput" name="url" maxlength="600" required placeholder="https://example.com" />
+              <small>Must be an http or https link. Misleading, unsafe, adult, gambling, or illegal content will be rejected.</small>
+            </div>
+            <div class="ad-field">
+              <label for="emailInput">Contact email</label>
+              <input id="emailInput" name="sponsorEmail" type="email" maxlength="180" required placeholder="you@example.com" />
+              <small>Used for the Stripe receipt and review follow-up.</small>
+            </div>
+            <div class="ad-field">
+              <label for="nameInput">Sponsor name</label>
+              <input id="nameInput" name="sponsorName" maxlength="100" placeholder="Your brand or Discord server" />
+            </div>
+            <div class="ad-field">
+              <label for="weeksInput">Duration</label>
+              <select id="weeksInput" name="weeks">
+                <option value="1">1 week</option>
+                <option value="2">2 weeks</option>
+                <option value="4" selected>4 weeks</option>
+                <option value="8">8 weeks</option>
+                <option value="12">12 weeks</option>
+              </select>
+              <small id="priceText">Price will load from the API.</small>
+            </div>
+            <div class="ad-field">
+              <label>Placements</label>
+              <div class="placement-list" id="placementList">
+                <label><input type="checkbox" value="panel" checked /> <span><strong>Discord store panels</strong><br><small>Small sponsored field on free-tier server panels.</small></span></label>
+                <label><input type="checkbox" value="dashboard-sidebar" checked /> <span><strong>Dashboard sidebar</strong><br><small>Unintrusive sponsored card on free-tier dashboard views.</small></span></label>
+                <label><input type="checkbox" value="shop-search" checked /> <span><strong>Shop search</strong><br><small>Clearly labeled sponsored result in shop discovery.</small></span></label>
+                <label><input type="checkbox" value="public-shop-footer" checked /> <span><strong>Public shop pages</strong><br><small>Small footer/card placement for free public shop pages.</small></span></label>
+              </div>
+            </div>
+            <button class="button primary" id="checkoutBtn" type="submit">Continue to Stripe</button>
+            <div id="formResult" class="checkout-result hidden"></div>
+          </form>
+        </section>
+
+        <aside class="ad-form-card reveal">
+          <p class="eyebrow">Rules</p>
+          <h2>What happens after payment?</h2>
+          <div class="component-list">
+            <div class="component-row"><div><strong>1. Pay through Stripe</strong><small>Checkout is handled securely by Stripe.</small></div><span class="dash-dot"></span></div>
+            <div class="component-row"><div><strong>2. Manual review</strong><small>Store Bot reviews the ad for quality and safety.</small></div><span class="dash-dot warn"></span></div>
+            <div class="component-row"><div><strong>3. Goes live</strong><small>Approved ads run for the purchased duration.</small></div><span class="dash-dot"></span></div>
+          </div>
+          <div class="dashboard-note">Ads are shown only to free-tier Store Bot surfaces. Premium servers do not show forced ads. Rejected ads can be corrected through support.</div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© 2026 Store Bot. Built for Discord storefronts.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="advertise.html">Advertise</a>
+        <a href="docs.html">Docs</a>
+        <a href="https://status.storebot.pro">Status</a>
+        <a href="https://discord.gg/zB7NgPBzBA">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    if (navToggle && navLinks) navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    const API_BASE = "https://api.storebot.pro";
+    let adConfig = { pricePerWeekUsd: 5, minWeeks: 1, maxWeeks: 12, enabled: false, stripeConfigured: false };
+    const $ = (id) => document.getElementById(id);
+    function escapeHtml(value) { return String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c])); }
+    function setResult(id, text, kind = "") { const el = $(id); if (!el) return; el.className = ("checkout-result " + kind).trim(); el.innerHTML = text; }
+    function selectedWeeks() { const v = Number($("weeksInput")?.value || 1); return Math.min(adConfig.maxWeeks || 12, Math.max(adConfig.minWeeks || 1, Math.round(v || 1))); }
+    function selectedPlacements() { return Array.from(document.querySelectorAll("#placementList input[type='checkbox']:checked")).map(input => input.value); }
+    function updatePrice() { const weeks = selectedWeeks(); const price = Number(adConfig.pricePerWeekUsd || 5) * weeks; $("priceText").textContent = "$" + price.toFixed(2) + " total • $" + Number(adConfig.pricePerWeekUsd || 5).toFixed(2) + "/week"; }
+    function updatePreview() {
+      $("previewTitle").textContent = $("titleInput").value || "Your ad headline";
+      $("previewDescription").textContent = $("descriptionInput").value || "Your short ad description will appear here.";
+      const url = $("urlInput").value || "#";
+      $("previewUrl").href = url;
+    }
+    async function api(path, options = {}) {
+      const res = await fetch(API_BASE + path, { cache: "no-store", ...options });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Request failed: " + res.status);
+      return data;
+    }
+    async function loadConfig() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("ad") === "success") setResult("pageResult", "<strong>Payment received.</strong><br>Your ad has been submitted for review. It will go live after approval.", "good");
+      if (params.get("ad") === "cancelled") setResult("pageResult", "<strong>Checkout cancelled.</strong><br>No ad payment was completed.", "bad");
+      const campaignId = params.get("campaign_id");
+      if (campaignId) {
+        api("/api/ads/campaigns/" + encodeURIComponent(campaignId)).then((data) => {
+          const c = data.campaign || {};
+          setResult("pageResult", "<strong>Campaign " + escapeHtml(c.status || "submitted") + "</strong><br>ID: <code>" + escapeHtml(c.id || campaignId) + "</code>" + (c.expiresAt ? "<br>Runs until " + escapeHtml(new Date(c.expiresAt).toLocaleDateString()) : ""), c.status === "active" ? "good" : "");
+        }).catch(() => {});
+      }
+      try {
+        adConfig = await api("/api/ads/config");
+        $("adConfigText").textContent = adConfig.enabled && adConfig.stripeConfigured
+          ? "Sponsored ads are available at $" + Number(adConfig.pricePerWeekUsd || 5).toFixed(2) + " per week. All ads are reviewed before going live."
+          : "Ad checkout is not available right now. Contact support if you want to sponsor Store Bot.";
+        $("checkoutBtn").disabled = !(adConfig.enabled && adConfig.stripeConfigured);
+        updatePrice();
+      } catch (error) {
+        $("adConfigText").textContent = "Could not load ad checkout settings.";
+        $("checkoutBtn").disabled = true;
+        setResult("formResult", escapeHtml(error.message), "bad");
+      }
+    }
+    document.getElementById("adForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setResult("formResult", "Starting Stripe checkout...");
+      try {
+        const payload = {
+          title: $("titleInput").value,
+          description: $("descriptionInput").value,
+          url: $("urlInput").value,
+          sponsorEmail: $("emailInput").value,
+          sponsorName: $("nameInput").value,
+          weeks: selectedWeeks(),
+          placements: selectedPlacements()
+        };
+        const data = await api("/api/ads/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        if (!data.url) throw new Error("Stripe checkout URL was not returned.");
+        window.location.href = data.url;
+      } catch (error) {
+        setResult("formResult", "Could not start checkout: " + escapeHtml(error.message), "bad");
+      }
+    });
+    ["titleInput", "descriptionInput", "urlInput"].forEach(id => document.getElementById(id).addEventListener("input", updatePreview));
+    document.getElementById("weeksInput").addEventListener("change", updatePrice);
+    loadConfig();
+  </script>
+  <script src="script.js?v=8"></script>
+</body>
+</html>

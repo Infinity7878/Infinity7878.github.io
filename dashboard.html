@@ -454,6 +454,7 @@
           <summary>More</summary>
           <div class="nav-dropdown-menu" aria-label="More pages">
             <a href="autopay.html">AutoPay</a>
+            <a href="advertise.html">Advertise</a>
             <a href="https://status.storebot.pro">Status</a>
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html" aria-current="page" class="active">Dashboard</a>
@@ -1053,6 +1054,9 @@
           <div class="component-row"><div><strong>Bot Health</strong><small>Uptime ${escapeHtml(bot.uptime || "unknown")}, Memory ${escapeHtml(bot.memory || "unknown")}</small></div><span class="${bot.online ? "dash-dot" : "dash-dot bad"}"></span></div>
         </div>
 
+        <!-- STOREBOT_DASHBOARD_AD_SLOT_V1 -->
+        <div id="dashboardSponsoredAdSlot"></div>
+
         <div id="managementControlsBox"><p class="section-text">Loading management controls...</p></div>
 
         <div class="dashboard-card management-card">
@@ -1082,6 +1086,30 @@
       if (enableBtn) enableBtn.addEventListener("click", () => saveMaintenance(true));
       if (disableBtn) disableBtn.addEventListener("click", () => saveMaintenance(false));
       loadControlData(selectedGuildId);
+      loadDashboardSponsoredAd(selectedGuildId);
+    }
+
+
+    // STOREBOT_DASHBOARD_AD_SLOT_V1
+    async function loadDashboardSponsoredAd(guildId) {
+      const slot = document.getElementById("dashboardSponsoredAdSlot");
+      if (!slot || !guildId) return;
+      slot.innerHTML = "";
+      try {
+        const data = await api(`/api/ads/slot?placement=dashboard-sidebar&guild_id=${encodeURIComponent(guildId)}`);
+        const ad = data.ad;
+        if (!ad) return;
+        slot.innerHTML = `
+          <div class="dashboard-card management-card sponsored-dashboard-card">
+            <p class="eyebrow">Sponsored</p>
+            <h2>${escapeHtml(ad.title || "Sponsored")}</h2>
+            <p class="section-text">${escapeHtml(ad.description || "")}</p>
+            <div class="dashboard-actions"><a class="button secondary" href="${escapeHtml(ad.url || "#")}" target="_blank" rel="nofollow sponsored noopener">Learn more</a></div>
+            <div class="dashboard-note">${escapeHtml(ad.placementNote || "Premium servers do not show sponsored ads.")}</div>
+          </div>`;
+      } catch (error) {
+        slot.innerHTML = "";
+      }
     }
 
     async function loadAdminDashboard() {
