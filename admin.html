@@ -58,6 +58,8 @@
     .admin-item h3 { margin: 0 0 0.35rem; font-size: 1rem; }
     .admin-two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
     .admin-empty { color: var(--muted); border: 1px dashed var(--line); border-radius: 18px; padding: 1rem; background: rgba(255,255,255,0.025); }
+    /* STOREBOT_ADMIN_CACHE_UI_PATCH_V1 */
+    .admin-cache-note { color: var(--muted); font-size: 0.78rem; margin-top: 0.45rem; }
     .admin-toast { position: fixed; right: 1rem; bottom: 1rem; z-index: 50; max-width: min(440px, calc(100vw - 2rem)); border: 1px solid rgba(249,115,22,0.45); border-radius: 18px; background: rgba(8,13,24,0.96); box-shadow: var(--shadow); padding: 0.85rem 1rem; color: var(--text); display: none; }
     .admin-toast.show { display: block; }
     .hidden { display: none !important; }
@@ -155,7 +157,25 @@
     const $ = (id) => document.getElementById(id);
     const money = (value) => `$${Number(value || 0).toFixed(2)}`;
     const dateShort = (value) => value ? new Date(value).toLocaleString() : "—";
-    const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (ch) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[ch]));
+    const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (ch) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", "\"":"&quot;" }[ch]));
+
+    // STOREBOT_ADMIN_CACHE_UI_PATCH_V1
+    function cachedPath(path, force = false) {
+      return force ? path + (path.includes("?") ? "&" : "?") + "refresh=1" : path;
+    }
+
+    function cacheNote(payload) {
+      if (!payload || !payload.cache) return "";
+      const c = payload.cache;
+      const source = c.hit ? "cache" : "fresh";
+      const ttl = Number.isFinite(Number(c.ttlSeconds)) ? " · refreshes in about " + Math.max(0, Number(c.ttlSeconds)) + "s" : "";
+      return "<div class=\"admin-cache-note\">Loaded from " + source + ttl + "</div>";
+    }
+
+    function hasLoaded(value) {
+      if (Array.isArray(value)) return value.length > 0;
+      return Boolean(value);
+    }
 
     function toast(message, good = true) {
       const box = $("adminToast");
@@ -217,17 +237,17 @@
           return;
         }
         $("adminApp").classList.remove("hidden");
-        await Promise.allSettled([loadOverview(), loadAds(), loadServers()]);
+        await loadOverview();
       } catch (error) {
         $("adminStatusLine").innerHTML = statusPill("Not logged in", "warn");
         $("loginPanel").classList.remove("hidden");
       }
     }
 
-    async function loadOverview() {
+    async function loadOverview(force = false) {
       const box = $("tab-overview");
       box.innerHTML = `<div class="admin-panel"><p>Loading overview...</p></div>`;
-      state.overview = await api("/api/admin/overview");
+      state.overview = await api(cachedPath("/api/admin/overview", force));
       const t = state.overview.totals || {};
       box.innerHTML = `
         <div class="admin-grid">
@@ -249,6 +269,7 @@
             ${statusPill(`Memory: ${state.overview.bot?.memory || "unknown"}`)}
             ${statusPill(`Global maintenance: ${state.overview.globalMaintenance?.enabled ? "on" : "off"}`, state.overview.globalMaintenance?.enabled ? "warn" : "good")}
             ${statusPill(`Generated: ${dateShort(state.overview.generatedAt)}`)}
+            ${cacheNote(state.overview)}
           </div>
         </div>
         <div class="admin-panel">
@@ -351,18 +372,19 @@
       await loadAds();
     }
 
-    async function loadServers() {
+    async function loadServers(force = false) {
       const box = $("tab-servers");
       box.innerHTML = `<div class="admin-panel"><p>Loading servers...</p></div>`;
-      const data = await api("/api/admin/guilds");
+      const data = await api(cachedPath("/api/admin/guilds", force));
       state.guilds = data.guilds || [];
       box.innerHTML = `
         <div class="admin-panel">
           <div class="admin-panel-head">
             <div><h2>Servers and Premium</h2><p>Search servers, toggle maintenance, and manually adjust Premium when needed.</p></div>
-            <button class="admin-button" onclick="loadServers()">Refresh</button>
+            <button class="admin-button" onclick="loadServers(true)">Refresh</button>
           </div>
           <input class="admin-input" id="serverSearch" placeholder="Search server name or ID..." oninput="renderServers()" />
+          ${cacheNote(data)}
           <div id="serverList" class="admin-list" style="margin-top:1rem;"></div>
         </div>`;
       renderServers();
@@ -426,14 +448,14 @@
       }
       await api(`/api/admin/guilds/${guildId}/premium`, { method: "POST", body: JSON.stringify(body) });
       toast("Premium updated.");
-      await Promise.allSettled([loadServers(), loadOverview()]);
+      await Promise.allSettled([loadServers(true), loadOverview(true)]);
     }
 
     async function setServerMaintenance(guildId, enabled) {
       const reason = enabled ? (prompt("Maintenance reason", "Server maintenance enabled from admin center.") || "Server maintenance enabled from admin center.") : "";
       await api(`/api/admin/guilds/${guildId}/maintenance`, { method: "POST", body: JSON.stringify({ enabled, reason }) });
       toast(enabled ? "Server maintenance enabled." : "Server maintenance disabled.");
-      await Promise.allSettled([loadServers(), loadOverview()]);
+      await Promise.allSettled([loadServers(true), loadOverview(true)]);
     }
 
     async function loadReports() {
@@ -474,7 +496,7 @@
 
     async function refreshAll() {
       try {
-        await Promise.allSettled([loadOverview(), loadAds(), loadServers()]);
+        await Promise.allSettled([loadOverview(true), loadAds(), loadServers(true)]);
         if (state.currentTab === "system") await loadSystem();
         if (state.currentTab === "reports") await loadReports();
         if (state.currentTab === "maintenance") await loadMaintenance();
