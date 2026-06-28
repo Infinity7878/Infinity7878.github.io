@@ -6,7 +6,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Advertise on Store Bot | Sponsored Discord Seller Ads</title>
-  <meta name="description" content="Buy a clearly labeled sponsored placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces and reviewed before going live." />
+  <meta name="description" content="Buy a clearly labeled sponsored placement on Store Bot. Ads are only shown for free users and reviewed before going live." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#f97316" />
   <link rel="canonical" href="https://storebot.pro/advertise.html" />
@@ -18,7 +18,7 @@
     .hidden { display: none !important; }
 
     .advertise-page {
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .ad-hero {
@@ -543,9 +543,9 @@
         <div class="ad-copy reveal">
           <p class="eyebrow">Sponsored placements</p>
           <h1>Reach Discord sellers without annoying popups.</h1>
-          <p class="hero-text">Buy a clearly labeled Store Bot sponsor slot. Ads only appear on free-tier surfaces, stay small, and are manually reviewed before going live.</p>
+          <p class="hero-text">Buy a clearly labeled Store Bot sponsor slot. Ads are only shown for free users, stay small, and are manually reviewed before going live.</p>
           <div class="ad-pill-row" aria-label="Ad program highlights">
-            <span class="ad-pill">Free-tier surfaces only</span>
+            <span class="ad-pill">Free users only</span>
             <span class="ad-pill">Manual review required</span>
             <span class="ad-pill">Stripe checkout</span>
           </div>
@@ -571,7 +571,7 @@
             <a id="previewUrl" href="#" rel="nofollow sponsored noopener" target="_blank">Learn more</a>
           </div>
           <div class="ad-stat-grid" aria-label="Ad placement rules">
-            <div class="ad-stat"><strong>0</strong><span>forced ads for Premium servers</span></div>
+            <div class="ad-stat"><strong>0</strong><span>ads shown for Premium users</span></div>
             <div class="ad-stat"><strong>4</strong><span>available placement types</span></div>
             <div class="ad-stat"><strong>100%</strong><span>reviewed before launch</span></div>
           </div>
@@ -640,15 +640,15 @@
 
               <fieldset class="placement-fieldset">
                 <legend>Placements</legend>
-                <p class="ad-help">Select at least one placement. Premium servers do not show forced ads.</p>
+                <p class="ad-help">Select at least one placement. Ads are only shown for free users.</p>
                 <div class="placement-list" id="placementList">
                   <label class="placement-option">
                     <input type="checkbox" value="panel" checked />
-                    <span><strong>Discord store panels</strong><small>Small sponsored field on free-tier server panels.</small></span>
+                    <span><strong>Discord store panels</strong><small>Small sponsored field for free users.</small></span>
                   </label>
                   <label class="placement-option">
                     <input type="checkbox" value="dashboard-sidebar" checked />
-                    <span><strong>Dashboard sidebar</strong><small>Unintrusive card on free-tier dashboard views.</small></span>
+                    <span><strong>Dashboard sidebar</strong><small>Unintrusive card for free users in dashboard views.</small></span>
                   </label>
                   <label class="placement-option">
                     <input type="checkbox" value="shop-search" checked />
@@ -656,7 +656,7 @@
                   </label>
                   <label class="placement-option">
                     <input type="checkbox" value="public-shop-footer" checked />
-                    <span><strong>Public shop pages</strong><small>Small footer/card placement for free public shop pages.</small></span>
+                    <span><strong>Public shop pages</strong><small>Small footer/card placement on public pages for free users.</small></span>
                   </label>
                 </div>
               </fieldset>
@@ -734,10 +734,10 @@
       };
 
       const placementDescriptions = {
-        "panel": "Small sponsored field on free-tier server panels.",
-        "dashboard-sidebar": "Unintrusive card on free-tier dashboard views.",
+        "panel": "Small sponsored field for free users.",
+        "dashboard-sidebar": "Unintrusive card for free users in dashboard views.",
         "shop-search": "Clearly labeled sponsored result in shop discovery.",
-        "public-shop-footer": "Small footer/card placement for free public shop pages."
+        "public-shop-footer": "Small footer/card placement on public pages for free users."
       };
 
       function el(id) {
