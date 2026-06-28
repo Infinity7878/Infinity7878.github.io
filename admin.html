@@ -378,13 +378,22 @@
       if (!rows.length) { list.innerHTML = `<div class="admin-empty">No matching servers.</div>`; return; }
       list.innerHTML = rows.map((row) => {
         const g = row.guild || {};
-        // STOREBOT_ADMIN_PREMIUM_UI_FIX_V1
+        // STOREBOT_ADMIN_PREMIUM_UI_FIX_V4
+
+        // Use authoritative backend billing.active only. Do not trust row.statuses.premium,
+
+        // because older broad scanners can mark unrelated premium config as active.
+
         const billing = row.billing || {};
-        const premiumStatus = String(row.statuses?.premium || "free").toLowerCase();
-        const premiumActive = Boolean(billing.active) || premiumStatus === "active";
+
+        const premiumActive = billing.active === true;
+
         const premiumLabel = premiumActive
-          ? (billing.currentPeriodEnd ? `active until ${dateShort(billing.currentPeriodEnd)}` : "active")
+
+          ? (billing.currentPeriodEnd ? "active until " + dateShort(billing.currentPeriodEnd) : "active")
+
           : "free";
+
         const maint = row.maintenance?.active;
         return `<div class="admin-item">
           <div class="admin-panel-head">
