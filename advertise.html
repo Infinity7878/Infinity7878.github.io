@@ -2,41 +2,512 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.storebot.pro; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Advertise on Store Bot | Sponsored Discord Seller Ads</title>
-  <meta name="description" content="Buy a clearly labeled sponsored ad placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces and reviewed before going live." />
+  <meta name="description" content="Buy a clearly labeled sponsored placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces and reviewed before going live." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#f97316" />
   <link rel="canonical" href="https://storebot.pro/advertise.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
   <script src="maintenance-config.js?v=1"></script>
   <script src="maintenance.js?v=1"></script>
   <style>
-    .ad-form-card { border: 1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(28,28,31,.92), rgba(17,18,20,.92)); border-radius: 24px; padding: 28px; box-shadow: var(--shadow); }
-    .ad-checkout-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 28px; align-items: start; }
-    .ad-form { display: grid; gap: 16px; margin-top: 22px; }
-    .ad-field { display: grid; gap: 8px; }
-    .ad-field label { font-weight: 850; }
-    .ad-field input, .ad-field textarea, .ad-field select { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: var(--text); padding: 13px 14px; font: inherit; }
-    .ad-field textarea { min-height: 110px; resize: vertical; }
-    .ad-field small { color: var(--muted); line-height: 1.45; }
-    .placement-list { display: grid; gap: 10px; }
-    .placement-list label { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid rgba(255,255,255,.11); background: rgba(255,255,255,.035); border-radius: 14px; }
-    .placement-list input { width: auto; margin-top: 3px; }
-    .ad-preview { display: grid; gap: 12px; }
-    .sponsored-preview { border: 1px solid rgba(249,115,22,.32); background: rgba(249,115,22,.08); border-radius: 18px; padding: 16px; }
-    .sponsored-preview .tag { display:inline-flex; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:4px 8px; font-size:.78rem; font-weight:900; color:var(--muted); margin-bottom:10px; }
-    .sponsored-preview strong { display:block; margin-bottom: 7px; }
-    .checkout-result { border: 1px solid rgba(249,115,22,.28); background: rgba(249,115,22,.08); color: var(--muted); border-radius: 18px; padding: 16px; line-height: 1.6; margin-top: 16px; }
-    .checkout-result.good { border-color: rgba(34,197,94,.35); background: rgba(34,197,94,.08); color: #bbf7d0; }
-    .checkout-result.bad { border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.08); color: #fecaca; }
-    @media (max-width: 980px) { .ad-checkout-grid { grid-template-columns: 1fr; } }
+    .hidden { display: none !important; }
+
+    .advertise-page {
+      overflow: hidden;
+    }
+
+    .ad-hero {
+      position: relative;
+      padding: 5.8rem 0 3.2rem;
+    }
+
+    .ad-hero::before,
+    .ad-checkout-section::before {
+      content: "";
+      position: absolute;
+      inset: auto -12rem -10rem auto;
+      width: 28rem;
+      height: 28rem;
+      pointer-events: none;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.13), transparent 68%);
+      filter: blur(2px);
+    }
+
+    .ad-hero-grid,
+    .ad-checkout-grid {
+      position: relative;
+      display: grid;
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .ad-copy {
+      max-width: 760px;
+    }
+
+    .ad-copy h1 {
+      max-width: 820px;
+      font-size: clamp(2.35rem, 7vw, 4.75rem);
+    }
+
+    .ad-copy .hero-text {
+      margin-top: 1.15rem;
+    }
+
+    .ad-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.3rem;
+    }
+
+    .ad-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid var(--accent-line);
+      background: rgba(249, 115, 22, 0.12);
+      color: #fed7aa;
+      border-radius: 999px;
+      padding: 0.45rem 0.72rem;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .ad-card,
+    .ad-form-card,
+    .ad-preview-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.068), rgba(255,255,255,0.035));
+      box-shadow: var(--shadow);
+    }
+
+    .ad-preview-card {
+      padding: 1.15rem;
+    }
+
+    .ad-preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .ad-price-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(69, 212, 131, 0.34);
+      border-radius: 999px;
+      color: #bbf7d0;
+      background: rgba(69, 212, 131, 0.1);
+      font-size: 0.82rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .sponsored-preview {
+      display: grid;
+      gap: 0.65rem;
+      border: 1px solid rgba(249, 115, 22, 0.36);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(249, 115, 22, 0.14), rgba(255,255,255,0.035)),
+        rgba(0,0,0,0.12);
+      padding: 1rem;
+    }
+
+    .sponsored-label {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      padding: 0.22rem 0.55rem;
+      color: var(--muted);
+      background: rgba(0,0,0,0.16);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sponsored-preview strong {
+      color: var(--text);
+      font-size: 1.08rem;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .sponsored-preview p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .sponsored-preview a {
+      width: fit-content;
+      color: #fed7aa;
+      font-weight: 900;
+    }
+
+    .ad-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .ad-stat {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 0.85rem;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .ad-stat strong {
+      display: block;
+      color: #fed7aa;
+      font-size: 1.15rem;
+      line-height: 1.1;
+    }
+
+    .ad-stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .ad-checkout-section {
+      position: relative;
+      padding: 2.3rem 0 5.2rem;
+    }
+
+    .ad-form-card {
+      padding: clamp(1rem, 3vw, 1.55rem);
+    }
+
+    .ad-section-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+
+    .ad-section-title h2 {
+      font-size: clamp(1.7rem, 4vw, 2.55rem);
+    }
+
+    .ad-section-title p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .ad-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ad-form-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ad-field {
+      display: grid;
+      gap: 0.42rem;
+    }
+
+    .ad-label-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .ad-field label,
+    .ad-field legend {
+      color: var(--text);
+      font-weight: 860;
+      line-height: 1.25;
+    }
+
+    .ad-field small,
+    .ad-help {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .ad-field input,
+    .ad-field textarea,
+    .ad-field select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(0,0,0,0.2);
+      color: var(--text);
+      padding: 0.82rem 0.9rem;
+      font: inherit;
+      outline: none;
+      transition: border-color 150ms ease, background 150ms ease, box-shadow 150ms ease;
+    }
+
+    .ad-field textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    .ad-field input:focus,
+    .ad-field textarea:focus,
+    .ad-field select:focus {
+      border-color: rgba(249, 115, 22, 0.7);
+      background: rgba(0,0,0,0.28);
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+    }
+
+    .ad-field input::placeholder,
+    .ad-field textarea::placeholder {
+      color: rgba(170,178,191,0.64);
+    }
+
+    .ad-field select option {
+      color: #11151b;
+      background: #fff7ed;
+    }
+
+    .placement-fieldset {
+      display: grid;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      min-width: 0;
+    }
+
+    .placement-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+
+    .placement-option {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      padding: 0.88rem;
+      cursor: pointer;
+    }
+
+    .placement-option input {
+      width: 1.08rem;
+      min-height: 1.08rem;
+      margin: 0.2rem 0 0;
+      accent-color: var(--accent);
+    }
+
+    .placement-option strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .placement-option small {
+      display: block;
+      margin-top: 0.2rem;
+      color: var(--muted);
+    }
+
+    .placement-option:has(input:checked) {
+      border-color: rgba(249, 115, 22, 0.48);
+      background: rgba(249, 115, 22, 0.09);
+    }
+
+    .checkout-bar {
+      display: grid;
+      gap: 0.85rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-top: 0.2rem;
+    }
+
+    .checkout-total {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      border: 1px solid rgba(249, 115, 22, 0.28);
+      border-radius: 16px;
+      padding: 0.85rem 0.95rem;
+      background: rgba(249, 115, 22, 0.08);
+    }
+
+    .checkout-total strong {
+      font-size: 1.35rem;
+      color: #fed7aa;
+    }
+
+    .checkout-total span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .checkout-result {
+      border: 1px solid rgba(249,115,22,.28);
+      border-radius: 16px;
+      background: rgba(249,115,22,.08);
+      color: var(--muted);
+      padding: 0.95rem;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .checkout-result.good {
+      border-color: rgba(34,197,94,.35);
+      background: rgba(34,197,94,.08);
+      color: #bbf7d0;
+    }
+
+    .checkout-result.bad {
+      border-color: rgba(239,68,68,.35);
+      background: rgba(239,68,68,.08);
+      color: #fecaca;
+    }
+
+    .button[disabled] {
+      opacity: 0.58;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .ad-rules-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ad-rule-card {
+      padding: 1rem;
+    }
+
+    .ad-rule-list {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .ad-rule-item {
+      display: grid;
+      grid-template-columns: 2.1rem minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 0.8rem;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .ad-rule-number {
+      display: grid;
+      place-items: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 12px;
+      color: #1b1108;
+      background: #fb923c;
+      font-weight: 950;
+    }
+
+    .ad-rule-item strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .ad-rule-item span {
+      display: block;
+      margin-top: 0.16rem;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.45;
+    }
+
+    .ad-note {
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 18px;
+      padding: 1rem;
+      color: var(--muted);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .ad-note strong {
+      color: #fed7aa;
+    }
+
+    @media (min-width: 700px) {
+      .ad-stat-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .ad-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ad-field.full,
+      .placement-fieldset,
+      .checkout-bar {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .ad-hero-grid {
+        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.58fr);
+      }
+
+      .ad-checkout-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+      }
+
+      .ad-preview-card.sticky,
+      .ad-rules-stack.sticky {
+        position: sticky;
+        top: 96px;
+      }
+    }
+
+    @media (max-width: 559px) {
+      .ad-hero {
+        padding-top: 4.2rem;
+      }
+
+      .ad-form-card,
+      .ad-preview-card {
+        border-radius: 20px;
+      }
+
+      .checkout-total {
+        display: grid;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="advertise-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
@@ -61,111 +532,169 @@
             <a href="dashboard.html">Dashboard</a>
           </div>
         </details>
-        <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
+        <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&amp;permissions=2147483648&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero section-pad">
-      <div class="container ad-checkout-grid">
-        <div class="reveal">
+    <section class="ad-hero">
+      <div class="container ad-hero-grid">
+        <div class="ad-copy reveal">
           <p class="eyebrow">Sponsored placements</p>
-          <h1>Advertise to Discord sellers without annoying popups.</h1>
-          <p class="hero-text">Buy a clearly labeled sponsored placement on Store Bot. Ads are shown only on free-tier Store Bot surfaces, and every campaign is reviewed before it goes live.</p>
-          <div class="hero-actions">
-            <a class="button secondary" href="pricing.html">View Premium</a>
-            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA">Ask a question</a>
+          <h1>Reach Discord sellers without annoying popups.</h1>
+          <p class="hero-text">Buy a clearly labeled Store Bot sponsor slot. Ads only appear on free-tier surfaces, stay small, and are manually reviewed before going live.</p>
+          <div class="ad-pill-row" aria-label="Ad program highlights">
+            <span class="ad-pill">Free-tier surfaces only</span>
+            <span class="ad-pill">Manual review required</span>
+            <span class="ad-pill">Stripe checkout</span>
           </div>
-          <div id="pageResult" class="checkout-result hidden"></div>
+          <div class="hero-actions">
+            <a class="button primary" href="#buy-ad">Buy an ad</a>
+            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Ask a question</a>
+          </div>
+          <div id="pageResult" class="checkout-result hidden" role="status" aria-live="polite"></div>
         </div>
-        <aside class="ad-form-card reveal ad-preview">
-          <p class="eyebrow">Live preview</p>
-          <h2>Sponsored card</h2>
+
+        <aside class="ad-preview-card sticky reveal" aria-label="Sponsored ad preview">
+          <div class="ad-preview-top">
+            <div>
+              <p class="eyebrow">Live preview</p>
+              <h2>Sponsored card</h2>
+            </div>
+            <span class="ad-price-chip" id="heroPriceChip">$5/week</span>
+          </div>
           <div class="sponsored-preview">
-            <span class="tag">Sponsored</span>
+            <span class="sponsored-label">Sponsored</span>
             <strong id="previewTitle">Your ad headline</strong>
-            <p id="previewDescription" class="section-text">Your short ad description will appear here.</p>
+            <p id="previewDescription">Your short ad description will appear here.</p>
             <a id="previewUrl" href="#" rel="nofollow sponsored noopener" target="_blank">Learn more</a>
           </div>
-          <p class="section-text">Sponsored placements are intentionally small and clearly labeled. Premium servers do not show forced ads.</p>
+          <div class="ad-stat-grid" aria-label="Ad placement rules">
+            <div class="ad-stat"><strong>0</strong><span>forced ads for Premium servers</span></div>
+            <div class="ad-stat"><strong>4</strong><span>available placement types</span></div>
+            <div class="ad-stat"><strong>100%</strong><span>reviewed before launch</span></div>
+          </div>
         </aside>
       </div>
     </section>
 
-    <section class="section-pad">
+    <section class="ad-checkout-section" id="buy-ad">
       <div class="container ad-checkout-grid">
-        <section class="ad-form-card reveal">
-          <p class="eyebrow">Stripe checkout</p>
-          <h2>Buy a sponsored ad</h2>
-          <p class="section-text" id="adConfigText">Loading ad checkout...</p>
-          <form class="ad-form" id="adForm">
-            <div class="ad-field">
-              <label for="titleInput">Ad headline</label>
-              <input id="titleInput" name="title" maxlength="80" required placeholder="Custom Discord bot development" />
-              <small>Short, clear, and no fake urgency.</small>
-            </div>
-            <div class="ad-field">
-              <label for="descriptionInput">Ad description</label>
-              <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Promote your Discord-related service, community tool, store resource, or creator offer."></textarea>
-              <small>Keep it truthful. Store Bot reviews ads before they run.</small>
-            </div>
-            <div class="ad-field">
-              <label for="urlInput">Destination URL</label>
-              <input id="urlInput" name="url" maxlength="600" required placeholder="https://example.com" />
-              <small>Must be an http or https link. Misleading, unsafe, adult, gambling, or illegal content will be rejected.</small>
-            </div>
-            <div class="ad-field">
-              <label for="emailInput">Contact email</label>
-              <input id="emailInput" name="sponsorEmail" type="email" maxlength="180" required placeholder="you@example.com" />
-              <small>Used for the Stripe receipt and review follow-up.</small>
-            </div>
-            <div class="ad-field">
-              <label for="nameInput">Sponsor name</label>
-              <input id="nameInput" name="sponsorName" maxlength="100" placeholder="Your brand or Discord server" />
-            </div>
-            <div class="ad-field">
-              <label for="weeksInput">Duration</label>
-              <select id="weeksInput" name="weeks">
-                <option value="1">1 week</option>
-                <option value="2">2 weeks</option>
-                <option value="4" selected>4 weeks</option>
-                <option value="8">8 weeks</option>
-                <option value="12">12 weeks</option>
-              </select>
-              <small id="priceText">Price will load from the API.</small>
-            </div>
-            <div class="ad-field">
-              <label>Placements</label>
-              <div class="placement-list" id="placementList">
-                <label><input type="checkbox" value="panel" checked /> <span><strong>Discord store panels</strong><br><small>Small sponsored field on free-tier server panels.</small></span></label>
-                <label><input type="checkbox" value="dashboard-sidebar" checked /> <span><strong>Dashboard sidebar</strong><br><small>Unintrusive sponsored card on free-tier dashboard views.</small></span></label>
-                <label><input type="checkbox" value="shop-search" checked /> <span><strong>Shop search</strong><br><small>Clearly labeled sponsored result in shop discovery.</small></span></label>
-                <label><input type="checkbox" value="public-shop-footer" checked /> <span><strong>Public shop pages</strong><br><small>Small footer/card placement for free public shop pages.</small></span></label>
+        <section class="ad-form-card reveal" aria-labelledby="buyAdTitle">
+          <div class="ad-section-title">
+            <p class="eyebrow">Stripe checkout</p>
+            <h2 id="buyAdTitle">Buy a sponsored ad</h2>
+            <p id="adConfigText">Loading ad checkout settings...</p>
+          </div>
+
+          <form class="ad-form" id="adForm" novalidate>
+            <div class="ad-form-grid">
+              <div class="ad-field full">
+                <div class="ad-label-row">
+                  <label for="titleInput">Ad headline</label>
+                  <small><span id="titleCount">0</span>/80</small>
+                </div>
+                <input id="titleInput" name="title" maxlength="80" required autocomplete="organization" placeholder="Custom Discord bot development" />
+                <small>Keep it short, truthful, and specific. No fake urgency or misleading claims.</small>
+              </div>
+
+              <div class="ad-field full">
+                <div class="ad-label-row">
+                  <label for="descriptionInput">Ad description</label>
+                  <small><span id="descriptionCount">0</span>/220</small>
+                </div>
+                <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Promote your Discord-related service, community tool, store resource, or creator offer."></textarea>
+                <small>Ads are reviewed before they run. Unsafe, adult, gambling, scam, or illegal content will be rejected.</small>
+              </div>
+
+              <div class="ad-field full">
+                <label for="urlInput">Destination URL</label>
+                <input id="urlInput" name="url" inputmode="url" maxlength="600" required autocomplete="url" placeholder="https://example.com" />
+                <small>Must be a valid http or https link. Use the real landing page buyers will see.</small>
+              </div>
+
+              <div class="ad-field">
+                <label for="emailInput">Contact email</label>
+                <input id="emailInput" name="sponsorEmail" type="email" maxlength="180" required autocomplete="email" placeholder="you@example.com" />
+                <small>Used for the Stripe receipt and review follow-up.</small>
+              </div>
+
+              <div class="ad-field">
+                <label for="nameInput">Sponsor name</label>
+                <input id="nameInput" name="sponsorName" maxlength="100" autocomplete="organization" placeholder="Your brand or Discord server" />
+                <small>This can be your store, service, or server name.</small>
+              </div>
+
+              <div class="ad-field">
+                <label for="weeksInput">Duration</label>
+                <select id="weeksInput" name="weeks" required>
+                  <option value="1">1 week</option>
+                  <option value="2">2 weeks</option>
+                  <option value="4" selected>4 weeks</option>
+                  <option value="8">8 weeks</option>
+                  <option value="12">12 weeks</option>
+                </select>
+                <small id="durationHelp">Choose how long the ad should run after approval.</small>
+              </div>
+
+              <fieldset class="placement-fieldset">
+                <legend>Placements</legend>
+                <p class="ad-help">Select at least one placement. Premium servers do not show forced ads.</p>
+                <div class="placement-list" id="placementList">
+                  <label class="placement-option">
+                    <input type="checkbox" value="panel" checked />
+                    <span><strong>Discord store panels</strong><small>Small sponsored field on free-tier server panels.</small></span>
+                  </label>
+                  <label class="placement-option">
+                    <input type="checkbox" value="dashboard-sidebar" checked />
+                    <span><strong>Dashboard sidebar</strong><small>Unintrusive card on free-tier dashboard views.</small></span>
+                  </label>
+                  <label class="placement-option">
+                    <input type="checkbox" value="shop-search" checked />
+                    <span><strong>Shop search</strong><small>Clearly labeled sponsored result in shop discovery.</small></span>
+                  </label>
+                  <label class="placement-option">
+                    <input type="checkbox" value="public-shop-footer" checked />
+                    <span><strong>Public shop pages</strong><small>Small footer/card placement for free public shop pages.</small></span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="checkout-bar">
+                <div class="checkout-total">
+                  <span id="priceText">Price will load from the API.</span>
+                  <strong id="totalText">$0.00</strong>
+                </div>
+                <button class="button primary" id="checkoutBtn" type="submit" disabled>Continue to Stripe</button>
+                <div id="formResult" class="checkout-result hidden" role="status" aria-live="polite"></div>
               </div>
             </div>
-            <button class="button primary" id="checkoutBtn" type="submit">Continue to Stripe</button>
-            <div id="formResult" class="checkout-result hidden"></div>
           </form>
         </section>
 
-        <aside class="ad-form-card reveal">
-          <p class="eyebrow">Rules</p>
-          <h2>What happens after payment?</h2>
-          <div class="component-list">
-            <div class="component-row"><div><strong>1. Pay through Stripe</strong><small>Checkout is handled securely by Stripe.</small></div><span class="dash-dot"></span></div>
-            <div class="component-row"><div><strong>2. Manual review</strong><small>Store Bot reviews the ad for quality and safety.</small></div><span class="dash-dot warn"></span></div>
-            <div class="component-row"><div><strong>3. Goes live</strong><small>Approved ads run for the purchased duration.</small></div><span class="dash-dot"></span></div>
-          </div>
-          <div class="dashboard-note">Ads are shown only to free-tier Store Bot surfaces. Premium servers do not show forced ads. Rejected ads can be corrected through support.</div>
+        <aside class="ad-rules-stack sticky reveal" aria-label="Ad review process">
+          <section class="ad-form-card ad-rule-card">
+            <p class="eyebrow">Review flow</p>
+            <h2>What happens next?</h2>
+            <div class="ad-rule-list">
+              <div class="ad-rule-item"><div class="ad-rule-number">1</div><div><strong>Pay through Stripe</strong><span>Checkout is handled by Stripe. Store Bot does not store card details.</span></div></div>
+              <div class="ad-rule-item"><div class="ad-rule-number">2</div><div><strong>Manual review</strong><span>The campaign is checked for quality, safety, and relevance.</span></div></div>
+              <div class="ad-rule-item"><div class="ad-rule-number">3</div><div><strong>Ad goes live</strong><span>Approved campaigns run for the purchased duration after approval.</span></div></div>
+            </div>
+          </section>
+
+          <section class="ad-note">
+            <strong>Rejected ads are not silently ignored.</strong> If something needs to be changed, contact support with your campaign details and the landing page you want reviewed.
+          </section>
         </aside>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-row">
-      <p>© 2026 Store Bot. Built for Discord storefronts.</p>
+    <div class="container footer-grid">
+      <p>© <span id="year">2026</span> Store Bot. Built for Discord storefronts.</p>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
@@ -173,86 +702,322 @@
         <a href="advertise.html">Advertise</a>
         <a href="docs.html">Docs</a>
         <a href="https://status.storebot.pro">Status</a>
-        <a href="https://discord.gg/zB7NgPBzBA">Support</a>
+        <a href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Support</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
-    if (navToggle && navLinks) navToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    (function () {
+      "use strict";
 
-    const API_BASE = "https://api.storebot.pro";
-    let adConfig = { pricePerWeekUsd: 5, minWeeks: 1, maxWeeks: 12, enabled: false, stripeConfigured: false };
-    const $ = (id) => document.getElementById(id);
-    function escapeHtml(value) { return String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"}[c])); }
-    function setResult(id, text, kind = "") { const el = $(id); if (!el) return; el.className = ("checkout-result " + kind).trim(); el.innerHTML = text; }
-    function selectedWeeks() { const v = Number($("weeksInput")?.value || 1); return Math.min(adConfig.maxWeeks || 12, Math.max(adConfig.minWeeks || 1, Math.round(v || 1))); }
-    function selectedPlacements() { return Array.from(document.querySelectorAll("#placementList input[type='checkbox']:checked")).map(input => input.value); }
-    function updatePrice() { const weeks = selectedWeeks(); const price = Number(adConfig.pricePerWeekUsd || 5) * weeks; $("priceText").textContent = "$" + price.toFixed(2) + " total • $" + Number(adConfig.pricePerWeekUsd || 5).toFixed(2) + "/week"; }
-    function updatePreview() {
-      $("previewTitle").textContent = $("titleInput").value || "Your ad headline";
-      $("previewDescription").textContent = $("descriptionInput").value || "Your short ad description will appear here.";
-      const url = $("urlInput").value || "#";
-      $("previewUrl").href = url;
-    }
-    async function api(path, options = {}) {
-      const res = await fetch(API_BASE + path, { cache: "no-store", ...options });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error || "Request failed: " + res.status);
-      return data;
-    }
-    async function loadConfig() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("ad") === "success") setResult("pageResult", "<strong>Payment received.</strong><br>Your ad has been submitted for review. It will go live after approval.", "good");
-      if (params.get("ad") === "cancelled") setResult("pageResult", "<strong>Checkout cancelled.</strong><br>No ad payment was completed.", "bad");
-      const campaignId = params.get("campaign_id");
-      if (campaignId) {
-        api("/api/ads/campaigns/" + encodeURIComponent(campaignId)).then((data) => {
-          const c = data.campaign || {};
-          setResult("pageResult", "<strong>Campaign " + escapeHtml(c.status || "submitted") + "</strong><br>ID: <code>" + escapeHtml(c.id || campaignId) + "</code>" + (c.expiresAt ? "<br>Runs until " + escapeHtml(new Date(c.expiresAt).toLocaleDateString()) : ""), c.status === "active" ? "good" : "");
-        }).catch(() => {});
+      const API_BASE = "https://api.storebot.pro";
+      const DEFAULT_CONFIG = {
+        enabled: false,
+        stripeConfigured: false,
+        reviewRequired: true,
+        pricePerWeekUsd: 5,
+        minWeeks: 1,
+        maxWeeks: 12,
+        allowedPlacements: ["panel", "dashboard-sidebar", "shop-search", "public-shop-footer"],
+        defaultPlacements: ["panel", "dashboard-sidebar", "shop-search", "public-shop-footer"]
+      };
+
+      let adConfig = Object.assign({}, DEFAULT_CONFIG);
+      let submitting = false;
+
+      const placementLabels = {
+        "panel": "Discord store panels",
+        "dashboard-sidebar": "Dashboard sidebar",
+        "shop-search": "Shop search",
+        "public-shop-footer": "Public shop pages"
+      };
+
+      const placementDescriptions = {
+        "panel": "Small sponsored field on free-tier server panels.",
+        "dashboard-sidebar": "Unintrusive card on free-tier dashboard views.",
+        "shop-search": "Clearly labeled sponsored result in shop discovery.",
+        "public-shop-footer": "Small footer/card placement for free public shop pages."
+      };
+
+      function el(id) {
+        return document.getElementById(id);
       }
-      try {
-        adConfig = await api("/api/ads/config");
-        $("adConfigText").textContent = adConfig.enabled && adConfig.stripeConfigured
-          ? "Sponsored ads are available at $" + Number(adConfig.pricePerWeekUsd || 5).toFixed(2) + " per week. All ads are reviewed before going live."
-          : "Ad checkout is not available right now. Contact support if you want to sponsor Store Bot.";
-        $("checkoutBtn").disabled = !(adConfig.enabled && adConfig.stripeConfigured);
-        updatePrice();
-      } catch (error) {
-        $("adConfigText").textContent = "Could not load ad checkout settings.";
-        $("checkoutBtn").disabled = true;
-        setResult("formResult", escapeHtml(error.message), "bad");
+
+      function setText(id, text) {
+        const node = el(id);
+        if (node) node.textContent = text;
       }
-    }
-    document.getElementById("adForm").addEventListener("submit", async (event) => {
-      event.preventDefault();
-      setResult("formResult", "Starting Stripe checkout...");
-      try {
+
+      function money(value) {
+        const number = Number(value || 0);
+        return "$" + number.toFixed(2);
+      }
+
+      function showResult(id, message, kind) {
+        const node = el(id);
+        if (!node) return;
+        node.className = "checkout-result" + (kind ? " " + kind : "");
+        node.textContent = message;
+      }
+
+      function hideResult(id) {
+        const node = el(id);
+        if (!node) return;
+        node.className = "checkout-result hidden";
+        node.textContent = "";
+      }
+
+      function isValidUrl(value) {
+        try {
+          const url = new URL(String(value || "").trim());
+          return url.protocol === "http:" || url.protocol === "https:";
+        } catch {
+          return false;
+        }
+      }
+
+      function selectedWeeks() {
+        const input = el("weeksInput");
+        const min = Number(adConfig.minWeeks || 1);
+        const max = Number(adConfig.maxWeeks || 12);
+        const raw = Number(input && input.value ? input.value : min);
+        return Math.min(max, Math.max(min, Math.round(raw || min)));
+      }
+
+      function selectedPlacements() {
+        return Array.from(document.querySelectorAll("#placementList input[type='checkbox']:checked"))
+          .map((input) => input.value)
+          .filter((value) => Array.isArray(adConfig.allowedPlacements) ? adConfig.allowedPlacements.includes(value) : true);
+      }
+
+      function updateCounts() {
+        const title = el("titleInput");
+        const description = el("descriptionInput");
+        setText("titleCount", String(title ? title.value.length : 0));
+        setText("descriptionCount", String(description ? description.value.length : 0));
+      }
+
+      function updatePreview() {
+        const title = el("titleInput");
+        const description = el("descriptionInput");
+        const urlInput = el("urlInput");
+        const previewUrl = el("previewUrl");
+
+        setText("previewTitle", title && title.value.trim() ? title.value.trim() : "Your ad headline");
+        setText("previewDescription", description && description.value.trim() ? description.value.trim() : "Your short ad description will appear here.");
+
+        if (previewUrl) {
+          const url = urlInput ? urlInput.value.trim() : "";
+          if (isValidUrl(url)) {
+            previewUrl.href = url;
+            previewUrl.textContent = "Learn more";
+            previewUrl.removeAttribute("aria-disabled");
+          } else {
+            previewUrl.href = "#";
+            previewUrl.textContent = "Destination preview";
+            previewUrl.setAttribute("aria-disabled", "true");
+          }
+        }
+
+        updateCounts();
+      }
+
+      function updatePrice() {
+        const weeks = selectedWeeks();
+        const weekly = Number(adConfig.pricePerWeekUsd || 5);
+        const total = weekly * weeks;
+        setText("priceText", weeks + " week" + (weeks === 1 ? "" : "s") + " × " + money(weekly) + "/week");
+        setText("totalText", money(total));
+        setText("heroPriceChip", money(weekly) + "/week");
+      }
+
+      function setCheckoutAvailability() {
+        const enabled = Boolean(adConfig.enabled && adConfig.stripeConfigured);
+        const button = el("checkoutBtn");
+        if (button) {
+          button.disabled = !enabled || submitting;
+          button.textContent = submitting ? "Opening Stripe..." : "Continue to Stripe";
+        }
+
+        if (enabled) {
+          setText("adConfigText", "Sponsored ads are available at " + money(adConfig.pricePerWeekUsd || 5) + " per week. All campaigns are reviewed before going live.");
+        } else if (!adConfig.stripeConfigured) {
+          setText("adConfigText", "Ad checkout is temporarily unavailable because Stripe is not configured yet.");
+        } else {
+          setText("adConfigText", "Ad checkout is temporarily unavailable. Contact support if you want to sponsor Store Bot.");
+        }
+      }
+
+      function buildDurationOptions() {
+        const select = el("weeksInput");
+        if (!select) return;
+
+        const min = Number(adConfig.minWeeks || 1);
+        const max = Number(adConfig.maxWeeks || 12);
+        const common = [1, 2, 4, 8, 12].filter((week) => week >= min && week <= max);
+        const values = common.length ? common : [min];
+        const current = selectedWeeks();
+
+        select.innerHTML = "";
+        values.forEach((week) => {
+          const option = document.createElement("option");
+          option.value = String(week);
+          option.textContent = week + " week" + (week === 1 ? "" : "s");
+          if (week === current || (!values.includes(current) && week === values[0])) option.selected = true;
+          select.appendChild(option);
+        });
+      }
+
+      function buildPlacementOptions() {
+        const wrap = el("placementList");
+        if (!wrap) return;
+
+        const allowed = Array.isArray(adConfig.allowedPlacements) && adConfig.allowedPlacements.length
+          ? adConfig.allowedPlacements
+          : DEFAULT_CONFIG.allowedPlacements;
+        const defaults = Array.isArray(adConfig.defaultPlacements) && adConfig.defaultPlacements.length
+          ? adConfig.defaultPlacements
+          : allowed;
+
+        wrap.innerHTML = "";
+        allowed.forEach((placement) => {
+          const label = document.createElement("label");
+          label.className = "placement-option";
+
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.value = placement;
+          input.checked = defaults.includes(placement);
+
+          const text = document.createElement("span");
+          const strong = document.createElement("strong");
+          strong.textContent = placementLabels[placement] || placement;
+          const small = document.createElement("small");
+          small.textContent = placementDescriptions[placement] || "Clearly labeled sponsored placement.";
+          text.append(strong, small);
+          label.append(input, text);
+          wrap.appendChild(label);
+        });
+      }
+
+      async function api(path, options) {
+        const response = await fetch(API_BASE + path, Object.assign({ cache: "no-store" }, options || {}));
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || "Request failed with HTTP " + response.status);
+        }
+        return data;
+      }
+
+      function readQueryState() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("ad") === "success") {
+          showResult("pageResult", "Payment received. Your ad has been submitted for review and will go live after approval.", "good");
+        } else if (params.get("ad") === "cancelled") {
+          showResult("pageResult", "Checkout cancelled. No ad payment was completed.", "bad");
+        }
+
+        const campaignId = params.get("campaign_id");
+        if (campaignId) {
+          api("/api/ads/campaigns/" + encodeURIComponent(campaignId)).then((data) => {
+            const campaign = data.campaign || {};
+            const status = campaign.status || "submitted";
+            showResult("pageResult", "Campaign status: " + status + ". Campaign ID: " + (campaign.id || campaignId) + ".", status === "active" ? "good" : "");
+          }).catch(() => {});
+        }
+      }
+
+      async function loadConfig() {
+        readQueryState();
+        try {
+          const data = await api("/api/ads/config");
+          adConfig = Object.assign({}, DEFAULT_CONFIG, data || {});
+          buildDurationOptions();
+          buildPlacementOptions();
+          updatePrice();
+          setCheckoutAvailability();
+        } catch (error) {
+          adConfig = Object.assign({}, DEFAULT_CONFIG, { enabled: false, stripeConfigured: false });
+          setCheckoutAvailability();
+          showResult("formResult", "Could not load ad checkout settings: " + error.message, "bad");
+        }
+      }
+
+      function validatePayload(payload) {
+        if (!payload.title || payload.title.trim().length < 4) return "Enter a clear ad headline.";
+        if (!payload.description || payload.description.trim().length < 12) return "Enter a longer ad description.";
+        if (!isValidUrl(payload.url)) return "Enter a valid http or https destination URL.";
+        if (!payload.sponsorEmail || !payload.sponsorEmail.includes("@")) return "Enter a valid contact email.";
+        if (!payload.placements.length) return "Select at least one placement.";
+        return "";
+      }
+
+      async function submitForm(event) {
+        event.preventDefault();
+        hideResult("formResult");
+
+        if (!(adConfig.enabled && adConfig.stripeConfigured)) {
+          showResult("formResult", "Ad checkout is not available right now. Please contact support.", "bad");
+          return;
+        }
+
         const payload = {
-          title: $("titleInput").value,
-          description: $("descriptionInput").value,
-          url: $("urlInput").value,
-          sponsorEmail: $("emailInput").value,
-          sponsorName: $("nameInput").value,
+          title: el("titleInput").value.trim(),
+          description: el("descriptionInput").value.trim(),
+          url: el("urlInput").value.trim(),
+          sponsorEmail: el("emailInput").value.trim(),
+          sponsorName: el("nameInput").value.trim(),
           weeks: selectedWeeks(),
           placements: selectedPlacements()
         };
-        const data = await api("/api/ads/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-        if (!data.url) throw new Error("Stripe checkout URL was not returned.");
-        window.location.href = data.url;
-      } catch (error) {
-        setResult("formResult", "Could not start checkout: " + escapeHtml(error.message), "bad");
+
+        const validationError = validatePayload(payload);
+        if (validationError) {
+          showResult("formResult", validationError, "bad");
+          return;
+        }
+
+        submitting = true;
+        setCheckoutAvailability();
+        showResult("formResult", "Starting Stripe checkout...");
+
+        try {
+          const data = await api("/api/ads/checkout", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          if (!data.url || !isValidUrl(data.url)) {
+            throw new Error("Stripe checkout URL was not returned.");
+          }
+
+          window.location.assign(data.url);
+        } catch (error) {
+          submitting = false;
+          setCheckoutAvailability();
+          showResult("formResult", "Could not start checkout: " + error.message, "bad");
+        }
       }
-    });
-    ["titleInput", "descriptionInput", "urlInput"].forEach(id => document.getElementById(id).addEventListener("input", updatePreview));
-    document.getElementById("weeksInput").addEventListener("change", updatePrice);
-    loadConfig();
+
+      document.addEventListener("DOMContentLoaded", () => {
+        ["titleInput", "descriptionInput", "urlInput"].forEach((id) => {
+          const node = el(id);
+          if (node) node.addEventListener("input", updatePreview);
+        });
+
+        const weeks = el("weeksInput");
+        if (weeks) weeks.addEventListener("change", updatePrice);
+
+        const form = el("adForm");
+        if (form) form.addEventListener("submit", submitForm);
+
+        updatePreview();
+        updatePrice();
+        loadConfig();
+      });
+    }());
   </script>
   <script src="script.js?v=8"></script>
 </body>
