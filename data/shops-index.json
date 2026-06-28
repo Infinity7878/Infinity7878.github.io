@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-28T23:05:02.136Z",
+  "generatedAt": "2026-06-28T23:35:01.665Z",
   "source": "Store Bot live export",
   "liveGuildsOnly": true,
   "shops": [
@@ -24,7 +24,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1513019107384098929",
@@ -45,7 +45,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1455165438358061267",
@@ -65,7 +65,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1519560554996437113",
@@ -85,7 +85,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1506959081838215188",
@@ -105,7 +105,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1446023627144429583",
@@ -125,7 +125,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1495420173497401344",
@@ -145,7 +145,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1509523403453890700",
@@ -165,7 +165,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1518185699273216191",
@@ -186,7 +186,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1518587304711553104",
@@ -206,7 +206,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     },
     {
       "serverId": "1267832433643094160",
@@ -225,7 +225,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-28T23:05:02.136Z"
+      "lastUpdated": "2026-06-28T23:35:01.665Z"
     }
   ]
 }
