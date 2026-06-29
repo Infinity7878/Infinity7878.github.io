@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#f97316" />
   <link rel="canonical" href="https://storebot.pro/pricing.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=11" />
   <meta property="og:site_name" content="Store Bot" />
   <meta property="og:title" content="Store Bot Pricing | Free Plan and $3 Premium" />
   <meta property="og:description" content="Compare Store Bot Free and Premium. Start free, then upgrade to $3/month Premium for more products, AutoPay forwarding, discounts, gift cards, and custom branding." />
@@ -69,7 +69,21 @@
       <div class="container section-heading reveal">
         <p class="eyebrow">Pricing</p>
         <h1>Simple pricing for Discord stores.</h1>
-        <p>Start with the free plan while you test the store. Premium is $3/month per server.</p>
+        <p>Start with the free plan while you test the store. Premium is $3/month per server when you need more products, AutoPay, and cleaner branding.</p>
+        <div class="trust-row">
+          <span>Free to start</span>
+          <span>No card required</span>
+          <span>Stripe checkout</span>
+          <span>Cancel anytime</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="accent-section section-pad compact-top" aria-label="Pricing overview">
+      <div class="container stats-band reveal">
+        <article class="stat-card"><strong>$0</strong><span>Free plan for testing</span></article>
+        <article class="stat-card"><strong>$3/mo</strong><span>Premium per server</span></article>
+        <article class="stat-card"><strong>200</strong><span>max products on Premium</span></article>
       </div>
     </section>
 
@@ -102,9 +116,8 @@
           <!-- STOREBOT_STRIPE_BILLING_SITE_PATCH_V1 -->
           <!-- STOREBOT_PREMIUM_BILLING_EASY_SITE_PATCH_V1 -->
           <!-- STOREBOT_HOME_BUY_PREMIUM_PRICING_V1 -->
-            <a class="button primary full" href="dashboard.html?upgrade=premium">Buy Premium</a>
-            <a class="button secondary full" href="dashboard.html?billing=manage" style="margin-top:10px;">Manage Premium</a>
-          <a class="button secondary full" href="dashboard.html?billing=manage" style="margin-top:10px;">Manage / Cancel Premium</a>
+          <a class="button primary full" href="dashboard.html?upgrade=premium">Buy Premium</a>
+          <a class="button secondary full" href="dashboard.html?billing=manage" style="margin-top:10px;">Manage Premium</a>
           <a class="button secondary full" href="https://discord.gg/zB7NgPBzBA" style="margin-top:10px;">Need help?</a>
         </article>
       </div>
@@ -116,6 +129,35 @@
         <article class="content-card reveal"><h2>How do I upgrade?</h2><p>Click Buy Premium, log in with Discord, choose the server you want to upgrade, and complete checkout through Stripe. Premium is applied automatically to the selected server after the Stripe webhook confirms payment.</p><a class="button primary" href="dashboard.html?upgrade=premium">Open Dashboard</a></article>
       </div>
     </section>
+
+    <section class="section-pad accent-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Pricing questions</h2>
+        </div>
+        <div class="faq-grid">
+          <details class="faq-card reveal"><summary>Is Premium per server or per user?</summary><p>Premium is billed per Discord server. One subscription upgrades one server you select during checkout.</p></details>
+          <details class="faq-card reveal"><summary>Can I cancel Premium?</summary><p>Yes. Use Manage Premium in the dashboard to view or cancel your Stripe subscription.</p></details>
+          <details class="faq-card reveal"><summary>What happens if I downgrade?</summary><p>Your server keeps working on the Free plan limits. Premium-only features like AutoPay and extra product slots stop applying after the subscription ends.</p></details>
+          <details class="faq-card reveal"><summary>Do free users see ads?</summary><p>Free users may see small sponsored placements. Premium subscribers do not see ads.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad cta-section">
+      <div class="container">
+        <article class="cta-card reveal">
+          <p class="eyebrow">Ready to sell?</p>
+          <h2>Start free, upgrade when the store is live.</h2>
+          <p>Invite Store Bot, add products, and upgrade to Premium when you need more capacity.</p>
+          <div class="hero-actions center">
+            <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&permissions=2147483648&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">Invite Free</a>
+            <a class="button secondary" href="dashboard.html?upgrade=premium">Buy Premium</a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -124,7 +166,9 @@
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
         <a href="autopay.html">AutoPay</a>
+        <a href="advertise.html">Advertise</a>
         <a href="pricing.html">Pricing</a>
+        <a href="shop.html">Shops</a>
         <a href="docs.html">Docs</a>
         <a href="privacy-policy.html">Privacy</a>
         <a href="tos.html">Terms</a>
