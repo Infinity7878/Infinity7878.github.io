@@ -7,11 +7,11 @@
   "description": "Deal Depot uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
-  "verified": false,
+  "verified": true,
   "stats": {
     "rating": 0,
     "reviewCount": 0,
-    "completedOrders": 2,
+    "completedOrders": 3,
     "positivePercent": 0,
     "activeDisputes": 0,
     "averageResponseMinutes": 0
@@ -36,8 +36,9 @@
     "support": ""
   },
   "tags": [
+    "Premium",
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-29T21:35:01.834Z"
+  "lastUpdated": "2026-06-29T22:05:02.332Z"
 }
