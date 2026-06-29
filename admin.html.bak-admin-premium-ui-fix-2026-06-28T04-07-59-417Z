@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Store Bot Admin Center</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#f97316" />
+  <link rel="icon" href="assets/storebot-avatar.png" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <script src="maintenance-config.js?v=1"></script>
+  <script src="maintenance.js?v=1"></script>
+  <style>
+    .admin-page { min-height: 100vh; overflow-x: hidden; }
+    .admin-shell { padding: 6.2rem 0 3rem; }
+    .admin-hero { display: grid; gap: 1.1rem; margin-bottom: 1.35rem; }
+    .admin-hero h1 { margin: 0; font-size: clamp(2.1rem, 6vw, 4.2rem); letter-spacing: -0.055em; }
+    .admin-hero p { max-width: 780px; color: var(--muted); }
+    .admin-status-line { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; }
+    .admin-pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.42rem 0.68rem; background: rgba(255,255,255,0.055); color: var(--text); font-size: 0.82rem; font-weight: 850; }
+    .admin-pill.good { border-color: rgba(69,212,131,0.35); color: #bbf7d0; background: rgba(69,212,131,0.09); }
+    .admin-pill.warn { border-color: rgba(250,204,21,0.35); color: #fde68a; background: rgba(250,204,21,0.09); }
+    .admin-pill.bad { border-color: rgba(248,113,113,0.35); color: #fecaca; background: rgba(248,113,113,0.09); }
+    .admin-layout { display: grid; gap: 1rem; grid-template-columns: 240px minmax(0,1fr); align-items: start; }
+    .admin-sidebar, .admin-card, .admin-panel { border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,0.068), rgba(255,255,255,0.035)); border-radius: 24px; box-shadow: var(--shadow); }
+    .admin-sidebar { padding: 0.7rem; position: sticky; top: 5.6rem; }
+    .admin-tab { width: 100%; border: 0; border-radius: 16px; background: transparent; color: var(--muted); padding: 0.8rem 0.85rem; text-align: left; font-weight: 850; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .admin-tab:hover, .admin-tab.active { color: var(--text); background: rgba(249,115,22,0.13); }
+    .admin-main { display: grid; gap: 1rem; min-width: 0; }
+    .admin-grid { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .admin-card { padding: 1rem; min-width: 0; }
+    .admin-card h3 { margin: 0 0 0.35rem; font-size: 0.95rem; color: var(--muted); }
+    .admin-card strong { display: block; font-size: 1.7rem; letter-spacing: -0.035em; }
+    .admin-panel { padding: 1rem; overflow: hidden; }
+    .admin-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .admin-panel h2 { margin: 0; font-size: 1.25rem; }
+    .admin-panel p { color: var(--muted); }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; }
+    .admin-button { border: 1px solid var(--line); border-radius: 14px; color: var(--text); background: rgba(255,255,255,0.06); padding: 0.65rem 0.85rem; font-weight: 900; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
+    .admin-button.primary { border-color: rgba(249,115,22,0.55); background: linear-gradient(135deg, rgba(249,115,22,0.92), rgba(234,88,12,0.82)); color: #fff7ed; }
+    .admin-button.good { border-color: rgba(69,212,131,0.35); color: #bbf7d0; background: rgba(69,212,131,0.1); }
+    .admin-button.warn { border-color: rgba(250,204,21,0.35); color: #fde68a; background: rgba(250,204,21,0.1); }
+    .admin-button.bad { border-color: rgba(248,113,113,0.35); color: #fecaca; background: rgba(248,113,113,0.1); }
+    .admin-button:disabled { opacity: 0.45; cursor: not-allowed; }
+    .admin-input, .admin-select, .admin-textarea { width: 100%; border: 1px solid var(--line); border-radius: 14px; background: rgba(5,10,20,0.72); color: var(--text); padding: 0.72rem 0.85rem; outline: none; }
+    .admin-input:focus, .admin-select:focus, .admin-textarea:focus { border-color: rgba(249,115,22,0.65); box-shadow: 0 0 0 3px rgba(249,115,22,0.13); }
+    .admin-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; }
+    .admin-table { width: 100%; border-collapse: collapse; min-width: 840px; }
+    .admin-table th, .admin-table td { padding: 0.82rem; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; vertical-align: top; }
+    .admin-table th { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; background: rgba(255,255,255,0.035); }
+    .admin-table tr:last-child td { border-bottom: 0; }
+    .admin-small { color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
+    .admin-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.78rem; word-break: break-all; color: #fed7aa; }
+    .admin-list { display: grid; gap: 0.85rem; }
+    .admin-item { border: 1px solid var(--line); border-radius: 18px; padding: 0.9rem; background: rgba(255,255,255,0.035); }
+    .admin-item h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+    .admin-two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .admin-empty { color: var(--muted); border: 1px dashed var(--line); border-radius: 18px; padding: 1rem; background: rgba(255,255,255,0.025); }
+    .admin-toast { position: fixed; right: 1rem; bottom: 1rem; z-index: 50; max-width: min(440px, calc(100vw - 2rem)); border: 1px solid rgba(249,115,22,0.45); border-radius: 18px; background: rgba(8,13,24,0.96); box-shadow: var(--shadow); padding: 0.85rem 1rem; color: var(--text); display: none; }
+    .admin-toast.show { display: block; }
+    .hidden { display: none !important; }
+    @media (max-width: 980px) { .admin-layout { grid-template-columns: 1fr; } .admin-sidebar { position: static; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.45rem; } .admin-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .admin-two { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .admin-sidebar { grid-template-columns: 1fr 1fr; } .admin-grid { grid-template-columns: 1fr; } .admin-panel-head { display: grid; } .admin-actions .admin-button { flex: 1 1 auto; } }
+  </style>
+</head>
+<body class="admin-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Store Bot home">
+        <img class="brand-logo" src="assets/storebot-avatar.png" alt="" width="42" height="42" loading="eager" decoding="async" />
+        <span>Store Bot</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="shop.html">Shops</a>
+        <a href="reputation.html">Reputation</a>
+        <a href="docs.html">Docs</a>
+        <details class="nav-dropdown">
+          <summary>More</summary>
+          <div class="nav-dropdown-menu" aria-label="More pages">
+            <a href="autopay.html">AutoPay</a>
+            <a href="advertise.html">Advertise</a>
+            <a href="https://status.storebot.pro">Status</a>
+            <a href="patch-notes.html">Patch Notes</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="admin.html" aria-current="page" class="active">Admin</a>
+          </div>
+        </details>
+        <a class="nav-cta" href="dashboard.html">Dashboard</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="admin-shell">
+    <div class="container">
+      <section class="admin-hero">
+        <p class="eyebrow">Owner only</p>
+        <h1>Store Bot Admin Center</h1>
+        <p>Manage sponsored ads, servers, Premium access, reports, maintenance mode, and system health from one backend-protected owner dashboard.</p>
+        <div class="admin-status-line" id="adminStatusLine">
+          <span class="admin-pill warn">Checking login...</span>
+        </div>
+      </section>
+
+      <section id="loginPanel" class="admin-panel hidden">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Log in as the Store Bot owner</h2>
+            <p>This page is visible, but the controls only work if the dashboard API confirms your Discord account is an owner.</p>
+          </div>
+          <a class="admin-button primary" href="https://api.storebot.pro/auth/discord">Login with Discord</a>
+        </div>
+      </section>
+
+      <section id="notOwnerPanel" class="admin-panel hidden">
+        <h2>Owner access required</h2>
+        <p>Your Discord account is logged in, but the API did not mark it as a Store Bot owner. Add your Discord ID to the dashboard API owner env list if this is wrong.</p>
+      </section>
+
+      <section id="adminApp" class="admin-layout hidden">
+        <aside class="admin-sidebar" aria-label="Admin sections">
+          <button class="admin-tab active" data-tab="overview">Overview <span>›</span></button>
+          <button class="admin-tab" data-tab="ads">Ads <span>›</span></button>
+          <button class="admin-tab" data-tab="servers">Servers <span>›</span></button>
+          <button class="admin-tab" data-tab="reports">Reports <span>›</span></button>
+          <button class="admin-tab" data-tab="maintenance">Maintenance <span>›</span></button>
+          <button class="admin-tab" data-tab="system">System <span>›</span></button>
+        </aside>
+        <div class="admin-main">
+          <div id="tab-overview" class="admin-section"></div>
+          <div id="tab-ads" class="admin-section hidden"></div>
+          <div id="tab-servers" class="admin-section hidden"></div>
+          <div id="tab-reports" class="admin-section hidden"></div>
+          <div id="tab-maintenance" class="admin-section hidden"></div>
+          <div id="tab-system" class="admin-section hidden"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="adminToast" class="admin-toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js?v=10"></script>
+  <script>
+    const API_BASE = "https://api.storebot.pro";
+    const state = { me: null, overview: null, ads: null, guilds: [], reports: null, system: null, currentTab: "overview" };
+
+    const $ = (id) => document.getElementById(id);
+    const money = (value) => `$${Number(value || 0).toFixed(2)}`;
+    const dateShort = (value) => value ? new Date(value).toLocaleString() : "—";
+    const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (ch) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[ch]));
+
+    function toast(message, good = true) {
+      const box = $("adminToast");
+      box.textContent = message;
+      box.style.borderColor = good ? "rgba(69,212,131,0.45)" : "rgba(248,113,113,0.45)";
+      box.classList.add("show");
+      clearTimeout(window.__adminToastTimer);
+      window.__adminToastTimer = setTimeout(() => box.classList.remove("show"), 3800);
+    }
+
+    async function api(path, options = {}) {
+      const init = {
+        credentials: "include",
+        ...options,
+        headers: { "Content-Type": "application/json", ...(options.headers || {}) }
+      };
+      const res = await fetch(`${API_BASE}${path}`, init);
+      const text = await res.text();
+      let data = {};
+      try { data = text ? JSON.parse(text) : {}; } catch { data = { raw: text }; }
+      if (!res.ok) {
+        const error = new Error(data.error || data.message || `Request failed: ${res.status}`);
+        error.status = res.status;
+        error.data = data;
+        throw error;
+      }
+      return data;
+    }
+
+    function statusPill(text, type = "") {
+      return `<span class="admin-pill ${type}">${esc(text)}</span>`;
+    }
+
+    function showSection(tab) {
+      state.currentTab = tab;
+      document.querySelectorAll(".admin-tab").forEach((btn) => btn.classList.toggle("active", btn.dataset.tab === tab));
+      document.querySelectorAll(".admin-section").forEach((section) => section.classList.add("hidden"));
+      $(`tab-${tab}`).classList.remove("hidden");
+      if (tab === "ads") loadAds();
+      if (tab === "servers") loadServers();
+      if (tab === "reports") loadReports();
+      if (tab === "maintenance") loadMaintenance();
+      if (tab === "system") loadSystem();
+    }
+
+    document.querySelectorAll(".admin-tab").forEach((btn) => btn.addEventListener("click", () => showSection(btn.dataset.tab)));
+
+    async function boot() {
+      try {
+        state.me = await api("/api/me");
+        const owner = !!state.me.owner;
+        $("adminStatusLine").innerHTML = [
+          statusPill(owner ? "Owner verified" : "Logged in, not owner", owner ? "good" : "bad"),
+          statusPill(state.me.user?.username ? `Discord: ${state.me.user.username}` : "Discord session active"),
+          statusPill(`${state.me.guilds?.length || 0} manageable servers`)
+        ].join("");
+        if (!owner) {
+          $("notOwnerPanel").classList.remove("hidden");
+          return;
+        }
+        $("adminApp").classList.remove("hidden");
+        await Promise.allSettled([loadOverview(), loadAds(), loadServers()]);
+      } catch (error) {
+        $("adminStatusLine").innerHTML = statusPill("Not logged in", "warn");
+        $("loginPanel").classList.remove("hidden");
+      }
+    }
+
+    async function loadOverview() {
+      const box = $("tab-overview");
+      box.innerHTML = `<div class="admin-panel"><p>Loading overview...</p></div>`;
+      state.overview = await api("/api/admin/overview");
+      const t = state.overview.totals || {};
+      box.innerHTML = `
+        <div class="admin-grid">
+          <div class="admin-card"><h3>Servers</h3><strong>${esc(t.servers || 0)}</strong></div>
+          <div class="admin-card"><h3>Premium</h3><strong>${esc(t.premiumServers || 0)}</strong></div>
+          <div class="admin-card"><h3>Products</h3><strong>${esc(t.products || 0)}</strong></div>
+          <div class="admin-card"><h3>Reports</h3><strong>${esc(t.reports || 0)}</strong></div>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-panel-head">
+            <div>
+              <h2>System snapshot</h2>
+              <p>Bot status, maintenance status, and recent admin signals.</p>
+            </div>
+            <button class="admin-button" onclick="refreshAll()">Refresh all</button>
+          </div>
+          <div class="admin-status-line">
+            ${statusPill(`Bot: ${state.overview.bot?.status || "unknown"}`, state.overview.bot?.online ? "good" : "bad")}
+            ${statusPill(`Memory: ${state.overview.bot?.memory || "unknown"}`)}
+            ${statusPill(`Global maintenance: ${state.overview.globalMaintenance?.enabled ? "on" : "off"}`, state.overview.globalMaintenance?.enabled ? "warn" : "good")}
+            ${statusPill(`Generated: ${dateShort(state.overview.generatedAt)}`)}
+          </div>
+        </div>
+        <div class="admin-panel">
+          <h2>Recent reports</h2>
+          ${renderReportItems(state.overview.recentReports || [])}
+        </div>`;
+    }
+
+    async function loadAds() {
+      const box = $("tab-ads");
+      box.innerHTML = `<div class="admin-panel"><p>Loading ads...</p></div>`;
+      state.ads = await api("/api/admin/ads");
+      const settings = state.ads.settings || {};
+      const summary = state.ads.summary || {};
+      const campaigns = state.ads.campaigns || [];
+      box.innerHTML = `
+        <div class="admin-grid">
+          <div class="admin-card"><h3>Total campaigns</h3><strong>${esc(summary.total || 0)}</strong></div>
+          <div class="admin-card"><h3>Pending review</h3><strong>${esc(summary.pendingReview || 0)}</strong></div>
+          <div class="admin-card"><h3>Active</h3><strong>${esc(summary.active || 0)}</strong></div>
+          <div class="admin-card"><h3>Checkout pending</h3><strong>${esc(summary.checkoutPending || 0)}</strong></div>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-panel-head">
+            <div>
+              <h2>Ad settings</h2>
+              <p>Control whether self-serve ad purchases are available and review paid campaigns before they run.</p>
+            </div>
+            <div class="admin-actions">
+              <button class="admin-button ${settings.userAdsEnabled !== false ? "good" : "warn"}" onclick="toggleUserAds(${settings.userAdsEnabled !== false ? "false" : "true"})">${settings.userAdsEnabled !== false ? "Disable purchases" : "Enable purchases"}</button>
+              <a class="admin-button" href="advertise.html" target="_blank">Open ad page</a>
+            </div>
+          </div>
+          <div class="admin-status-line">
+            ${statusPill(`Self-serve: ${settings.userAdsEnabled !== false ? "enabled" : "disabled"}`, settings.userAdsEnabled !== false ? "good" : "warn")}
+            ${statusPill(`Review required: ${settings.reviewRequired === false ? "no" : "yes"}`)}
+            ${statusPill(`Updated: ${dateShort(settings.updatedAt)}`)}
+          </div>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-panel-head">
+            <div><h2>Campaigns</h2><p>Approve paid ads, reject bad submissions, disable live ads, or make small owner edits.</p></div>
+            <button class="admin-button" onclick="loadAds()">Refresh</button>
+          </div>
+          ${renderAdTable(campaigns)}
+        </div>`;
+    }
+
+    function renderAdTable(campaigns) {
+      if (!campaigns.length) return `<div class="admin-empty">No ad campaigns found yet.</div>`;
+      return `<div class="admin-table-wrap"><table class="admin-table">
+        <thead><tr><th>Campaign</th><th>Status</th><th>Payment</th><th>Stats</th><th>Actions</th></tr></thead>
+        <tbody>${campaigns.map((ad) => `
+          <tr>
+            <td><strong>${esc(ad.title || "Untitled")}</strong><div class="admin-small">${esc(ad.description || "")}</div><div class="admin-code">${esc(ad.id)}</div><a class="admin-small" href="${esc(ad.url || "#")}" target="_blank" rel="nofollow sponsored noopener">${esc(ad.url || "")}</a><div class="admin-small">${esc((ad.placements || []).join(", "))}</div></td>
+            <td>${statusPill(ad.status || "unknown", ad.status === "active" ? "good" : ad.status === "rejected" || ad.status === "disabled" ? "bad" : "warn")}<div class="admin-small">Start: ${dateShort(ad.startsAt)}<br>End: ${dateShort(ad.expiresAt)}</div></td>
+            <td>${money(ad.amountUsd)}<div class="admin-small">${esc(ad.purchasedWeeks || 0)} week(s)<br>Paid: ${dateShort(ad.paidAt)}<br>${esc(ad.sponsorEmail || "")}</div></td>
+            <td><strong>${esc(ad.impressions || 0)}</strong> impressions<br><strong>${esc(ad.clicks || 0)}</strong> clicks</td>
+            <td><div class="admin-actions">
+              <button class="admin-button good" onclick="setAdStatus('${esc(ad.id)}','active')">Approve</button>
+              <button class="admin-button warn" onclick="rejectAd('${esc(ad.id)}')">Reject</button>
+              <button class="admin-button bad" onclick="setAdStatus('${esc(ad.id)}','disabled')">Disable</button>
+              <button class="admin-button" onclick="editAd('${esc(ad.id)}')">Edit</button>
+            </div></td>
+          </tr>`).join("")}</tbody></table></div>`;
+    }
+
+    async function toggleUserAds(enabled) {
+      await api("/api/admin/ads/settings", { method: "POST", body: JSON.stringify({ userAdsEnabled: enabled }) });
+      toast(enabled ? "Ad purchases enabled." : "Ad purchases disabled.");
+      await loadAds();
+    }
+
+    async function setAdStatus(id, status) {
+      await api(`/api/admin/ads/${encodeURIComponent(id)}/status`, { method: "POST", body: JSON.stringify({ status }) });
+      toast(`Ad marked ${status}.`);
+      await loadAds();
+    }
+
+    async function rejectAd(id) {
+      const reason = prompt("Reason for rejecting this ad?") || "Rejected by Store Bot owner.";
+      await api(`/api/admin/ads/${encodeURIComponent(id)}/status`, { method: "POST", body: JSON.stringify({ status: "rejected", reason }) });
+      toast("Ad rejected.");
+      await loadAds();
+    }
+
+    async function editAd(id) {
+      const ad = (state.ads?.campaigns || []).find((item) => item.id === id);
+      if (!ad) return;
+      const title = prompt("Ad title", ad.title || "");
+      if (title === null) return;
+      const description = prompt("Ad description", ad.description || "");
+      if (description === null) return;
+      const url = prompt("Destination URL", ad.url || "");
+      if (url === null) return;
+      const placements = prompt("Placements, comma-separated", (ad.placements || []).join(","));
+      if (placements === null) return;
+      await api(`/api/admin/ads/${encodeURIComponent(id)}/edit`, { method: "POST", body: JSON.stringify({ title, description, url, placements }) });
+      toast("Ad updated.");
+      await loadAds();
+    }
+
+    async function loadServers() {
+      const box = $("tab-servers");
+      box.innerHTML = `<div class="admin-panel"><p>Loading servers...</p></div>`;
+      const data = await api("/api/admin/guilds");
+      state.guilds = data.guilds || [];
+      box.innerHTML = `
+        <div class="admin-panel">
+          <div class="admin-panel-head">
+            <div><h2>Servers and Premium</h2><p>Search servers, toggle maintenance, and manually adjust Premium when needed.</p></div>
+            <button class="admin-button" onclick="loadServers()">Refresh</button>
+          </div>
+          <input class="admin-input" id="serverSearch" placeholder="Search server name or ID..." oninput="renderServers()" />
+          <div id="serverList" class="admin-list" style="margin-top:1rem;"></div>
+        </div>`;
+      renderServers();
+    }
+
+    function renderServers() {
+      const q = ($("serverSearch")?.value || "").toLowerCase().trim();
+      const list = $("serverList");
+      const rows = state.guilds.filter((row) => {
+        const text = `${row.guild?.name || ""} ${row.guild?.id || ""}`.toLowerCase();
+        return !q || text.includes(q);
+      });
+      if (!rows.length) { list.innerHTML = `<div class="admin-empty">No matching servers.</div>`; return; }
+      list.innerHTML = rows.map((row) => {
+        const g = row.guild || {};
+        const premium = String(row.statuses?.premium || "free");
+        const maint = row.maintenance?.active;
+        return `<div class="admin-item">
+          <div class="admin-panel-head">
+            <div><h3>${esc(g.name || `Server ${g.id}`)}</h3><div class="admin-code">${esc(g.id || "")}</div></div>
+            <div class="admin-status-line">${statusPill(`Premium: ${premium}`, premium === "active" ? "good" : "")}${statusPill(`Maintenance: ${maint ? "on" : "off"}`, maint ? "warn" : "good")}</div>
+          </div>
+          <div class="admin-small">Products: ${esc(row.counts?.products || 0)} · Orders: ${esc(row.counts?.orders || 0)} · Reviews: ${esc(row.counts?.reviews || 0)} · Uploads: ${esc(row.storage?.uploadHuman || "0 B")}</div>
+          <div class="admin-actions" style="margin-top:0.75rem;">
+            <button class="admin-button good" onclick="setPremium('${esc(g.id)}','30')">Premium 30d</button>
+            <button class="admin-button good" onclick="setPremium('${esc(g.id)}','lifetime')">Premium no expiry</button>
+            <button class="admin-button warn" onclick="setPremium('${esc(g.id)}','off')">Remove Premium</button>
+            <button class="admin-button ${maint ? "good" : "warn"}" onclick="setServerMaintenance('${esc(g.id)}', ${maint ? "false" : "true"})">${maint ? "Disable" : "Enable"} maintenance</button>
+            <a class="admin-button" href="dashboard.html?guild_id=${encodeURIComponent(g.id || "")}" target="_blank">Dashboard</a>
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    async function setPremium(guildId, mode) {
+      let body;
+      if (mode === "off") {
+        if (!confirm("Remove Premium from this server?")) return;
+        body = { active: false };
+      } else if (mode === "lifetime") {
+        body = { active: true, plan: "manual_premium", expiresAt: null };
+      } else {
+        const days = Number(prompt("Premium length in days", "30") || 30);
+        const expiresAt = new Date(Date.now() + Math.max(1, days) * 86400000).toISOString();
+        body = { active: true, plan: "manual_premium", expiresAt };
+      }
+      await api(`/api/admin/guilds/${guildId}/premium`, { method: "POST", body: JSON.stringify(body) });
+      toast("Premium updated.");
+      await Promise.allSettled([loadServers(), loadOverview()]);
+    }
+
+    async function setServerMaintenance(guildId, enabled) {
+      const reason = enabled ? (prompt("Maintenance reason", "Server maintenance enabled from admin center.") || "Server maintenance enabled from admin center.") : "";
+      await api(`/api/admin/guilds/${guildId}/maintenance`, { method: "POST", body: JSON.stringify({ enabled, reason }) });
+      toast(enabled ? "Server maintenance enabled." : "Server maintenance disabled.");
+      await Promise.allSettled([loadServers(), loadOverview()]);
+    }
+
+    async function loadReports() {
+      const box = $("tab-reports");
+      box.innerHTML = `<div class="admin-panel"><p>Loading reports...</p></div>`;
+      state.reports = await api("/api/admin/reports");
+      box.innerHTML = `<div class="admin-panel"><div class="admin-panel-head"><div><h2>Reports</h2><p>Review user-submitted reports and decide whether a store needs manual action.</p></div><button class="admin-button" onclick="loadReports()">Refresh</button></div>${renderReportItems(state.reports.recentReports || state.reports.reports || [])}</div>`;
+    }
+
+    function renderReportItems(items) {
+      if (!items.length) return `<div class="admin-empty">No recent reports found.</div>`;
+      return `<div class="admin-list">${items.map((r) => `<div class="admin-item"><h3>${esc(r.reason || "Report")}</h3><div class="admin-small">Guild: <span class="admin-code">${esc(r.guildId || "unknown")}</span><br>Status: ${esc(r.status || "open")}<br>Created: ${dateShort(r.createdAt)}<br>Source: ${esc(r.file || "data")}</div></div>`).join("")}</div>`;
+    }
+
+    async function loadMaintenance() {
+      if (!state.overview) state.overview = await api("/api/admin/overview");
+      const global = state.overview.globalMaintenance || {};
+      $("tab-maintenance").innerHTML = `<div class="admin-panel"><div class="admin-panel-head"><div><h2>Global maintenance</h2><p>Use this when Store Bot needs a global pause or when dashboard/bot features are under active maintenance.</p></div><div class="admin-actions"><button class="admin-button ${global.enabled ? "good" : "warn"}" onclick="setGlobalMaintenance(${global.enabled ? "false" : "true"})">${global.enabled ? "Disable" : "Enable"} global maintenance</button></div></div><div class="admin-status-line">${statusPill(`Global: ${global.enabled ? "on" : "off"}`, global.enabled ? "warn" : "good")}${statusPill(`Updated: ${dateShort(global.updatedAt)}`)}</div><p>${esc(global.reason || "No active global maintenance.")}</p></div>`;
+    }
+
+    async function setGlobalMaintenance(enabled) {
+      const reason = enabled ? (prompt("Global maintenance reason", "Global maintenance enabled from admin center.") || "Global maintenance enabled from admin center.") : "";
+      await api("/api/admin/maintenance/global", { method: "POST", body: JSON.stringify({ enabled, reason }) });
+      toast(enabled ? "Global maintenance enabled." : "Global maintenance disabled.");
+      state.overview = null;
+      await loadOverview();
+      await loadMaintenance();
+    }
+
+    async function loadSystem() {
+      const box = $("tab-system");
+      box.innerHTML = `<div class="admin-panel"><p>Loading system health...</p></div>`;
+      state.system = await api("/api/admin/system");
+      const s = state.system;
+      const files = s.files || {};
+      box.innerHTML = `<div class="admin-grid"><div class="admin-card"><h3>Bot</h3><strong>${esc(s.bot?.status || "unknown")}</strong></div><div class="admin-card"><h3>Stripe</h3><strong>${s.stripe?.billingConfigured ? "Ready" : "Check"}</strong></div><div class="admin-card"><h3>Ad checkout</h3><strong>${s.ads?.enabled ? "On" : "Off"}</strong></div><div class="admin-card"><h3>Owner IDs</h3><strong>${esc(s.ownerCount || 0)}</strong></div></div><div class="admin-panel"><h2>Backend files</h2><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>File</th><th>Status</th><th>Path</th></tr></thead><tbody>${Object.entries(files).map(([name, file]) => `<tr><td>${esc(name)}</td><td>${file.exists ? statusPill(`${file.sizeHuman || file.size || 0}`, "good") : statusPill("missing", "warn")}<div class="admin-small">${dateShort(file.mtime)}</div></td><td class="admin-code">${esc(file.path || "")}</td></tr>`).join("")}</tbody></table></div></div>`;
+    }
+
+    async function refreshAll() {
+      try {
+        await Promise.allSettled([loadOverview(), loadAds(), loadServers()]);
+        if (state.currentTab === "system") await loadSystem();
+        if (state.currentTab === "reports") await loadReports();
+        if (state.currentTab === "maintenance") await loadMaintenance();
+        toast("Admin data refreshed.");
+      } catch (error) {
+        toast(error.message || "Refresh failed.", false);
+      }
+    }
+
+    window.addEventListener("unhandledrejection", (event) => toast(event.reason?.message || "Request failed.", false));
+    boot();
+  </script>
+</body>
+</html>
