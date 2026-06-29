@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.storebot.pro; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.storebot.pro; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Advertise on Store Bot | Sponsored Discord Seller Ads</title>
@@ -12,109 +12,52 @@
   <link rel="canonical" href="https://storebot.pro/advertise.html" />
   <link rel="icon" href="assets/storebot-avatar.png" />
   <link rel="stylesheet" href="styles.css?v=10" />
+  <meta property="og:site_name" content="Store Bot" />
+  <meta property="og:title" content="Advertise on Store Bot | Sponsored Discord Seller Ads" />
+  <meta property="og:description" content="Reach Discord sellers with clearly labeled sponsor slots across Store Bot panels, dashboard, shop search, and public shop pages." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://storebot.pro/advertise.html" />
+  <meta property="og:image" content="https://storebot.pro/assets/storebot-banner.png" />
   <script src="maintenance-config.js?v=1"></script>
   <script src="maintenance.js?v=1"></script>
   <style>
     .hidden { display: none !important; }
 
-    .advertise-page {
-      overflow-x: hidden;
-    }
+    .advertise-page { overflow-x: hidden; }
 
-    .ad-hero {
-      position: relative;
-      padding: 5.8rem 0 3.2rem;
-    }
-
-    .ad-hero::before,
-    .ad-checkout-section::before {
-      content: "";
-      position: absolute;
-      inset: auto -12rem -10rem auto;
-      width: 28rem;
-      height: 28rem;
-      pointer-events: none;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(249, 115, 22, 0.13), transparent 68%);
-      filter: blur(2px);
-    }
-
-    .ad-hero-grid,
-    .ad-checkout-grid {
-      position: relative;
+    .ad-hero-grid {
       display: grid;
-      gap: 1.4rem;
+      gap: 2rem;
       align-items: start;
     }
 
-    .ad-copy {
-      max-width: 760px;
-    }
+    .ad-hero-copy .hero-text { margin-top: 1rem; }
 
-    .ad-copy h1 {
-      max-width: 820px;
-      font-size: clamp(2.35rem, 7vw, 4.75rem);
-    }
-
-    .ad-copy .hero-text {
-      margin-top: 1.15rem;
-    }
-
-    .ad-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 1.3rem;
-    }
-
-    .ad-pill {
+    .ad-price-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      border: 1px solid var(--accent-line);
-      background: rgba(249, 115, 22, 0.12);
-      color: #fed7aa;
-      border-radius: 999px;
-      padding: 0.45rem 0.72rem;
-      font-size: 0.86rem;
-      font-weight: 800;
-    }
-
-    .ad-card,
-    .ad-form-card,
-    .ad-preview-card {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.068), rgba(255,255,255,0.035));
-      box-shadow: var(--shadow);
-    }
-
-    .ad-preview-card {
-      padding: 1.15rem;
-    }
-
-    .ad-preview-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .ad-price-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 2rem;
-      padding: 0.3rem 0.7rem;
+      margin-top: 1.2rem;
+      padding: 0.55rem 0.9rem;
       border: 1px solid rgba(69, 212, 131, 0.34);
       border-radius: 999px;
       color: #bbf7d0;
       background: rgba(69, 212, 131, 0.1);
-      font-size: 0.82rem;
+      font-size: 0.92rem;
       font-weight: 900;
-      white-space: nowrap;
     }
+
+    .ad-preview-panel { max-width: none; }
+
+    .ad-preview-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .ad-preview-header h2 { font-size: 1.35rem; }
 
     .sponsored-preview {
       display: grid;
@@ -161,71 +104,83 @@
       font-weight: 900;
     }
 
-    .ad-stat-grid {
+    .sponsored-preview a[aria-disabled="true"] {
+      opacity: 0.55;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .ad-stats-row {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
     }
 
-    .ad-stat {
+    .placement-showcase {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .placement-card {
+      display: grid;
+      gap: 0.35rem;
+      padding: 1.15rem;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 0.85rem;
-      background: rgba(255,255,255,0.035);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
     }
 
-    .ad-stat strong {
-      display: block;
+    .placement-card strong { font-size: 1.05rem; }
+    .placement-card p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+
+    .placement-tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 0.35rem;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-soft);
       color: #fed7aa;
-      font-size: 1.15rem;
-      line-height: 1.1;
-    }
-
-    .ad-stat span {
-      color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.76rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     .ad-checkout-section {
       position: relative;
-      padding: 2.3rem 0 5.2rem;
+      padding-bottom: 5rem;
+    }
+
+    .ad-checkout-grid {
+      display: grid;
+      gap: 1.4rem;
+      align-items: start;
     }
 
     .ad-form-card {
       padding: clamp(1rem, 3vw, 1.55rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.068), rgba(255,255,255,0.035));
+      box-shadow: var(--shadow);
     }
 
     .ad-section-title {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 0.45rem;
       margin-bottom: 1rem;
     }
 
-    .ad-section-title h2 {
-      font-size: clamp(1.7rem, 4vw, 2.55rem);
-    }
+    .ad-section-title h2 { font-size: clamp(1.7rem, 4vw, 2.55rem); }
+    .ad-section-title p { margin: 0; color: var(--muted); }
 
-    .ad-section-title p {
-      margin: 0;
-      color: var(--muted);
-    }
+    .ad-form { display: grid; gap: 1rem; }
+    .ad-form-grid { display: grid; gap: 1rem; }
 
-    .ad-form {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .ad-form-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .ad-field {
-      display: grid;
-      gap: 0.42rem;
-    }
+    .ad-field { display: grid; gap: 0.42rem; }
 
     .ad-label-row {
       display: flex;
@@ -263,10 +218,7 @@
       transition: border-color 150ms ease, background 150ms ease, box-shadow 150ms ease;
     }
 
-    .ad-field textarea {
-      min-height: 118px;
-      resize: vertical;
-    }
+    .ad-field textarea { min-height: 118px; resize: vertical; }
 
     .ad-field input:focus,
     .ad-field textarea:focus,
@@ -277,14 +229,9 @@
     }
 
     .ad-field input::placeholder,
-    .ad-field textarea::placeholder {
-      color: rgba(170,178,191,0.64);
-    }
+    .ad-field textarea::placeholder { color: rgba(170,178,191,0.64); }
 
-    .ad-field select option {
-      color: #11151b;
-      background: #fff7ed;
-    }
+    .ad-field select option { color: #11151b; background: #fff7ed; }
 
     .placement-fieldset {
       display: grid;
@@ -302,7 +249,6 @@
     }
 
     .placement-option {
-      position: relative;
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
       gap: 0.75rem;
@@ -321,17 +267,8 @@
       accent-color: var(--accent);
     }
 
-    .placement-option strong {
-      display: block;
-      color: var(--text);
-      line-height: 1.25;
-    }
-
-    .placement-option small {
-      display: block;
-      margin-top: 0.2rem;
-      color: var(--muted);
-    }
+    .placement-option strong { display: block; color: var(--text); line-height: 1.25; }
+    .placement-option small { display: block; margin-top: 0.2rem; color: var(--muted); }
 
     .placement-option:has(input:checked) {
       border-color: rgba(249, 115, 22, 0.48);
@@ -358,15 +295,8 @@
       background: rgba(249, 115, 22, 0.08);
     }
 
-    .checkout-total strong {
-      font-size: 1.35rem;
-      color: #fed7aa;
-    }
-
-    .checkout-total span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
+    .checkout-total strong { font-size: 1.35rem; color: #fed7aa; }
+    .checkout-total span { color: var(--muted); font-size: 0.9rem; }
 
     .checkout-result {
       border: 1px solid rgba(249,115,22,.28);
@@ -396,118 +326,50 @@
       transform: none;
     }
 
-    .ad-rules-stack {
+    .ad-sidebar-stack {
       display: grid;
       gap: 1rem;
     }
 
-    .ad-rule-card {
-      padding: 1rem;
+    .ideal-grid {
+      display: grid;
+      gap: 1rem;
     }
 
-    .ad-rule-list {
-      display: grid;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .ad-rule-item {
-      display: grid;
-      grid-template-columns: 2.1rem minmax(0, 1fr);
-      gap: 0.75rem;
-      align-items: start;
+    .ideal-card {
+      padding: 1.15rem;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 0.8rem;
-      background: rgba(255,255,255,0.035);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
     }
 
-    .ad-rule-number {
-      display: grid;
-      place-items: center;
-      width: 2.1rem;
-      height: 2.1rem;
-      border-radius: 12px;
-      color: #1b1108;
-      background: #fb923c;
-      font-weight: 950;
-    }
-
-    .ad-rule-item strong {
-      display: block;
-      color: var(--text);
-      line-height: 1.25;
-    }
-
-    .ad-rule-item span {
-      display: block;
-      margin-top: 0.16rem;
-      color: var(--muted);
-      font-size: 0.93rem;
-      line-height: 1.45;
-    }
-
-    .ad-note {
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 18px;
-      padding: 1rem;
-      color: var(--muted);
-      background: rgba(0,0,0,0.18);
-    }
-
-    .ad-note strong {
-      color: #fed7aa;
-    }
+    .ideal-card h3 { font-size: 1.12rem; margin-bottom: 0.35rem; }
+    .ideal-card p { margin: 0; color: var(--muted); line-height: 1.45; }
 
     @media (min-width: 700px) {
-      .ad-stat-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .ad-form-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
+      .ad-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .ad-field.full,
       .placement-fieldset,
-      .checkout-bar {
-        grid-column: 1 / -1;
-      }
+      .checkout-bar { grid-column: 1 / -1; }
+      .placement-showcase { grid-template-columns: repeat(2, 1fr); }
+      .ideal-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 980px) {
-      .ad-hero-grid {
-        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.58fr);
-      }
-
-      .ad-checkout-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
-      }
-
-      .ad-preview-card.sticky,
-      .ad-rules-stack.sticky {
-        position: sticky;
-        top: 96px;
-      }
+      .ad-hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.58fr); }
+      .ad-checkout-grid { grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr); }
+      .ad-preview-panel.sticky,
+      .ad-sidebar-stack.sticky { position: sticky; top: 96px; }
+      .placement-showcase { grid-template-columns: repeat(4, 1fr); }
     }
 
-    @media (max-width: 559px) {
-      .ad-hero {
-        padding-top: 4.2rem;
-      }
-
-      .ad-form-card,
-      .ad-preview-card {
-        border-radius: 20px;
-      }
-
-      .checkout-total {
-        display: grid;
-      }
+    @media (max-width: 699px) {
+      .ad-stats-row { grid-template-columns: 1fr; }
+      .checkout-total { display: grid; }
     }
   </style>
 </head>
-<body class="advertise-page">
+<body class="inner-page advertise-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
@@ -531,6 +393,8 @@
             <a href="patch-notes.html">Patch Notes</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="admin.html">Admin</a>
+            <a href="index.html#setup">Setup</a>
+            <a href="index.html#faq">FAQ</a>
           </div>
         </details>
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1515919161690161224&amp;permissions=2147483648&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener">Invite Bot</a>
@@ -539,53 +403,108 @@
   </header>
 
   <main id="main">
-    <section class="ad-hero">
+    <section class="section-pad page-hero">
       <div class="container ad-hero-grid">
-        <div class="ad-copy reveal">
+        <div class="ad-hero-copy reveal">
           <p class="eyebrow">Advertise on Store Bot</p>
-          <h1>Put your offer in front of Discord sellers.</h1>
-          <p class="hero-text">Buy a clearly labeled Store Bot sponsor slot. Ads are only shown to free users, stay small, and are manually reviewed before going live.</p>
-          <div class="ad-pill-row" aria-label="Ad program highlights">
-            <span class="ad-pill">Free users only</span>
-            <span class="ad-pill">Reviewed before launch</span>
-            <span class="ad-pill">Weekly sponsor slots</span>
+          <h1>Reach Discord sellers where they already manage stores.</h1>
+          <p class="hero-text">Put your bot, design service, hosting tool, or marketplace in front of server owners setting up storefronts, comparing tools, and browsing the Store Bot shop directory. Every placement is clearly labeled, reviewed before launch, and hidden from Premium users.</p>
+          <p class="ad-price-badge" id="heroPriceBadge">Starting at $5/week · self-serve checkout</p>
+          <div class="trust-row" aria-label="Ad program highlights">
+            <span>Free users only</span>
+            <span>4 placement surfaces</span>
+            <span>Reviewed before launch</span>
+            <span>Stripe checkout</span>
           </div>
           <div class="hero-actions">
-            <a class="button primary" href="#buy-ad">Start advertising</a>
-            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Talk to support</a>
+            <a class="button primary" href="#buy-ad">Launch a campaign</a>
+            <a class="button secondary" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Ask a question</a>
           </div>
           <div id="pageResult" class="checkout-result hidden" role="status" aria-live="polite"></div>
         </div>
 
-        <aside class="ad-preview-card sticky reveal" aria-label="Sponsored ad preview">
-          <div class="ad-preview-top">
+        <aside class="hero-panel ad-preview-panel sticky reveal" aria-label="Sponsored ad preview">
+          <div class="ad-preview-header">
             <div>
               <p class="eyebrow">Live preview</p>
-              <h2>Sponsored card</h2>
+              <h2>How your ad appears</h2>
             </div>
-            <span class="ad-price-chip" id="heroPriceChip">$5/week</span>
           </div>
           <div class="sponsored-preview">
             <span class="sponsored-label">Sponsored</span>
             <strong id="previewTitle">Your offer headline</strong>
             <p id="previewDescription">A short pitch for your service, store, community, or tool will appear here.</p>
-            <a id="previewUrl" href="#" rel="nofollow sponsored noopener" target="_blank">Learn more</a>
+            <a id="previewUrl" href="#" rel="nofollow sponsored noopener" target="_blank">Destination preview</a>
           </div>
-          <div class="ad-stat-grid" aria-label="Ad placement rules">
-            <div class="ad-stat"><strong>0</strong><span>ads shown for Premium users</span></div>
-            <div class="ad-stat"><strong>4</strong><span>placement types to match your campaign</span></div>
-            <div class="ad-stat"><strong>Trusted</strong><span>clearly labeled and reviewed before launch</span></div>
-          </div>
+          <p class="panel-note">Small, honest sponsor cards like this appear across Store Bot for free users only. Premium subscribers never see ads.</p>
         </aside>
       </div>
     </section>
 
-    <section class="ad-checkout-section" id="buy-ad">
+    <section class="accent-section section-pad compact-top" aria-label="Audience reach">
+      <div class="container ad-stats-row">
+        <article class="stat-card reveal"><strong>12+</strong><span>live storefronts in the public shop directory</span></article>
+        <article class="stat-card reveal"><strong>4</strong><span>placement surfaces you can mix and match</span></article>
+        <article class="stat-card reveal"><strong id="statPriceLabel">$5</strong><span>per week, billed through Stripe</span></article>
+      </div>
+    </section>
+
+    <section class="section-pad compact-top">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Why advertise here</p>
+          <h2>A niche audience, not a generic ad network.</h2>
+          <p>Store Bot visitors are Discord server owners, shop staff, and sellers actively working on storefronts—not random web traffic.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal"><span class="card-icon">01</span><h2>Buyer intent</h2><p>Reach people comparing storefront bots, setting up product panels, and browsing shops that already use Store Bot.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">02</span><h2>Premium-safe</h2><p>Ads only show to free users. Paying Premium subscribers never see sponsor slots, so your message does not feel like an upsell interruption.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">03</span><h2>Trust-first format</h2><p>Every campaign is labeled sponsored and manually reviewed so placements stay relevant and do not read like spam.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">04</span><h2>Self-serve launch</h2><p>Pick placements, write your copy, choose duration, and pay through Stripe—no sales call required to get started.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">05</span><h2>Flexible duration</h2><p>Buy weekly slots in 1–12 week blocks. Your campaign clock starts after approval, not at payment time.</p></article>
+          <article class="feature-card reveal"><span class="card-icon">06</span><h2>Multi-surface reach</h2><p>Run one campaign across Discord panels, the seller dashboard, shop search, and public shop pages.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad accent-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Placements</p>
+          <h2>Show up where sellers actually work.</h2>
+          <p>Select one or more surfaces when you checkout. All placements use the same small sponsored card format.</p>
+        </div>
+        <div class="placement-showcase">
+          <article class="placement-card reveal"><span class="placement-tag">Panel</span><strong>Discord store panels</strong><p>Visible inside the in-server storefront experience for free users browsing products.</p></article>
+          <article class="placement-card reveal"><span class="placement-tag">Dashboard</span><strong>Dashboard sidebar</strong><p>A compact card while sellers manage orders, products, and server settings.</p></article>
+          <article class="placement-card reveal"><span class="placement-tag">Search</span><strong>Shop search</strong><p>Sponsored discovery while visitors browse the public shop directory.</p></article>
+          <article class="placement-card reveal"><span class="placement-tag">Shops</span><strong>Public shop pages</strong><p>A footer placement on public shop listings for free-tier visitors.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad compact-top">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Good fit</p>
+          <h2>Who gets the best results?</h2>
+          <p>Sponsor slots work best for offers that help Discord sellers grow, operate, or monetize their servers.</p>
+        </div>
+        <div class="ideal-grid">
+          <article class="ideal-card reveal"><h3>Custom Discord bots &amp; dev services</h3><p>Ticket systems, moderation tools, bespoke store integrations, and server automation.</p></article>
+          <article class="ideal-card reveal"><h3>Design &amp; branding studios</h3><p>Store graphics, panel art, logos, and server branding packages for digital sellers.</p></article>
+          <article class="ideal-card reveal"><h3>Hosting &amp; infrastructure</h3><p>Game servers, VPS providers, file delivery, and uptime tools sellers rely on.</p></article>
+          <article class="ideal-card reveal"><h3>Marketplaces &amp; seller tools</h3><p>Communities, SaaS products, and services aimed at Discord commerce operators.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-checkout-section section-pad compact-top" id="buy-ad">
       <div class="container ad-checkout-grid">
         <section class="ad-form-card reveal" aria-labelledby="buyAdTitle">
           <div class="ad-section-title">
             <p class="eyebrow">Stripe checkout</p>
-            <h2 id="buyAdTitle">Launch a sponsored campaign</h2>
+            <h2 id="buyAdTitle">Launch your sponsored campaign</h2>
             <p id="adConfigText">Loading ad checkout settings...</p>
           </div>
 
@@ -596,8 +515,8 @@
                   <label for="titleInput">Campaign headline</label>
                   <small><span id="titleCount">0</span>/80</small>
                 </div>
-                <input id="titleInput" name="title" maxlength="80" required autocomplete="organization" placeholder="Custom Discord bot development" />
-                <small>Lead with the main reason someone should click. Specific offers perform better than generic branding.</small>
+                <input id="titleInput" name="title" maxlength="80" required autocomplete="organization" placeholder="Custom Discord bots for seller servers" />
+                <small>Lead with the outcome. Specific offers outperform generic branding.</small>
               </div>
 
               <div class="ad-field full">
@@ -605,26 +524,26 @@
                   <label for="descriptionInput">Campaign description</label>
                   <small><span id="descriptionCount">0</span>/220</small>
                 </div>
-                <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Example: Custom Discord bots, store graphics, seller tools, server setup, or marketplace services."></textarea>
-                <small>Give buyers a clear reason to care. Mention the outcome, benefit, or offer in one short paragraph.</small>
+                <textarea id="descriptionInput" name="description" maxlength="220" required placeholder="Example: Fast turnaround Discord bots, store panel graphics, hosting, or setup help for digital sellers."></textarea>
+                <small>One short paragraph on the benefit, offer, or result you deliver.</small>
               </div>
 
               <div class="ad-field full">
                 <label for="urlInput">Landing page URL</label>
                 <input id="urlInput" name="url" inputmode="url" maxlength="600" required autocomplete="url" placeholder="https://example.com" />
-                <small>Send clicks to the real page you want people to visit. Clean, relevant landing pages are more likely to be approved.</small>
+                <small>Send clicks to the page you want people to visit. Clean landing pages are more likely to be approved.</small>
               </div>
 
               <div class="ad-field">
                 <label for="emailInput">Contact email</label>
                 <input id="emailInput" name="sponsorEmail" type="email" maxlength="180" required autocomplete="email" placeholder="you@example.com" />
-                <small>Used for your Stripe receipt and any review questions before launch.</small>
+                <small>For your Stripe receipt and any review questions.</small>
               </div>
 
               <div class="ad-field">
                 <label for="nameInput">Brand or sponsor name</label>
                 <input id="nameInput" name="sponsorName" maxlength="100" autocomplete="organization" placeholder="Your brand, service, or Discord server" />
-                <small>This helps identify your campaign in review and support.</small>
+                <small>Helps identify your campaign during review and support.</small>
               </div>
 
               <div class="ad-field">
@@ -667,28 +586,62 @@
                   <span id="priceText">Price will load from the API.</span>
                   <strong id="totalText">$0.00</strong>
                 </div>
-                <button class="button primary" id="checkoutBtn" type="submit" disabled>Continue to Stripe</button>
+                <button class="button primary full" id="checkoutBtn" type="submit" disabled>Continue to Stripe</button>
                 <div id="formResult" class="checkout-result hidden" role="status" aria-live="polite"></div>
               </div>
             </div>
           </form>
         </section>
 
-        <aside class="ad-rules-stack sticky reveal" aria-label="Ad review process">
-          <section class="ad-form-card ad-rule-card">
-            <p class="eyebrow">Review flow</p>
-            <h2>What happens next?</h2>
-            <div class="ad-rule-list">
-              <div class="ad-rule-item"><div class="ad-rule-number">1</div><div><strong>Reach a focused niche</strong><span>Store Bot visitors are Discord sellers, server owners, and people comparing storefront tools.</span></div></div>
-              <div class="ad-rule-item"><div class="ad-rule-number">2</div><div><strong>Stay trusted</strong><span>Every campaign is labeled sponsored and reviewed so ads do not feel like spam.</span></div></div>
-              <div class="ad-rule-item"><div class="ad-rule-number">3</div><div><strong>Control spend</strong><span>Buy weekly placements, choose where the campaign appears, and keep the ad small but visible.</span></div></div>
-            </div>
-          </section>
+        <aside class="ad-sidebar-stack sticky reveal" aria-label="Campaign launch steps">
+          <article class="content-card">
+            <p class="eyebrow">What happens next</p>
+            <h2>From checkout to live ad</h2>
+            <ol class="steps compact-steps">
+              <li><strong>Submit &amp; pay</strong><span>Complete the form and finish secure Stripe checkout for your selected duration.</span></li>
+              <li><strong>Manual review</strong><span>We check copy, destination URL, and category fit. You may be contacted if anything needs a tweak.</span></li>
+              <li><strong>Campaign goes live</strong><span>Approved ads run on your chosen placements for the purchased weeks, starting after approval.</span></li>
+            </ol>
+          </article>
 
-          <section class="ad-note">
-            <strong>Simple launch flow.</strong> Submit your campaign, pay through Stripe, and wait for review. Approved campaigns run for the purchased duration after approval.
-          </section>
+          <article class="notice-card">
+            <p class="eyebrow">Review policy</p>
+            <h2>We keep placements relevant.</h2>
+            <p>We reject misleading claims, unrelated offers, adult content, scams, and destinations that do not match the ad copy. When in doubt, ask in the support server before paying.</p>
+            <a class="inline-link" href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Open support server →</a>
+          </article>
         </aside>
+      </div>
+    </section>
+
+    <section class="section-pad compact-top">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq-grid">
+          <details class="faq-card reveal"><summary>Who sees my ad?</summary><p>Sponsor cards appear for free Store Bot users across the placements you select. Premium subscribers do not see ads.</p></details>
+          <details class="faq-card reveal"><summary>What can I promote?</summary><p>Discord-relevant services, tools, communities, and stores—especially offers that help sellers operate or grow. Unrelated, misleading, or prohibited content is rejected.</p></details>
+          <details class="faq-card reveal"><summary>When does my campaign start?</summary><p>The purchased duration begins after manual approval, not immediately at payment. You will be contacted if your ad needs changes.</p></details>
+          <details class="faq-card reveal"><summary>Can I choose specific placements?</summary><p>Yes. Pick one or more of the four surfaces during checkout. You can run the same copy everywhere or narrow to the surfaces that fit your offer best.</p></details>
+          <details class="faq-card reveal"><summary>What if checkout is unavailable?</summary><p>If Stripe checkout is temporarily disabled, contact support and we can help arrange a sponsor slot manually.</p></details>
+          <details class="faq-card reveal"><summary>Can I edit my ad after launch?</summary><p>Contact support with your campaign details if you need copy or URL changes during an active run.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad cta-section">
+      <div class="container">
+        <article class="cta-card reveal">
+          <p class="eyebrow">Ready to reach Discord sellers?</p>
+          <h2>Launch a reviewed sponsor campaign in minutes.</h2>
+          <p>Write your copy, pick placements, and checkout through Stripe. No sales call required.</p>
+          <div class="hero-actions center">
+            <a class="button primary" href="#buy-ad">Start advertising</a>
+            <a class="button secondary" href="shop.html">Browse live shops</a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -696,13 +649,14 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>© <span id="year">2026</span> Store Bot. Built for Discord storefronts.</p>
-      <div class="footer-links">
+      <div class="footer-links" aria-label="Footer links">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
-        <a href="pricing.html">Pricing</a>
         <a href="advertise.html">Advertise</a>
+        <a href="pricing.html">Pricing</a>
         <a href="docs.html">Docs</a>
-        <a href="https://status.storebot.pro">Status</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
         <a href="https://discord.gg/zB7NgPBzBA" target="_blank" rel="noopener">Support</a>
       </div>
     </div>
@@ -760,6 +714,9 @@
         if (!node) return;
         node.className = "checkout-result" + (kind ? " " + kind : "");
         node.textContent = message;
+        if (id === "pageResult") {
+          node.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
       }
 
       function hideResult(id) {
@@ -812,7 +769,7 @@
           const url = urlInput ? urlInput.value.trim() : "";
           if (isValidUrl(url)) {
             previewUrl.href = url;
-            previewUrl.textContent = "Learn more";
+            previewUrl.textContent = "Learn more →";
             previewUrl.removeAttribute("aria-disabled");
           } else {
             previewUrl.href = "#";
@@ -828,9 +785,11 @@
         const weeks = selectedWeeks();
         const weekly = Number(adConfig.pricePerWeekUsd || 5);
         const total = weekly * weeks;
-        setText("priceText", weeks + " week" + (weeks === 1 ? "" : "s") + " × " + money(weekly) + "/week");
+        const weeklyLabel = money(weekly);
+        setText("priceText", weeks + " week" + (weeks === 1 ? "" : "s") + " × " + weeklyLabel + "/week");
         setText("totalText", money(total));
-        setText("heroPriceChip", money(weekly) + "/week");
+        setText("heroPriceBadge", "Starting at " + weeklyLabel + "/week · self-serve checkout");
+        setText("statPriceLabel", weeklyLabel);
       }
 
       function setCheckoutAvailability() {
@@ -842,9 +801,9 @@
         }
 
         if (enabled) {
-          setText("adConfigText", "Sponsor slots start at " + money(adConfig.pricePerWeekUsd || 5) + " per week. Choose your placements, submit your ad, and complete secure Stripe checkout.");
+          setText("adConfigText", "Sponsor slots start at " + money(adConfig.pricePerWeekUsd || 5) + " per week. Choose placements, submit your ad, and complete secure Stripe checkout.");
         } else if (!adConfig.stripeConfigured) {
-          setText("adConfigText", "Ad checkout is temporarily unavailable because Stripe is not configured yet.");
+          setText("adConfigText", "Ad checkout is temporarily unavailable because Stripe is not configured yet. Contact support if you want to reserve a slot manually.");
         } else {
           setText("adConfigText", "Ad checkout is temporarily unavailable. Contact support and we can help set up a sponsor slot manually.");
         }
@@ -940,6 +899,7 @@
           setCheckoutAvailability();
         } catch (error) {
           adConfig = Object.assign({}, DEFAULT_CONFIG, { enabled: false, stripeConfigured: false });
+          updatePrice();
           setCheckoutAvailability();
           showResult("formResult", "Could not load ad checkout settings: " + error.message, "bad");
         }
@@ -1008,6 +968,15 @@
           if (node) node.addEventListener("input", updatePreview);
         });
 
+        const previewUrl = el("previewUrl");
+        if (previewUrl) {
+          previewUrl.addEventListener("click", (event) => {
+            if (previewUrl.getAttribute("aria-disabled") === "true") {
+              event.preventDefault();
+            }
+          });
+        }
+
         const weeks = el("weeksInput");
         if (weeks) weeks.addEventListener("change", updatePrice);
 
@@ -1020,6 +989,6 @@
       });
     }());
   </script>
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=8" defer></script>
 </body>
 </html>
