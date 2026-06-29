@@ -19,7 +19,16 @@
   "paymentMethods": [
     "PayPal"
   ],
-  "products": [],
+  "products": [
+    {
+      "id": "db2free",
+      "name": "Dutch Bros Free Medium & Large Drink",
+      "price": "$6.00",
+      "description": "The Dutch Bros 2 Free Drink QR Code is a digital coupon or QR code that entitles the holder to one free medium and one any-size drink at participating U.S. Dutch Bros locations.",
+      "deliveryType": "File/download link delivery",
+      "stock": "Sold out"
+    }
+  ],
   "reviews": [],
   "policies": {
     "refunds": "",
@@ -27,7 +36,8 @@
     "support": ""
   },
   "tags": [
-    "Reviews"
+    "Reviews",
+    "Products"
   ],
-  "lastUpdated": "2026-06-29T18:35:02.524Z"
+  "lastUpdated": "2026-06-29T19:05:01.686Z"
 }
