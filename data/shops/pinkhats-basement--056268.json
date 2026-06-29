@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "serverId": "1518587304711553104",
-  "guildId": "1518587304711553104",
-  "slug": "cj__9rzs-server-553104",
-  "name": "cj__9rz's server",
-  "description": "cj__9rz's server uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "serverId": "1516567004667056268",
+  "guildId": "1516567004667056268",
+  "slug": "pinkhats-basement--056268",
+  "name": "🌴Pinkhat’s Basement🌻",
+  "description": "🌴Pinkhat’s Basement🌻 uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
   "verified": false,
@@ -16,16 +16,15 @@
     "activeDisputes": 0,
     "averageResponseMinutes": 0
   },
-  "paymentMethods": [
-    "PayPal"
-  ],
+  "paymentMethods": [],
   "products": [
     {
-      "id": "uber",
-      "name": "uber £10 off £15",
-      "price": "$0.50",
+      "id": "admin",
+      "name": "Adminisrator Access",
+      "price": "$4.99",
       "description": "",
-      "deliveryType": "Manual delivery"
+      "deliveryType": "License key delivery",
+      "stock": "3 available"
     }
   ],
   "reviews": [],
