@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "serverId": "1520196170498969688",
-  "guildId": "1520196170498969688",
-  "slug": "covil-blood-969688",
-  "name": "Covil blood",
-  "description": "Covil blood uses Store Bot for digital products, orders, and verified buyer reviews.",
-  "inviteCode": "zB7NgPBzBA",
-  "inviteUrl": "https://discord.gg/zB7NgPBzBA",
+  "serverId": "1520161357289230346",
+  "guildId": "1520161357289230346",
+  "slug": "nexora-studios-market-230346",
+  "name": "Nexora Studios | Market",
+  "description": "Nexora Studios | Market uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "yes",
+  "inviteUrl": "yes",
   "verified": false,
   "stats": {
     "rating": 0,
@@ -16,7 +16,10 @@
     "activeDisputes": 0,
     "averageResponseMinutes": 0
   },
-  "paymentMethods": [],
+  "paymentMethods": [
+    "Cash App",
+    "Venmo"
+  ],
   "products": [],
   "reviews": [],
   "policies": {
