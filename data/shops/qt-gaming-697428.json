@@ -27,7 +27,7 @@
       "price": "$1.00",
       "description": "",
       "deliveryType": "License key delivery",
-      "stock": "4 available"
+      "stock": "5 available"
     },
     {
       "id": "cock1",
@@ -35,7 +35,7 @@
       "price": "$1.00",
       "description": "",
       "deliveryType": "License key delivery",
-      "stock": "Sold out"
+      "stock": "1 available"
     },
     {
       "id": "cock2",
@@ -73,5 +73,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-30T15:35:02.586Z"
+  "lastUpdated": "2026-06-30T16:05:02.551Z"
 }
