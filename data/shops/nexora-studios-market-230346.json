@@ -20,7 +20,16 @@
     "Cash App",
     "Venmo"
   ],
-  "products": [],
+  "products": [
+    {
+      "id": "001",
+      "name": "boost",
+      "price": "$25.00",
+      "description": "",
+      "deliveryType": "License key delivery",
+      "stock": "No stock configured"
+    }
+  ],
   "reviews": [],
   "policies": {
     "refunds": "",
@@ -28,7 +37,8 @@
     "support": ""
   },
   "tags": [
-    "Reviews"
+    "Reviews",
+    "Products"
   ],
-  "lastUpdated": "2026-06-30T13:35:02.199Z"
+  "lastUpdated": "2026-06-30T14:05:01.888Z"
 }
