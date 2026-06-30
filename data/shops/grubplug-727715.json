@@ -11,7 +11,7 @@
   "stats": {
     "rating": 5,
     "reviewCount": 3,
-    "completedOrders": 3,
+    "completedOrders": 5,
     "positivePercent": 100,
     "activeDisputes": 0,
     "averageResponseMinutes": 0
@@ -24,11 +24,11 @@
   "products": [
     {
       "id": "db2free",
-      "name": "Dutch Bros Free Medium & Large Drink",
+      "name": "Dutch Bros free medium & large",
       "price": "$6.00",
-      "description": "The Dutch Bros 2 Free Drink QR Code is a digital coupon or QR code that entitles the holder to one free medium and one any-size drink at participating U.S. Dutch Bros locations.",
+      "description": "The Dutch Bros 2 Free Drink is a QR code that entitles the holder to one free medium and one any-size drink at participating U.S. Dutch Bros locations.",
       "deliveryType": "File/download link delivery",
-      "stock": "1 available"
+      "stock": "49 available"
     }
   ],
   "reviews": [
@@ -68,5 +68,5 @@
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-30T14:05:01.888Z"
+  "lastUpdated": "2026-06-30T14:35:03.961Z"
 }
