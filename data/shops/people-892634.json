@@ -1,25 +1,23 @@
 {
   "version": 2,
-  "serverId": "1513019107384098929",
-  "guildId": "1513019107384098929",
-  "slug": "smoknet-098929",
-  "name": "SMOKNet",
-  "description": "SMOKNet uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "serverId": "1495984846038892634",
+  "guildId": "1495984846038892634",
+  "slug": "people-892634",
+  "name": "People",
+  "description": "People uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
-  "verified": true,
+  "verified": false,
   "stats": {
     "rating": 0,
     "reviewCount": 0,
-    "completedOrders": 2,
+    "completedOrders": 0,
     "positivePercent": 0,
     "activeDisputes": 0,
     "averageResponseMinutes": 0
   },
   "paymentMethods": [
-    "PayPal",
-    "Cash App",
-    "AutoPay"
+    "PayPal"
   ],
   "products": [],
   "reviews": [],
@@ -29,8 +27,6 @@
     "support": ""
   },
   "tags": [
-    "Premium",
-    "AutoPay",
     "Reviews"
   ],
   "lastUpdated": "2026-06-30T17:35:02.345Z"
