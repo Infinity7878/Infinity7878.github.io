@@ -1,29 +1,30 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-30T01:35:03.886Z",
+  "generatedAt": "2026-06-30T02:05:07.048Z",
   "source": "Store Bot live export",
   "liveGuildsOnly": true,
   "shops": [
     {
       "serverId": "1469057125144727715",
       "guildId": "1469057125144727715",
-      "slug": "deal-depot-727715",
-      "name": "Deal Depot",
+      "slug": "grubplug-727715",
+      "name": "GrubPlug",
       "description": "Deal Depot uses Store Bot for digital products, orders, and verified buyer reviews.",
       "inviteCode": "zB7NgPBzBA",
       "inviteUrl": "https://discord.gg/zB7NgPBzBA",
-      "rating": 0,
-      "reviewCount": 0,
+      "rating": 5,
+      "reviewCount": 3,
       "completedOrders": 3,
       "productCount": 1,
       "tags": [
         "Premium",
+        "AutoPay",
         "Reviews",
         "Products"
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "940093984439697428",
@@ -45,7 +46,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1513019107384098929",
@@ -66,7 +67,7 @@
       ],
       "verified": true,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1455165438358061267",
@@ -86,7 +87,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1519560554996437113",
@@ -106,7 +107,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1506959081838215188",
@@ -126,7 +127,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1446023627144429583",
@@ -146,7 +147,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1495420173497401344",
@@ -166,7 +167,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1509523403453890700",
@@ -186,7 +187,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1516567004667056268",
@@ -206,7 +207,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1518185699273216191",
@@ -227,7 +228,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1518587304711553104",
@@ -247,7 +248,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     },
     {
       "serverId": "1267832433643094160",
@@ -266,7 +267,7 @@
       ],
       "verified": false,
       "activeDisputes": 0,
-      "lastUpdated": "2026-06-30T01:35:03.886Z"
+      "lastUpdated": "2026-06-30T02:05:07.048Z"
     }
   ]
 }

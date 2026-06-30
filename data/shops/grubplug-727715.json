@@ -2,23 +2,24 @@
   "version": 2,
   "serverId": "1469057125144727715",
   "guildId": "1469057125144727715",
-  "slug": "deal-depot-727715",
-  "name": "Deal Depot",
+  "slug": "grubplug-727715",
+  "name": "GrubPlug",
   "description": "Deal Depot uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
   "verified": true,
   "stats": {
-    "rating": 0,
-    "reviewCount": 0,
+    "rating": 5,
+    "reviewCount": 3,
     "completedOrders": 3,
-    "positivePercent": 0,
+    "positivePercent": 100,
     "activeDisputes": 0,
     "averageResponseMinutes": 0
   },
   "paymentMethods": [
     "PayPal",
-    "Venmo"
+    "Venmo",
+    "AutoPay"
   ],
   "products": [
     {
@@ -27,10 +28,35 @@
       "price": "$6.00",
       "description": "The Dutch Bros 2 Free Drink QR Code is a digital coupon or QR code that entitles the holder to one free medium and one any-size drink at participating U.S. Dutch Bros locations.",
       "deliveryType": "File/download link delivery",
-      "stock": "Sold out"
+      "stock": "1 available"
     }
   ],
-  "reviews": [],
+  "reviews": [
+    {
+      "id": "2af564d2-2bd8-4eb4-8ad5-eb964e40e8c9",
+      "rating": 5,
+      "text": "",
+      "author": "hoessy",
+      "createdAt": "2026-06-30T01:52:09.645Z",
+      "verifiedOrder": true
+    },
+    {
+      "id": "6fa48e41-bbff-43c9-b477-43e1e0a69f1e",
+      "rating": 5,
+      "text": "",
+      "author": "hoessy",
+      "createdAt": "2026-06-30T01:52:06.854Z",
+      "verifiedOrder": true
+    },
+    {
+      "id": "c4fecd74-dfa0-47eb-9641-818c851f7815",
+      "rating": 5,
+      "text": "",
+      "author": "hoessy",
+      "createdAt": "2026-06-30T01:52:03.872Z",
+      "verifiedOrder": true
+    }
+  ],
   "policies": {
     "refunds": "",
     "delivery": "",
@@ -38,8 +64,9 @@
   },
   "tags": [
     "Premium",
+    "AutoPay",
     "Reviews",
     "Products"
   ],
-  "lastUpdated": "2026-06-30T01:35:03.886Z"
+  "lastUpdated": "2026-06-30T02:05:07.048Z"
 }
