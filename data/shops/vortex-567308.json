@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "serverId": "1521868782354567308",
+  "guildId": "1521868782354567308",
+  "slug": "vortex-567308",
+  "name": "VORTEX",
+  "description": "VORTEX uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "inviteCode": "channels",
+  "inviteUrl": "https://discordapp.com/channels/1521868782354567308/1521925714733961297",
+  "verified": false,
+  "stats": {
+    "rating": 0,
+    "reviewCount": 0,
+    "completedOrders": 0,
+    "positivePercent": 0,
+    "activeDisputes": 0,
+    "averageResponseMinutes": 0
+  },
+  "paymentMethods": [
+    "PayPal"
+  ],
+  "products": [
+    {
+      "id": "lifetime",
+      "name": "Vortex Roblox cheat any game",
+      "price": "$45.00",
+      "description": "🎮 AIMBOT Feature Description Aimbot Automatically aims at enemy head or chest when holding RMB (Right Mouse Button) Smoothing Makes the aimbot movement smoother – higher value = slower aim FOV Circle A circle on screen showing the aimbot's targeting range Aim Part Choose between \"Head\" or \"Chest\" as your target Visible Check Only aims at enemies you can actually see (not through walls) 👁️ ESP (VISUALS) Feature Description ESP Boxes Draws boxes around players showing their position Tracers Line",
+      "deliveryType": "Manual delivery"
+    }
+  ],
+  "reviews": [],
+  "policies": {
+    "refunds": "",
+    "delivery": "",
+    "support": ""
+  },
+  "tags": [
+    "Reviews",
+    "Products"
+  ],
+  "lastUpdated": "2026-07-01T19:05:01.742Z"
+}
