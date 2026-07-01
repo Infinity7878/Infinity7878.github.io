@@ -11,7 +11,7 @@
   "stats": {
     "rating": 5,
     "reviewCount": 3,
-    "completedOrders": 10,
+    "completedOrders": 11,
     "positivePercent": 100,
     "activeDisputes": 0,
     "averageResponseMinutes": 0
@@ -28,7 +28,7 @@
       "price": "$6.00",
       "description": "The Dutch Bros 2 Free Drink is a QR code that entitles the holder to one free medium and one any-size drink at participating U.S. Dutch Bros locations.",
       "deliveryType": "File/download link delivery",
-      "stock": "44 available"
+      "stock": "43 available"
     }
   ],
   "reviews": [
@@ -67,5 +67,5 @@
     "AutoPay",
     "Products"
   ],
-  "lastUpdated": "2026-07-01T22:35:02.751Z"
+  "lastUpdated": "2026-07-01T23:05:01.850Z"
 }
