@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "serverId": "1516567004667056268",
-  "guildId": "1516567004667056268",
-  "slug": "pinkhats-basement--056268",
-  "name": "🌴Pinkhat’s Basement🌻",
-  "description": "🌴Pinkhat’s Basement🌻 uses Store Bot for digital products, orders, and verified buyer reviews.",
+  "serverId": "1521384511009456178",
+  "guildId": "1521384511009456178",
+  "slug": "testing-server-456178",
+  "name": "Testing Server",
+  "description": "Testing Server uses Store Bot for digital products, orders, and verified buyer reviews.",
   "inviteCode": "zB7NgPBzBA",
   "inviteUrl": "https://discord.gg/zB7NgPBzBA",
   "verified": false,
@@ -19,12 +19,11 @@
   "paymentMethods": [],
   "products": [
     {
-      "id": "admin",
-      "name": "Adminisrator Access",
-      "price": "$4.99",
+      "id": "1010",
+      "name": "token",
+      "price": "$5.00",
       "description": "",
-      "deliveryType": "License key delivery",
-      "stock": "3 available"
+      "deliveryType": "Manual delivery"
     }
   ],
   "reviews": [],
